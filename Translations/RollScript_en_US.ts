@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de_DE">
+<TS version="2.1" language="en_US" sourcelanguage="en_US">
 <context>
     <name>MainWindow</name>
     <message>
@@ -11,22 +11,22 @@
     <message>
         <location filename="../App/MainWindow.ui" line="28"/>
         <source>Menu.File</source>
-        <translation>&amp;Datei</translation>
+        <translation>&amp;File</translation>
     </message>
     <message>
         <location filename="../App/MainWindow.ui" line="33"/>
         <source>Menu.View</source>
-        <translation>&amp;Ansicht</translation>
+        <translation>&amp;View</translation>
     </message>
     <message>
         <location filename="../App/MainWindow.ui" line="44"/>
         <source>Menu.Help</source>
-        <translation>&amp;Hilfe</translation>
+        <translation>&amp;Help</translation>
     </message>
     <message>
         <location filename="../App/MainWindow.ui" line="37"/>
         <source>Menu.View.Language</source>
-        <translation>&amp;Sprache</translation>
+        <translation>&amp;Language</translation>
     </message>
 </context>
 <context>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../Core/Translation/TranslationManager.cpp" line="7"/>
         <source>Translation.LanguageName</source>
-        <translation>Deutsch</translation>
+        <translation>English</translation>
     </message>
 </context>
 </TS>

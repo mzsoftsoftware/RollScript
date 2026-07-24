@@ -23,8 +23,10 @@ set(APP_FORMS
 # Core sources
 # -----------------------------------------------------------------------------
 set(CORE_SOURCES
+    Core/Translation/TranslationManager.cpp
 )
 set(CORE_HEADERS
+    Core/Translation/TranslationManager.h
 )
 
 # -----------------------------------------------------------------------------
@@ -42,6 +44,7 @@ set(GUI_FORMS
 # -----------------------------------------------------------------------------
 set(TRANSLATIONS
     Translations/RollScript_de_DE.ts
+    Translations/RollScript_en_US.ts
 )
 
 # -----------------------------------------------------------------------------
@@ -72,8 +75,12 @@ qt_add_translations(
 )
 
 # -----------------------------------------------------------------------------
-# Libraries
+# Includes and Libraries
 # -----------------------------------------------------------------------------
+target_include_directories(RollScript
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+)
 target_link_libraries(RollScript
     PRIVATE
         Qt6::Core
