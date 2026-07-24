@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.19)
 project(RollScript LANGUAGES CXX)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets LinguistTools)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets Gui Svg LinguistTools)
 
 qt_standard_project_setup()
 
@@ -24,9 +28,12 @@ set(APP_FORMS
 # -----------------------------------------------------------------------------
 set(CORE_SOURCES
     Core/Translation/TranslationManager.cpp
+    Core/Plugins/PluginManager.cpp
 )
 set(CORE_HEADERS
     Core/Translation/TranslationManager.h
+    Core/Plugins/IPlugin.h
+    Core/Plugins/PluginManager.h
 )
 
 # -----------------------------------------------------------------------------
@@ -55,7 +62,7 @@ qt_add_executable(RollScript
     MACOSX_BUNDLE
 
     ${APP_SOURCES}
-    ${APP_HEADES}
+    ${APP_HEADERS}
     ${APP_FORMS}
 
     ${CORE_SOURCES}
@@ -64,6 +71,8 @@ qt_add_executable(RollScript
     ${GUI_SOURCES}
     ${GUI_HEADERS}
     ${GUI_FORMS}
+
+    Resources/RollScript.qrc
 )
 
 # -----------------------------------------------------------------------------
@@ -72,6 +81,16 @@ qt_add_executable(RollScript
 qt_add_translations(
     TARGETS RollScript
     TS_FILES ${TRANSLATIONS}
+)
+
+# -----------------------------------------------------------------------------
+# Resources
+# -----------------------------------------------------------------------------
+qt_add_resources(
+    TARGETS RollScript
+    FILES
+        Resources/Icons/ActionExit.svg
+        Resources/Icons/ActionFileNew.svg
 )
 
 # -----------------------------------------------------------------------------
@@ -85,6 +104,8 @@ target_link_libraries(RollScript
     PRIVATE
         Qt6::Core
         Qt6::Widgets
+        Qt6::Gui
+        Qt6::Svg
 )
 
 # -----------------------------------------------------------------------------

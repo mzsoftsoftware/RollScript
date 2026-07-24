@@ -3,9 +3,7 @@
 #include <QApplication>
 
 #include "Core/Translation/TranslationManager.h"
-
-//#include <QDebug>
-//#include <QLoggingCategory>
+#include "Core/Plugins/PluginManager.h"
 
 #include <iostream>
 void messageHandler(
@@ -24,6 +22,7 @@ void messageHandler(
         << std::endl;
 }
 
+
 int main(int argc, char *argv[])
 {
     qInstallMessageHandler(messageHandler);
@@ -35,10 +34,12 @@ int main(int argc, char *argv[])
     //qWarning() << "qWarning funktioniert";
     //qCritical() << "qCritical funktioniert";
 
-    TranslationManager translationManager;
+    TranslationManager translationManager(&a);
     translationManager.loadSystemLanguage();
 
-    MainWindow w(&translationManager);
+    PluginManager pluginManager(&a);
+
+    MainWindow w(&translationManager, &pluginManager);
     w.show();
 
     return QApplication::exec();

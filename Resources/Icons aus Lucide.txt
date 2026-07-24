@@ -1,0 +1,8 @@
+square-arrow-right-exit.svg -> ActionExit
+file-plus-corner.svg -> ActionFileNew
+folder-open.svg -> ActionFileOpen
+save.svg -> ActionFileSave
+save-pen.svg -> ActionFileSaveAs
+refresh-cw.svg -> ActionPrintersScan
+printer.svg -> ActionPrintersPrint
+

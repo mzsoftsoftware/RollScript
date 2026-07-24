@@ -2,17 +2,32 @@
 #include "ui_MainWindow.h"
 
 #include "Core/Translation/TranslationManager.h"
+#include <QFile>
 
-
-MainWindow::MainWindow(TranslationManager* ptrTranslationManager, QWidget *parent)
+MainWindow::MainWindow(TranslationManager* ptrTranslationManager, PluginManager* ptrPluginManager, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , m_ptrTranslationManager(ptrTranslationManager)
+    , m_ptrPluginManager(ptrPluginManager)
 {
     ui->setupUi(this);
 
     createLanguageMenu();
     updateLanguageMenu();
+
+    const QString path =
+        QStringLiteral(":/icons/actionExit");
+    qInfo() << "QFile exists:"
+            << QFile::exists(path);
+
+    const QIcon icon(
+        QStringLiteral(":/icons/actionExit")
+        );
+    qInfo()
+        << "Icon isNull:"
+        << icon.isNull()
+        << "Available sizes:"
+        << icon.availableSizes();
 }
 
 MainWindow::~MainWindow()
@@ -66,3 +81,33 @@ void MainWindow::slotSwitchLanguage()
     updateLanguageMenu();
     ui->retranslateUi(this);
 }
+
+void MainWindow::on_actionAboutRollScript_triggered()
+{
+    qInfo() << "on_actionAboutRollScript_triggered";
+}
+void MainWindow::on_actionFileNew_triggered()
+{
+    qInfo() << "on_actionFileNew_triggered";
+}
+void MainWindow::on_actionFileOpen_triggered()
+{
+    qInfo() << "on_actionFileOpen_triggered";
+}
+void MainWindow::on_actionFileSave_triggered()
+{
+    qInfo() << "on_actionFileSave_triggered";
+}
+void MainWindow::on_actionFileSaveAs_triggered()
+{
+    qInfo() << "on_actionFileSaveAs_triggered";
+}
+void MainWindow::on_actionPrintersScan_triggered()
+{
+    qInfo() << "on_actionPrintersScan_triggered";
+}
+void MainWindow::on_actionPrintersPrint_triggered()
+{
+    qInfo() << "on_actionPrintersPrint_triggered";
+}
+

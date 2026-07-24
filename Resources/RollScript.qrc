@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file alias="actionExit">Icons/ActionExit.svg</file>
+        <file alias="actionFileNew">Icons/ActionFileNew.svg</file>
+        <file alias="actionFileOpen">Icons/ActionFileOpen.svg</file>
+        <file alias="actionFileSave">Icons/ActionFileSave.svg</file>
+        <file alias="actionFileSaveAs">Icons/ActionFileSaveAs.svg</file>
+        <file alias="actionPrintersPrint">Icons/ActionPrintersPrint.svg</file>
+        <file alias="actionPrintersScan">Icons/ActionPrintersScan.svg</file>
+    </qresource>
+</RCC>

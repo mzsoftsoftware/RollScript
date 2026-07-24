@@ -27,6 +27,12 @@
     <property name="title">
      <string>Menu.File</string>
     </property>
+    <addaction name="actionFileNew"/>
+    <addaction name="actionFileOpen"/>
+    <addaction name="actionFileSave"/>
+    <addaction name="actionFileSaveAs"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
@@ -43,13 +49,197 @@
     <property name="title">
      <string>Menu.Help</string>
     </property>
+    <addaction name="actionAboutRollScript"/>
+    <addaction name="actionAboutQt"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::ToolBarArea::TopToolBarArea</set>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionExit"/>
+   <addaction name="separator"/>
+   <addaction name="actionFileNew"/>
+   <addaction name="actionFileOpen"/>
+   <addaction name="actionFileSave"/>
+   <addaction name="actionFileSaveAs"/>
+   <addaction name="separator"/>
+   <addaction name="actionPrintersScan"/>
+   <addaction name="actionPrintersPrint"/>
+  </widget>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset resource="../Resources/RollScript.qrc">
+     <normaloff>:/icons/actionExit</normaloff>:/icons/actionExit</iconset>
+   </property>
+   <property name="text">
+    <string>Action.Exit</string>
+   </property>
+   <property name="toolTip">
+    <string>Tooltip.Exit</string>
+   </property>
+   <property name="statusTip">
+    <string>Status.Exit</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::MenuRole::QuitRole</enum>
+   </property>
+  </action>
+  <action name="actionAboutQt">
+   <property name="text">
+    <string>Action.About.Qt</string>
+   </property>
+   <property name="toolTip">
+    <string>Tooltip.About.Qt</string>
+   </property>
+   <property name="statusTip">
+    <string>Status.About.Qt</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::MenuRole::TextHeuristicRole</enum>
+   </property>
+  </action>
+  <action name="actionAboutRollScript">
+   <property name="text">
+    <string>Action.About.RollScript</string>
+   </property>
+   <property name="toolTip">
+    <string>Tooltip.About.RollScript</string>
+   </property>
+   <property name="statusTip">
+    <string>Status.About.RollScript</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::MenuRole::TextHeuristicRole</enum>
+   </property>
+  </action>
+  <action name="actionFileNew">
+   <property name="icon">
+    <iconset resource="../Resources/RollScript.qrc">
+     <normaloff>:/icons/actionFileNew</normaloff>:/icons/actionFileNew</iconset>
+   </property>
+   <property name="text">
+    <string>Action.File.New</string>
+   </property>
+   <property name="toolTip">
+    <string>Tooltip.File.New</string>
+   </property>
+   <property name="statusTip">
+    <string>Status.File.New</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::MenuRole::TextHeuristicRole</enum>
+   </property>
+  </action>
+  <action name="actionFileOpen">
+   <property name="icon">
+    <iconset resource="../Resources/RollScript.qrc">
+     <normaloff>:/icons/actionFileOpen</normaloff>:/icons/actionFileOpen</iconset>
+   </property>
+   <property name="text">
+    <string>Action.File.Open</string>
+   </property>
+   <property name="toolTip">
+    <string>Tooltip.File.New</string>
+   </property>
+   <property name="statusTip">
+    <string>Status.File.New</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::MenuRole::TextHeuristicRole</enum>
+   </property>
+  </action>
+  <action name="actionFileSave">
+   <property name="icon">
+    <iconset resource="../Resources/RollScript.qrc">
+     <normaloff>:/icons/actionFileSave</normaloff>:/icons/actionFileSave</iconset>
+   </property>
+   <property name="text">
+    <string>Action.File.Save</string>
+   </property>
+   <property name="toolTip">
+    <string>Tooltip.File.Save</string>
+   </property>
+   <property name="statusTip">
+    <string>Status.File.Save</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::MenuRole::TextHeuristicRole</enum>
+   </property>
+  </action>
+  <action name="actionFileSaveAs">
+   <property name="icon">
+    <iconset resource="../Resources/RollScript.qrc">
+     <normaloff>:/icons/actionFileSaveAs</normaloff>:/icons/actionFileSaveAs</iconset>
+   </property>
+   <property name="text">
+    <string>Action.File.SaveAs</string>
+   </property>
+   <property name="toolTip">
+    <string>Tooltip.File.SaveAs</string>
+   </property>
+   <property name="statusTip">
+    <string>Status.File.SaveAs</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::MenuRole::TextHeuristicRole</enum>
+   </property>
+  </action>
+  <action name="actionPrintersScan">
+   <property name="icon">
+    <iconset resource="../Resources/RollScript.qrc">
+     <normaloff>:/icons/actionPrintersScan</normaloff>:/icons/actionPrintersScan</iconset>
+   </property>
+   <property name="text">
+    <string>Action.Printers.Scan</string>
+   </property>
+   <property name="toolTip">
+    <string>Tooltip.Printers.Scan</string>
+   </property>
+   <property name="statusTip">
+    <string>Status.Printers.Scan</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::MenuRole::TextHeuristicRole</enum>
+   </property>
+  </action>
+  <action name="actionPrintersPrint">
+   <property name="icon">
+    <iconset resource="../Resources/RollScript.qrc">
+     <normaloff>:/icons/actionPrintersPrint</normaloff>:/icons/actionPrintersPrint</iconset>
+   </property>
+   <property name="text">
+    <string>Action.Printers.Print</string>
+   </property>
+   <property name="toolTip">
+    <string>Tooltip.Printers.Print</string>
+   </property>
+   <property name="statusTip">
+    <string>Status.Printers.Print</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::MenuRole::TextHeuristicRole</enum>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../Resources/RollScript.qrc"/>
+ </resources>
  <connections/>
 </ui>
