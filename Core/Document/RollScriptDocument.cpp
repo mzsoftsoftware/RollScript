@@ -9,7 +9,30 @@ RollScriptDocument::RollScriptDocument(QObject *parent)
 {
 }
 
+void RollScriptDocument::clear()
+{
+    // TASK : Clear document data
 
+    m_qstrFileName.clear();
+
+    setModified(false);
+    emit documentFileNameChanged(m_qstrFileName);
+    emit documentCleared();
+}
+bool RollScriptDocument::load(const QString& qstrFileName)
+{
+    if(!loadFromFile(qstrFileName))
+    {
+        return false;
+    }
+
+    m_qstrFileName = qstrFileName;
+
+    setModified(false);
+    emit documentFileNameChanged(m_qstrFileName);
+    emit documentLoaded();
+    return true;
+}
 bool RollScriptDocument::save()
 {
     if(m_qstrFileName.isEmpty())
@@ -27,6 +50,20 @@ bool RollScriptDocument::save()
     emit documentSaved();
     return true;
 }
+bool RollScriptDocument::saveAs(const QString& qstrFileName)
+{
+    if(!saveToFile(qstrFileName))
+    {
+        return false;
+    }
+
+    m_qstrFileName = qstrFileName;
+
+    setModified(false);
+    emit documentFileNameChanged(m_qstrFileName);
+    emit documentSaved();
+    return true;
+}
 
 void RollScriptDocument::setModified(bool bModified)
 {
@@ -39,6 +76,53 @@ void RollScriptDocument::setModified(bool bModified)
     emit documentModifiedChanged(m_bModified);
 }
 
+bool RollScriptDocument::loadFromFile(const QString& qstrFileName)
+{
+    QFile fileLoad(qstrFileName);
+    if(!fileLoad.open(QIODevice::ReadOnly))
+    {
+        m_qstrLastError = tr("Document.LoadFromFile.Open.Error").arg(qstrFileName);
+        return false;
+    }
+
+    const QByteArray baData = fileLoad.readAll();
+    fileLoad.close();
+
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(baData);
+    if(!jsonDoc.isObject())
+    {
+        m_qstrLastError = tr("Document.LoadFromFile.Json.Error");
+        return false;
+    }
+
+    const QJsonObject jsonRoot = jsonDoc.object();
+
+    if(!jsonRoot.contains("format") || !jsonRoot["format"].isString() || jsonRoot["format"].toString() != "RollScript")
+    {
+        m_qstrLastError = tr("Document.LoadFromFile.Json.Format.Error");
+        return false;
+    }
+
+    const int iVersion = jsonRoot["version"].toInt();
+    switch(iVersion)
+    {
+    case 1:
+        return loadVersion_1(jsonRoot);
+        break;
+    default:
+        m_qstrLastError = tr("Document.LoadFromFile.Json.Version.Error").arg(iVersion);;
+        return false;
+    }
+}
+bool RollScriptDocument::loadVersion_1(const QJsonObject& jsonRoot)
+{
+    const QJsonObject jsonDocument = jsonRoot["document"].toObject();
+
+    // TASK : Load document settings
+    // TASK : Load document blocks
+
+    return true;
+}
 bool RollScriptDocument::saveToFile(const QString& qstrFileName)
 {
     QFile fileSave(qstrFileName);
@@ -49,14 +133,26 @@ bool RollScriptDocument::saveToFile(const QString& qstrFileName)
     }
 
     QJsonObject jsonRoot;
-    // Version
-    jsonRoot["Version"] = 1;
+    // Format & Version
+    jsonRoot["format"] = "RollScript";
+    jsonRoot["version"] = 1;
 
-    // TASK : Save the File !
+    QJsonObject jsonDocument;
+
+    // TASK : Save document settings
+    // TASK : Save document blocks
+
+    jsonRoot["Document"] = jsonDocument;
 
     QJsonDocument jsonDoc(jsonRoot);
+    const QByteArray baData = jsonDoc.toJson(QJsonDocument::Indented);
 
-    fileSave.write(jsonDoc.toJson(QJsonDocument::Indented));
+    if(fileSave.write(jsonDoc.toJson(QJsonDocument::Indented)) != baData.size())
+    {
+        m_qstrLastError = tr("Document.SaveToFile.Save.Error").arg(qstrFileName);
+        fileSave.close();
+        return false;
+    }
     fileSave.close();
     return true;
 }

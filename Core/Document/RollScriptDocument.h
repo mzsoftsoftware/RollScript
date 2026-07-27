@@ -21,8 +21,12 @@ public:
     // Document handling
     void clear();
     bool load(const QString& qstrFileName);
+    bool loadVersion_1(const QJsonObject& jsonRoot);
+
     bool save();
     bool saveAs(const QString& qstrFileName);
+
+    static QString fileExtension()  { return ".rollscript"; }
 
 signals:
     void documentModifiedChanged(bool bModified);

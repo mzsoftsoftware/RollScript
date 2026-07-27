@@ -4,6 +4,7 @@
 #include <QCloseEvent>
 #include <QMessageBox>
 #include <QFileInfo>
+#include <QFileDialog>
 
 #include "Core/Translation/TranslationManager.h"
 #include "Core/Document/RollScriptDocument.h"
@@ -34,36 +35,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::closeEvent(QCloseEvent* event)
 {
-    if(confirmClose())
+    if(documentConfirmDiscardChanges())
     {
         event->accept();
     }
     else
     {
         event->ignore();
-    }
-}
-bool MainWindow::confirmClose()
-{
-    if(!m_ptrRollScriptDocument->isModified())
-    {
-        return true;
-    }
-
-    const QMessageBox::StandardButton result = QMessageBox::warning(
-        this, tr("ConfirmClose.Title"), tr("ConfirmClose.Message"),
-        QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel,
-        QMessageBox::Save);
-
-    switch(result)
-    {
-    case QMessageBox::Save:
-        return documentSave();
-    case QMessageBox::Discard:
-        return true;
-    case QMessageBox::Cancel:
-    default:
-        return false;
     }
 }
 
@@ -153,6 +131,104 @@ void MainWindow::setupDocument()
     updateActionAvailability();
 }
 
+bool MainWindow::documentConfirmDiscardChanges()
+{
+    if(!m_ptrRollScriptDocument->isModified())
+    {
+        return true;
+    }
+
+    const QMessageBox::StandardButton result = QMessageBox::warning(
+        this, tr("ConfirmDiscardChanges.Title"), tr("ConfirmDiscardChanges.Message"),
+        QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel,
+        QMessageBox::Save);
+
+    switch(result)
+    {
+    case QMessageBox::Save:
+        return documentSave();
+    case QMessageBox::Discard:
+        return true;
+    case QMessageBox::Cancel:
+    default:
+        return false;
+    }
+}
+bool MainWindow::documentClear()
+{
+    if(!documentConfirmDiscardChanges())
+    {
+        return false;
+    }
+
+    m_ptrRollScriptDocument->clear();
+    return true;
+}
+bool MainWindow::documentOpen()
+{
+    if(!documentConfirmDiscardChanges())
+    {
+        return false;
+    }
+
+    const QString qstrFileFilter = tr("FileOpen.Filter").arg(m_ptrRollScriptDocument->fileExtension());
+    const QString qstrFileName = QFileDialog::getOpenFileName(this, tr("FileOpen.Title"), QString(), qstrFileFilter);
+    if(qstrFileName.isEmpty())
+    {
+        return false;
+    }
+
+    if(!m_ptrRollScriptDocument->load(qstrFileName))
+    {
+        QMessageBox::critical(
+            this, tr("FileOpen.Error.Title"),
+            m_ptrRollScriptDocument->lastError());
+        return false;
+    }
+    return true;
+
+}
+bool MainWindow::documentSave()
+{
+    if(m_ptrRollScriptDocument->fileName().isEmpty())
+    {
+        return documentSaveAs();
+    }
+
+    if(!m_ptrRollScriptDocument->save())
+    {
+        QMessageBox::critical(
+            this, tr("FileSave.Error.Title"),
+            m_ptrRollScriptDocument->lastError());
+        return false;
+    }
+    return true;
+}
+bool MainWindow::documentSaveAs()
+{
+    const QString qstrFileFilter = tr("FileSaveAs.Filter").arg(m_ptrRollScriptDocument->fileExtension());
+
+    QString qstrFileName = QFileDialog::getSaveFileName(this, tr("FileSaveAs.Title"), QString(), qstrFileFilter);
+    if(qstrFileName.isEmpty())
+    {
+        return false;
+    }
+
+    if(!qstrFileName.endsWith(m_ptrRollScriptDocument->fileExtension(), Qt::CaseInsensitive))
+    {
+        qstrFileName += m_ptrRollScriptDocument->fileExtension();
+    }
+
+    if(!m_ptrRollScriptDocument->saveAs(qstrFileName))
+    {
+        QMessageBox::critical(
+            this, tr("FileSave.Error.Title"),
+            m_ptrRollScriptDocument->lastError());
+        return false;
+    }
+    return true;
+}
+
 void MainWindow::slot_Document_Cleared()
 {
     // TASK : slot_logMessage("slot_Document_Cleared -> called");
@@ -182,11 +258,11 @@ void MainWindow::on_actionAboutRollScript_triggered()
 }
 void MainWindow::on_actionFileNew_triggered()
 {
-    qInfo() << "on_actionFileNew_triggered";
+    documentClear();
 }
 void MainWindow::on_actionFileOpen_triggered()
 {
-    qInfo() << "on_actionFileOpen_triggered";
+    documentOpen();
 }
 void MainWindow::on_actionFileSave_triggered()
 {
@@ -205,27 +281,6 @@ void MainWindow::on_actionPrintersPrint_triggered()
     qInfo() << "on_actionPrintersPrint_triggered";
 }
 
-bool MainWindow::documentSave()
-{
-    if(m_ptrRollScriptDocument->fileName().isEmpty())
-    {
-        return documentSaveAs();
-    }
-
-    if(!m_ptrRollScriptDocument->save())
-    {
-        QMessageBox::critical(
-            this, tr("FileSave.Error.Title"),
-            m_ptrRollScriptDocument->lastError());
-        return false;
-    }
-    return true;
-}
-bool MainWindow::documentSaveAs()
-{
-    // TASK : documentSaveAs()
-    return false;
-}
 
 
 

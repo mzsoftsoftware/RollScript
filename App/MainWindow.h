@@ -26,13 +26,17 @@ protected:
     void closeEvent(QCloseEvent* event) override;
 
 private:
-    bool confirmClose();
-
     void createLanguageMenu();
     void updateLanguageMenu();
 
     void setupActions();
     void setupDocument();
+
+    bool documentConfirmDiscardChanges();
+    bool documentClear();
+    bool documentOpen();
+    bool documentSave();
+    bool documentSaveAs();
 
 private slots:
     void slot_SwitchLanguage();
@@ -51,10 +55,6 @@ private slots:
 
     void updateWindowTitle();
     void updateActionAvailability();
-
-private:
-    bool documentSave();
-    bool documentSaveAs();
 
 private:
     Ui::MainWindow *ui;

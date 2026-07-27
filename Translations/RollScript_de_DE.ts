@@ -205,48 +205,83 @@ Logo</translation>
         <translation>&amp;Sprache</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="54"/>
         <source>ConfirmClose.Title</source>
-        <translation>RollScript beenden</translation>
+        <translation type="vanished">RollScript beenden</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="54"/>
         <source>ConfirmClose.Message</source>
-        <translation>Das aktuelle RollScript-Projekt wurde geändert.
+        <translation type="vanished">Das aktuelle RollScript-Projekt wurde geändert.
 Möchten Sie es vor dem Beenden speichern?</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="161"/>
+        <location filename="../App/MainWindow.cpp" line="237"/>
         <source>Document.Cleared</source>
         <translation>Neues RollScript-Dokument wurde angelegt.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="168"/>
+        <location filename="../App/MainWindow.cpp" line="244"/>
         <source>Document.Loaded</source>
         <translation>RollScript-Dokument erfolgreich geladen.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="175"/>
+        <location filename="../App/MainWindow.cpp" line="251"/>
         <source>Document.Saved</source>
         <translation>RollScript-Dokument erfolgreich gespeichert.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="218"/>
+        <location filename="../App/MainWindow.cpp" line="201"/>
+        <location filename="../App/MainWindow.cpp" line="225"/>
         <source>FileSave.Error.Title</source>
-        <translation>Datei speichern</translation>
+        <translation>RollScript-Dokument speichern</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="235"/>
+        <location filename="../App/MainWindow.cpp" line="211"/>
+        <source>FileSaveAs.Title</source>
+        <translation>RollScript-Dokument speichern unter</translation>
+    </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="209"/>
+        <source>FileSaveAs.Filter</source>
+        <translation>RollScript-Dateien (*%1)</translation>
+    </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="142"/>
+        <source>ConfirmDiscardChanges.Title</source>
+        <translation>Ungespeicherte Änderungen</translation>
+    </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="142"/>
+        <source>ConfirmDiscardChanges.Message</source>
+        <translation>Das aktuelle RollScript-Dokument enthält ungespeicherte Änderungen.
+Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
+    </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="174"/>
+        <source>FileOpen.Filter</source>
+        <translation>RollScript-Dateien (*%1)</translation>
+    </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="175"/>
+        <source>FileOpen.Title</source>
+        <translation>RollScript-Dokument öffnen</translation>
+    </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="184"/>
+        <source>FileOpen.Error.Title</source>
+        <translation>RollScript-Dokument öffnen</translation>
+    </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="290"/>
         <source>MainWindow.DocumentUntitled</source>
         <translation>Unbenannt</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="239"/>
+        <location filename="../App/MainWindow.cpp" line="294"/>
         <source>MainWindow.DocumentModified</source>
         <translation> *</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="242"/>
+        <location filename="../App/MainWindow.cpp" line="297"/>
         <source>MainWindow.WindowTitle</source>
         <translation>RollScript - %1%2</translation>
     </message>
@@ -254,14 +289,39 @@ Möchten Sie es vor dem Beenden speichern?</translation>
 <context>
     <name>RollScriptDocument</name>
     <message>
-        <location filename="../Core/Document/RollScriptDocument.cpp" line="17"/>
+        <location filename="../Core/Document/RollScriptDocument.cpp" line="40"/>
         <source>Document.Save.NoFileName</source>
         <translation>Das Dokument kann nicht gespeichert werden, da kein Dateiname festgelegt ist.</translation>
     </message>
     <message>
-        <location filename="../Core/Document/RollScriptDocument.cpp" line="47"/>
+        <location filename="../Core/Document/RollScriptDocument.cpp" line="84"/>
+        <source>Document.LoadFromFile.Open.Error</source>
+        <translation>ie Datei „%1“ konnte nicht zum Lesen geöffnet werden.</translation>
+    </message>
+    <message>
+        <location filename="../Core/Document/RollScriptDocument.cpp" line="94"/>
+        <source>Document.LoadFromFile.Json.Error</source>
+        <translation>Die Datei enthält keine gültigen RollScipt-Daten.</translation>
+    </message>
+    <message>
+        <location filename="../Core/Document/RollScriptDocument.cpp" line="102"/>
+        <source>Document.LoadFromFile.Json.Format.Error</source>
+        <translation>Die Datei enthält kein gültiges RollScript-Format.</translation>
+    </message>
+    <message>
+        <location filename="../Core/Document/RollScriptDocument.cpp" line="113"/>
+        <source>Document.LoadFromFile.Json.Version.Error</source>
+        <translation>Die Datei verwendet eine nicht unterstützte Version (%1).</translation>
+    </message>
+    <message>
+        <location filename="../Core/Document/RollScriptDocument.cpp" line="131"/>
         <source>Document.SaveToFile.Open.Error</source>
         <translation>Die Datei „%1“ konnte nicht zum Schreiben geöffnet werden.</translation>
+    </message>
+    <message>
+        <location filename="../Core/Document/RollScriptDocument.cpp" line="152"/>
+        <source>Document.SaveToFile.Save.Error</source>
+        <translation>Die Datei „%1“ konnte nicht gespeichert werden.</translation>
     </message>
 </context>
 <context>
