@@ -1,11 +1,24 @@
 <RCC>
     <qresource prefix="/icons">
-        <file alias="actionExit">Icons/ActionExit.svg</file>
-        <file alias="actionFileNew">Icons/ActionFileNew.svg</file>
-        <file alias="actionFileOpen">Icons/ActionFileOpen.svg</file>
-        <file alias="actionFileSave">Icons/ActionFileSave.svg</file>
-        <file alias="actionFileSaveAs">Icons/ActionFileSaveAs.svg</file>
-        <file alias="actionPrintersPrint">Icons/ActionPrintersPrint.svg</file>
-        <file alias="actionPrintersScan">Icons/ActionPrintersScan.svg</file>
+        <file alias="actionExit.Normal">Icons/ActionExit.svg</file>
+        <file alias="actionExit.Disabled">Icons/ActionExitDisabled.svg</file>
+
+        <file alias="actionFileNew.Normal">Icons/ActionFileNew.svg</file>
+        <file alias="actionFileNew.Disabled">Icons/ActionFileNewDisabled.svg</file>
+
+        <file alias="actionFileOpen.Normal">Icons/ActionFileOpen.svg</file>
+        <file alias="actionFileOpen.Disabled">Icons/ActionFileOpenDisabled.svg</file>
+
+        <file alias="actionFileSave.Normal">Icons/ActionFileSave.svg</file>
+        <file alias="actionFileSave.Disabled">Icons/ActionFileSaveDisabled.svg</file>
+
+        <file alias="actionFileSaveAs.Normal">Icons/ActionFileSaveAs.svg</file>
+        <file alias="actionFileSaveAs.Disabled">Icons/ActionFileSaveAsDisabled.svg</file>
+
+        <file alias="actionPrintersPrint.Normal">Icons/ActionPrintersPrint.svg</file>
+        <file alias="actionPrintersPrint.Disabled">Icons/ActionPrintersPrint.svg</file>
+
+        <file alias="actionPrintersScan.Normal">Icons/ActionPrintersScan.svg</file>
+        <file alias="actionPrintersScan.Disabled">Icons/ActionPrintersScanDisabled.svg</file>
     </qresource>
 </RCC>

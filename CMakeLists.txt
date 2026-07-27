@@ -77,6 +77,7 @@ qt_add_executable(RollScript
 
     Resources/RollScript.qrc
     App/DialogAbout.h App/DialogAbout.cpp App/DialogAbout.ui
+    Core/Document/RollScriptDocument.h Core/Document/RollScriptDocument.cpp
 )
 
 # -----------------------------------------------------------------------------

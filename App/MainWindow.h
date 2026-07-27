@@ -1,4 +1,5 @@
 #pragma once
+// clazy:excludeall=connect-by-name
 
 #include <QMainWindow>
 
@@ -10,6 +11,7 @@ QT_END_NAMESPACE
 
 class TranslationManager;
 class PluginManager;
+class RollScriptDocument;
 
 
 class MainWindow : public QMainWindow
@@ -30,9 +32,14 @@ private:
     void updateLanguageMenu();
 
     void setupActions();
+    void setupDocument();
 
 private slots:
-    void slotSwitchLanguage();
+    void slot_SwitchLanguage();
+
+    void slot_Document_Cleared();
+    void slot_Document_Loaded();
+    void slot_Document_Saved();
 
     void on_actionAboutRollScript_triggered();
     void on_actionFileNew_triggered();
@@ -42,9 +49,18 @@ private slots:
     void on_actionPrintersScan_triggered();
     void on_actionPrintersPrint_triggered();
 
+    void updateWindowTitle();
+    void updateActionAvailability();
+
+private:
+    bool documentSave();
+    bool documentSaveAs();
+
 private:
     Ui::MainWindow *ui;
 
     TranslationManager* m_ptrTranslationManager;
     PluginManager* m_ptrPluginManager;
+
+    RollScriptDocument* m_ptrRollScriptDocument;
 };

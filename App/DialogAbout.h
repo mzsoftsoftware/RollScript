@@ -1,11 +1,11 @@
-#ifndef DIALOGABOUT_H
-#define DIALOGABOUT_H
+#pragma once
 
 #include <QDialog>
 
 namespace Ui {
 class DialogAbout;
 }
+
 
 class DialogAbout : public QDialog
 {
@@ -18,5 +18,3 @@ public:
 private:
     Ui::DialogAbout *ui;
 };
-
-#endif // DIALOGABOUT_H

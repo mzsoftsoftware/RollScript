@@ -3,8 +3,11 @@
 
 #include <QCloseEvent>
 #include <QMessageBox>
+#include <QFileInfo>
 
 #include "Core/Translation/TranslationManager.h"
+#include "Core/Document/RollScriptDocument.h"
+
 #include "App/DialogAbout.h"
 
 
@@ -20,6 +23,8 @@ MainWindow::MainWindow(TranslationManager* ptrTranslationManager, PluginManager*
     updateLanguageMenu();
 
     setupActions();
+
+    setupDocument();
 }
 
 MainWindow::~MainWindow()
@@ -38,10 +43,13 @@ void MainWindow::closeEvent(QCloseEvent* event)
         event->ignore();
     }
 }
-
 bool MainWindow::confirmClose()
 {
-    // TASK : Check for Document modified
+    if(!m_ptrRollScriptDocument->isModified())
+    {
+        return true;
+    }
+
     const QMessageBox::StandardButton result = QMessageBox::warning(
         this, tr("ConfirmClose.Title"), tr("ConfirmClose.Message"),
         QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel,
@@ -50,8 +58,7 @@ bool MainWindow::confirmClose()
     switch(result)
     {
     case QMessageBox::Save:
-        // TASK : Save Document
-        return true;
+        return documentSave();
     case QMessageBox::Discard:
         return true;
     case QMessageBox::Cancel:
@@ -78,7 +85,7 @@ void MainWindow::createLanguageMenu()
         action->setData(
             translation.qLocale
             );
-        connect(action, &QAction::triggered, this, &MainWindow::slotSwitchLanguage);
+        connect(action, &QAction::triggered, this, &MainWindow::slot_SwitchLanguage);
 
         ui->menuViewLanguage->addAction(action);
     }
@@ -94,7 +101,7 @@ void MainWindow::updateLanguageMenu()
         action->setChecked( locale == currentLocale );
     }
 }
-void MainWindow::slotSwitchLanguage()
+void MainWindow::slot_SwitchLanguage()
 {
     QAction *action = qobject_cast<QAction*>(sender());
     if(!action)
@@ -105,6 +112,7 @@ void MainWindow::slotSwitchLanguage()
 
     updateLanguageMenu();
     ui->retranslateUi(this);
+    updateWindowTitle();
 }
 
 void MainWindow::setupActions()
@@ -114,9 +122,58 @@ void MainWindow::setupActions()
     connect(ui->actionAboutQt, &QAction::triggered, qApp, &QApplication::aboutQt);
 
     // TASK : Connect logMessage from other components
+
+    const QIcon icon = ui->actionFileSave->icon();
+    qDebug() << "Normal:"
+             << icon.pixmap(QSize(24, 24), QIcon::Normal);
+
+    qDebug() << "Disabled:"
+             << icon.pixmap(QSize(24, 24), QIcon::Disabled);
+}
+void MainWindow::setupDocument()
+{
+    m_ptrRollScriptDocument = new RollScriptDocument(this);
+
+    // TASK : ui->widget_Settings->setLabelDocument(m_ptrRollScriptDocument, m_ptrDeviceManager);
+    // TASK : ui->widget_LabelBlocks->setLabelDocument(m_ptrRollScriptDocument);
+    // TASK : ui->widget_Preview->setLabelDocument(m_ptrRollScriptDocument);
+
+    // Connect LabelDocument signals
+    // TASK : connect(m_ptrRollScriptDocument, &RollScriptDocument::logMessage, this, &MainWindow::slot_logMessage);
+    connect(m_ptrRollScriptDocument, &RollScriptDocument::documentModifiedChanged, this, &MainWindow::updateWindowTitle);
+    connect(m_ptrRollScriptDocument, &RollScriptDocument::documentModifiedChanged, this, &MainWindow::updateActionAvailability);
+
+    connect(m_ptrRollScriptDocument, &RollScriptDocument::documentFileNameChanged, this, &MainWindow::updateWindowTitle);
+
+    connect(m_ptrRollScriptDocument, &RollScriptDocument::documentCleared, this, &MainWindow::slot_Document_Cleared);
+    connect(m_ptrRollScriptDocument, &RollScriptDocument::documentLoaded, this, &MainWindow::slot_Document_Loaded);
+    connect(m_ptrRollScriptDocument, &RollScriptDocument::documentSaved, this, &MainWindow::slot_Document_Saved);
+
+    updateWindowTitle();
+    updateActionAvailability();
 }
 
-
+void MainWindow::slot_Document_Cleared()
+{
+    // TASK : slot_logMessage("slot_Document_Cleared -> called");
+    updateWindowTitle();
+    updateActionAvailability();
+    ui->statusbar->showMessage(tr("Document.Cleared"));
+}
+void MainWindow::slot_Document_Loaded()
+{
+    // TASK : slot_logMessage("slot_Document_Loaded -> called");
+    updateWindowTitle();
+    updateActionAvailability();
+    ui->statusbar->showMessage(tr("Document.Loaded"));
+}
+void MainWindow::slot_Document_Saved()
+{
+    // TASK : slot_logMessage("slot_Document_Saved -> called");
+    updateWindowTitle();
+    updateActionAvailability();
+    ui->statusbar->showMessage(tr("Document.Saved"));
+}
 
 void MainWindow::on_actionAboutRollScript_triggered()
 {
@@ -133,11 +190,11 @@ void MainWindow::on_actionFileOpen_triggered()
 }
 void MainWindow::on_actionFileSave_triggered()
 {
-    qInfo() << "on_actionFileSave_triggered";
+    documentSave();
 }
 void MainWindow::on_actionFileSaveAs_triggered()
 {
-    qInfo() << "on_actionFileSaveAs_triggered";
+    documentSaveAs();
 }
 void MainWindow::on_actionPrintersScan_triggered()
 {
@@ -148,3 +205,45 @@ void MainWindow::on_actionPrintersPrint_triggered()
     qInfo() << "on_actionPrintersPrint_triggered";
 }
 
+bool MainWindow::documentSave()
+{
+    if(m_ptrRollScriptDocument->fileName().isEmpty())
+    {
+        return documentSaveAs();
+    }
+
+    if(!m_ptrRollScriptDocument->save())
+    {
+        QMessageBox::critical(
+            this, tr("FileSave.Error.Title"),
+            m_ptrRollScriptDocument->lastError());
+        return false;
+    }
+    return true;
+}
+bool MainWindow::documentSaveAs()
+{
+    // TASK : documentSaveAs()
+    return false;
+}
+
+
+
+void MainWindow::updateWindowTitle()
+{
+    const QString qstrFileName = m_ptrRollScriptDocument->fileName().isEmpty()
+        ? tr("MainWindow.DocumentUntitled")
+        : QFileInfo(m_ptrRollScriptDocument->fileName()).fileName();
+
+    const QString qstrModified = m_ptrRollScriptDocument->isModified()
+        ? tr("MainWindow.DocumentModified")
+        : QString();
+
+    const QString strTitle = tr("MainWindow.WindowTitle").arg(qstrFileName, qstrModified);
+
+    setWindowTitle(strTitle);
+}
+void MainWindow::updateActionAvailability()
+{
+    ui->actionFileSave->setEnabled(m_ptrRollScriptDocument->isModified());
+}

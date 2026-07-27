@@ -86,7 +86,8 @@
   <action name="actionExit">
    <property name="icon">
     <iconset resource="../Resources/RollScript.qrc">
-     <normaloff>:/icons/actionExit</normaloff>:/icons/actionExit</iconset>
+     <normaloff>:/icons/actionExit.Normal</normaloff>
+     <disabledoff>:/icons/actionExit.Disabled</disabledoff>:/icons/actionExit.Normal</iconset>
    </property>
    <property name="text">
     <string>Action.Exit</string>
@@ -132,7 +133,8 @@
   <action name="actionFileNew">
    <property name="icon">
     <iconset resource="../Resources/RollScript.qrc">
-     <normaloff>:/icons/actionFileNew</normaloff>:/icons/actionFileNew</iconset>
+     <normaloff>:/icons/actionFileNew.Normal</normaloff>
+     <disabledoff>:/icons/actionFileNew.Disabled</disabledoff>:/icons/actionFileNew.Normal</iconset>
    </property>
    <property name="text">
     <string>Action.File.New</string>
@@ -150,7 +152,8 @@
   <action name="actionFileOpen">
    <property name="icon">
     <iconset resource="../Resources/RollScript.qrc">
-     <normaloff>:/icons/actionFileOpen</normaloff>:/icons/actionFileOpen</iconset>
+     <normaloff>:/icons/actionFileOpen.Normal</normaloff>
+     <disabledoff>:/icons/actionFileOpen.Disabled</disabledoff>:/icons/actionFileOpen.Normal</iconset>
    </property>
    <property name="text">
     <string>Action.File.Open</string>
@@ -168,7 +171,8 @@
   <action name="actionFileSave">
    <property name="icon">
     <iconset resource="../Resources/RollScript.qrc">
-     <normaloff>:/icons/actionFileSave</normaloff>:/icons/actionFileSave</iconset>
+     <normaloff>:/icons/actionFileSave.Normal</normaloff>
+     <disabledoff>:/icons/actionFileSave.Disabled</disabledoff>:/icons/actionFileSave.Normal</iconset>
    </property>
    <property name="text">
     <string>Action.File.Save</string>
@@ -186,7 +190,8 @@
   <action name="actionFileSaveAs">
    <property name="icon">
     <iconset resource="../Resources/RollScript.qrc">
-     <normaloff>:/icons/actionFileSaveAs</normaloff>:/icons/actionFileSaveAs</iconset>
+     <normaloff>:/icons/actionFileSaveAs.Normal</normaloff>
+     <disabledoff>:/icons/actionFileSaveAs.Disabled</disabledoff>:/icons/actionFileSaveAs.Normal</iconset>
    </property>
    <property name="text">
     <string>Action.File.SaveAs</string>
@@ -204,7 +209,8 @@
   <action name="actionPrintersScan">
    <property name="icon">
     <iconset resource="../Resources/RollScript.qrc">
-     <normaloff>:/icons/actionPrintersScan</normaloff>:/icons/actionPrintersScan</iconset>
+     <normaloff>:/icons/actionPrintersScan.Normal</normaloff>
+     <disabledoff>:/icons/actionPrintersScan.Disabled</disabledoff>:/icons/actionPrintersScan.Normal</iconset>
    </property>
    <property name="text">
     <string>Action.Printers.Scan</string>
@@ -222,7 +228,8 @@
   <action name="actionPrintersPrint">
    <property name="icon">
     <iconset resource="../Resources/RollScript.qrc">
-     <normaloff>:/icons/actionPrintersPrint</normaloff>:/icons/actionPrintersPrint</iconset>
+     <normaloff>:/icons/actionPrintersPrint.Normal</normaloff>
+     <disabledoff>:/icons/actionPrintersPrint.Disabled</disabledoff>:/icons/actionPrintersPrint.Normal</iconset>
    </property>
    <property name="text">
     <string>Action.Printers.Print</string>
