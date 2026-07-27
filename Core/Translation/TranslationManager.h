@@ -30,6 +30,7 @@ private:
 
 private:
     QTranslator m_translator;
+    QTranslator m_qtTranslator;
     QHash<QLocale, TranslationInfo> m_qhashTranslations;
     QLocale m_qLocaleCurrent;
 };

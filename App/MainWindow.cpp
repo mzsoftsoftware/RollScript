@@ -1,8 +1,12 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
+#include <QCloseEvent>
+#include <QMessageBox>
+
 #include "Core/Translation/TranslationManager.h"
-#include <QFile>
+#include "App/DialogAbout.h"
+
 
 MainWindow::MainWindow(TranslationManager* ptrTranslationManager, PluginManager* ptrPluginManager, QWidget *parent)
     : QMainWindow(parent)
@@ -15,24 +19,45 @@ MainWindow::MainWindow(TranslationManager* ptrTranslationManager, PluginManager*
     createLanguageMenu();
     updateLanguageMenu();
 
-    const QString path =
-        QStringLiteral(":/icons/actionExit");
-    qInfo() << "QFile exists:"
-            << QFile::exists(path);
-
-    const QIcon icon(
-        QStringLiteral(":/icons/actionExit")
-        );
-    qInfo()
-        << "Icon isNull:"
-        << icon.isNull()
-        << "Available sizes:"
-        << icon.availableSizes();
+    setupActions();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::closeEvent(QCloseEvent* event)
+{
+    if(confirmClose())
+    {
+        event->accept();
+    }
+    else
+    {
+        event->ignore();
+    }
+}
+
+bool MainWindow::confirmClose()
+{
+    // TASK : Check for Document modified
+    const QMessageBox::StandardButton result = QMessageBox::warning(
+        this, tr("ConfirmClose.Title"), tr("ConfirmClose.Message"),
+        QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel,
+        QMessageBox::Save);
+
+    switch(result)
+    {
+    case QMessageBox::Save:
+        // TASK : Save Document
+        return true;
+    case QMessageBox::Discard:
+        return true;
+    case QMessageBox::Cancel:
+    default:
+        return false;
+    }
 }
 
 void MainWindow::createLanguageMenu()
@@ -82,9 +107,21 @@ void MainWindow::slotSwitchLanguage()
     ui->retranslateUi(this);
 }
 
+void MainWindow::setupActions()
+{
+    // Connect fixed actions
+    connect(ui->actionExit, &QAction::triggered, this, &QWidget::close);
+    connect(ui->actionAboutQt, &QAction::triggered, qApp, &QApplication::aboutQt);
+
+    // TASK : Connect logMessage from other components
+}
+
+
+
 void MainWindow::on_actionAboutRollScript_triggered()
 {
-    qInfo() << "on_actionAboutRollScript_triggered";
+    DialogAbout dialog(this);
+    dialog.exec();
 }
 void MainWindow::on_actionFileNew_triggered()
 {

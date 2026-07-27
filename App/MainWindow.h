@@ -20,9 +20,16 @@ public:
     explicit MainWindow(TranslationManager* ptrTranslationManager, PluginManager* ptrPluginManager, QWidget *parent = nullptr);
     ~MainWindow() override;
 
+protected:
+    void closeEvent(QCloseEvent* event) override;
+
 private:
+    bool confirmClose();
+
     void createLanguageMenu();
     void updateLanguageMenu();
+
+    void setupActions();
 
 private slots:
     void slotSwitchLanguage();

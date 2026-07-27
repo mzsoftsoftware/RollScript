@@ -2,6 +2,46 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="de_DE">
 <context>
+    <name>DialogAbout</name>
+    <message>
+        <location filename="../App/DialogAbout.ui" line="14"/>
+        <source>About.Title</source>
+        <translation>Über RollScript</translation>
+    </message>
+    <message>
+        <location filename="../App/DialogAbout.ui" line="25"/>
+        <source>About.Logo</source>
+        <translation>Platz
+für
+Logo</translation>
+    </message>
+    <message>
+        <location filename="../App/DialogAbout.ui" line="37"/>
+        <source>About.Product</source>
+        <translation>RollScript</translation>
+    </message>
+    <message>
+        <location filename="../App/DialogAbout.ui" line="44"/>
+        <source>About.Version</source>
+        <translation>Version %1</translation>
+    </message>
+    <message>
+        <location filename="../App/DialogAbout.ui" line="51"/>
+        <source>About.Description</source>
+        <translation>Eine Anwendung zum Erstellen und Verwalten von RollScript-Projekten.</translation>
+    </message>
+    <message>
+        <location filename="../App/DialogAbout.ui" line="69"/>
+        <source>About.Copyright</source>
+        <translation>Copyright © 2026 MZ Software GmbH</translation>
+    </message>
+    <message>
+        <location filename="../App/DialogAbout.ui" line="76"/>
+        <source>About.License</source>
+        <translation>Lizenziert unter der Apache License 2.0.</translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="../App/MainWindow.ui" line="14"/>
@@ -164,11 +204,22 @@
         <source>Menu.View.Language</source>
         <translation>&amp;Sprache</translation>
     </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="46"/>
+        <source>ConfirmClose.Title</source>
+        <translation>RollScript beenden</translation>
+    </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="46"/>
+        <source>ConfirmClose.Message</source>
+        <translation>Das aktuelle RollScript-Projekt wurde geändert.
+Möchten Sie es vor dem Beenden speichern?</translation>
+    </message>
 </context>
 <context>
     <name>TranslationManager</name>
     <message>
-        <location filename="../Core/Translation/TranslationManager.cpp" line="7"/>
+        <location filename="../Core/Translation/TranslationManager.cpp" line="9"/>
         <source>Translation.LanguageName</source>
         <translation>Deutsch</translation>
     </message>

@@ -2,6 +2,8 @@
 
 #include <QApplication>
 #include <QDir>
+#include <QLibraryInfo>
+
 
 static const char *languageNameTranslation =
     QT_TRANSLATE_NOOP(
@@ -109,6 +111,7 @@ bool TranslationManager::loadSystemLanguage()
 
 bool TranslationManager::loadLanguage(const QLocale &locale)
 {
+    // TASK : Cleanup Debug Output
     const auto it = m_qhashTranslations.constFind(locale);
     if (it == m_qhashTranslations.constEnd())
     {
@@ -118,7 +121,12 @@ bool TranslationManager::loadLanguage(const QLocale &locale)
         return false;
     }
 
+    qApp->removeTranslator(&m_qtTranslator);
     qApp->removeTranslator(&m_translator);
+
+    QLocale::setDefault(locale);
+    qWarning() << locale;
+
     if (!m_translator.load(it->qstrResourcePath))
     {
         qWarning()
@@ -126,8 +134,17 @@ bool TranslationManager::loadLanguage(const QLocale &locale)
         << it->qstrResourcePath;
         return false;
     }
-
     qApp->installTranslator(&m_translator);
+
+    if(!m_qtTranslator.load(locale, "qtbase", "_", QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
+    {
+        qWarning()
+        << "Could not load translation:"
+        << QLibraryInfo::path(QLibraryInfo::TranslationsPath);
+        return false;
+    }
+    qApp->installTranslator(&m_qtTranslator);
+
     m_qLocaleCurrent = locale;
 
     return true;

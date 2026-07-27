@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.19)
-project(RollScript LANGUAGES CXX)
+project(RollScript
+    VERSION 0.1.0
+    LANGUAGES CXX
+)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
@@ -73,6 +76,7 @@ qt_add_executable(RollScript
     ${GUI_FORMS}
 
     Resources/RollScript.qrc
+    App/DialogAbout.h App/DialogAbout.cpp App/DialogAbout.ui
 )
 
 # -----------------------------------------------------------------------------
@@ -113,6 +117,14 @@ target_link_libraries(RollScript
 # -----------------------------------------------------------------------------
 #add_subdirectory(Plugins/Printers/DymoLabelPoint350)
 #add_subdirectory(Plugins/Features/LabelBlockText)
+
+# -----------------------------------------------------------------------------
+# Variables e.g. version
+# -----------------------------------------------------------------------------
+target_compile_definitions(RollScript
+    PRIVATE
+        ROLLSCRIPT_VERSION="${PROJECT_VERSION}"
+)
 
 # -----------------------------------------------------------------------------
 # Installation
