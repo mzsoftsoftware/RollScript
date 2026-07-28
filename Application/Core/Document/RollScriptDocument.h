@@ -39,11 +39,6 @@ signals:
     void documentLoaded();
     void documentSaved();
 
-    // TASK : void logMessage(const QString& qstrMessage);
-
-private slots:
-
-
 private:
     void setModified(bool bModified);
     bool loadFromFile(const QString& qstrFileName);

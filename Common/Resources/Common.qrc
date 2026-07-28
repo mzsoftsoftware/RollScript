@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/Common">
+        <file alias="Icons/LockOpen.svg">Icons/LockOpen.svg</file>
+        <file alias="Icons/LockClosed.svg">Icons/LockClosed.svg</file>
+    </qresource>
+</RCC>

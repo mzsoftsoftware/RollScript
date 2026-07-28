@@ -67,12 +67,6 @@ void TranslationManager::scanTranslations()
         info.qstrResourcePath = fullPath;
 
         m_qhashTranslations.insert(locale, info);
-
-        qDebug()
-            << "Found translation:"
-            << locale.name()
-            << languageName
-            << fullPath;
     }
 }
 
@@ -111,7 +105,6 @@ bool TranslationManager::loadSystemLanguage()
 
 bool TranslationManager::loadLanguage(const QLocale &locale)
 {
-    // TASK : Cleanup Debug Output
     const auto it = m_qhashTranslations.constFind(locale);
     if (it == m_qhashTranslations.constEnd())
     {
@@ -125,7 +118,6 @@ bool TranslationManager::loadLanguage(const QLocale &locale)
     qApp->removeTranslator(&m_translator);
 
     QLocale::setDefault(locale);
-    qWarning() << locale;
 
     if (!m_translator.load(it->qstrResourcePath))
     {

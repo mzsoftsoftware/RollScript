@@ -8,6 +8,7 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets Gui Svg LinguistTools)
 
 qt_standard_project_setup()
 
+
 # -----------------------------------------------------------------------------
 # Application sources
 # -----------------------------------------------------------------------------
@@ -50,10 +51,36 @@ set(CORE_HEADERS
 # GUI sources
 # -----------------------------------------------------------------------------
 set(GUI_SOURCES
+    Gui/Widgets/SettingsWidget.cpp
 )
 set(GUI_HEADERS
+    Gui/Widgets/SettingsWidget.h
 )
 set(GUI_FORMS
+    Gui/Widgets/SettingsWidget.ui
+)
+
+# -----------------------------------------------------------------------------
+# Common directory
+# -----------------------------------------------------------------------------
+set(COMMON_DIR
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Common
+)
+
+# -----------------------------------------------------------------------------
+# Common GUI sources
+# -----------------------------------------------------------------------------
+set(COMMON_GUI_SOURCES
+    ${COMMON_DIR}/Gui/Widgets/DoublePairWidget.cpp
+    ${COMMON_DIR}/Gui/Widgets/MarginsWidget.cpp
+)
+set(COMMON_GUI_HEADERS
+    ${COMMON_DIR}/Gui/Widgets/DoublePairWidget.h
+    ${COMMON_DIR}/Gui/Widgets/MarginsWidget.h
+)
+set(COMMON_GUI_FORMS
+    ${COMMON_DIR}/Gui/Widgets/DoublePairWidget.ui
+    ${COMMON_DIR}/Gui/Widgets/MarginsWidget.ui
 )
 
 # -----------------------------------------------------------------------------
@@ -82,7 +109,12 @@ qt_add_executable(RollScript
     ${GUI_HEADERS}
     ${GUI_FORMS}
 
+    ${COMMON_GUI_SOURCES}
+    ${COMMON_GUI_HEADERS}
+    ${COMMON_GUI_FORMS}
+
     Resources/RollScript.qrc
+    ${COMMON_DIR}/Resources/Common.qrc
 )
 
 # -----------------------------------------------------------------------------

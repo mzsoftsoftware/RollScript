@@ -12,8 +12,6 @@ RollScriptDocument::RollScriptDocument(QObject *parent)
 
 void RollScriptDocument::clear()
 {
-    // TASK : Clear document data
-
     m_qstrFileName.clear();
 
     setModified(false);

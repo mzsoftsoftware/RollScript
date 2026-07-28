@@ -98,26 +98,15 @@ void MainWindow::setupActions()
     // Connect fixed actions
     connect(ui->actionExit, &QAction::triggered, this, &QWidget::close);
     connect(ui->actionAboutQt, &QAction::triggered, qApp, &QApplication::aboutQt);
-
-    // TASK : Connect logMessage from other components
-
-    const QIcon icon = ui->actionFileSave->icon();
-    qDebug() << "Normal:"
-             << icon.pixmap(QSize(24, 24), QIcon::Normal);
-
-    qDebug() << "Disabled:"
-             << icon.pixmap(QSize(24, 24), QIcon::Disabled);
 }
 void MainWindow::setupDocument()
 {
     m_ptrRollScriptDocument = new RollScriptDocument(this);
 
-    // TASK : ui->widget_Settings->setLabelDocument(m_ptrRollScriptDocument, m_ptrDeviceManager);
-    // TASK : ui->widget_LabelBlocks->setLabelDocument(m_ptrRollScriptDocument);
-    // TASK : ui->widget_Preview->setLabelDocument(m_ptrRollScriptDocument);
+    // Connect RollScriptDocument to Widgets
+    // TASK : Connect RollScriptDocument to Widgets
 
-    // Connect LabelDocument signals
-    // TASK : connect(m_ptrRollScriptDocument, &RollScriptDocument::logMessage, this, &MainWindow::slot_logMessage);
+    // Connect RollScriptDocument signals
     connect(m_ptrRollScriptDocument, &RollScriptDocument::documentModifiedChanged, this, &MainWindow::updateWindowTitle);
     connect(m_ptrRollScriptDocument, &RollScriptDocument::documentModifiedChanged, this, &MainWindow::updateActionAvailability);
 
@@ -231,21 +220,18 @@ bool MainWindow::documentSaveAs()
 
 void MainWindow::slot_Document_Cleared()
 {
-    // TASK : slot_logMessage("slot_Document_Cleared -> called");
     updateWindowTitle();
     updateActionAvailability();
     ui->statusbar->showMessage(tr("Document.Cleared"));
 }
 void MainWindow::slot_Document_Loaded()
 {
-    // TASK : slot_logMessage("slot_Document_Loaded -> called");
     updateWindowTitle();
     updateActionAvailability();
     ui->statusbar->showMessage(tr("Document.Loaded"));
 }
 void MainWindow::slot_Document_Saved()
 {
-    // TASK : slot_logMessage("slot_Document_Saved -> called");
     updateWindowTitle();
     updateActionAvailability();
     ui->statusbar->showMessage(tr("Document.Saved"));
