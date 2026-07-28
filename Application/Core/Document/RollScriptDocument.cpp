@@ -6,8 +6,10 @@
 
 RollScriptDocument::RollScriptDocument(QObject *parent)
     : QObject{parent}
-    , m_settings(this)
+
 {
+    m_ptrSettings = new RollScriptDocumentSettings(this);
+    connect(m_ptrSettings, &RollScriptDocumentSettings::settingsChanged, this, &RollScriptDocument::slotSettingsChanged);
 }
 
 void RollScriptDocument::clear()
@@ -118,9 +120,9 @@ bool RollScriptDocument::loadVersion_1(const QJsonObject& jsonRoot)
     const QJsonObject jsonDocument = jsonRoot["document"].toObject();
 
     const QJsonObject jsonSettings = jsonDocument["settings"].toObject();
-    if(!m_settings.loadFromJson(jsonSettings))
+    if(!m_ptrSettings->loadFromJson(jsonSettings))
     {
-        m_qstrLastError = m_settings.lastError();
+        m_qstrLastError = m_ptrSettings->lastError();
         return false;
     }
 
@@ -145,9 +147,9 @@ bool RollScriptDocument::saveToFile(const QString& qstrFileName)
     QJsonObject jsonDocument;
 
     QJsonObject jsonSettings;
-    if(!m_settings.saveToJson(jsonSettings))
+    if(!m_ptrSettings->saveToJson(jsonSettings))
     {
-        m_qstrLastError = m_settings.lastError();
+        m_qstrLastError = m_ptrSettings->lastError();
         return false;
     }
     jsonDocument["settings"] = jsonSettings;
@@ -167,4 +169,9 @@ bool RollScriptDocument::saveToFile(const QString& qstrFileName)
     }
     fileSave.close();
     return true;
+}
+
+void RollScriptDocument::slotSettingsChanged()
+{
+    setModified(true);
 }

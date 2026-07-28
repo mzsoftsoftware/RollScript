@@ -18,7 +18,7 @@ public:
     bool isModified() const                         { return m_bModified; }
     QString fileName() const                        { return m_qstrFileName; }
 
-    RollScriptDocumentSettings* settings()          { return &m_settings; }
+    RollScriptDocumentSettings* settings()          { return m_ptrSettings; }
 
     // Setters
 
@@ -39,6 +39,9 @@ signals:
     void documentLoaded();
     void documentSaved();
 
+private slots:
+    void slotSettingsChanged();
+
 private:
     void setModified(bool bModified);
     bool loadFromFile(const QString& qstrFileName);
@@ -49,6 +52,6 @@ private:
     bool                        m_bModified = false;
     QString                     m_qstrFileName;
 
-    RollScriptDocumentSettings  m_settings;
+    RollScriptDocumentSettings* m_ptrSettings;
 
 };

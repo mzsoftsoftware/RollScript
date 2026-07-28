@@ -105,6 +105,7 @@ void MainWindow::setupDocument()
 
     // Connect RollScriptDocument to Widgets
     // TASK : Connect RollScriptDocument to Widgets
+    ui->widget_Settings->setRollScriptDocument(m_ptrRollScriptDocument);
 
     // Connect RollScriptDocument signals
     connect(m_ptrRollScriptDocument, &RollScriptDocument::documentModifiedChanged, this, &MainWindow::updateWindowTitle);
