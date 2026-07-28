@@ -6,6 +6,7 @@
 
 RollScriptDocument::RollScriptDocument(QObject *parent)
     : QObject{parent}
+    , m_settings(this)
 {
 }
 
@@ -118,7 +119,13 @@ bool RollScriptDocument::loadVersion_1(const QJsonObject& jsonRoot)
 {
     const QJsonObject jsonDocument = jsonRoot["document"].toObject();
 
-    // TASK : Load document settings
+    const QJsonObject jsonSettings = jsonDocument["settings"].toObject();
+    if(!m_settings.loadFromJson(jsonSettings))
+    {
+        m_qstrLastError = m_settings.lastError();
+        return false;
+    }
+
     // TASK : Load document blocks
 
     return true;
@@ -139,10 +146,17 @@ bool RollScriptDocument::saveToFile(const QString& qstrFileName)
 
     QJsonObject jsonDocument;
 
-    // TASK : Save document settings
+    QJsonObject jsonSettings;
+    if(!m_settings.saveToJson(jsonSettings))
+    {
+        m_qstrLastError = m_settings.lastError();
+        return false;
+    }
+    jsonDocument["settings"] = jsonSettings;
+
     // TASK : Save document blocks
 
-    jsonRoot["Document"] = jsonDocument;
+    jsonRoot["document"] = jsonDocument;
 
     QJsonDocument jsonDoc(jsonRoot);
     const QByteArray baData = jsonDoc.toJson(QJsonDocument::Indented);

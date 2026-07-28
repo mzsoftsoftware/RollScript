@@ -4,6 +4,8 @@
 
 #include <QString>
 
+#include "Core/Document/RollScriptDocumentSettings.h"
+
 
 class RollScriptDocument : public QObject
 {
@@ -15,6 +17,8 @@ public:
     QString lastError() const                       { return m_qstrLastError; }
     bool isModified() const                         { return m_bModified; }
     QString fileName() const                        { return m_qstrFileName; }
+
+    RollScriptDocumentSettings* settings()          { return &m_settings; }
 
     // Setters
 
@@ -49,5 +53,7 @@ private:
     QString                     m_qstrLastError;
     bool                        m_bModified = false;
     QString                     m_qstrFileName;
+
+    RollScriptDocumentSettings  m_settings;
 
 };

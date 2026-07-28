@@ -18,23 +18,34 @@ qt_standard_project_setup()
 set(APP_SOURCES
     App/main.cpp
     App/MainWindow.cpp
+    App/DialogAbout.cpp
 )
 set(APP_HEADERS
     App/MainWindow.h
+    App/DialogAbout.h
 )
 set(APP_FORMS
     App/MainWindow.ui
+    App/DialogAbout.ui
 )
 
 # -----------------------------------------------------------------------------
 # Core sources
 # -----------------------------------------------------------------------------
-set(CORE_SOURCES
+set(CORE_SOURCES    
+    Core/Document/RollScriptDocument.cpp
+    Core/Document/RollScriptDocumentSettings.cpp
+
     Core/Translation/TranslationManager.cpp
+
     Core/Plugins/PluginManager.cpp
 )
 set(CORE_HEADERS
+    Core/Document/RollScriptDocument.h
+    Core/Document/RollScriptDocumentSettings.h
+
     Core/Translation/TranslationManager.h
+
     Core/Plugins/IPlugin.h
     Core/Plugins/PluginManager.h
 )
@@ -76,8 +87,6 @@ qt_add_executable(RollScript
     ${GUI_FORMS}
 
     Resources/RollScript.qrc
-    App/DialogAbout.h App/DialogAbout.cpp App/DialogAbout.ui
-    Core/Document/RollScriptDocument.h Core/Document/RollScriptDocument.cpp
 )
 
 # -----------------------------------------------------------------------------

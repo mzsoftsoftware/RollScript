@@ -289,37 +289,37 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
 <context>
     <name>RollScriptDocument</name>
     <message>
-        <location filename="../Core/Document/RollScriptDocument.cpp" line="40"/>
+        <location filename="../Core/Document/RollScriptDocument.cpp" line="41"/>
         <source>Document.Save.NoFileName</source>
         <translation>Das Dokument kann nicht gespeichert werden, da kein Dateiname festgelegt ist.</translation>
     </message>
     <message>
-        <location filename="../Core/Document/RollScriptDocument.cpp" line="84"/>
+        <location filename="../Core/Document/RollScriptDocument.cpp" line="85"/>
         <source>Document.LoadFromFile.Open.Error</source>
         <translation>ie Datei „%1“ konnte nicht zum Lesen geöffnet werden.</translation>
     </message>
     <message>
-        <location filename="../Core/Document/RollScriptDocument.cpp" line="94"/>
+        <location filename="../Core/Document/RollScriptDocument.cpp" line="95"/>
         <source>Document.LoadFromFile.Json.Error</source>
         <translation>Die Datei enthält keine gültigen RollScipt-Daten.</translation>
     </message>
     <message>
-        <location filename="../Core/Document/RollScriptDocument.cpp" line="102"/>
+        <location filename="../Core/Document/RollScriptDocument.cpp" line="103"/>
         <source>Document.LoadFromFile.Json.Format.Error</source>
         <translation>Die Datei enthält kein gültiges RollScript-Format.</translation>
     </message>
     <message>
-        <location filename="../Core/Document/RollScriptDocument.cpp" line="113"/>
+        <location filename="../Core/Document/RollScriptDocument.cpp" line="114"/>
         <source>Document.LoadFromFile.Json.Version.Error</source>
         <translation>Die Datei verwendet eine nicht unterstützte Version (%1).</translation>
     </message>
     <message>
-        <location filename="../Core/Document/RollScriptDocument.cpp" line="131"/>
+        <location filename="../Core/Document/RollScriptDocument.cpp" line="138"/>
         <source>Document.SaveToFile.Open.Error</source>
         <translation>Die Datei „%1“ konnte nicht zum Schreiben geöffnet werden.</translation>
     </message>
     <message>
-        <location filename="../Core/Document/RollScriptDocument.cpp" line="152"/>
+        <location filename="../Core/Document/RollScriptDocument.cpp" line="166"/>
         <source>Document.SaveToFile.Save.Error</source>
         <translation>Die Datei „%1“ konnte nicht gespeichert werden.</translation>
     </message>
