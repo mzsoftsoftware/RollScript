@@ -24,11 +24,14 @@ public:
     bool loadLanguage(const QLocale &locale);
 
     QLocale currentLocale() const                   { return m_qLocaleCurrent; }
+    QString lastError() const                       { return m_qstrLastError; }
 
 private:
     void scanTranslations();
 
 private:
+    QString m_qstrLastError;
+
     QTranslator m_translator;
     QTranslator m_qtTranslator;
     QHash<QLocale, TranslationInfo> m_qhashTranslations;

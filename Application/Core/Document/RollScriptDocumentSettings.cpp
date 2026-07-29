@@ -20,7 +20,11 @@ void RollScriptDocumentSettings::setMinimumLengthMm(const double dblLengthMm)
 }
 
 
-
+void RollScriptDocumentSettings::clear()
+{
+    m_marginsMm = QMarginsF();
+    m_dblMinimumLengthMm = 0.0;
+}
 bool RollScriptDocumentSettings::loadFromJson(const QJsonObject& jsonSettings)
 {
     const int iVersion = jsonSettings["version"].toInt();

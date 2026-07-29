@@ -15,6 +15,7 @@ RollScriptDocument::RollScriptDocument(QObject *parent)
 void RollScriptDocument::clear()
 {
     m_qstrFileName.clear();
+    m_ptrSettings->clear();
 
     setModified(false);
     emit documentFileNameChanged(m_qstrFileName);

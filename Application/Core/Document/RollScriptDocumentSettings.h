@@ -21,6 +21,7 @@ public:
     void setMinimumLengthMm(const double dblLengthMm);
 
     // JSON
+    void clear();
     bool loadFromJson(const QJsonObject& jsonSettings);
     bool saveToJson(QJsonObject& jsonSettings) const;
 

@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 
 #include <QApplication>
+#include <QMessageBox>
 
 #include "Core/Translation/TranslationManager.h"
 #include "Core/Plugins/PluginManager.h"
@@ -27,20 +28,29 @@ int main(int argc, char *argv[])
 {
     qInstallMessageHandler(messageHandler);
 
-    QApplication a(argc, argv);
+    QApplication app(argc, argv);
 
     //qDebug() << "qDebug funktioniert";
     //qInfo() << "qInfo funktioniert";
     //qWarning() << "qWarning funktioniert";
     //qCritical() << "qCritical funktioniert";
 
-    TranslationManager translationManager(&a);
-    translationManager.loadSystemLanguage();
+    TranslationManager translationManager(&app);
+    if(!translationManager.loadSystemLanguage())
+    {
+        QMessageBox::critical(nullptr, "Startup", translationManager.lastError());
+        return EXIT_FAILURE;
+    }
 
-    PluginManager pluginManager(&a);
+    PluginManager pluginManager(&app);
+    if(!pluginManager.loadPlugins())
+    {
+        QMessageBox::critical(nullptr, "Startup", pluginManager.lastError());
+        return EXIT_FAILURE;
+    }
 
     MainWindow w(&translationManager, &pluginManager);
     w.show();
 
-    return QApplication::exec();
+    return app.exec();
 }

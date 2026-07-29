@@ -10,5 +10,5 @@ add_subdirectory(Application)
 # -----------------------------------------------------------------------------
 # Plugins
 # -----------------------------------------------------------------------------
-#add_subdirectory(Plugins/Printers/DymoLabelPoint350)
+add_subdirectory(Plugins/Printers/DymoLabelPoint350)
 #add_subdirectory(Plugins/Features/LabelBlockText)

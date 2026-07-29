@@ -3,6 +3,9 @@
 #include <QObject>
 
 class IPlugin;
+class QPluginLoader;
+
+#include "PrinterPluginRegistry.h"
 
 
 class PluginManager : public QObject
@@ -11,11 +14,31 @@ class PluginManager : public QObject
 
 public:
     explicit PluginManager(QObject *parent = nullptr);
+    virtual ~PluginManager() override;
 
-    void registerPlugin(IPlugin* ptrPlugin);
+    bool loadPlugins();
 
-    QList<IPlugin*> plugins() const     { return m_qlstPlugins; }
+    QString lastError() const                       { return m_qstrLastError; }
 
 private:
-    QList<IPlugin*> m_qlstPlugins;
+    bool loadPluginDirectory(const QString& qstrPluginDirectory);
+    bool loadPluginFile(const QString& qstrPluginFileName);
+
+
+
+    //void registerPlugin(IPlugin* ptrPlugin);
+
+    //QList<IPlugin*> plugins() const     { return m_qlstPlugins; }
+
+private:
+    QString m_qstrLastError;
+
+    QList<QPluginLoader*> m_lstPluginLoaders;
+
+
+    //QList<IPlugin*> m_qlstPlugins;
+
+    //PrinterPluginRegistry m_registryPrinters;
+    // FeaturePluginRegistry m_registryFeatures:
+
 };

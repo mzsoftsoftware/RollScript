@@ -10,7 +10,7 @@ qt_standard_project_setup()
 
 
 # -----------------------------------------------------------------------------
-# Application sources
+# Application files
 # -----------------------------------------------------------------------------
 set(APP_SOURCES
     App/main.cpp
@@ -27,7 +27,7 @@ set(APP_FORMS
 )
 
 # -----------------------------------------------------------------------------
-# Core sources
+# Core files
 # -----------------------------------------------------------------------------
 set(CORE_SOURCES    
     Core/Document/RollScriptDocument.cpp
@@ -36,6 +36,7 @@ set(CORE_SOURCES
     Core/Translation/TranslationManager.cpp
 
     Core/Plugins/PluginManager.cpp
+    Core/Plugins/PrinterPluginRegistry.cpp
 )
 set(CORE_HEADERS
     Core/Document/RollScriptDocument.h
@@ -43,12 +44,12 @@ set(CORE_HEADERS
 
     Core/Translation/TranslationManager.h
 
-    Core/Plugins/IPlugin.h
     Core/Plugins/PluginManager.h
+    Core/Plugins/PrinterPluginRegistry.h
 )
 
 # -----------------------------------------------------------------------------
-# GUI sources
+# GUI files
 # -----------------------------------------------------------------------------
 set(GUI_SOURCES
     Gui/Widgets/SettingsWidget.cpp
@@ -68,7 +69,7 @@ set(COMMON_DIR
 )
 
 # -----------------------------------------------------------------------------
-# Common GUI sources
+# Common GUI files
 # -----------------------------------------------------------------------------
 set(COMMON_GUI_SOURCES
     ${COMMON_DIR}/Gui/Widgets/DoublePairWidget.cpp
@@ -81,6 +82,19 @@ set(COMMON_GUI_HEADERS
 set(COMMON_GUI_FORMS
     ${COMMON_DIR}/Gui/Widgets/DoublePairWidget.ui
     ${COMMON_DIR}/Gui/Widgets/MarginsWidget.ui
+)
+
+# -----------------------------------------------------------------------------
+# Common Core files
+# -----------------------------------------------------------------------------
+set(COMMON_CORE_SOURCES
+    ${COMMON_DIR}/Core/Devices/PrinterInstance.cpp
+)
+set(COMMON_CORE_HEADERS
+    ${COMMON_DIR}/Core/Devices/UsbDeviceInfo.h
+    ${COMMON_DIR}/Core/Devices/PrinterInstance.h
+    ${COMMON_DIR}/Core/Plugins/IPlugin.h
+    ${COMMON_DIR}/Core/Plugins/IPrinterPlugin.h
 )
 
 # -----------------------------------------------------------------------------
@@ -108,6 +122,9 @@ qt_add_executable(RollScript
     ${GUI_SOURCES}
     ${GUI_HEADERS}
     ${GUI_FORMS}
+
+    ${COMMON_CORE_SOURCES}
+    ${COMMON_CORE_HEADERS}
 
     ${COMMON_GUI_SOURCES}
     ${COMMON_GUI_HEADERS}
