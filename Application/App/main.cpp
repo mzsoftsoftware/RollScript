@@ -1,10 +1,15 @@
 #include "MainWindow.h"
 
 #include <QApplication>
+#include <QLockFile>
+#include <QDir>
 #include <QMessageBox>
 
+#include "Core/ApplicationContext.h"
 #include "Core/Translation/TranslationManager.h"
 #include "Core/Plugins/PluginManager.h"
+#include "Core/Devices/DeviceManager.h"
+
 
 #include <iostream>
 void messageHandler(
@@ -35,6 +40,19 @@ int main(int argc, char *argv[])
     //qWarning() << "qWarning funktioniert";
     //qCritical() << "qCritical funktioniert";
 
+    QLockFile lockFile(
+        QDir::temp().absoluteFilePath("DymoLabelKit.lock"));
+    if (!lockFile.tryLock())
+    {
+        // TASK : Use correct tr !!!
+        QMessageBox::warning(
+            nullptr,
+            QObject::tr("Programm läuft bereits"),
+            QObject::tr("DymoLabelKit ist bereits gestartet."));
+        return 1;
+    }
+
+
     TranslationManager translationManager(&app);
     if(!translationManager.loadSystemLanguage())
     {
@@ -49,7 +67,11 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 
-    MainWindow w(&translationManager, &pluginManager);
+    DeviceManager deviceManager(&pluginManager, &app);
+
+    ApplicationContext context(&translationManager, &pluginManager, &deviceManager);
+
+    MainWindow w(&context);
     w.show();
 
     return app.exec();

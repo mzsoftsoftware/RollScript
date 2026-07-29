@@ -5,18 +5,23 @@
 #include <QMessageBox>
 #include <QFileInfo>
 #include <QFileDialog>
-
-#include "Core/Translation/TranslationManager.h"
-#include "Core/Document/RollScriptDocument.h"
+#include <QComboBox>
 
 #include "App/DialogAbout.h"
 
+#include "Core/ApplicationContext.h"
+#include "Core/Translation/TranslationManager.h"
+#include "Core/Devices/DeviceManager.h"
 
-MainWindow::MainWindow(TranslationManager* ptrTranslationManager, PluginManager* ptrPluginManager, QWidget *parent)
+#include "Core/Document/RollScriptDocument.h"
+
+#include "Gui/Models/PrintersItemModel.h"
+
+
+MainWindow::MainWindow(ApplicationContext* ptrApplicationContext, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , m_ptrTranslationManager(ptrTranslationManager)
-    , m_ptrPluginManager(ptrPluginManager)
+    , m_ptrApplicationContext(ptrApplicationContext)
 {
     ui->setupUi(this);
 
@@ -24,8 +29,11 @@ MainWindow::MainWindow(TranslationManager* ptrTranslationManager, PluginManager*
     updateLanguageMenu();
 
     setupActions();
+    setupToolBar();
 
     setupDocument();
+
+    setupDeviceManager();
 }
 
 MainWindow::~MainWindow()
@@ -48,7 +56,7 @@ void MainWindow::closeEvent(QCloseEvent* event)
 void MainWindow::createLanguageMenu()
 {
     const QList<TranslationInfo> translations =
-        m_ptrTranslationManager->availableTranslations();
+        m_ptrApplicationContext->translationManager()->availableTranslations();
 
     for (const TranslationInfo &translation :
          translations)
@@ -70,7 +78,7 @@ void MainWindow::createLanguageMenu()
 }
 void MainWindow::updateLanguageMenu()
 {
-    const QLocale currentLocale = m_ptrTranslationManager->currentLocale();
+    const QLocale currentLocale = m_ptrApplicationContext->translationManager()->currentLocale();
 
     const QList<QAction *> actions = ui->menuViewLanguage->actions();
     for (QAction *action : actions)
@@ -86,7 +94,7 @@ void MainWindow::slot_SwitchLanguage()
         return;
 
     const QLocale locale = action->data().value<QLocale>();
-    m_ptrTranslationManager->loadLanguage(locale);
+    m_ptrApplicationContext->translationManager()->loadLanguage(locale);
 
     updateLanguageMenu();
     ui->retranslateUi(this);
@@ -99,6 +107,25 @@ void MainWindow::setupActions()
     connect(ui->actionExit, &QAction::triggered, this, &QWidget::close);
     connect(ui->actionAboutQt, &QAction::triggered, qApp, &QApplication::aboutQt);
 }
+void MainWindow::setupToolBar()
+{
+    // Add a QComboBox with the Devices found from Scan.
+    m_ptrPrintersItemModel = new PrintersItemModel(m_ptrApplicationContext->deviceManager(), this);
+    // TASK : m_ptrLabelMediasItemModel = new LabelMediasItemModel(m_ptrDeviceManager, this);
+
+    m_ptrComboBoxPrinters = new QComboBox(this);
+    m_ptrComboBoxPrinters->setSizeAdjustPolicy(QComboBox::AdjustToContents);
+    // TASK : Use correct tr !!!
+    m_ptrComboBoxPrinters->setPlaceholderText(tr("No printers found, please rescan."));
+    m_ptrComboBoxPrinters->setCurrentIndex(-1);
+
+    m_ptrComboBoxPrinters->setModel(m_ptrPrintersItemModel);
+    // TASK : ui->widget_Settings->setLabelMediasItemModel(m_ptrLabelMediasItemModel);
+
+    ui->toolBar->insertWidget(ui->actionPrintersPrint, m_ptrComboBoxPrinters);
+    connect(m_ptrComboBoxPrinters, &QComboBox::currentIndexChanged, this, &MainWindow::slot_ComboBoxPrinters_IndexChanged);
+}
+
 void MainWindow::setupDocument()
 {
     m_ptrRollScriptDocument = new RollScriptDocument(this);
@@ -238,6 +265,40 @@ void MainWindow::slot_Document_Saved()
     ui->statusbar->showMessage(tr("Document.Saved"));
 }
 
+void MainWindow::setupDeviceManager()
+{
+    DeviceManager* ptrDeviceManager = m_ptrApplicationContext->deviceManager();
+    // Connect DeviceManager signals
+    connect(ptrDeviceManager, &DeviceManager::scanFinished, this, &MainWindow::slot_DeviceManager_ScanFinished);
+    // TASK : connect(m_ptrDeviceManager, &DeviceManager::deviceOpened, this, &MainWindow::slot_DeviceManager_DeviceOpened);
+    // TASK : connect(m_ptrDeviceManager, &DeviceManager::deviceClosed, this, &MainWindow::slot_DeviceManager_DeviceClosed);
+    connect(ptrDeviceManager, &DeviceManager::deviceError, this, &MainWindow::slot_DeviceManager_DeviceError);
+
+    connect(ui->actionPrintersScan, &QAction::triggered, ptrDeviceManager, &DeviceManager::slot_ScanForDevices);
+}
+
+void MainWindow::slot_DeviceManager_ScanFinished()
+{
+    m_ptrPrintersItemModel->rebuildModel();
+    if(m_ptrPrintersItemModel->rowCount() > 0)
+    {
+        // TASK : Use correct tr !!!
+        m_ptrComboBoxPrinters->setPlaceholderText(tr("Please select a printer ..."));
+    }
+    else
+    {
+        // TASK : Use correct tr !!!
+        m_ptrComboBoxPrinters->setPlaceholderText(tr("No printers found, Please rescan."));
+    }
+    m_ptrComboBoxPrinters->setCurrentIndex(-1);
+
+    // TASK : ui->widget_Settings->rebuildLabelMediasModel(QString());
+}
+void MainWindow::slot_DeviceManager_DeviceError(const QString& message)
+{
+
+}
+
 void MainWindow::on_actionAboutRollScript_triggered()
 {
     DialogAbout dialog(this);
@@ -259,16 +320,19 @@ void MainWindow::on_actionFileSaveAs_triggered()
 {
     documentSaveAs();
 }
-void MainWindow::on_actionPrintersScan_triggered()
-{
-    qInfo() << "on_actionPrintersScan_triggered";
-}
 void MainWindow::on_actionPrintersPrint_triggered()
 {
     qInfo() << "on_actionPrintersPrint_triggered";
 }
 
+void MainWindow::slot_ComboBoxPrinters_IndexChanged(int index)
+{
+    if(index < 0)
+        return;
 
+    QString qstrPrinterId = m_ptrComboBoxPrinters->currentData(Qt::UserRole).toString();
+    // TASK : m_ptrDeviceManager->slot_SwitchDevice(qstrDeviceId);
+}
 
 
 void MainWindow::updateWindowTitle()

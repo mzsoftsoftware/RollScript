@@ -23,8 +23,9 @@ public:
     bool loadSystemLanguage();
     bool loadLanguage(const QLocale &locale);
 
-    QLocale currentLocale() const                   { return m_qLocaleCurrent; }
+    // Getter
     QString lastError() const                       { return m_qstrLastError; }
+    QLocale currentLocale() const                   { return m_qLocaleCurrent; }
 
 private:
     void scanTranslations();

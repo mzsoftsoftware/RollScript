@@ -233,74 +233,89 @@ Logo</translation>
 Möchten Sie es vor dem Beenden speichern?</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="226"/>
+        <location filename="../App/MainWindow.cpp" line="253"/>
         <source>Document.Cleared</source>
         <translation>Neues RollScript-Dokument wurde angelegt.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="232"/>
+        <location filename="../App/MainWindow.cpp" line="259"/>
         <source>Document.Loaded</source>
         <translation>RollScript-Dokument erfolgreich geladen.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="238"/>
+        <location filename="../App/MainWindow.cpp" line="265"/>
         <source>Document.Saved</source>
         <translation>RollScript-Dokument erfolgreich gespeichert.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="191"/>
-        <location filename="../App/MainWindow.cpp" line="215"/>
+        <location filename="../App/MainWindow.cpp" line="218"/>
+        <location filename="../App/MainWindow.cpp" line="242"/>
         <source>FileSave.Error.Title</source>
         <translation>RollScript-Dokument speichern</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="201"/>
+        <location filename="../App/MainWindow.cpp" line="228"/>
         <source>FileSaveAs.Title</source>
         <translation>RollScript-Dokument speichern unter</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="199"/>
+        <location filename="../App/MainWindow.cpp" line="226"/>
         <source>FileSaveAs.Filter</source>
         <translation>RollScript-Dateien (*%1)</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="132"/>
+        <location filename="../App/MainWindow.cpp" line="119"/>
+        <source>No printers found, please rescan.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="159"/>
         <source>ConfirmDiscardChanges.Title</source>
         <translation>Ungespeicherte Änderungen</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="132"/>
+        <location filename="../App/MainWindow.cpp" line="159"/>
         <source>ConfirmDiscardChanges.Message</source>
         <translation>Das aktuelle RollScript-Dokument enthält ungespeicherte Änderungen.
 Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="164"/>
+        <location filename="../App/MainWindow.cpp" line="191"/>
         <source>FileOpen.Filter</source>
         <translation>RollScript-Dateien (*%1)</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="165"/>
+        <location filename="../App/MainWindow.cpp" line="192"/>
         <source>FileOpen.Title</source>
         <translation>RollScript-Dokument öffnen</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="174"/>
+        <location filename="../App/MainWindow.cpp" line="201"/>
         <source>FileOpen.Error.Title</source>
         <translation>RollScript-Dokument öffnen</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="277"/>
+        <location filename="../App/MainWindow.cpp" line="286"/>
+        <source>Please select a printer ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="291"/>
+        <source>No printers found, Please rescan.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="341"/>
         <source>MainWindow.DocumentUntitled</source>
         <translation>Unbenannt</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="281"/>
+        <location filename="../App/MainWindow.cpp" line="345"/>
         <source>MainWindow.DocumentModified</source>
         <translation> *</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="284"/>
+        <location filename="../App/MainWindow.cpp" line="348"/>
         <source>MainWindow.WindowTitle</source>
         <translation>RollScript - %1%2</translation>
     </message>
@@ -331,6 +346,19 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
         <location filename="../../Common/Gui/Widgets/MarginsWidget.cpp" line="46"/>
         <source>Bottom</source>
         <translation>Unten</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../App/main.cpp" line="50"/>
+        <source>Programm läuft bereits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../App/main.cpp" line="51"/>
+        <source>DymoLabelKit ist bereits gestartet.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

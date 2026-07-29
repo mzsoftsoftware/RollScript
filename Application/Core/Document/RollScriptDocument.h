@@ -14,9 +14,9 @@ public:
     explicit RollScriptDocument(QObject *parent = nullptr);
 
     // Getters
-    QString lastError() const                       { return m_qstrLastError; }
-    bool isModified() const                         { return m_bModified; }
-    QString fileName() const                        { return m_qstrFileName; }
+    QString lastError() const                 { return m_qstrLastError; }
+    bool isModified() const                   { return m_bModified; }
+    QString fileName() const                  { return m_qstrFileName; }
 
     RollScriptDocumentSettings* settings()          { return m_ptrSettings; }
 

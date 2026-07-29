@@ -6,6 +6,8 @@
 #include <QPluginLoader>
 
 #include "Common/Core/Plugins/IPlugin.h"
+#include "Common/Core/Plugins/IPrinterPlugin.h"
+#include "Common/Core/Plugins/IFeaturePlugin.h"
 
 
 PluginManager::PluginManager(QObject *parent)
@@ -33,11 +35,11 @@ bool PluginManager::loadPlugins()
         return false;
     }
 
-    // TASK : Load FeaturesPlugins
-    /*if(!loadPluginDirectory(qstrPluginPath + "/features"))
+    if(!loadPluginDirectory(qstrPluginPath + "/features"))
     {
-        return false;
-    }*/
+        // TASK : loadPluginDirectory(qstrPluginPath + "/features") always returns true !!!
+        return true;
+    }
 
     return true;
 }
@@ -78,46 +80,29 @@ bool PluginManager::loadPluginFile(const QString& qstrPluginFileName)
 
     m_lstPluginLoaders.append(ptrPluginLoader);
 
-    qDebug()
-        << "Plugin loaded:"
-        << qstrPluginFileName;
-
-    return true;
-}
-
-
-/*
-    QPluginLoader loader(...);
-
-    QObject* object = loader.instance();
-
-    auto* printerPlugin =
-        qobject_cast<IPrinterPlugin*>(object);
-
-    m_printerPluginRegistry.registerPlugin(printerPlugin);
-*/
-
-/*
-void PluginManager::registerPlugin(IPlugin* ptrPlugin)
-{
-    if(!ptrPlugin)
+    IPrinterPlugin* ptrPrinterPlugin = qobject_cast<IPrinterPlugin*>(ptrInstance);
+    if(ptrPrinterPlugin)
     {
-        qWarning() << "Cannot register null plugin.";
-        return;
+        if(!m_registryPrinters.registerPlugin(ptrPrinterPlugin))
+        {
+            m_qstrLastError = m_registryPrinters.lastError();
+            return false;
+        }
+        return true;
     }
 
-    if(m_qlstPlugins.contains(ptrPlugin))
+    IFeaturePlugin* ptrFeaturePlugin = qobject_cast<IFeaturePlugin*>(ptrInstance);
+    if(ptrFeaturePlugin)
     {
-        qWarning() << "Plugin already registered."
-                   << ptrPlugin->pluginId();
-        return;
+        if(!m_registryFeatures.registerPlugin(ptrFeaturePlugin))
+        {
+            m_qstrLastError = m_registryFeatures.lastError();
+            return false;
+        }
+        return true;
     }
 
-    m_qlstPlugins.append(ptrPlugin);
-
-    qInfo() << "Plugin registered:"
-            << ptrPlugin->pluginId()
-            << ptrPlugin->displayName()
-            << ptrPlugin->version();
+    // TASK : Use tr !!!
+    m_qstrLastError = "Unknown Plugin";
+    return false;
 }
-*/

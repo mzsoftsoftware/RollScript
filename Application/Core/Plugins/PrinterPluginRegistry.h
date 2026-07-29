@@ -8,6 +8,8 @@ class UsbDeviceInfo;
 class PrinterPluginRegistry
 {
 public:
+    PrinterPluginRegistry();
+
     bool registerPlugin(IPrinterPlugin* ptrPrinterPlugin);
     IPrinterPlugin* supportsUsb(const UsbDeviceInfo& device);
 

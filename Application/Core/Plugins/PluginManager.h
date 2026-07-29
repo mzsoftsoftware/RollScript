@@ -6,6 +6,7 @@ class IPlugin;
 class QPluginLoader;
 
 #include "PrinterPluginRegistry.h"
+#include "FeaturePluginRegistry.h"
 
 
 class PluginManager : public QObject
@@ -18,15 +19,18 @@ public:
 
     bool loadPlugins();
 
-    QString lastError() const                       { return m_qstrLastError; }
+    // Getter
+    QString lastError() const                     { return m_qstrLastError; }
+
+    PrinterPluginRegistry registryPrinters()            { return m_registryPrinters; }
+    FeaturePluginRegistry registryFeatures()            { return m_registryFeatures; }
 
 private:
     bool loadPluginDirectory(const QString& qstrPluginDirectory);
     bool loadPluginFile(const QString& qstrPluginFileName);
 
-
-
-    //void registerPlugin(IPlugin* ptrPlugin);
+    void registerPrinterPlugin(IPrinterPlugin* ptrPrinterPlugin);
+    void registerFeaturePlugin(IFeaturePlugin* ptrFeaturePlugin);
 
     //QList<IPlugin*> plugins() const     { return m_qlstPlugins; }
 
@@ -35,10 +39,6 @@ private:
 
     QList<QPluginLoader*> m_lstPluginLoaders;
 
-
-    //QList<IPlugin*> m_qlstPlugins;
-
-    //PrinterPluginRegistry m_registryPrinters;
-    // FeaturePluginRegistry m_registryFeatures:
-
+    PrinterPluginRegistry m_registryPrinters;
+    FeaturePluginRegistry m_registryFeatures;
 };

@@ -30,21 +30,35 @@ set(APP_FORMS
 # Core files
 # -----------------------------------------------------------------------------
 set(CORE_SOURCES    
+    Core/ApplicationContext.cpp
+
     Core/Document/RollScriptDocument.cpp
     Core/Document/RollScriptDocumentSettings.cpp
+
+    Core/Devices/DeviceManager.cpp
+    Core/Devices/PrinterInstance.cpp
+    Core/Devices/USBDeviceScanner.cpp
 
     Core/Translation/TranslationManager.cpp
 
     Core/Plugins/PluginManager.cpp
+    Core/Plugins/FeaturePluginRegistry.cpp
     Core/Plugins/PrinterPluginRegistry.cpp
 )
 set(CORE_HEADERS
+    Core/ApplicationContext.h
+
     Core/Document/RollScriptDocument.h
     Core/Document/RollScriptDocumentSettings.h
+
+    Core/Devices/DeviceManager.h
+    Core/Devices/PrinterInstance.h
+    Core/Devices/USBDeviceScanner.h
 
     Core/Translation/TranslationManager.h
 
     Core/Plugins/PluginManager.h
+    Core/Plugins/FeaturePluginRegistry.h
     Core/Plugins/PrinterPluginRegistry.h
 )
 
@@ -52,9 +66,13 @@ set(CORE_HEADERS
 # GUI files
 # -----------------------------------------------------------------------------
 set(GUI_SOURCES
+    Gui/Models/PrintersItemModel.cpp
+
     Gui/Widgets/SettingsWidget.cpp
 )
 set(GUI_HEADERS
+    Gui/Models/PrintersItemModel.h
+
     Gui/Widgets/SettingsWidget.h
 )
 set(GUI_FORMS
@@ -88,13 +106,14 @@ set(COMMON_GUI_FORMS
 # Common Core files
 # -----------------------------------------------------------------------------
 set(COMMON_CORE_SOURCES
-    ${COMMON_DIR}/Core/Devices/PrinterInstance.cpp
 )
 set(COMMON_CORE_HEADERS
-    ${COMMON_DIR}/Core/Devices/UsbDeviceInfo.h
-    ${COMMON_DIR}/Core/Devices/PrinterInstance.h
+    ${COMMON_DIR}/Core/Devices/USBDeviceInfo.h
+    ${COMMON_DIR}/Core/Devices/IUSBConnection.h
+
     ${COMMON_DIR}/Core/Plugins/IPlugin.h
     ${COMMON_DIR}/Core/Plugins/IPrinterPlugin.h
+    ${COMMON_DIR}/Core/Plugins/IFeaturePlugin.h
 )
 
 # -----------------------------------------------------------------------------
@@ -132,6 +151,8 @@ qt_add_executable(RollScript
 
     Resources/RollScript.qrc
     ${COMMON_DIR}/Resources/Common.qrc
+
+
 )
 
 # -----------------------------------------------------------------------------
