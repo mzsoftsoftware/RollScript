@@ -3,7 +3,7 @@
 #include <QList>
 
 class IPrinterPlugin;
-class UsbDeviceInfo;
+class USBDeviceInfo;
 
 class PrinterPluginRegistry
 {
@@ -11,7 +11,7 @@ public:
     PrinterPluginRegistry();
 
     bool registerPlugin(IPrinterPlugin* ptrPrinterPlugin);
-    IPrinterPlugin* supportsUsb(const UsbDeviceInfo& device);
+    IPrinterPlugin* supportsUsb(const USBDeviceInfo& device);
 
     QString lastError() const       { return m_qstrLastError; }
 

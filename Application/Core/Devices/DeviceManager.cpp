@@ -19,8 +19,8 @@ DeviceManager::~DeviceManager()
 
 void DeviceManager::slot_ScanForDevices()
 {
-    QList<UsbDeviceInfo> lstDevicesUsb = scanForUsbDevices();
-    for(const UsbDeviceInfo& deviceInfo : lstDevicesUsb)
+    QList<USBDeviceInfo> lstDevicesUsb = scanForUsbDevices();
+    for(const USBDeviceInfo& deviceInfo : lstDevicesUsb)
     {
         IPrinterPlugin* ptrPrinterPlugin = m_ptrPluginManager->registryPrinters().supportsUsb(deviceInfo);
         if(!ptrPrinterPlugin)
@@ -34,7 +34,7 @@ void DeviceManager::slot_ScanForDevices()
     emit scanFinished();
 }
 
-QList<UsbDeviceInfo> DeviceManager::scanForUsbDevices()
+QList<USBDeviceInfo> DeviceManager::scanForUsbDevices()
 {
     return {};
     /*

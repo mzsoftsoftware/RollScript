@@ -13,18 +13,18 @@ class PrinterInstance : public QObject
     Q_OBJECT
 
 public:
-    explicit PrinterInstance(IPrinterPlugin* ptrPrinterPlugin, const UsbDeviceInfo& device, QObject* parent);
+    explicit PrinterInstance(IPrinterPlugin* ptrPrinterPlugin, const USBDeviceInfo& device, QObject* parent);
 
     // Getter
     QString id() const                              { return m_qstrId; }
     QString displayName() const                     { return m_qstrDisplayName; }
     QIcon icon() const                              { return m_icon; }
 
-    const UsbDeviceInfo& deviceInfo() const         { return m_deviceInfo; }
+    const USBDeviceInfo& deviceInfo() const         { return m_deviceInfo; }
     IPrinterPlugin* plugin() const                  { return m_ptrPrinterPlugin; }
 
 private:
-    UsbDeviceInfo m_deviceInfo;
+    USBDeviceInfo m_deviceInfo;
     IPrinterPlugin* m_ptrPrinterPlugin = nullptr;
 
     QString                     m_qstrId;

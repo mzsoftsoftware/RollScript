@@ -29,7 +29,7 @@ signals:
     void deviceError(const QString& message);
 
 private:
-    QList<UsbDeviceInfo> scanForUsbDevices();
+    QList<USBDeviceInfo> scanForUsbDevices();
 
 /*
     // USB Device handling.

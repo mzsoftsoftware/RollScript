@@ -21,7 +21,7 @@ bool PrinterPluginRegistry::registerPlugin(IPrinterPlugin* ptrPrinterPlugin)
     return true;
 }
 
-IPrinterPlugin* PrinterPluginRegistry::supportsUsb(const UsbDeviceInfo& deviceInfo)
+IPrinterPlugin* PrinterPluginRegistry::supportsUsb(const USBDeviceInfo& deviceInfo)
 {
     IPrinterPlugin* ptrPrinterPluginResult = nullptr;
 

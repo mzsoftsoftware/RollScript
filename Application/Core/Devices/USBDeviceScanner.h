@@ -1,10 +1,14 @@
-#ifndef USBDEVICESCANNER_H
-#define USBDEVICESCANNER_H
+#pragma once
+
+#include <QList>
+#include "Common/Core/Devices/USBDeviceInfo.h"
+
 
 class USBDeviceScanner
 {
 public:
-    USBDeviceScanner();
-};
+    explicit USBDeviceScanner();
+    //virtual ~USBDeviceScanner() override;
 
-#endif // USBDEVICESCANNER_H
+    //QList<USBDeviceInfo> scan();
+};

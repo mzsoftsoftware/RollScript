@@ -4,6 +4,14 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
+# -----------------------------------------------------------------------------
+# External dependencies
+# -----------------------------------------------------------------------------
+include(LibUsb.cmake)
+
+# -----------------------------------------------------------------------------
+# Qt
+# -----------------------------------------------------------------------------
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets Gui Svg LinguistTools)
 
 qt_standard_project_setup()
@@ -187,6 +195,8 @@ target_link_libraries(RollScript
         Qt6::Widgets
         Qt6::Gui
         Qt6::Svg
+
+        RollScript::LibUsb
 )
 
 # -----------------------------------------------------------------------------

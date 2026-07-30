@@ -2,8 +2,9 @@ cmake_minimum_required(VERSION 3.19)
 
 project(RollScript
     VERSION 0.1.0
-    LANGUAGES CXX
+    LANGUAGES C CXX
 )
+
 
 add_subdirectory(Application)
 

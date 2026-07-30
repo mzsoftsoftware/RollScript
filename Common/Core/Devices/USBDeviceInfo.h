@@ -2,7 +2,7 @@
 
 #include <QString>
 
-struct UsbDeviceInfo
+struct USBDeviceInfo
 {
     uint16_t vendorId = 0;
     uint16_t productId = 0;

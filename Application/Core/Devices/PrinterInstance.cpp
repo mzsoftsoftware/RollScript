@@ -3,7 +3,7 @@
 #include "Common/Core/Plugins/IPrinterPlugin.h"
 
 
-PrinterInstance::PrinterInstance(IPrinterPlugin* ptrPrinterPlugin, const UsbDeviceInfo& deviceInfo, QObject* parent)
+PrinterInstance::PrinterInstance(IPrinterPlugin* ptrPrinterPlugin, const USBDeviceInfo& deviceInfo, QObject* parent)
     : QObject{parent}
     , m_deviceInfo(deviceInfo)
     , m_ptrPrinterPlugin(ptrPrinterPlugin)
