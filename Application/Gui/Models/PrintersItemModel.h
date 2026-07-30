@@ -2,7 +2,7 @@
 
 #include <QAbstractListModel>
 
-class DeviceManager;
+class PrinterManager;
 
 
 class PrintersItemModel : public QAbstractListModel
@@ -10,7 +10,7 @@ class PrintersItemModel : public QAbstractListModel
     Q_OBJECT
 
 public:
-    explicit PrintersItemModel(DeviceManager* ptrDeviceManager, QObject *parent);
+    explicit PrintersItemModel(PrinterManager* ptrPrinterManager, QObject *parent);
     virtual ~PrintersItemModel();
 
     void rebuildModel();
@@ -20,6 +20,6 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
 private:
-    DeviceManager*  m_ptrDeviceManager = nullptr;
+    PrinterManager*  m_ptrPrinterManager = nullptr;
     QStringList     m_qstrPrinterIds;
 };

@@ -1,12 +1,12 @@
 #include "PrintersItemModel.h"
 
-#include "Core/Devices/DeviceManager.h"
-#include "Core/Devices/PrinterInstance.h"
+#include "Core/Printers/PrinterManager.h"
+#include "Core/Printers/PrinterInstance.h"
 
 
-PrintersItemModel::PrintersItemModel(DeviceManager* ptrDeviceManager, QObject *parent)
+PrintersItemModel::PrintersItemModel(PrinterManager* ptrPrinterManager, QObject *parent)
     : QAbstractListModel(parent)
-    , m_ptrDeviceManager(ptrDeviceManager)
+    , m_ptrPrinterManager(ptrPrinterManager)
 {
 }
 PrintersItemModel::~PrintersItemModel()
@@ -28,7 +28,7 @@ QVariant PrintersItemModel::data(const QModelIndex &index, int role) const
         return QVariant();
 
     const QString& qstrId = m_qstrPrinterIds.at(index.row());
-    PrinterInstance* ptrPrinterInstance = m_ptrDeviceManager->printerInstance(qstrId);
+    PrinterInstance* ptrPrinterInstance = m_ptrPrinterManager->printerInstance(qstrId);
 
     switch(role)
     {
@@ -48,7 +48,7 @@ void PrintersItemModel::rebuildModel()
     beginResetModel();
 
     m_qstrPrinterIds.clear();
-    m_qstrPrinterIds = m_ptrDeviceManager->availablePrinterIds();
+    m_qstrPrinterIds = m_ptrPrinterManager->availablePrinterIds();
 
     endResetModel();
 }

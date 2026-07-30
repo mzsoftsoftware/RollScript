@@ -1,6 +1,6 @@
 #include "DymoLabelPoint350PrinterPlugin.h"
 
-#include "Common/Core/Devices/USBDeviceInfo.h"
+#include "Common/Core/Printers/USBDeviceInfo.h"
 
 
 DymoLabelPoint350PrinterPlugin::DymoLabelPoint350PrinterPlugin(QObject* parent)

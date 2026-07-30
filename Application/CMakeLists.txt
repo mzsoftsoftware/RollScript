@@ -43,9 +43,9 @@ set(CORE_SOURCES
     Core/Document/RollScriptDocument.cpp
     Core/Document/RollScriptDocumentSettings.cpp
 
-    Core/Devices/DeviceManager.cpp
-    Core/Devices/PrinterInstance.cpp
-    Core/Devices/USBDeviceScanner.cpp
+    Core/Printers/PrinterManager.cpp
+    Core/Printers/PrinterInstance.cpp
+    Core/Printers/USBDeviceScanner.cpp
 
     Core/Translation/TranslationManager.cpp
 
@@ -59,9 +59,9 @@ set(CORE_HEADERS
     Core/Document/RollScriptDocument.h
     Core/Document/RollScriptDocumentSettings.h
 
-    Core/Devices/DeviceManager.h
-    Core/Devices/PrinterInstance.h
-    Core/Devices/USBDeviceScanner.h
+    Core/Printers/PrinterManager.h
+    Core/Printers/PrinterInstance.h
+    Core/Printers/USBDeviceScanner.h
 
     Core/Translation/TranslationManager.h
 
@@ -116,12 +116,12 @@ set(COMMON_GUI_FORMS
 set(COMMON_CORE_SOURCES
 )
 set(COMMON_CORE_HEADERS
-    ${COMMON_DIR}/Core/Devices/USBDeviceInfo.h
-    ${COMMON_DIR}/Core/Devices/IUSBConnection.h
-
     ${COMMON_DIR}/Core/Plugins/IPlugin.h
     ${COMMON_DIR}/Core/Plugins/IPrinterPlugin.h
     ${COMMON_DIR}/Core/Plugins/IFeaturePlugin.h
+
+    ${COMMON_DIR}/Core/Printers/USBDeviceInfo.h
+    ${COMMON_DIR}/Core/Printers/IUSBConnection.h
 )
 
 # -----------------------------------------------------------------------------

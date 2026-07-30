@@ -2,10 +2,10 @@
 
 ApplicationContext::ApplicationContext(TranslationManager* ptrTranslationManager,
                    PluginManager* ptrPluginManager,
-                   DeviceManager* ptrDeviceManager)
+                   PrinterManager* ptrPrinterManager)
     : m_ptrTranslationManager(ptrTranslationManager)
     , m_ptrPluginManager(ptrPluginManager)
-    , m_ptrDeviceManager(ptrDeviceManager)
+    , m_ptrPrinterManager(ptrPrinterManager)
 {
 
 }

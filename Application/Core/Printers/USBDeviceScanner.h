@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QList>
-#include "Common/Core/Devices/USBDeviceInfo.h"
+#include "Common/Core/Printers/USBDeviceInfo.h"
 
 
 class USBDeviceScanner

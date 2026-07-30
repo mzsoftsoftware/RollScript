@@ -5,7 +5,6 @@ project(RollScript
     LANGUAGES C CXX
 )
 
-
 add_subdirectory(Application)
 
 # -----------------------------------------------------------------------------

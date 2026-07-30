@@ -6,15 +6,15 @@
 class PluginManager;
 class PrinterInstance;
 
-#include "Common/Core/Devices/USBDeviceInfo.h"
+#include "Common/Core/Printers/USBDeviceInfo.h"
 
 
-class DeviceManager : public QObject
+class PrinterManager : public QObject
 {
     Q_OBJECT
 public:
-    explicit DeviceManager(PluginManager* ptrPluginManager, QObject *parent);
-    virtual ~DeviceManager() override;
+    explicit PrinterManager(PluginManager* ptrPluginManager, QObject *parent);
+    virtual ~PrinterManager() override;
 
     // Getter
     QString lastError() const                                               { return m_qstrLastError; }

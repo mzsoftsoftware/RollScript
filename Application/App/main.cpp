@@ -8,7 +8,7 @@
 #include "Core/ApplicationContext.h"
 #include "Core/Translation/TranslationManager.h"
 #include "Core/Plugins/PluginManager.h"
-#include "Core/Devices/DeviceManager.h"
+#include "Core/Printers/PrinterManager.h"
 
 
 #include <iostream>
@@ -67,9 +67,9 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 
-    DeviceManager deviceManager(&pluginManager, &app);
+    PrinterManager printerManager(&pluginManager, &app);
 
-    ApplicationContext context(&translationManager, &pluginManager, &deviceManager);
+    ApplicationContext context(&translationManager, &pluginManager, &printerManager);
 
     MainWindow w(&context);
     w.show();

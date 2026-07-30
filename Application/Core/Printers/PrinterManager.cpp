@@ -1,23 +1,23 @@
-#include "DeviceManager.h"
+#include "PrinterManager.h"
 
 #include "Core/Plugins/PluginManager.h"
 #include "PrinterInstance.h"
 #include "Common/Core/Plugins/IPrinterPlugin.h"
 
 
-DeviceManager::DeviceManager(PluginManager* ptrPluginManager, QObject *parent)
+PrinterManager::PrinterManager(PluginManager* ptrPluginManager, QObject *parent)
     : QObject{parent}
     , m_ptrPluginManager(ptrPluginManager)
 {
 }
-DeviceManager::~DeviceManager()
+PrinterManager::~PrinterManager()
 {
     qDeleteAll(m_hashPrinterInstances);
     m_hashPrinterInstances.clear();
     m_qstrPrinterIds.clear();
 }
 
-void DeviceManager::slot_ScanForDevices()
+void PrinterManager::slot_ScanForDevices()
 {
     QList<USBDeviceInfo> lstDevicesUsb = scanForUsbDevices();
     for(const USBDeviceInfo& deviceInfo : lstDevicesUsb)
@@ -34,7 +34,7 @@ void DeviceManager::slot_ScanForDevices()
     emit scanFinished();
 }
 
-QList<USBDeviceInfo> DeviceManager::scanForUsbDevices()
+QList<USBDeviceInfo> PrinterManager::scanForUsbDevices()
 {
     return {};
     /*

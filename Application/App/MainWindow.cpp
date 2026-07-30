@@ -11,7 +11,7 @@
 
 #include "Core/ApplicationContext.h"
 #include "Core/Translation/TranslationManager.h"
-#include "Core/Devices/DeviceManager.h"
+#include "Core/Printers/PrinterManager.h"
 
 #include "Core/Document/RollScriptDocument.h"
 
@@ -110,7 +110,7 @@ void MainWindow::setupActions()
 void MainWindow::setupToolBar()
 {
     // Add a QComboBox with the Devices found from Scan.
-    m_ptrPrintersItemModel = new PrintersItemModel(m_ptrApplicationContext->deviceManager(), this);
+    m_ptrPrintersItemModel = new PrintersItemModel(m_ptrApplicationContext->printerManager(), this);
     // TASK : m_ptrLabelMediasItemModel = new LabelMediasItemModel(m_ptrDeviceManager, this);
 
     m_ptrComboBoxPrinters = new QComboBox(this);
@@ -267,14 +267,14 @@ void MainWindow::slot_Document_Saved()
 
 void MainWindow::setupDeviceManager()
 {
-    DeviceManager* ptrDeviceManager = m_ptrApplicationContext->deviceManager();
+    PrinterManager* ptrPrinterManager = m_ptrApplicationContext->printerManager();
     // Connect DeviceManager signals
-    connect(ptrDeviceManager, &DeviceManager::scanFinished, this, &MainWindow::slot_DeviceManager_ScanFinished);
-    // TASK : connect(m_ptrDeviceManager, &DeviceManager::deviceOpened, this, &MainWindow::slot_DeviceManager_DeviceOpened);
-    // TASK : connect(m_ptrDeviceManager, &DeviceManager::deviceClosed, this, &MainWindow::slot_DeviceManager_DeviceClosed);
-    connect(ptrDeviceManager, &DeviceManager::deviceError, this, &MainWindow::slot_DeviceManager_DeviceError);
+    connect(ptrPrinterManager, &PrinterManager::scanFinished, this, &MainWindow::slot_DeviceManager_ScanFinished);
+    // TASK : connect(ptrPrinterManager, &PrinterManager::deviceOpened, this, &MainWindow::slot_DeviceManager_DeviceOpened);
+    // TASK : connect(ptrPrinterManager, &PrinterManager::deviceClosed, this, &MainWindow::slot_DeviceManager_DeviceClosed);
+    connect(ptrPrinterManager, &PrinterManager::deviceError, this, &MainWindow::slot_DeviceManager_DeviceError);
 
-    connect(ui->actionPrintersScan, &QAction::triggered, ptrDeviceManager, &DeviceManager::slot_ScanForDevices);
+    connect(ui->actionPrintersScan, &QAction::triggered, ptrPrinterManager, &PrinterManager::slot_ScanForDevices);
 }
 
 void MainWindow::slot_DeviceManager_ScanFinished()

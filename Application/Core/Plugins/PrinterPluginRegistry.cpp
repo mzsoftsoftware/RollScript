@@ -1,7 +1,7 @@
 #include "PrinterPluginRegistry.h"
 
 #include "Common/Core/Plugins/IPrinterPlugin.h"
-#include "Common/Core/Devices/USBDeviceInfo.h"
+#include "Common/Core/Printers/USBDeviceInfo.h"
 
 
 PrinterPluginRegistry::PrinterPluginRegistry()

@@ -3,7 +3,7 @@
 #include <QObject>
 #include <QIcon>
 
-#include "Common/Core/Devices/USBDeviceInfo.h"
+#include "Common/Core/Printers/USBDeviceInfo.h"
 
 class IPrinterPlugin;
 
