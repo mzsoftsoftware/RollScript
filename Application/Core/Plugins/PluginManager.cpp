@@ -20,6 +20,12 @@ PluginManager::~PluginManager()
     m_lstPluginLoaders.clear();
 }
 
+bool PluginManager::init()
+{
+    return loadPlugins();
+}
+
+
 bool PluginManager::loadPlugins()
 {
     QString qstrBasePath = QCoreApplication::applicationDirPath();

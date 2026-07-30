@@ -2,6 +2,17 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US" sourcelanguage="en_US">
 <context>
+    <name>ApplicationContext</name>
+    <message>
+        <location filename="../App/ApplicationContext.cpp" line="26"/>
+        <location filename="../App/ApplicationContext.cpp" line="33"/>
+        <location filename="../App/ApplicationContext.cpp" line="40"/>
+        <location filename="../App/ApplicationContext.cpp" line="47"/>
+        <source>Startup.Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DialogAbout</name>
     <message>
         <location filename="../App/DialogAbout.ui" line="14"/>
@@ -349,19 +360,6 @@ Would you like to save your changes before continuing?</translation>
     </message>
 </context>
 <context>
-    <name>QObject</name>
-    <message>
-        <location filename="../App/main.cpp" line="50"/>
-        <source>Programm läuft bereits</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../App/main.cpp" line="51"/>
-        <source>DymoLabelKit ist bereits gestartet.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>RollScriptDocument</name>
     <message>
         <location filename="../Core/Document/RollScriptDocument.cpp" line="42"/>
@@ -441,11 +439,32 @@ Would you like to save your changes before continuing?</translation>
     </message>
 </context>
 <context>
+    <name>SingleInstanceLock</name>
+    <message>
+        <location filename="../App/SingleInstanceLock.cpp" line="29"/>
+        <source>Lock file is not initialized.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../App/SingleInstanceLock.cpp" line="36"/>
+        <source>The application is already running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TranslationManager</name>
     <message>
         <location filename="../Core/Translation/TranslationManager.cpp" line="9"/>
         <source>Translation.LanguageName</source>
         <translation>English</translation>
+    </message>
+</context>
+<context>
+    <name>USBManager</name>
+    <message>
+        <location filename="../Core/USB/USBManager.cpp" line="22"/>
+        <source>Could not initialize USB support.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

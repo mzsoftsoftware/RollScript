@@ -29,5 +29,5 @@ QIcon DymoLabelPoint350PrinterPlugin::icon() const
 bool DymoLabelPoint350PrinterPlugin::supportsUsb(const USBDeviceInfo& device) const
 {
     // Mein fixer Drucker : PID=0x0015, VID=0x0922
-    return device.vendorId == 0x0922 && device.productId == 0x0015;
+    return device.vendorId() == 0x0922 && device.productId() == 0x0015;
 }

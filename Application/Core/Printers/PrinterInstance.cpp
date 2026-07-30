@@ -8,7 +8,7 @@ PrinterInstance::PrinterInstance(IPrinterPlugin* ptrPrinterPlugin, const USBDevi
     , m_deviceInfo(deviceInfo)
     , m_ptrPrinterPlugin(ptrPrinterPlugin)
 {
-    m_qstrId = QString("USB:%1:%2:%3").arg(deviceInfo.manufacturer, deviceInfo.product, deviceInfo.serialNumber);
-    m_qstrDisplayName = QString("%1 - %2 - %3").arg(deviceInfo.manufacturer, deviceInfo.product, deviceInfo.serialNumber);
+    m_qstrId = QString("USB:%1:%2:%3").arg(deviceInfo.manufacturer(), deviceInfo.product(), deviceInfo.serial());
+    m_qstrDisplayName = QString("%1 - %2 - %3").arg(deviceInfo.manufacturer(), deviceInfo.product(), deviceInfo.serial());
     m_icon = ptrPrinterPlugin->icon();
 }

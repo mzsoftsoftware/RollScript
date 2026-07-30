@@ -19,8 +19,9 @@ class TranslationManager : public QObject
 public:
     explicit TranslationManager(QObject *parent = nullptr);
 
+    bool init();
+
     QList<TranslationInfo> availableTranslations() const;
-    bool loadSystemLanguage();
     bool loadLanguage(const QLocale &locale);
 
     // Getter
@@ -28,6 +29,7 @@ public:
     QLocale currentLocale() const                   { return m_qLocaleCurrent; }
 
 private:
+    bool loadSystemLanguage();
     void scanTranslations();
 
 private:

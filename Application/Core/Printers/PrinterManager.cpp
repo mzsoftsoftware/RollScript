@@ -5,9 +5,10 @@
 #include "Common/Core/Plugins/IPrinterPlugin.h"
 
 
-PrinterManager::PrinterManager(PluginManager* ptrPluginManager, QObject *parent)
+PrinterManager::PrinterManager(PluginManager* ptrPluginManager, USBManager* ptrUSBManager, QObject *parent)
     : QObject{parent}
     , m_ptrPluginManager(ptrPluginManager)
+    , m_ptrUSBManager(ptrUSBManager)
 {
 }
 PrinterManager::~PrinterManager()
@@ -16,6 +17,12 @@ PrinterManager::~PrinterManager()
     m_hashPrinterInstances.clear();
     m_qstrPrinterIds.clear();
 }
+
+bool PrinterManager::init()
+{
+    return true;
+}
+
 
 void PrinterManager::slot_ScanForDevices()
 {

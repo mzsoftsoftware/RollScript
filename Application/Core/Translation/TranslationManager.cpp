@@ -14,7 +14,12 @@ static const char *languageNameTranslation =
 TranslationManager::TranslationManager(QObject *parent)
     : QObject{parent}
 {
+}
+
+bool TranslationManager::init()
+{
     scanTranslations();
+    return loadSystemLanguage();
 }
 
 void TranslationManager::scanTranslations()

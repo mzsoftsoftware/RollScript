@@ -9,7 +9,7 @@
 
 #include "App/DialogAbout.h"
 
-#include "Core/ApplicationContext.h"
+#include "App/ApplicationContext.h"
 #include "Core/Translation/TranslationManager.h"
 #include "Core/Printers/PrinterManager.h"
 

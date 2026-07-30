@@ -17,7 +17,7 @@ public:
     explicit PluginManager(QObject *parent = nullptr);
     virtual ~PluginManager() override;
 
-    bool loadPlugins();
+    bool init();
 
     // Getter
     QString lastError() const                     { return m_qstrLastError; }
@@ -26,6 +26,8 @@ public:
     FeaturePluginRegistry registryFeatures()            { return m_registryFeatures; }
 
 private:
+    bool loadPlugins();
+
     bool loadPluginDirectory(const QString& qstrPluginDirectory);
     bool loadPluginFile(const QString& qstrPluginFileName);
 

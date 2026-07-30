@@ -22,15 +22,24 @@ qt_standard_project_setup()
 # -----------------------------------------------------------------------------
 set(APP_SOURCES
     App/main.cpp
+
+    App/ApplicationContext.cpp
+
     App/MainWindow.cpp
+
     App/DialogAbout.cpp
+
 )
 set(APP_HEADERS
+    App/ApplicationContext.h
+
     App/MainWindow.h
+
     App/DialogAbout.h
 )
 set(APP_FORMS
     App/MainWindow.ui
+
     App/DialogAbout.ui
 )
 
@@ -38,36 +47,36 @@ set(APP_FORMS
 # Core files
 # -----------------------------------------------------------------------------
 set(CORE_SOURCES    
-    Core/ApplicationContext.cpp
-
     Core/Document/RollScriptDocument.cpp
     Core/Document/RollScriptDocumentSettings.cpp
 
     Core/Printers/PrinterManager.cpp
     Core/Printers/PrinterInstance.cpp
-    Core/Printers/USBDeviceScanner.cpp
+
 
     Core/Translation/TranslationManager.cpp
 
     Core/Plugins/PluginManager.cpp
     Core/Plugins/FeaturePluginRegistry.cpp
     Core/Plugins/PrinterPluginRegistry.cpp
+
+    Core/USB/USBManager.cpp
 )
 set(CORE_HEADERS
-    Core/ApplicationContext.h
-
     Core/Document/RollScriptDocument.h
     Core/Document/RollScriptDocumentSettings.h
 
     Core/Printers/PrinterManager.h
     Core/Printers/PrinterInstance.h
-    Core/Printers/USBDeviceScanner.h
+
 
     Core/Translation/TranslationManager.h
 
     Core/Plugins/PluginManager.h
     Core/Plugins/FeaturePluginRegistry.h
     Core/Plugins/PrinterPluginRegistry.h
+
+    Core/USB/USBManager.h
 )
 
 # -----------------------------------------------------------------------------
@@ -114,6 +123,7 @@ set(COMMON_GUI_FORMS
 # Common Core files
 # -----------------------------------------------------------------------------
 set(COMMON_CORE_SOURCES
+    ${COMMON_DIR}/Core/Printers/USBDeviceInfo.cpp
 )
 set(COMMON_CORE_HEADERS
     ${COMMON_DIR}/Core/Plugins/IPlugin.h
@@ -159,6 +169,8 @@ qt_add_executable(RollScript
 
     Resources/RollScript.qrc
     ${COMMON_DIR}/Resources/Common.qrc
+    App/SingleInstanceLock.h App/SingleInstanceLock.cpp
+
 
 
 )
