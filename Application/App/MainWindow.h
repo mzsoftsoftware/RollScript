@@ -11,6 +11,7 @@ QT_END_NAMESPACE
 
 class QComboBox;
 class PrintersItemModel;
+class PrinterMediasItemModel;
 
 class ApplicationContext;
 class RollScriptDocument;
@@ -41,7 +42,7 @@ private:
     bool documentSave();
     bool documentSaveAs();
 
-    void setupDeviceManager();
+    void setupPrinterManager();
 
 private slots:
     void slot_SwitchLanguage();
@@ -50,10 +51,10 @@ private slots:
     void slot_Document_Loaded();
     void slot_Document_Saved();
 
-    void slot_DeviceManager_ScanFinished();
-    // TASK : void slot_DeviceManager_DeviceOpened();
-    // TASK : void slot_DeviceManager_DeviceClosed();
-    void slot_DeviceManager_DeviceError(const QString& message);
+    void slot_PrinterManager_Scan();
+    void slot_PrinterManager_ScanFinished();
+    void slot_PrinterManager_PrinterChanged();
+    void slot_PrinterManager_ManagerError(const QString& message);
 
     void on_actionAboutRollScript_triggered();
     void on_actionFileNew_triggered();
@@ -70,10 +71,11 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    QComboBox*          m_ptrComboBoxPrinters = nullptr;
-    PrintersItemModel*  m_ptrPrintersItemModel = nullptr;
+    QComboBox*              m_ptrComboBoxPrinters = nullptr;
+    PrintersItemModel*      m_ptrPrintersItemModel = nullptr;
+    PrinterMediasItemModel* m_ptrPrinterMediasItemModel = nullptr;
 
-    ApplicationContext* m_ptrApplicationContext = nullptr;
+    ApplicationContext*     m_ptrApplicationContext = nullptr;
 
-    RollScriptDocument* m_ptrRollScriptDocument = nullptr;
+    RollScriptDocument*     m_ptrRollScriptDocument = nullptr;
 };

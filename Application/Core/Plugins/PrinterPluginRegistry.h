@@ -11,7 +11,7 @@ public:
     PrinterPluginRegistry();
 
     bool registerPlugin(IPrinterPlugin* ptrPrinterPlugin);
-    IPrinterPlugin* supportsUsb(const USBDeviceInfo& device);
+    IPrinterPlugin* supportsUsb(const USBDeviceInfo* ptrDevice);
 
     QString lastError() const       { return m_qstrLastError; }
 

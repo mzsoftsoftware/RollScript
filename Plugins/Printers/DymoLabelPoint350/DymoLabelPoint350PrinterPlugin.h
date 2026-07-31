@@ -23,5 +23,5 @@ public:
 
     QIcon icon() const override;
 
-    bool supportsUsb(const USBDeviceInfo& device) const override;
+    bool supportsUsb(const USBDeviceInfo* ptrDevice) const override;
 };

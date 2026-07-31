@@ -15,7 +15,7 @@ public:
 
     virtual QIcon icon() const = 0;
 
-    virtual bool supportsUsb(const USBDeviceInfo& device) const = 0;
+    virtual bool supportsUsb(const USBDeviceInfo* ptrDevice) const = 0;
 
     // TASK : virtual QList<RollScriptMedia> availableMedias() const = 0;
 };

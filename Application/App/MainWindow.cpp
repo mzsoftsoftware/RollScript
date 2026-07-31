@@ -16,6 +16,7 @@
 #include "Core/Document/RollScriptDocument.h"
 
 #include "Gui/Models/PrintersItemModel.h"
+#include "Gui/Models/PrinterMediasItemModel.h"
 
 
 MainWindow::MainWindow(ApplicationContext* ptrApplicationContext, QWidget *parent)
@@ -33,7 +34,7 @@ MainWindow::MainWindow(ApplicationContext* ptrApplicationContext, QWidget *paren
 
     setupDocument();
 
-    setupDeviceManager();
+    setupPrinterManager();
 }
 
 MainWindow::~MainWindow()
@@ -265,20 +266,27 @@ void MainWindow::slot_Document_Saved()
     ui->statusbar->showMessage(tr("Document.Saved"));
 }
 
-void MainWindow::setupDeviceManager()
+void MainWindow::setupPrinterManager()
 {
     PrinterManager* ptrPrinterManager = m_ptrApplicationContext->printerManager();
     // Connect DeviceManager signals
-    connect(ptrPrinterManager, &PrinterManager::scanFinished, this, &MainWindow::slot_DeviceManager_ScanFinished);
-    // TASK : connect(ptrPrinterManager, &PrinterManager::deviceOpened, this, &MainWindow::slot_DeviceManager_DeviceOpened);
-    // TASK : connect(ptrPrinterManager, &PrinterManager::deviceClosed, this, &MainWindow::slot_DeviceManager_DeviceClosed);
-    connect(ptrPrinterManager, &PrinterManager::deviceError, this, &MainWindow::slot_DeviceManager_DeviceError);
+    connect(ptrPrinterManager, &PrinterManager::scanFinished, this, &MainWindow::slot_PrinterManager_ScanFinished);
+    connect(ptrPrinterManager, &PrinterManager::printerChanged, this, &MainWindow::slot_PrinterManager_PrinterChanged);
+    connect(ptrPrinterManager, &PrinterManager::managerError, this, &MainWindow::slot_PrinterManager_ManagerError);
 
-    connect(ui->actionPrintersScan, &QAction::triggered, ptrPrinterManager, &PrinterManager::slot_ScanForDevices);
+    connect(ui->actionPrintersScan, &QAction::triggered, this, &MainWindow::slot_PrinterManager_Scan);
 }
 
-void MainWindow::slot_DeviceManager_ScanFinished()
+void MainWindow::slot_PrinterManager_Scan()
 {
+    if(!m_ptrApplicationContext->printerManager()->scanForDevices())
+    {
+        //ui->textEdit_Debug->append(QString("PrinterManager Error : ") + message);
+    }
+}
+void MainWindow::slot_PrinterManager_ScanFinished()
+{
+    QSignalBlocker blocker(m_ptrComboBoxPrinters);
     m_ptrPrintersItemModel->rebuildModel();
     if(m_ptrPrintersItemModel->rowCount() > 0)
     {
@@ -291,12 +299,15 @@ void MainWindow::slot_DeviceManager_ScanFinished()
         m_ptrComboBoxPrinters->setPlaceholderText(tr("No printers found, Please rescan."));
     }
     m_ptrComboBoxPrinters->setCurrentIndex(-1);
-
-    // TASK : ui->widget_Settings->rebuildLabelMediasModel(QString());
+    ui->widget_Settings->rebuildPrinterMediasModel();
 }
-void MainWindow::slot_DeviceManager_DeviceError(const QString& message)
+void MainWindow::slot_PrinterManager_PrinterChanged()
 {
-
+    ui->widget_Settings->rebuildPrinterMediasModel();
+}
+void MainWindow::slot_PrinterManager_ManagerError(const QString& message)
+{
+    ui->textEdit_Debug->append(QString("PrinterManager Error : ") + message);
 }
 
 void MainWindow::on_actionAboutRollScript_triggered()
@@ -331,7 +342,10 @@ void MainWindow::slot_ComboBoxPrinters_IndexChanged(int index)
         return;
 
     QString qstrPrinterId = m_ptrComboBoxPrinters->currentData(Qt::UserRole).toString();
-    // TASK : m_ptrDeviceManager->slot_SwitchDevice(qstrDeviceId);
+    if(!m_ptrApplicationContext->printerManager()->switchPrinter(qstrPrinterId))
+    {
+        QMessageBox::critical(this, "Title", m_ptrApplicationContext->printerManager()->lastError());
+    }
 }
 
 

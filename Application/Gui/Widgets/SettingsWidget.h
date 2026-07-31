@@ -2,6 +2,8 @@
 
 #include <QWidget>
 
+class PrinterMediasItemModel;
+
 class RollScriptDocument;
 class RollScriptDocumentSettings;
 
@@ -18,7 +20,10 @@ public:
     explicit SettingsWidget(QWidget *parent);
     virtual ~SettingsWidget();
 
+    void setPrinterMediasItemModel(PrinterMediasItemModel* ptrPrinterMediasItemModel);
     void setRollScriptDocument(RollScriptDocument* ptrDocument);
+
+    void rebuildPrinterMediasModel();
 
 protected:
     void changeEvent(QEvent *event) override;
@@ -33,6 +38,9 @@ private slots:
 private:
     Ui::SettingsWidget *ui;
 
+    PrinterMediasItemModel* m_ptrPrinterMediasItemModel = nullptr;
+
     RollScriptDocument* m_ptrDocument;
     RollScriptDocumentSettings* m_ptrDocumentSettings;
+    QString         m_qstrPrinterMediaId;
 };

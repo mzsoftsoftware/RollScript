@@ -24,6 +24,7 @@ set(APP_SOURCES
     App/main.cpp
 
     App/ApplicationContext.cpp
+    App/SingleInstanceLock.cpp
 
     App/MainWindow.cpp
 
@@ -32,6 +33,7 @@ set(APP_SOURCES
 )
 set(APP_HEADERS
     App/ApplicationContext.h
+    App/SingleInstanceLock.h
 
     App/MainWindow.h
 
@@ -51,8 +53,6 @@ set(CORE_SOURCES
     Core/Document/RollScriptDocumentSettings.cpp
 
     Core/Printers/PrinterManager.cpp
-    Core/Printers/PrinterInstance.cpp
-
 
     Core/Translation/TranslationManager.cpp
 
@@ -67,8 +67,6 @@ set(CORE_HEADERS
     Core/Document/RollScriptDocumentSettings.h
 
     Core/Printers/PrinterManager.h
-    Core/Printers/PrinterInstance.h
-
 
     Core/Translation/TranslationManager.h
 
@@ -84,11 +82,13 @@ set(CORE_HEADERS
 # -----------------------------------------------------------------------------
 set(GUI_SOURCES
     Gui/Models/PrintersItemModel.cpp
+    Gui/Models/PrinterMediasItemModel.cpp
 
     Gui/Widgets/SettingsWidget.cpp
 )
 set(GUI_HEADERS
     Gui/Models/PrintersItemModel.h
+    Gui/Models/PrinterMediasItemModel.h
 
     Gui/Widgets/SettingsWidget.h
 )
@@ -123,15 +123,23 @@ set(COMMON_GUI_FORMS
 # Common Core files
 # -----------------------------------------------------------------------------
 set(COMMON_CORE_SOURCES
-    ${COMMON_DIR}/Core/Printers/USBDeviceInfo.cpp
+
+    ${COMMON_DIR}/Core/Printers/PrinterInstance.cpp
+    ${COMMON_DIR}/Core/Printers/PrinterMedia.cpp
+
+    ${COMMON_DIR}/Core/USB/USBDeviceInfo.cpp
+    ${COMMON_DIR}/Core/USB/PrinterInstanceUSB.cpp
 )
 set(COMMON_CORE_HEADERS
     ${COMMON_DIR}/Core/Plugins/IPlugin.h
     ${COMMON_DIR}/Core/Plugins/IPrinterPlugin.h
     ${COMMON_DIR}/Core/Plugins/IFeaturePlugin.h
 
-    ${COMMON_DIR}/Core/Printers/USBDeviceInfo.h
-    ${COMMON_DIR}/Core/Printers/IUSBConnection.h
+    ${COMMON_DIR}/Core/Printers/PrinterInstance.h
+    ${COMMON_DIR}/Core/Printers/PrinterMedia.h
+
+    ${COMMON_DIR}/Core/USB/USBDeviceInfo.h
+    ${COMMON_DIR}/Core/USB/PrinterInstanceUSB.h
 )
 
 # -----------------------------------------------------------------------------
@@ -168,11 +176,7 @@ qt_add_executable(RollScript
     ${COMMON_GUI_FORMS}
 
     Resources/RollScript.qrc
-    ${COMMON_DIR}/Resources/Common.qrc
-    App/SingleInstanceLock.h App/SingleInstanceLock.cpp
-
-
-
+    ${COMMON_DIR}/Resources/Common.qrc    
 )
 
 # -----------------------------------------------------------------------------

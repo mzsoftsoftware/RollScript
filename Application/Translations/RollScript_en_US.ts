@@ -244,89 +244,89 @@ Logo</translation>
 Would you like to save your changes before exiting?</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="253"/>
+        <location filename="../App/MainWindow.cpp" line="254"/>
         <source>Document.Cleared</source>
         <translation>New RollScript document created.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="259"/>
+        <location filename="../App/MainWindow.cpp" line="260"/>
         <source>Document.Loaded</source>
         <translation>RollScript document loaded successfully.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="265"/>
+        <location filename="../App/MainWindow.cpp" line="266"/>
         <source>Document.Saved</source>
         <translation>RollScript document saved successfully.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="218"/>
-        <location filename="../App/MainWindow.cpp" line="242"/>
+        <location filename="../App/MainWindow.cpp" line="219"/>
+        <location filename="../App/MainWindow.cpp" line="243"/>
         <source>FileSave.Error.Title</source>
         <translation>Save RollScript Document</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="228"/>
+        <location filename="../App/MainWindow.cpp" line="229"/>
         <source>FileSaveAs.Title</source>
         <translation>Save RollScript Document As</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="226"/>
+        <location filename="../App/MainWindow.cpp" line="227"/>
         <source>FileSaveAs.Filter</source>
         <translation>RollScript Files (*%1)</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="119"/>
+        <location filename="../App/MainWindow.cpp" line="120"/>
         <source>No printers found, please rescan.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="159"/>
+        <location filename="../App/MainWindow.cpp" line="160"/>
         <source>ConfirmDiscardChanges.Title</source>
         <translation>Unsaved Changes</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="159"/>
+        <location filename="../App/MainWindow.cpp" line="160"/>
         <source>ConfirmDiscardChanges.Message</source>
         <translation>The current RollScript document contains unsaved changes.
 Would you like to save your changes before continuing?</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="191"/>
+        <location filename="../App/MainWindow.cpp" line="192"/>
         <source>FileOpen.Filter</source>
         <translation>RollScript Files (*%1)</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="192"/>
+        <location filename="../App/MainWindow.cpp" line="193"/>
         <source>FileOpen.Title</source>
         <translation>Open RollScript Document</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="201"/>
+        <location filename="../App/MainWindow.cpp" line="202"/>
         <source>FileOpen.Error.Title</source>
         <translation>Open RollScript Document</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="286"/>
+        <location filename="../App/MainWindow.cpp" line="294"/>
         <source>Please select a printer ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="291"/>
+        <location filename="../App/MainWindow.cpp" line="299"/>
         <source>No printers found, Please rescan.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="341"/>
+        <location filename="../App/MainWindow.cpp" line="355"/>
         <source>MainWindow.DocumentUntitled</source>
         <translation>Untitled</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="345"/>
+        <location filename="../App/MainWindow.cpp" line="359"/>
         <source>MainWindow.DocumentModified</source>
         <translation> *</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="348"/>
+        <location filename="../App/MainWindow.cpp" line="362"/>
         <source>MainWindow.WindowTitle</source>
         <translation>RollScript - %1%2</translation>
     </message>
@@ -357,6 +357,42 @@ Would you like to save your changes before continuing?</translation>
         <location filename="../../Common/Gui/Widgets/MarginsWidget.cpp" line="46"/>
         <source>Bottom</source>
         <translation>Bottom</translation>
+    </message>
+</context>
+<context>
+    <name>PrinterInstanceUSB</name>
+    <message>
+        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="30"/>
+        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="63"/>
+        <source>Plugin is not available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="37"/>
+        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="70"/>
+        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="100"/>
+        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="124"/>
+        <source>USB Manager is not available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="93"/>
+        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="117"/>
+        <source>Printer is not connected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PrinterManager</name>
+    <message>
+        <location filename="../Core/Printers/PrinterManager.cpp" line="28"/>
+        <source>USB Manager missing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Core/Printers/PrinterManager.cpp" line="35"/>
+        <source>Plugin Manager missing.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -437,6 +473,16 @@ Would you like to save your changes before continuing?</translation>
         <source>mm</source>
         <translation></translation>
     </message>
+    <message>
+        <location filename="../Gui/Widgets/SettingsWidget.cpp" line="51"/>
+        <source>Select label ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Gui/Widgets/SettingsWidget.cpp" line="55"/>
+        <source>No labels found. Select printer ?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SingleInstanceLock</name>
@@ -462,7 +508,7 @@ Would you like to save your changes before continuing?</translation>
 <context>
     <name>USBManager</name>
     <message>
-        <location filename="../Core/USB/USBManager.cpp" line="22"/>
+        <location filename="../Core/USB/USBManager.cpp" line="34"/>
         <source>Could not initialize USB support.</source>
         <translation type="unfinished"></translation>
     </message>

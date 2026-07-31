@@ -1,7 +1,7 @@
 #include "PrintersItemModel.h"
 
 #include "Core/Printers/PrinterManager.h"
-#include "Core/Printers/PrinterInstance.h"
+#include "Common/Core/Printers/PrinterInstance.h"
 
 
 PrintersItemModel::PrintersItemModel(PrinterManager* ptrPrinterManager, QObject *parent)

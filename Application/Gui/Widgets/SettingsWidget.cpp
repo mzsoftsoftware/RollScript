@@ -4,6 +4,8 @@
 #include "Core/Document/RollScriptDocument.h"
 #include "Core/Document/RollScriptDocumentSettings.h"
 
+#include "Gui/Models/PrinterMediasItemModel.h"
+
 
 SettingsWidget::SettingsWidget(QWidget *parent)
     : QWidget{parent}
@@ -27,6 +29,11 @@ void SettingsWidget::changeEvent(QEvent *event)
     QWidget::changeEvent(event);
 }
 
+void SettingsWidget::setPrinterMediasItemModel(PrinterMediasItemModel* ptrPrinterMediasItemModel)
+{
+    m_ptrPrinterMediasItemModel = ptrPrinterMediasItemModel;
+    ui->comboBox_PrinterMedia->setModel(m_ptrPrinterMediasItemModel);
+}
 void SettingsWidget::setRollScriptDocument(RollScriptDocument* ptrDocument)
 {
     m_ptrDocument = ptrDocument;
@@ -35,6 +42,29 @@ void SettingsWidget::setRollScriptDocument(RollScriptDocument* ptrDocument)
     connect(m_ptrDocument, &RollScriptDocument::documentCleared, this, &SettingsWidget::updateUiFromDocument);
     connect(m_ptrDocument, &RollScriptDocument::documentLoaded, this, &SettingsWidget::updateUiFromDocument);
     updateUiFromDocument();
+}
+void SettingsWidget::rebuildPrinterMediasModel()
+{
+    m_ptrPrinterMediasItemModel->rebuildModel();
+    if(m_ptrPrinterMediasItemModel->rowCount() > 0)
+    {
+        ui->comboBox_PrinterMedia->setPlaceholderText(tr("Select label ..."));
+    }
+    else
+    {
+        ui->comboBox_PrinterMedia->setPlaceholderText(tr("No labels found. Select printer ?"));
+    }
+
+    if(m_qstrPrinterMediaId.isEmpty())
+    {
+        ui->comboBox_PrinterMedia->setCurrentIndex(-1);
+    }
+    else
+    {
+        int index = ui->comboBox_PrinterMedia->findData(m_qstrPrinterMediaId, Qt::UserRole);
+        ui->comboBox_PrinterMedia->setCurrentIndex(index);
+        // TASK : updateLabelConstraints();
+    }
 }
 
 void SettingsWidget::updateUiFromDocument()
@@ -48,7 +78,12 @@ void SettingsWidget::updateUiFromDocument()
 
 void SettingsWidget::on_comboBox_LabelMedia_currentIndexChanged(int index)
 {
-
+    if(index >= 0)
+    {
+        QString qstrId = ui->comboBox_PrinterMedia->itemData(index).toString();
+        // TASK : m_ptrDocumentSettings->setPrinterMediaId(qstrId);
+        // TASK : updateLabelConstraints();
+    }
 }
 void SettingsWidget::on_doubleSpinBox_LengthMin_valueChanged(double value)
 {

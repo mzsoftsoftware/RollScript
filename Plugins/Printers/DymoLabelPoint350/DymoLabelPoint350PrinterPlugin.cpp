@@ -1,6 +1,6 @@
 #include "DymoLabelPoint350PrinterPlugin.h"
 
-#include "Common/Core/Printers/USBDeviceInfo.h"
+#include "Common/Core/USB/USBDeviceInfo.h"
 
 
 DymoLabelPoint350PrinterPlugin::DymoLabelPoint350PrinterPlugin(QObject* parent)
@@ -26,8 +26,8 @@ QIcon DymoLabelPoint350PrinterPlugin::icon() const
     return QIcon();
 }
 
-bool DymoLabelPoint350PrinterPlugin::supportsUsb(const USBDeviceInfo& device) const
+bool DymoLabelPoint350PrinterPlugin::supportsUsb(const USBDeviceInfo* ptrDevice) const
 {
     // Mein fixer Drucker : PID=0x0015, VID=0x0922
-    return device.vendorId() == 0x0922 && device.productId() == 0x0015;
+    return ptrDevice->vendorId() == 0x0922 && ptrDevice->productId() == 0x0015;
 }

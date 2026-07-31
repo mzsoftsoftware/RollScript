@@ -1,7 +1,7 @@
 #include "PrinterPluginRegistry.h"
 
 #include "Common/Core/Plugins/IPrinterPlugin.h"
-#include "Common/Core/Printers/USBDeviceInfo.h"
+#include "Common/Core/USB/USBDeviceInfo.h"
 
 
 PrinterPluginRegistry::PrinterPluginRegistry()
@@ -21,13 +21,13 @@ bool PrinterPluginRegistry::registerPlugin(IPrinterPlugin* ptrPrinterPlugin)
     return true;
 }
 
-IPrinterPlugin* PrinterPluginRegistry::supportsUsb(const USBDeviceInfo& deviceInfo)
+IPrinterPlugin* PrinterPluginRegistry::supportsUsb(const USBDeviceInfo* ptrDeviceInfo)
 {
     IPrinterPlugin* ptrPrinterPluginResult = nullptr;
 
     for(IPrinterPlugin* ptrPrinterPlugin : m_registryPlugins)
     {
-        if(!ptrPrinterPlugin->supportsUsb(deviceInfo))
+        if(!ptrPrinterPlugin->supportsUsb(ptrDeviceInfo))
             continue;
 
         if(ptrPrinterPluginResult != nullptr)
@@ -35,8 +35,8 @@ IPrinterPlugin* PrinterPluginRegistry::supportsUsb(const USBDeviceInfo& deviceIn
             // TASK : Use tr !!!
             m_qstrLastError = QString("Multiple PrinterPlugins match USB device "
                                       "%1:%2")
-                                  .arg(deviceInfo.vendorId(), 4, 16, QChar('0'))
-                                  .arg(deviceInfo.productId(), 4, 16, QChar('0'));
+                                  .arg(ptrDeviceInfo->vendorId(), 4, 16, QChar('0'))
+                                  .arg(ptrDeviceInfo->productId(), 4, 16, QChar('0'));
             return nullptr;
         }
 
