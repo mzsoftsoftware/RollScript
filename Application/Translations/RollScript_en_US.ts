@@ -244,74 +244,74 @@ Logo</translation>
 Would you like to save your changes before exiting?</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="254"/>
+        <location filename="../App/MainWindow.cpp" line="257"/>
         <source>Document.Cleared</source>
         <translation>New RollScript document created.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="260"/>
+        <location filename="../App/MainWindow.cpp" line="263"/>
         <source>Document.Loaded</source>
         <translation>RollScript document loaded successfully.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="266"/>
+        <location filename="../App/MainWindow.cpp" line="269"/>
         <source>Document.Saved</source>
         <translation>RollScript document saved successfully.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="219"/>
-        <location filename="../App/MainWindow.cpp" line="243"/>
+        <location filename="../App/MainWindow.cpp" line="222"/>
+        <location filename="../App/MainWindow.cpp" line="246"/>
         <source>FileSave.Error.Title</source>
         <translation>Save RollScript Document</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="229"/>
+        <location filename="../App/MainWindow.cpp" line="232"/>
         <source>FileSaveAs.Title</source>
         <translation>Save RollScript Document As</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="227"/>
+        <location filename="../App/MainWindow.cpp" line="230"/>
         <source>FileSaveAs.Filter</source>
         <translation>RollScript Files (*%1)</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="120"/>
+        <location filename="../App/MainWindow.cpp" line="121"/>
         <source>No printers found, please rescan.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="160"/>
+        <location filename="../App/MainWindow.cpp" line="163"/>
         <source>ConfirmDiscardChanges.Title</source>
         <translation>Unsaved Changes</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="160"/>
+        <location filename="../App/MainWindow.cpp" line="163"/>
         <source>ConfirmDiscardChanges.Message</source>
         <translation>The current RollScript document contains unsaved changes.
 Would you like to save your changes before continuing?</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="192"/>
+        <location filename="../App/MainWindow.cpp" line="195"/>
         <source>FileOpen.Filter</source>
         <translation>RollScript Files (*%1)</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="193"/>
+        <location filename="../App/MainWindow.cpp" line="196"/>
         <source>FileOpen.Title</source>
         <translation>Open RollScript Document</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="202"/>
+        <location filename="../App/MainWindow.cpp" line="205"/>
         <source>FileOpen.Error.Title</source>
         <translation>Open RollScript Document</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="294"/>
+        <location filename="../App/MainWindow.cpp" line="297"/>
         <source>Please select a printer ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="299"/>
+        <location filename="../App/MainWindow.cpp" line="302"/>
         <source>No printers found, Please rescan.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -385,12 +385,12 @@ Would you like to save your changes before continuing?</translation>
 <context>
     <name>PrinterManager</name>
     <message>
-        <location filename="../Core/Printers/PrinterManager.cpp" line="28"/>
+        <location filename="../Core/Printers/PrinterManager.cpp" line="34"/>
         <source>USB Manager missing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Core/Printers/PrinterManager.cpp" line="35"/>
+        <location filename="../Core/Printers/PrinterManager.cpp" line="41"/>
         <source>Plugin Manager missing.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -474,12 +474,12 @@ Would you like to save your changes before continuing?</translation>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Gui/Widgets/SettingsWidget.cpp" line="51"/>
+        <location filename="../Gui/Widgets/SettingsWidget.cpp" line="52"/>
         <source>Select label ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Gui/Widgets/SettingsWidget.cpp" line="55"/>
+        <location filename="../Gui/Widgets/SettingsWidget.cpp" line="56"/>
         <source>No labels found. Select printer ?</source>
         <translation type="unfinished"></translation>
     </message>

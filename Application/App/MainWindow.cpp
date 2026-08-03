@@ -110,19 +110,22 @@ void MainWindow::setupActions()
 }
 void MainWindow::setupToolBar()
 {
-    // Add a QComboBox with the Devices found from Scan.
+    // Setup the GUI models for the printer informations
     m_ptrPrintersItemModel = new PrintersItemModel(m_ptrApplicationContext->printerManager(), this);
-    // TASK : m_ptrLabelMediasItemModel = new LabelMediasItemModel(m_ptrDeviceManager, this);
+    m_ptrPrinterMediasItemModel = new PrinterMediasItemModel(m_ptrApplicationContext->printerManager(), this);
 
+    // Add a QComboBox with the Devices found from Scan.
     m_ptrComboBoxPrinters = new QComboBox(this);
     m_ptrComboBoxPrinters->setSizeAdjustPolicy(QComboBox::AdjustToContents);
     // TASK : Use correct tr !!!
     m_ptrComboBoxPrinters->setPlaceholderText(tr("No printers found, please rescan."));
     m_ptrComboBoxPrinters->setCurrentIndex(-1);
 
+    // Set Models inside GUI
     m_ptrComboBoxPrinters->setModel(m_ptrPrintersItemModel);
-    // TASK : ui->widget_Settings->setLabelMediasItemModel(m_ptrLabelMediasItemModel);
+    ui->widget_Settings->setPrinterMediasItemModel(m_ptrPrinterMediasItemModel);
 
+    // Setup Toolbar and connect events
     ui->toolBar->insertWidget(ui->actionPrintersPrint, m_ptrComboBoxPrinters);
     connect(m_ptrComboBoxPrinters, &QComboBox::currentIndexChanged, this, &MainWindow::slot_ComboBoxPrinters_IndexChanged);
 }
@@ -342,10 +345,7 @@ void MainWindow::slot_ComboBoxPrinters_IndexChanged(int index)
         return;
 
     QString qstrPrinterId = m_ptrComboBoxPrinters->currentData(Qt::UserRole).toString();
-    if(!m_ptrApplicationContext->printerManager()->switchPrinter(qstrPrinterId))
-    {
-        QMessageBox::critical(this, "Title", m_ptrApplicationContext->printerManager()->lastError());
-    }
+    m_ptrApplicationContext->printerManager()->switchPrinter(qstrPrinterId);
 }
 
 

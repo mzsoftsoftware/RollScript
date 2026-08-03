@@ -15,6 +15,12 @@ PrinterManager::PrinterManager(PluginManager* ptrPluginManager, USBManager* ptrU
 }
 PrinterManager::~PrinterManager()
 {
+    if(m_ptrCurrentPrinterInstance)
+    {
+        m_ptrCurrentPrinterInstance->close();
+        m_ptrCurrentPrinterInstance = nullptr;
+    }
+
     qDeleteAll(m_hashPrinterInstances);
     m_hashPrinterInstances.clear();
     m_qstrPrinterIds.clear();
@@ -42,6 +48,19 @@ bool PrinterManager::init()
 
 bool PrinterManager::scanForDevices()
 {
+    // Close active printer
+    if(m_ptrCurrentPrinterInstance)
+    {
+        if(!m_ptrCurrentPrinterInstance->close())
+        {
+            // TASK : Use correct tr !!!
+            m_qstrLastError = QString("Could not close current printer.\n%1").arg(m_ptrCurrentPrinterInstance->lastError());
+            emit managerError(m_qstrLastError);
+            return false;
+        }
+        m_ptrCurrentPrinterInstance = nullptr;
+    }
+
     // Cleanup
     qDeleteAll(m_hashPrinterInstances);
     m_hashPrinterInstances.clear();
@@ -87,14 +106,20 @@ bool PrinterManager::switchPrinter(const QString& qstrPrinterId)
 
     if(m_ptrCurrentPrinterInstance)
     {
-        m_ptrCurrentPrinterInstance->close();
+        if(!m_ptrCurrentPrinterInstance->close())
+        {
+            // TASK : Use correct tr !!!
+            m_qstrLastError = QString("Could not close current printer.\n%1").arg(m_ptrCurrentPrinterInstance->lastError());
+            emit managerError(m_qstrLastError);
+            return false;
+        }
         m_ptrCurrentPrinterInstance = nullptr;
     }
 
     if(!ptrPrinterInstance->open())
     {
         // TASK : Use correct tr !!!
-        m_qstrLastError = QString("Could not open printer: %1").arg(qstrPrinterId);
+        m_qstrLastError = QString("Could not open printer: %1\n%2").arg(qstrPrinterId, ptrPrinterInstance->lastError());
         emit managerError(m_qstrLastError);
         return false;
     }

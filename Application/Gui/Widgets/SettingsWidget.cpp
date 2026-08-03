@@ -33,6 +33,7 @@ void SettingsWidget::setPrinterMediasItemModel(PrinterMediasItemModel* ptrPrinte
 {
     m_ptrPrinterMediasItemModel = ptrPrinterMediasItemModel;
     ui->comboBox_PrinterMedia->setModel(m_ptrPrinterMediasItemModel);
+    rebuildPrinterMediasModel();
 }
 void SettingsWidget::setRollScriptDocument(RollScriptDocument* ptrDocument)
 {
