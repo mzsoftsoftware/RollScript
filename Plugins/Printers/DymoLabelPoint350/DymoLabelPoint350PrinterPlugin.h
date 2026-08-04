@@ -2,7 +2,11 @@
 
 #include <QObject>
 
+#include <QTimer>
+
 #include "Common/Core/Plugins/IPrinterPlugin.h"
+
+class PrinterInstanceUSB;
 
 
 class DymoLabelPoint350PrinterPlugin :
@@ -17,11 +21,35 @@ public:
 
     explicit DymoLabelPoint350PrinterPlugin(QObject* parent = nullptr);
 
-    QString pluginId() const override;
-    QString displayName() const override;
-    QString version() const override;
+    virtual QString pluginId() const override;
+    virtual QString displayName() const override;
+    virtual QString version() const override;
 
-    QIcon icon() const override;
+    virtual QIcon icon() const override;
 
-    bool supportsUsb(const USBDeviceInfo* ptrDevice) const override;
+    virtual bool supportsUsb(const USBDeviceInfo* ptrDevice) const override;
+
+    virtual QString lastError() const override                      { return m_qstrLastError; }
+
+    virtual bool open(PrinterInstance* ptrPrinterInstance) override;
+    virtual bool close() override;
+
+private slots:
+    void slot_timerAlive();
+
+private:
+    bool alive();
+    bool readStatus();
+    bool readMedia();
+    bool sendCommand(const QByteArray& baCommand, QByteArray& baResponse);
+
+private:
+    QString m_qstrLastError;
+
+    // Active printer instance.
+    // Only one active printer is supported.
+    // USB specific access for this printer plugin.
+    PrinterInstanceUSB* m_ptrPrinterInstanceUSB = nullptr;
+
+    QTimer* m_ptrTimerAlive = nullptr;
 };

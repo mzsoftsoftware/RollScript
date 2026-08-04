@@ -6,6 +6,7 @@
 #include <QList>
 
 struct USBDeviceInfo;
+class PrinterInstance;
 
 
 class IPrinterPlugin : public IPlugin
@@ -17,7 +18,18 @@ public:
 
     virtual bool supportsUsb(const USBDeviceInfo* ptrDevice) const = 0;
 
-    // TASK : virtual QList<RollScriptMedia> availableMedias() const = 0;
+
+    /*
+     * The plugin operates on one active PrinterInstance.
+     *
+     * Multiple simultaneously opened printers are not supported
+     * by the standard RollScript print workflow.
+     */
+
+    virtual QString lastError() const = 0;
+
+    virtual bool open(PrinterInstance* ptrPrinterInstance) = 0;
+    virtual bool close() = 0;
 };
 
 #define ROLLSCRIPT_IPRINTERPLUGIN_IID "de.mzsoft.rollscript.plugins.printer"

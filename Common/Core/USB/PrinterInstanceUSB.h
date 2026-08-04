@@ -19,6 +19,7 @@ public:
     virtual ~PrinterInstanceUSB() override;
 
     // Getter
+    QString lastError() const                       { return m_qstrLastError; }
     const USBDeviceInfo* deviceInfo() const         { return m_ptrDeviceInfo; }
 
     // Connection
@@ -30,6 +31,7 @@ public:
     bool receive(QByteArray&baData, int maxLength = 512, int timeoutMs = 1000);
 
 private:
+    QString m_qstrLastError;
     USBManager* m_ptrUSBManager = nullptr;
     const USBDeviceInfo* m_ptrDeviceInfo = nullptr;
 

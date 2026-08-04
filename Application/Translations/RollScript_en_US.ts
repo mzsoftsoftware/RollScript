@@ -67,6 +67,15 @@ Logo</translation>
     </message>
 </context>
 <context>
+    <name>DymoLabelPoint350PrinterPlugin</name>
+    <message>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DymoLabelPoint350PrinterPlugin.cpp" line="52"/>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DymoLabelPoint350PrinterPlugin.cpp" line="164"/>
+        <source>Invalid printer instance.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="../App/MainWindow.ui" line="14"/>
@@ -362,22 +371,22 @@ Would you like to save your changes before continuing?</translation>
 <context>
     <name>PrinterInstanceUSB</name>
     <message>
-        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="30"/>
-        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="63"/>
+        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="28"/>
+        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="65"/>
         <source>Plugin is not available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="37"/>
-        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="70"/>
+        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="35"/>
+        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="72"/>
         <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="100"/>
         <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="124"/>
         <source>USB Manager is not available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="93"/>
-        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="117"/>
+        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="107"/>
+        <location filename="../../Common/Core/USB/PrinterInstanceUSB.cpp" line="131"/>
         <source>Printer is not connected.</source>
         <translation type="unfinished"></translation>
     </message>

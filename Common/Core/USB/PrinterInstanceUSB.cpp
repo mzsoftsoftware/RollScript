@@ -1,5 +1,6 @@
 #include "PrinterInstanceUSB.h"
 
+#include "Common/Core/Plugins/IPrinterPlugin.h"
 #include "Core/USB/USBManager.h"
 
 
@@ -21,9 +22,6 @@ PrinterInstanceUSB::~PrinterInstanceUSB()
 
 bool PrinterInstanceUSB::open()
 {
-    if(m_bConnected)
-        return true;
-
     if(!m_ptrPrinterPlugin)
     {
         // TASK : Use correct tr !!!
@@ -37,6 +35,9 @@ bool PrinterInstanceUSB::open()
         m_qstrLastError = tr("USB Manager is not available.");
         return false;
     }
+
+    if(m_bConnected)
+        return true;
 
     if(!m_ptrUSBManager->open(m_ptrDeviceInfo))
     {
@@ -44,9 +45,13 @@ bool PrinterInstanceUSB::open()
         return false;
     }
 
-    // TASK : USBManager->Connection handling -> init printer with plugin
+    if(!m_ptrPrinterPlugin->open(this))
+    {
+        m_ptrUSBManager->close();
 
-    // TASK : Load Medias
+        m_qstrLastError = m_ptrPrinterPlugin->lastError();
+        return false;
+    }
 
     m_bConnected = true;
     return true;
@@ -54,9 +59,6 @@ bool PrinterInstanceUSB::open()
 
 bool PrinterInstanceUSB::close()
 {
-    if(!m_bConnected)
-        return true;
-
     if(!m_ptrPrinterPlugin)
     {
         // TASK : Use correct tr !!!
@@ -71,9 +73,14 @@ bool PrinterInstanceUSB::close()
         return false;
     }
 
-    // TASK : Clear Medias
+    if(!m_bConnected)
+        return true;
 
-    // TASK : USBManager->Connection handling -> de-init printer with plugin
+    if(!m_ptrPrinterPlugin->close())
+    {
+        m_qstrLastError = m_ptrPrinterPlugin->lastError();
+        return false;
+    }
 
     if(!m_ptrUSBManager->close())
     {
@@ -87,17 +94,17 @@ bool PrinterInstanceUSB::close()
 
 bool PrinterInstanceUSB::send(const QByteArray& baData)
 {
-    if(!m_bConnected)
-    {
-        // TASK : Use correct tr !!!
-        m_qstrLastError = tr("Printer is not connected.");
-        return false;
-    }
-
     if(!m_ptrUSBManager)
     {
         // TASK : Use correct tr !!!
         m_qstrLastError = tr("USB Manager is not available.");
+        return false;
+    }
+
+    if(!m_bConnected)
+    {
+        // TASK : Use correct tr !!!
+        m_qstrLastError = tr("Printer is not connected.");
         return false;
     }
 
@@ -111,17 +118,17 @@ bool PrinterInstanceUSB::send(const QByteArray& baData)
 }
 bool PrinterInstanceUSB::receive(QByteArray&baData, int maxLength, int timeoutMs)
 {
-    if(!m_bConnected)
-    {
-        // TASK : Use correct tr !!!
-        m_qstrLastError = tr("Printer is not connected.");
-        return false;
-    }
-
     if(!m_ptrUSBManager)
     {
         // TASK : Use correct tr !!!
         m_qstrLastError = tr("USB Manager is not available.");
+        return false;
+    }
+
+    if(!m_bConnected)
+    {
+        // TASK : Use correct tr !!!
+        m_qstrLastError = tr("Printer is not connected.");
         return false;
     }
 

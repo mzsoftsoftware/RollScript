@@ -42,5 +42,7 @@ private:
     QStringList m_qstrPrinterIds;
     QHash<QString, PrinterInstance*> m_hashPrinterInstances;
 
+    // RollScript supports one active printer only.
+    // The current printer is managed by PrinterManager.
     PrinterInstance* m_ptrCurrentPrinterInstance = nullptr;
 };
