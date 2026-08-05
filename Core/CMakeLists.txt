@@ -1,59 +1,68 @@
 cmake_minimum_required(VERSION 3.19)
 
-project(DymoLabelPoint350PrinterPlugin)
+project(RollScriptCore)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core Gui)
+find_package(Qt6 6.5 REQUIRED COMPONENTS
+    Core
+    Gui
+)
 
 qt_standard_project_setup()
+
 
 # -----------------------------------------------------------------------------
 # Sources
 # -----------------------------------------------------------------------------
 
 set(SOURCES
-    DymoLabelPoint350PrinterPlugin.cpp
+    Printers/PrinterInstance.cpp
+
+    USB/PrinterInstanceUSB.cpp
+    USB/USBDeviceInfo.h
 )
+
+
+# -----------------------------------------------------------------------------
+# Headers
+# -----------------------------------------------------------------------------
 
 set(HEADERS
-    DymoLabelPoint350PrinterPlugin.h
+    Plugins/IPlugin.h
+    Plugins/IPrinterPlugin.h
+
+    Printers/PrinterInstance.h
+
+    USB/PrinterInstanceUSB.h
+    USB/USBDeviceInfo.h
 )
 
+
 # -----------------------------------------------------------------------------
-# Plugin
+# Library
 # -----------------------------------------------------------------------------
 
-qt_add_plugin(DymoLabelPoint350PrinterPlugin
-    CLASS_NAME DymoLabelPoint350PrinterPlugin
-
+add_library(RollScriptCore SHARED
     ${SOURCES}
     ${HEADERS}
 )
+
 
 # -----------------------------------------------------------------------------
 # Include directories
 # -----------------------------------------------------------------------------
 
-target_include_directories(DymoLabelPoint350PrinterPlugin
-    PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}
-        ${CMAKE_SOURCE_DIR}
+target_include_directories(RollScriptCore
+    PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
 )
+
 
 # -----------------------------------------------------------------------------
 # Libraries
 # -----------------------------------------------------------------------------
 
-target_link_libraries(DymoLabelPoint350PrinterPlugin
-    PRIVATE
-        Qt6::Core
-        Qt6::Gui
-)
-
-# -----------------------------------------------------------------------------
-# Metadata
-# -----------------------------------------------------------------------------
-
-set_target_properties(DymoLabelPoint350PrinterPlugin PROPERTIES
-    LIBRARY_OUTPUT_DIRECTORY
-        "${CMAKE_BINARY_DIR}/plugins/printers"
+target_link_libraries(RollScriptCore
+    PUBLIC
+    Qt6::Core
+    Qt6::Gui
 )

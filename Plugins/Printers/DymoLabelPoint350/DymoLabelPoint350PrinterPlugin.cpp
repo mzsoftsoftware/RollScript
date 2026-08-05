@@ -43,8 +43,7 @@ bool DymoLabelPoint350PrinterPlugin::supportsUsb(const USBDeviceInfo* ptrDevice)
 
 bool DymoLabelPoint350PrinterPlugin::open(PrinterInstance* ptrPrinterInstance)
 {
-    m_ptrPrinterInstanceUSB =
-        qobject_cast<PrinterInstanceUSB*>(ptrPrinterInstance);
+    m_ptrPrinterInstanceUSB = qobject_cast<PrinterInstanceUSB*>(ptrPrinterInstance);
 
     if(!m_ptrPrinterInstanceUSB)
     {
@@ -148,12 +147,12 @@ bool DymoLabelPoint350PrinterPlugin::alive()
 
 bool DymoLabelPoint350PrinterPlugin::readStatus()
 {
-
+    return false;
 }
 
 bool DymoLabelPoint350PrinterPlugin::readMedia()
 {
-
+    return false;
 }
 
 bool DymoLabelPoint350PrinterPlugin::sendCommand(const QByteArray& baCommand, QByteArray& baResponse)

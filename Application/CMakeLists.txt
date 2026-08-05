@@ -120,29 +120,6 @@ set(COMMON_GUI_FORMS
 )
 
 # -----------------------------------------------------------------------------
-# Common Core files
-# -----------------------------------------------------------------------------
-set(COMMON_CORE_SOURCES
-
-    ${COMMON_DIR}/Core/Printers/PrinterInstance.cpp
-    ${COMMON_DIR}/Core/Printers/PrinterMedia.cpp
-
-    ${COMMON_DIR}/Core/USB/USBDeviceInfo.cpp
-    ${COMMON_DIR}/Core/USB/PrinterInstanceUSB.cpp
-)
-set(COMMON_CORE_HEADERS
-    ${COMMON_DIR}/Core/Plugins/IPlugin.h
-    ${COMMON_DIR}/Core/Plugins/IPrinterPlugin.h
-    ${COMMON_DIR}/Core/Plugins/IFeaturePlugin.h
-
-    ${COMMON_DIR}/Core/Printers/PrinterInstance.h
-    ${COMMON_DIR}/Core/Printers/PrinterMedia.h
-
-    ${COMMON_DIR}/Core/USB/USBDeviceInfo.h
-    ${COMMON_DIR}/Core/USB/PrinterInstanceUSB.h
-)
-
-# -----------------------------------------------------------------------------
 # Translations
 # -----------------------------------------------------------------------------
 set(TRANSLATIONS
@@ -167,9 +144,6 @@ qt_add_executable(RollScript
     ${GUI_SOURCES}
     ${GUI_HEADERS}
     ${GUI_FORMS}
-
-    ${COMMON_CORE_SOURCES}
-    ${COMMON_CORE_HEADERS}
 
     ${COMMON_GUI_SOURCES}
     ${COMMON_GUI_HEADERS}
