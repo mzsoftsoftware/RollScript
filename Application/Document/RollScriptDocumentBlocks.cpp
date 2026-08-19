@@ -5,7 +5,7 @@
 #include "Core/Blocks/RollScriptBlockDocumentBase.h"
 
 
-RollScriptDocumentBlocks::RollScriptDocumentBlocks(QObject *parent)
+RollScriptDocumentBlocks::RollScriptDocumentBlocks(QObject* parent)
     : QObject{parent}
 {
 }

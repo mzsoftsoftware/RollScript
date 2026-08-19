@@ -1,7 +1,7 @@
 #include "DymoLabelPoint350PrinterMedia.h"
 
 
-DymoLabelPoint350PrinterMedia::DymoLabelPoint350PrinterMedia(const QString& qstrId, const QString& qstrDisplayName, QObject *parent)
+DymoLabelPoint350PrinterMedia::DymoLabelPoint350PrinterMedia(const QString& qstrId, const QString& qstrDisplayName, QObject* parent)
     : PrinterMedia(qstrId, qstrDisplayName, parent)
 {
 }

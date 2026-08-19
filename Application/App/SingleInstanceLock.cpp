@@ -5,7 +5,7 @@
 #include <QLockFile>
 
 
-SingleInstanceLock::SingleInstanceLock(QObject *parent)
+SingleInstanceLock::SingleInstanceLock(QObject* parent)
     : QObject{parent}
 {
     QString qstrLockFilePath = QDir::temp().absoluteFilePath(QStringLiteral("%1.lock").arg(QCoreApplication::applicationName()));

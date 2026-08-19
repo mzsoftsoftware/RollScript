@@ -4,7 +4,7 @@
 #include "Core/Plugins/IFeaturePluginInfo.h"
 
 
-FeaturePluginRegistry::FeaturePluginRegistry(QObject *parent)
+FeaturePluginRegistry::FeaturePluginRegistry(QObject* parent)
     : QObject{parent}
 {
 }

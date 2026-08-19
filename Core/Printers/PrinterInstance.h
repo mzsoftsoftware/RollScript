@@ -19,14 +19,14 @@ public:
     virtual ~PrinterInstance() override;
 
     // Getter
-    QString id() const                              { return m_qstrId; }
-    QString displayName() const                     { return m_qstrDisplayName; }
-    QIcon icon() const                              { return m_icon; }
+    const QString& id() const                             { return m_qstrId; }
+    const QString& displayName() const                    { return m_qstrDisplayName; }
+    const QIcon& icon() const                             { return m_icon; }
 
-    IPrinterPlugin* plugin() const                  { return m_ptrPrinterPlugin; }
+    const IPrinterPlugin* plugin() const                  { return m_ptrPrinterPlugin; }
 
-    virtual QStringList availableMediaIds() const                           { return m_qstrPrinterMediaIds; }
-    virtual PrinterMedia* media(const QString& qstrPrinterMediaId) const    { return m_hashPrinterMedias.value(qstrPrinterMediaId, nullptr); }
+    virtual QStringList availableMediaIds() const                               { return m_qstrPrinterMediaIds; }
+    virtual const PrinterMedia* media(const QString& qstrPrinterMediaId) const  { return m_hashPrinterMedias.value(qstrPrinterMediaId, nullptr); }
 
     // Connection
     virtual bool open() = 0;

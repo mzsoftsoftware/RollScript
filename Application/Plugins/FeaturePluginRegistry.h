@@ -13,7 +13,7 @@ class FeaturePluginRegistry : public QObject, public RollScriptErrorOwner
     Q_OBJECT
 
 public:
-    FeaturePluginRegistry(QObject *parent);
+    FeaturePluginRegistry(QObject* parent);
 
     bool registerPlugin(IFeaturePlugin* ptrFeaturePlugin);
 

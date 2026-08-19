@@ -3,7 +3,7 @@
 #include <QPainter>
 
 
-FeatureBlocksItemDelegate::FeatureBlocksItemDelegate(QObject *parent)
+FeatureBlocksItemDelegate::FeatureBlocksItemDelegate(QObject* parent)
     : QStyledItemDelegate(parent)
 {
 }

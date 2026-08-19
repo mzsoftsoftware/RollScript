@@ -13,7 +13,7 @@
 #include "FeaturePluginRegistry.h"
 
 
-PluginManager::PluginManager(QObject *parent)
+PluginManager::PluginManager(QObject* parent)
     : QObject{parent}
 {
     m_registryPrinters = new PrinterPluginRegistry(this);

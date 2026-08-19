@@ -13,7 +13,7 @@ class RollScriptDocument : public QObject, public RollScriptErrorOwner
 {
     Q_OBJECT
 public:
-    explicit RollScriptDocument(QObject *parent = nullptr);
+    explicit RollScriptDocument(QObject* parent = nullptr);
 
     // Getters
     bool isModified() const                   { return m_bModified; }

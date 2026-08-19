@@ -10,7 +10,7 @@ class FeatureBlocksItemModel : public QAbstractListModel
     Q_OBJECT
 
 public:
-    explicit FeatureBlocksItemModel(FeatureBlockManager *ptrFeatureBlockManager, RollScriptDocumentBlocks* ptrDocumentBlocks, QObject *parent);
+    explicit FeatureBlocksItemModel(FeatureBlockManager *ptrFeatureBlockManager, RollScriptDocumentBlocks* ptrDocumentBlocks, QObject* parent);
 
     // Basic functionality:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;

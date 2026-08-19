@@ -9,7 +9,7 @@
 #include "Plugins/PrinterPluginRegistry.h"
 
 
-PrinterManager::PrinterManager(PluginManager* ptrPluginManager, USBManager* ptrUSBManager, QObject *parent)
+PrinterManager::PrinterManager(PluginManager* ptrPluginManager, USBManager* ptrUSBManager, QObject* parent)
     : QObject{parent}
     , m_ptrPluginManager(ptrPluginManager)
     , m_ptrUSBManager(ptrUSBManager)

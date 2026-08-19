@@ -11,7 +11,7 @@ class PrinterMedia : public QObject
     Q_OBJECT
 
 public:
-    explicit PrinterMedia(const QString& qstrId, const QString& qstrDisplayName, QObject *parent);
+    explicit PrinterMedia(const QString& qstrId, const QString& qstrDisplayName, QObject* parent);
     virtual ~PrinterMedia() override;
 
     // Getter

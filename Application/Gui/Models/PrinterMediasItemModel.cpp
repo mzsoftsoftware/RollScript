@@ -5,7 +5,7 @@
 #include "Core/Printers/PrinterMedia.h"
 
 
-PrinterMediasItemModel::PrinterMediasItemModel(PrinterManager* ptrPrinterManager, QObject *parent)
+PrinterMediasItemModel::PrinterMediasItemModel(PrinterManager* ptrPrinterManager, QObject* parent)
     : QAbstractListModel(parent)
     , m_ptrPrinterManager(ptrPrinterManager)
 {
@@ -29,8 +29,8 @@ QVariant PrinterMediasItemModel::data(const QModelIndex &index, int role) const
         return QVariant();
 
     const QString& qstrId = m_qstrPrinterMediaIds.at(index.row());
-    PrinterInstance* ptrPrinterInstance = m_ptrPrinterManager->currentPrinter();
-    PrinterMedia* ptrPrinterMedia = ptrPrinterInstance->media(qstrId);
+    const PrinterInstance* ptrPrinterInstance = m_ptrPrinterManager->currentPrinter();
+    const PrinterMedia* ptrPrinterMedia = ptrPrinterInstance->media(qstrId);
 
     switch(role)
     {
@@ -51,7 +51,7 @@ void PrinterMediasItemModel::rebuildModel()
 
     m_qstrPrinterMediaIds.clear();
 
-    PrinterInstance* ptrPrinterInstance = m_ptrPrinterManager->currentPrinter();
+    const PrinterInstance* ptrPrinterInstance = m_ptrPrinterManager->currentPrinter();
     if(ptrPrinterInstance)
     {
         m_qstrPrinterMediaIds = ptrPrinterInstance->availableMediaIds();

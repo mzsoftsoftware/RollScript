@@ -4,7 +4,7 @@
 #include "Core/USB/USBDeviceInfo.h"
 
 
-PrinterPluginRegistry::PrinterPluginRegistry(QObject *parent)
+PrinterPluginRegistry::PrinterPluginRegistry(QObject* parent)
     : QObject{parent}
 {
 }

@@ -11,7 +11,7 @@ class RollScriptDocumentBlocks : public QObject, public RollScriptErrorOwner
     Q_OBJECT
 
 public:
-    RollScriptDocumentBlocks(QObject *parent);
+    RollScriptDocumentBlocks(QObject* parent);
 
     // Getter
 

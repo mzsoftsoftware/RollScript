@@ -8,7 +8,7 @@ class DymoLabelPoint350PrinterMedia : public PrinterMedia
     Q_OBJECT
 
 public:
-    explicit DymoLabelPoint350PrinterMedia(const QString& qstrId, const QString& qstrDisplayName, QObject *parent);
+    explicit DymoLabelPoint350PrinterMedia(const QString& qstrId, const QString& qstrDisplayName, QObject* parent);
     virtual ~DymoLabelPoint350PrinterMedia() override;
 
     // Getter

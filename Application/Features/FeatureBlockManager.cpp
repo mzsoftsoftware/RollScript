@@ -7,7 +7,7 @@
 #include "Plugins/FeaturePluginRegistry.h"
 
 
-FeatureBlockManager::FeatureBlockManager(PluginManager* ptrPluginManager, QObject *parent)
+FeatureBlockManager::FeatureBlockManager(PluginManager* ptrPluginManager, QObject* parent)
     : QObject{parent}
     , m_ptrPluginManager(ptrPluginManager)
 {

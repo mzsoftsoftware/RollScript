@@ -11,7 +11,7 @@ static const char *languageNameTranslation =
         "Translation.LanguageName"
         );
 
-TranslationManager::TranslationManager(QObject *parent)
+TranslationManager::TranslationManager(QObject* parent)
     : QObject{parent}
 {
 }

@@ -16,7 +16,7 @@ class PluginManager : public QObject, public RollScriptErrorOwner
     Q_OBJECT
 
 public:
-    explicit PluginManager(QObject *parent);
+    explicit PluginManager(QObject* parent);
     virtual ~PluginManager() override;
 
     bool init();

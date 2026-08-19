@@ -13,7 +13,7 @@ class FeatureBlockRegistry : public QObject, public RollScriptErrorOwner
     Q_OBJECT
 
 public:
-    FeatureBlockRegistry(QObject *parent);
+    FeatureBlockRegistry(QObject* parent);
 
     bool registerFeatureBlock(IFeatureBlock* ptrFeatureBlock);
 

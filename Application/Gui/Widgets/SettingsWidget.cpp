@@ -88,14 +88,14 @@ void SettingsWidget::updatePrinterMediaConstraints()
         return;
     }
 
-    PrinterInstance* ptrPrinterInstance = m_ptrPrinterManager->currentPrinter();
+    const PrinterInstance* ptrPrinterInstance = m_ptrPrinterManager->currentPrinter();
     if(!ptrPrinterInstance)
     {
         resetPrinterMediaConstraints();
         return;
     }
 
-    PrinterMedia* ptrPrinterMedia = ptrPrinterInstance->media(qstrPrinterMediaId);
+    const PrinterMedia* ptrPrinterMedia = ptrPrinterInstance->media(qstrPrinterMediaId);
     if(!ptrPrinterMedia)
     {
         resetPrinterMediaConstraints();

@@ -13,7 +13,7 @@ class USBManager : public QObject, public RollScriptErrorOwner
 {
     Q_OBJECT
 public:
-    explicit USBManager(QObject *parent);
+    explicit USBManager(QObject* parent);
     virtual ~USBManager() override;
 
     bool init();

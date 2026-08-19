@@ -19,7 +19,7 @@ class TranslationManager : public QObject, public RollScriptErrorOwner
     Q_OBJECT
 
 public:
-    explicit TranslationManager(QObject *parent = nullptr);
+    explicit TranslationManager(QObject* parent = nullptr);
 
     bool init();
 

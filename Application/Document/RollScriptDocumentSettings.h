@@ -10,7 +10,7 @@ class RollScriptDocumentSettings : public QObject, public RollScriptErrorOwner
 {
     Q_OBJECT
 public:
-    explicit RollScriptDocumentSettings(QObject *parent);
+    explicit RollScriptDocumentSettings(QObject* parent);
 
     // Getter
     QString printerMediaId() const                  { return m_qstrPrinterMediaId; }

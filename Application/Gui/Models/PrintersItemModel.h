@@ -10,7 +10,7 @@ class PrintersItemModel : public QAbstractListModel
     Q_OBJECT
 
 public:
-    explicit PrintersItemModel(PrinterManager* ptrPrinterManager, QObject *parent);
+    explicit PrintersItemModel(PrinterManager* ptrPrinterManager, QObject* parent);
     virtual ~PrintersItemModel();
 
     void rebuildModel();

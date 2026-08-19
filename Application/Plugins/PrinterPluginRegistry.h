@@ -13,7 +13,7 @@ class PrinterPluginRegistry : public QObject, public RollScriptErrorOwner
     Q_OBJECT
 
 public:
-    PrinterPluginRegistry(QObject *parent);
+    PrinterPluginRegistry(QObject* parent);
 
     bool registerPlugin(IPrinterPlugin* ptrPrinterPlugin);
     IPrinterPlugin* supportsUsb(const USBDeviceInfo* ptrDevice);

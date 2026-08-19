@@ -17,15 +17,15 @@ class PrinterManager : public QObject, public RollScriptErrorOwner
 {
     Q_OBJECT
 public:
-    explicit PrinterManager(PluginManager* ptrPluginManager, USBManager* ptrUSBManager, QObject *parent);
+    explicit PrinterManager(PluginManager* ptrPluginManager, USBManager* ptrUSBManager, QObject* parent);
     virtual ~PrinterManager() override;
 
     bool init();
 
     // Getter
-    QStringList availablePrinterIds() const                                 { return m_qstrPrinterIds; }
-    PrinterInstance* printerInstance(const QString& qstrDeviceId) const     { return m_hashPrinterInstances.value(qstrDeviceId, nullptr); }
-    PrinterInstance* currentPrinter() const                                 { return m_ptrCurrentPrinterInstance; }
+    const QStringList& availablePrinterIds() const                                { return m_qstrPrinterIds; }
+    const PrinterInstance* printerInstance(const QString& qstrDeviceId) const     { return m_hashPrinterInstances.value(qstrDeviceId, nullptr); }
+    const PrinterInstance* currentPrinter() const                                 { return m_ptrCurrentPrinterInstance; }
 
     bool scanForDevices();
     bool switchPrinter(const QString& qstrPrinterId);

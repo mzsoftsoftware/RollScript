@@ -3,7 +3,7 @@
 #include <QJsonObject>
 
 
-RollScriptDocumentSettings::RollScriptDocumentSettings(QObject *parent)
+RollScriptDocumentSettings::RollScriptDocumentSettings(QObject* parent)
     : QObject{parent}
 {
 }

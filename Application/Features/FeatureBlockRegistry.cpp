@@ -4,7 +4,7 @@
 #include "Core/Blocks/IFeatureBlockInfo.h"
 
 
-FeatureBlockRegistry::FeatureBlockRegistry(QObject *parent)
+FeatureBlockRegistry::FeatureBlockRegistry(QObject* parent)
     : QObject{parent}
 {
 }

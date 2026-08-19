@@ -4,7 +4,7 @@
 #include "Core/Printers/PrinterInstance.h"
 
 
-PrintersItemModel::PrintersItemModel(PrinterManager* ptrPrinterManager, QObject *parent)
+PrintersItemModel::PrintersItemModel(PrinterManager* ptrPrinterManager, QObject* parent)
     : QAbstractListModel(parent)
     , m_ptrPrinterManager(ptrPrinterManager)
 {
@@ -28,7 +28,7 @@ QVariant PrintersItemModel::data(const QModelIndex &index, int role) const
         return QVariant();
 
     const QString& qstrId = m_qstrPrinterIds.at(index.row());
-    PrinterInstance* ptrPrinterInstance = m_ptrPrinterManager->printerInstance(qstrId);
+    const PrinterInstance* ptrPrinterInstance = m_ptrPrinterManager->printerInstance(qstrId);
 
     switch(role)
     {

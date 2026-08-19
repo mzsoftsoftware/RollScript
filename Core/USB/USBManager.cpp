@@ -4,7 +4,7 @@
 
 #include <QDebug>
 
-USBManager::USBManager(QObject *parent)
+USBManager::USBManager(QObject* parent)
     : QObject{parent}
 {
 }

@@ -6,7 +6,7 @@
 class FeatureBlocksItemDelegate : public QStyledItemDelegate
 {
 public:
-    FeatureBlocksItemDelegate(QObject *parent);
+    FeatureBlocksItemDelegate(QObject* parent);
 
     QSize sizeHint(const QStyleOptionViewItem &, const QModelIndex &) const override;
 

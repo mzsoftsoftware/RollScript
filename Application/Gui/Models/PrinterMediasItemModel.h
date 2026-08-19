@@ -10,7 +10,7 @@ class PrinterMediasItemModel : public QAbstractListModel
     Q_OBJECT
 
 public:
-    explicit PrinterMediasItemModel(PrinterManager* ptrPrinterManager, QObject *parent);
+    explicit PrinterMediasItemModel(PrinterManager* ptrPrinterManager, QObject* parent);
     virtual ~PrinterMediasItemModel();
 
     void rebuildModel();

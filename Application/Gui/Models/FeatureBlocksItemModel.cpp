@@ -7,7 +7,7 @@
 #include "Core/Blocks/IFeatureBlockInfo.h"
 
 
-FeatureBlocksItemModel::FeatureBlocksItemModel(FeatureBlockManager *ptrFeatureBlockManager, RollScriptDocumentBlocks* ptrDocumentBlocks, QObject *parent)
+FeatureBlocksItemModel::FeatureBlocksItemModel(FeatureBlockManager *ptrFeatureBlockManager, RollScriptDocumentBlocks* ptrDocumentBlocks, QObject* parent)
     : QAbstractListModel(parent)
     , m_ptrFeatureBlockManager(ptrFeatureBlockManager)
     , m_ptrDocumentBlocks(ptrDocumentBlocks)
