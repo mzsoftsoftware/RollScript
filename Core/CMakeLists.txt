@@ -1,11 +1,15 @@
-cmake_minimum_required(VERSION 3.19)
-
 project(RollScriptCore)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS
-    Core
-    Gui
-)
+
+# -----------------------------------------------------------------------------
+# External dependencies
+# -----------------------------------------------------------------------------
+include(LibUsb.cmake)
+
+# -----------------------------------------------------------------------------
+# Qt
+# -----------------------------------------------------------------------------
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core Gui Widgets LinguistTools)
 
 qt_standard_project_setup()
 
@@ -15,10 +19,19 @@ qt_standard_project_setup()
 # -----------------------------------------------------------------------------
 
 set(SOURCES
+    Errors/RollScriptError.cpp
+    Errors/RollScriptErrorOwner.cpp
+
+    Blocks/RollScriptBlock.cpp
+    Blocks/RollScriptBlockDocumentBase.cpp
+    Blocks/RollScriptBlockWidgetBase.cpp
+
     Printers/PrinterInstance.cpp
+    Printers/PrinterMedia.cpp
 
     USB/PrinterInstanceUSB.cpp
-    USB/USBDeviceInfo.h
+    USB/USBDeviceInfo.cpp
+    USB/USBManager.cpp
 )
 
 
@@ -27,14 +40,39 @@ set(SOURCES
 # -----------------------------------------------------------------------------
 
 set(HEADERS
+    Errors/RollScriptError.h
+    Errors/RollScriptErrorOwner.h
+    Errors/RollScriptErrorMacros.h
+
+    Blocks/IFeatureBlock.h
+    Blocks/IFeatureBlockInfo.h
+    Blocks/RollScriptBlock.h
+    Blocks/RollScriptBlockDocumentBase.h
+    Blocks/RollScriptBlockWidgetBase.h
+
     Plugins/IPlugin.h
+    Plugins/IPluginInfo.h
     Plugins/IPrinterPlugin.h
+    Plugins/IPrinterPluginInfo.h
+    Plugins/IFeaturePlugin.h
+    Plugins/IFeaturePluginInfo.h
 
     Printers/PrinterInstance.h
+    Printers/PrinterMedia.h
+    Printers/PrinterMediaConstraints.h
 
     USB/PrinterInstanceUSB.h
     USB/USBDeviceInfo.h
+    USB/USBManager.h
 )
+
+# -----------------------------------------------------------------------------
+# Translations
+# -----------------------------------------------------------------------------
+#set(TRANSLATIONS
+#    Translations/RollScriptCore_de_DE.ts
+#    Translations/RollScriptCore_en_US.ts
+#)
 
 
 # -----------------------------------------------------------------------------
@@ -46,6 +84,20 @@ add_library(RollScriptCore SHARED
     ${HEADERS}
 )
 
+# -----------------------------------------------------------------------------
+# Translations
+# -----------------------------------------------------------------------------
+#qt_add_translations(
+#    TARGETS RollScriptCore
+#    TS_FILES ${TRANSLATIONS}
+#)
+
+# -----------------------------------------------------------------------------
+# Resources
+# -----------------------------------------------------------------------------
+#qt_add_resources(
+#    TARGETS RollScriptCore
+#)
 
 # -----------------------------------------------------------------------------
 # Include directories
@@ -53,7 +105,7 @@ add_library(RollScriptCore SHARED
 
 target_include_directories(RollScriptCore
     PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}
 )
 
 
@@ -65,4 +117,7 @@ target_link_libraries(RollScriptCore
     PUBLIC
     Qt6::Core
     Qt6::Gui
+    Qt6::Widgets
+
+    RollScript::LibUsb
 )

@@ -43,6 +43,7 @@ private:
     bool documentSaveAs();
 
     void setupPrinterManager();
+    void setupFeatureBlockManager();
 
 private slots:
     void slot_SwitchLanguage();
@@ -54,7 +55,9 @@ private slots:
     void slot_PrinterManager_Scan();
     void slot_PrinterManager_ScanFinished();
     void slot_PrinterManager_PrinterChanged();
-    void slot_PrinterManager_ManagerError(const QString& message);
+    void slot_PrinterManager_ManagerError();
+
+    void slot_FeatureBlockManager_ManagerError();
 
     void on_actionAboutRollScript_triggered();
     void on_actionFileNew_triggered();

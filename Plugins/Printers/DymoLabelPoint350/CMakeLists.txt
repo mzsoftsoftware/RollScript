@@ -1,8 +1,6 @@
-cmake_minimum_required(VERSION 3.19)
-
 project(DymoLabelPoint350PrinterPlugin)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core Gui)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core Gui LinguistTools)
 
 qt_standard_project_setup()
 
@@ -12,10 +10,37 @@ qt_standard_project_setup()
 
 set(SOURCES
     DymoLabelPoint350PrinterPlugin.cpp
+    DymoLabelPoint350PrinterMedia.cpp
 )
 
 set(HEADERS
     DymoLabelPoint350PrinterPlugin.h
+    DymoLabelPoint350PrinterPluginInfo.h
+    DymoLabelPoint350PrinterMedia.h
+)
+
+set(CORE_HEADERS
+    ${CMAKE_SOURCE_DIR}/Core/Plugins/IPlugin.h
+    ${CMAKE_SOURCE_DIR}/Core/Plugins/IPrinterPlugin.h
+)
+
+set(COMMON_SOURCES
+    ${CMAKE_SOURCE_DIR}/Common/Info/PluginInfo.cpp
+    ${CMAKE_SOURCE_DIR}/Common/Info/PrinterPluginInfo.cpp
+)
+
+set(COMMON_HEADERS
+    ${CMAKE_SOURCE_DIR}/Common/Info/PluginInfo.h
+    ${CMAKE_SOURCE_DIR}/Common/Info/PrinterPluginInfo.h
+)
+
+
+# -----------------------------------------------------------------------------
+# Translations
+# -----------------------------------------------------------------------------
+set(TRANSLATIONS
+    Translations/DymoLabelPoint350PrinterPlugin_de_DE.ts
+    Translations/DymoLabelPoint350PrinterPlugin_en_US.ts
 )
 
 # -----------------------------------------------------------------------------
@@ -27,6 +52,26 @@ qt_add_plugin(DymoLabelPoint350PrinterPlugin
 
     ${SOURCES}
     ${HEADERS}
+    ${CORE_HEADERS}
+    ${COMMON_SOURCES}
+    ${COMMON_HEADERS}
+
+    Resources/DymoLabelPoint350PrinterPlugin.qrc
+)
+
+# -----------------------------------------------------------------------------
+# Translations
+# -----------------------------------------------------------------------------
+qt_add_translations(
+    TARGETS DymoLabelPoint350PrinterPlugin
+    TS_FILES ${TRANSLATIONS}
+)
+
+# -----------------------------------------------------------------------------
+# Resources
+# -----------------------------------------------------------------------------
+qt_add_resources(DymoLabelPoint350PrinterPlugin
+    Resources/DymoLabelPoint350PrinterPlugin.qrc
 )
 
 # -----------------------------------------------------------------------------

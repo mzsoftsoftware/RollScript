@@ -8,7 +8,7 @@
 SingleInstanceLock::SingleInstanceLock(QObject *parent)
     : QObject{parent}
 {
-    QString qstrLockFilePath = QDir::temp().absoluteFilePath(QString("%1.lock").arg(QCoreApplication::applicationName()));
+    QString qstrLockFilePath = QDir::temp().absoluteFilePath(QStringLiteral("%1.lock").arg(QCoreApplication::applicationName()));
 
     m_ptrLockFile = new QLockFile(qstrLockFilePath);
 }
@@ -25,15 +25,13 @@ bool SingleInstanceLock::lock()
 {
     if(!m_ptrLockFile)
     {
-        // TASK : Use correct tr !!!
-        m_qstrLastError = tr("Lock file is not initialized.");
+        ROLLSCRIPT_ERROR(tr("LockFailed"), QStringLiteral("m_ptrLockFile is nullptr."));
         return false;
     }
 
     if(!m_ptrLockFile->tryLock())
     {
-        // TASK : Use correct tr !!!
-        m_qstrLastError = tr("The application is already running.");
+        ROLLSCRIPT_ERROR(tr("LockFailed.Running"), QStringLiteral("m_ptrLockFile->tryLock() failed."));
         return false;
     }
 

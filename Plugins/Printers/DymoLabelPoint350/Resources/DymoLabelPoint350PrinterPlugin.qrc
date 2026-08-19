@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/DymoLabelPoint350PrinterPlugin">
+        <file>icons/printer.png</file>
+    </qresource>
+</RCC>

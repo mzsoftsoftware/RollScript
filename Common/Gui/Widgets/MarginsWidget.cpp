@@ -8,11 +8,11 @@ MarginsWidget::MarginsWidget(QWidget *parent)
 {
     ui->setupUi(this);
 
-    ui->doublePairWidget_MarginsLeftRight->setSuffixOne(" mm");
-    ui->doublePairWidget_MarginsLeftRight->setSuffixTwo(" mm");
+    ui->doublePairWidget_MarginsLeftRight->setSuffixOne(QStringLiteral(" mm"));
+    ui->doublePairWidget_MarginsLeftRight->setSuffixTwo(QStringLiteral(" mm"));
 
-    ui->doublePairWidget_MarginsTopBottom->setSuffixOne(" mm");
-    ui->doublePairWidget_MarginsTopBottom->setSuffixTwo(" mm");
+    ui->doublePairWidget_MarginsTopBottom->setSuffixOne(QStringLiteral(" mm"));
+    ui->doublePairWidget_MarginsTopBottom->setSuffixTwo(QStringLiteral(" mm"));
 
     retranslateUi();
 

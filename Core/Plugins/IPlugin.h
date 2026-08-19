@@ -1,16 +1,25 @@
 #pragma once
 
+#include <QObject>
+#include "Core/Errors/RollScriptErrorOwner.h"
+
 #include <QtPlugin>
 #include <QString>
 
-class IPlugin
+class IPluginInfo;
+
+
+class IPlugin : public QObject, public RollScriptErrorOwner
 {
+    Q_OBJECT
+
 public:
+    explicit IPlugin(QObject* parent)
+        : QObject(parent)
+    {}
     virtual ~IPlugin() = default;
 
-    virtual QString pluginId() const = 0;
-    virtual QString displayName() const = 0;
-    virtual QString version() const = 0;
+    virtual const IPluginInfo* pluginInfo() const = 0;
 };
 
 #define ROLLSCRIPT_IPLUGIN_IID "de.mzsoft.rollscript.plugins.base"

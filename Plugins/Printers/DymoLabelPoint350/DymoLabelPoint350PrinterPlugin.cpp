@@ -1,32 +1,15 @@
 #include "DymoLabelPoint350PrinterPlugin.h"
 
-#include "Common/Core/USB/PrinterInstanceUSB.h"
-#include "Common/Core/USB/USBDeviceInfo.h"
+#include "Core/USB/PrinterInstanceUSB.h"
+#include "Core/USB/USBDeviceInfo.h"
+#include "DymoLabelPoint350PrinterMedia.h"
 
 
 DymoLabelPoint350PrinterPlugin::DymoLabelPoint350PrinterPlugin(QObject* parent)
-    : QObject(parent)
+    : IPrinterPlugin(parent)
 {
     m_ptrTimerAlive = new QTimer(this);
     connect(m_ptrTimerAlive, &QTimer::timeout, this, &DymoLabelPoint350PrinterPlugin::slot_timerAlive);
-}
-
-
-QString DymoLabelPoint350PrinterPlugin::pluginId() const
-{
-    return "dymo.labelpoint350";
-}
-QString DymoLabelPoint350PrinterPlugin::displayName() const
-{
-    return "Dymo LabelPoint 350";
-}
-QString DymoLabelPoint350PrinterPlugin::version() const
-{
-    return "1.0.0";
-}
-QIcon DymoLabelPoint350PrinterPlugin::icon() const
-{
-    return QIcon();
 }
 
 bool DymoLabelPoint350PrinterPlugin::supportsUsb(const USBDeviceInfo* ptrDevice) const
@@ -40,6 +23,37 @@ bool DymoLabelPoint350PrinterPlugin::supportsUsb(const USBDeviceInfo* ptrDevice)
     return ptrDevice->vendorId() == 0x0922 && ptrDevice->productId() == 0x0015;
 }
 
+QList<PrinterMedia*> DymoLabelPoint350PrinterPlugin::createPrinterMedias()
+{
+    QList<PrinterMedia*> medias;
+
+    // 19mm
+    {
+        DymoLabelPoint350PrinterMedia* ptrMedia = new DymoLabelPoint350PrinterMedia(QStringLiteral("DymoLabelPoint350_19mm"), QStringLiteral("19 mm"), this);
+        ptrMedia->setMediaDataMm(19.0, 2.9, 0.8, 35.0);
+        ptrMedia->setMediaDataPx(180, 0, 0+(13*8)+6);
+        medias.append(ptrMedia);
+    }
+
+    // 12mm
+    {
+        DymoLabelPoint350PrinterMedia* ptrMedia = new DymoLabelPoint350PrinterMedia(QStringLiteral("DymoLabelPoint350_12mm"), QStringLiteral("12 mm"), this);
+        ptrMedia->setMediaDataMm(12.0, 0.5, 0.8, 35.0);
+        ptrMedia->setMediaDataPx(180, (1*8)+4, 4+(9*8)+1);
+        medias.append(ptrMedia);
+    }
+
+    // 9mm
+    {
+        DymoLabelPoint350PrinterMedia* ptrMedia = new DymoLabelPoint350PrinterMedia(QStringLiteral("DymoLabelPoint350_9mm"), QStringLiteral("9 mm"), this);
+        ptrMedia->setMediaDataMm(9.0, 0.2, 0.2, 35.0);
+        ptrMedia->setMediaDataPx(180, (2*8)+3, 5+(7*8)+1);
+        medias.append(ptrMedia);
+    }
+
+    return medias;
+}
+
 
 bool DymoLabelPoint350PrinterPlugin::open(PrinterInstance* ptrPrinterInstance)
 {
@@ -47,24 +61,16 @@ bool DymoLabelPoint350PrinterPlugin::open(PrinterInstance* ptrPrinterInstance)
 
     if(!m_ptrPrinterInstanceUSB)
     {
-        // TASK : Use correct tr !!!
-        m_qstrLastError = tr("Invalid printer instance.");
+        ROLLSCRIPT_ERROR(tr("NoPrinterInstance"), QStringLiteral("m_ptrPrinterInstanceUSB is nullptr."));
         return false;
     }
 
     if(!alive())
-    {
+    {        
         return false;
     }
 
     m_ptrTimerAlive->start(5000);
-
-    /*
-     * TODO:
-     OK* - initialize printer
-     OK* - check alive & read status
-     * - load medias
-     */
 
     return true;
 }
@@ -86,7 +92,8 @@ void DymoLabelPoint350PrinterPlugin::slot_timerAlive()
 {
     if(!alive())
     {
-        // TASK : DymoLabelPoint350PrinterPlugin::slot_timerAlive() Error handling
+        m_ptrTimerAlive->stop();
+        emit printerError();
     }
 }
 
@@ -109,8 +116,11 @@ bool DymoLabelPoint350PrinterPlugin::alive()
     cmd.append(char(0x1B));
     cmd.append('A');
 
-    if(!sendCommand(cmd, rsp))
+    if(!sendCommand(cmd, &rsp))
+    {
+        ROLLSCRIPT_ERROR_CAUSE(tr("AliveError"), QStringLiteral("sendCommand() failed"), takeError());
         return false;
+    }
 
     cmd.clear();
 
@@ -129,8 +139,11 @@ bool DymoLabelPoint350PrinterPlugin::alive()
     cmd.append('D');
     cmd.append('0');
 
-    if(!sendCommand(cmd, rsp))
+    if(!sendCommand(cmd))
+    {
+        ROLLSCRIPT_ERROR_CAUSE(tr("AliveError"), QStringLiteral("sendCommand() failed"), takeError());
         return false;
+    }
 
     cmd.clear();
 
@@ -139,8 +152,11 @@ bool DymoLabelPoint350PrinterPlugin::alive()
     cmd.append(char(0x1B));
     cmd.append('A');
 
-    if(!sendCommand(cmd, rsp))
+    if(!sendCommand(cmd, &rsp))
+    {
+        ROLLSCRIPT_ERROR_CAUSE(tr("AliveError"), QStringLiteral("sendCommand() failed"), takeError());
         return false;
+    }
 
     return true;
 }
@@ -155,26 +171,28 @@ bool DymoLabelPoint350PrinterPlugin::readMedia()
     return false;
 }
 
-bool DymoLabelPoint350PrinterPlugin::sendCommand(const QByteArray& baCommand, QByteArray& baResponse)
+bool DymoLabelPoint350PrinterPlugin::sendCommand(const QByteArray& baCommand, QByteArray* ptrBaResponse)
 {
     if(!m_ptrPrinterInstanceUSB)
     {
-        // TASK : Use correct tr !!!
-        m_qstrLastError = tr("Invalid printer instance.");
+        ROLLSCRIPT_ERROR(tr("NoPrinterInstance"), QStringLiteral("m_ptrPrinterInstanceUSB is nullptr."));
         return false;
     }
 
     if(!m_ptrPrinterInstanceUSB->send(baCommand))
     {
-        m_qstrLastError = m_ptrPrinterInstanceUSB->lastError();
+        ROLLSCRIPT_ERROR_CAUSE(tr("SendError"), QStringLiteral("m_ptrPrinterInstanceUSB->send() failed"), m_ptrPrinterInstanceUSB->takeError());
         return false;
     }
 
-    baResponse.clear();
-    if(!m_ptrPrinterInstanceUSB->receive(baResponse))
+    if(ptrBaResponse)
     {
-        m_qstrLastError = m_ptrPrinterInstanceUSB->lastError();
-        return false;
+        ptrBaResponse->clear();
+        if(!m_ptrPrinterInstanceUSB->receive(*ptrBaResponse))
+        {
+            ROLLSCRIPT_ERROR_CAUSE(tr("ReceiveError"), QStringLiteral("m_ptrPrinterInstanceUSB->receive() failed"), m_ptrPrinterInstanceUSB->takeError());
+            return false;
+        }
     }
 
     return true;

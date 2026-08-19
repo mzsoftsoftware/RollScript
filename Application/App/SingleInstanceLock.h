@@ -1,11 +1,12 @@
 #pragma once
 
 #include <QObject>
+#include "Core/Errors/RollScriptErrorOwner.h"
 
 class QLockFile;
 
 
-class SingleInstanceLock : public QObject
+class SingleInstanceLock : public QObject, public RollScriptErrorOwner
 {
     Q_OBJECT
 public:
@@ -14,10 +15,6 @@ public:
 
     bool lock();
 
-    QString lastError() const           { return m_qstrLastError; }
-
 private:
-    QString m_qstrLastError;
-
     QLockFile* m_ptrLockFile = nullptr;
 };

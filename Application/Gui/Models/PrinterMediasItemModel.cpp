@@ -1,8 +1,8 @@
 #include "PrinterMediasItemModel.h"
 
-#include "Core/Printers/PrinterManager.h"
-#include "Common/Core/Printers/PrinterInstance.h"
-#include "Common/Core/Printers/PrinterMedia.h"
+#include "Printers/PrinterManager.h"
+#include "Core/Printers/PrinterInstance.h"
+#include "Core/Printers/PrinterMedia.h"
 
 
 PrinterMediasItemModel::PrinterMediasItemModel(PrinterManager* ptrPrinterManager, QObject *parent)

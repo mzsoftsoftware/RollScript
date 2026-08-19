@@ -1,6 +1,6 @@
 #include "PrinterInstanceUSB.h"
 
-#include "Common/Core/Plugins/IPrinterPlugin.h"
+#include "Core/Plugins/IPrinterPlugin.h"
 #include "Core/USB/USBManager.h"
 
 
@@ -9,8 +9,8 @@ PrinterInstanceUSB::PrinterInstanceUSB(IPrinterPlugin* ptrPrinterPlugin, USBMana
     , m_ptrUSBManager(ptrUSBManager)
     , m_ptrDeviceInfo(ptrDeviceInfo)
 {
-    m_qstrId = QString("USB:%1:%2:%3").arg(m_ptrDeviceInfo->manufacturer(), m_ptrDeviceInfo->product(), m_ptrDeviceInfo->serial());
-    m_qstrDisplayName = QString("%1 - %2 - %3").arg(m_ptrDeviceInfo->manufacturer(), m_ptrDeviceInfo->product(), m_ptrDeviceInfo->serial());
+    m_qstrId = QStringLiteral("USB:%1:%2:%3").arg(m_ptrDeviceInfo->manufacturer(), m_ptrDeviceInfo->product(), m_ptrDeviceInfo->serial());
+    m_qstrDisplayName = QStringLiteral("%1 - %2 - %3").arg(m_ptrDeviceInfo->manufacturer(), m_ptrDeviceInfo->product(), m_ptrDeviceInfo->serial());
 }
 PrinterInstanceUSB::~PrinterInstanceUSB()
 {
@@ -24,15 +24,13 @@ bool PrinterInstanceUSB::open()
 {
     if(!m_ptrPrinterPlugin)
     {
-        // TASK : Use correct tr !!!
-        m_qstrLastError = tr("Plugin is not available.");
+        ROLLSCRIPT_ERROR(tr("NoPlugin"), QStringLiteral("m_ptrPrinterPlugin is nullptr."));
         return false;
     }
 
     if(!m_ptrUSBManager)
     {
-        // TASK : Use correct tr !!!
-        m_qstrLastError = tr("USB Manager is not available.");
+        ROLLSCRIPT_ERROR(tr("NoUSBManager"), QStringLiteral("m_ptrUSBManager is nullptr."));
         return false;
     }
 
@@ -41,19 +39,20 @@ bool PrinterInstanceUSB::open()
 
     if(!m_ptrUSBManager->open(m_ptrDeviceInfo))
     {
-        m_qstrLastError = m_ptrUSBManager->lastError();
+        ROLLSCRIPT_ERROR_CAUSE(tr("OpenFailed"), QStringLiteral("m_ptrUSBManager->open failed"), m_ptrUSBManager->takeError());
         return false;
     }
+
+    m_bConnected = true;
 
     if(!m_ptrPrinterPlugin->open(this))
     {
         m_ptrUSBManager->close();
 
-        m_qstrLastError = m_ptrPrinterPlugin->lastError();
+        ROLLSCRIPT_ERROR_CAUSE(tr("OpenFailed"), QStringLiteral("m_ptrPrinterPlugin->open failed"), m_ptrPrinterPlugin->takeError());
         return false;
     }
 
-    m_bConnected = true;
     return true;
 }
 
@@ -61,15 +60,13 @@ bool PrinterInstanceUSB::close()
 {
     if(!m_ptrPrinterPlugin)
     {
-        // TASK : Use correct tr !!!
-        m_qstrLastError = tr("Plugin is not available.");
+        ROLLSCRIPT_ERROR(tr("NoPlugin"), QStringLiteral("m_ptrPrinterPlugin is nullptr."));
         return false;
     }
 
     if(!m_ptrUSBManager)
     {
-        // TASK : Use correct tr !!!
-        m_qstrLastError = tr("USB Manager is not available.");
+        ROLLSCRIPT_ERROR(tr("NoUSBManager"), QStringLiteral("m_ptrUSBManager is nullptr."));
         return false;
     }
 
@@ -78,13 +75,13 @@ bool PrinterInstanceUSB::close()
 
     if(!m_ptrPrinterPlugin->close())
     {
-        m_qstrLastError = m_ptrPrinterPlugin->lastError();
+        ROLLSCRIPT_ERROR_CAUSE(tr("CloseFailed"), QStringLiteral("m_ptrPrinterPlugin->close failed"), m_ptrPrinterPlugin->takeError());
         return false;
     }
 
     if(!m_ptrUSBManager->close())
     {
-        m_qstrLastError = m_ptrUSBManager->lastError();
+        ROLLSCRIPT_ERROR_CAUSE(tr("CloseFailed"), QStringLiteral("m_ptrUSBManager->close failed"), m_ptrUSBManager->takeError());
         return false;
     }
 
@@ -96,21 +93,19 @@ bool PrinterInstanceUSB::send(const QByteArray& baData)
 {
     if(!m_ptrUSBManager)
     {
-        // TASK : Use correct tr !!!
-        m_qstrLastError = tr("USB Manager is not available.");
+        ROLLSCRIPT_ERROR(tr("NoUSBManager"), QStringLiteral("m_ptrUSBManager is nullptr."));
         return false;
     }
 
     if(!m_bConnected)
     {
-        // TASK : Use correct tr !!!
-        m_qstrLastError = tr("Printer is not connected.");
+        ROLLSCRIPT_ERROR(tr("NotConnected"), QStringLiteral("m_bConnected is false."));
         return false;
     }
 
     if(!m_ptrUSBManager->send(baData))
     {
-        m_qstrLastError = m_ptrUSBManager->lastError();
+        ROLLSCRIPT_ERROR_CAUSE(tr("SendFailed"), QStringLiteral("m_ptrUSBManager->send failed"), m_ptrUSBManager->takeError());
         return false;
     }
 
@@ -120,21 +115,19 @@ bool PrinterInstanceUSB::receive(QByteArray&baData, int maxLength, int timeoutMs
 {
     if(!m_ptrUSBManager)
     {
-        // TASK : Use correct tr !!!
-        m_qstrLastError = tr("USB Manager is not available.");
+        ROLLSCRIPT_ERROR(tr("NoUSBManager"), QStringLiteral("m_ptrUSBManager is nullptr."));
         return false;
     }
 
     if(!m_bConnected)
     {
-        // TASK : Use correct tr !!!
-        m_qstrLastError = tr("Printer is not connected.");
+        ROLLSCRIPT_ERROR(tr("NotConnected"), QStringLiteral("m_bConnected is false."));
         return false;
     }
 
     if(!m_ptrUSBManager->receive(baData, maxLength, timeoutMs))
     {
-        m_qstrLastError = m_ptrUSBManager->lastError();
+        ROLLSCRIPT_ERROR_CAUSE(tr("ReceiveFailed"), QStringLiteral("m_ptrUSBManager->receive failed"), m_ptrUSBManager->takeError());
         return false;
     }
 

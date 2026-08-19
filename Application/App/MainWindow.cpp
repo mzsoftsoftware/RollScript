@@ -10,13 +10,16 @@
 #include "App/DialogAbout.h"
 
 #include "App/ApplicationContext.h"
-#include "Core/Translation/TranslationManager.h"
-#include "Core/Printers/PrinterManager.h"
+#include "Translation/TranslationManager.h"
+#include "Printers/PrinterManager.h"
+#include "Features/FeatureBlockManager.h"
 
-#include "Core/Document/RollScriptDocument.h"
+#include "Document/RollScriptDocument.h"
 
 #include "Gui/Models/PrintersItemModel.h"
 #include "Gui/Models/PrinterMediasItemModel.h"
+
+#include "Core/Errors/RollScriptError.h"
 
 
 MainWindow::MainWindow(ApplicationContext* ptrApplicationContext, QWidget *parent)
@@ -29,12 +32,12 @@ MainWindow::MainWindow(ApplicationContext* ptrApplicationContext, QWidget *paren
     createLanguageMenu();
     updateLanguageMenu();
 
-    setupActions();
-    setupToolBar();
-
+    setupPrinterManager();
+    setupFeatureBlockManager();
     setupDocument();
 
-    setupPrinterManager();
+    setupActions();
+    setupToolBar();
 }
 
 MainWindow::~MainWindow()
@@ -137,6 +140,7 @@ void MainWindow::setupDocument()
     // Connect RollScriptDocument to Widgets
     // TASK : Connect RollScriptDocument to Widgets
     ui->widget_Settings->setRollScriptDocument(m_ptrRollScriptDocument);
+    ui->widget_FeatureBlocks->setRollScriptDocument(m_ptrRollScriptDocument);
 
     // Connect RollScriptDocument signals
     connect(m_ptrRollScriptDocument, &RollScriptDocument::documentModifiedChanged, this, &MainWindow::updateWindowTitle);
@@ -201,9 +205,16 @@ bool MainWindow::documentOpen()
 
     if(!m_ptrRollScriptDocument->load(qstrFileName))
     {
-        QMessageBox::critical(
-            this, tr("FileOpen.Error.Title"),
-            m_ptrRollScriptDocument->lastError());
+        RollScriptError *ptrError = m_ptrRollScriptDocument->takeError();
+        if(ptrError)
+        {
+            ui->textEdit_Debug->append(ptrError->messageDebug());
+            QMessageBox::critical(this, tr("FileOpen.Error.Title"), ptrError->messageUser());
+            delete ptrError;
+        }
+        else
+            Q_ASSERT_X(false, "MainWindow::documentOpen", "No RollScriptError found");
+
         return false;
     }
     return true;
@@ -218,9 +229,16 @@ bool MainWindow::documentSave()
 
     if(!m_ptrRollScriptDocument->save())
     {
-        QMessageBox::critical(
-            this, tr("FileSave.Error.Title"),
-            m_ptrRollScriptDocument->lastError());
+        RollScriptError *ptrError = m_ptrRollScriptDocument->takeError();
+        if(ptrError)
+        {
+            ui->textEdit_Debug->append(ptrError->messageDebug());
+            QMessageBox::critical(this, tr("FileSave.Error.Title"), ptrError->messageUser());
+            delete ptrError;
+        }
+        else
+            Q_ASSERT_X(false, "MainWindow::documentSave", "No RollScriptError found");
+
         return false;
     }
     return true;
@@ -242,9 +260,17 @@ bool MainWindow::documentSaveAs()
 
     if(!m_ptrRollScriptDocument->saveAs(qstrFileName))
     {
-        QMessageBox::critical(
-            this, tr("FileSave.Error.Title"),
-            m_ptrRollScriptDocument->lastError());
+        RollScriptError *ptrError = m_ptrRollScriptDocument->takeError();
+        if(ptrError)
+        {
+            ui->textEdit_Debug->append(ptrError->messageDebug());
+            // TASK : Use correct tr !!!
+            QMessageBox::critical(this, tr("FileSave.Error.Title"), ptrError->messageUser());
+            delete ptrError;
+        }
+        else
+            Q_ASSERT_X(false, "MainWindow::documentSaveAs", "No RollScriptError found");
+
         return false;
     }
     return true;
@@ -271,20 +297,31 @@ void MainWindow::slot_Document_Saved()
 
 void MainWindow::setupPrinterManager()
 {
-    PrinterManager* ptrPrinterManager = m_ptrApplicationContext->printerManager();
+    PrinterManager* ptrPrinterManager = m_ptrApplicationContext->printerManager();    
     // Connect DeviceManager signals
     connect(ptrPrinterManager, &PrinterManager::scanFinished, this, &MainWindow::slot_PrinterManager_ScanFinished);
     connect(ptrPrinterManager, &PrinterManager::printerChanged, this, &MainWindow::slot_PrinterManager_PrinterChanged);
     connect(ptrPrinterManager, &PrinterManager::managerError, this, &MainWindow::slot_PrinterManager_ManagerError);
 
     connect(ui->actionPrintersScan, &QAction::triggered, this, &MainWindow::slot_PrinterManager_Scan);
+
+    // Promote to SettingsWidget
+    ui->widget_Settings->setPrinterManager(ptrPrinterManager);
 }
 
 void MainWindow::slot_PrinterManager_Scan()
 {
     if(!m_ptrApplicationContext->printerManager()->scanForDevices())
     {
-        //ui->textEdit_Debug->append(QString("PrinterManager Error : ") + message);
+        RollScriptError *ptrError = m_ptrApplicationContext->printerManager()->takeError();
+        if(ptrError)
+        {
+            ui->textEdit_Debug->append(ptrError->messageDebug());
+            QMessageBox::critical(this, tr("Printer.Scan"), ptrError->messageUser());
+            delete ptrError;
+        }
+        else
+            Q_ASSERT_X(false, "MainWindow::slot_PrinterManager_Scan", "No RollScriptError found");
     }
 }
 void MainWindow::slot_PrinterManager_ScanFinished()
@@ -294,12 +331,12 @@ void MainWindow::slot_PrinterManager_ScanFinished()
     if(m_ptrPrintersItemModel->rowCount() > 0)
     {
         // TASK : Use correct tr !!!
-        m_ptrComboBoxPrinters->setPlaceholderText(tr("Please select a printer ..."));
+        m_ptrComboBoxPrinters->setPlaceholderText(tr("Printer.Select.Combo")); // Please select a printer ...
     }
     else
     {
         // TASK : Use correct tr !!!
-        m_ptrComboBoxPrinters->setPlaceholderText(tr("No printers found, Please rescan."));
+        m_ptrComboBoxPrinters->setPlaceholderText(tr("Printer.NoPrinter.Combo")); // No Printers found, Please rescan.
     }
     m_ptrComboBoxPrinters->setCurrentIndex(-1);
     ui->widget_Settings->rebuildPrinterMediasModel();
@@ -308,9 +345,39 @@ void MainWindow::slot_PrinterManager_PrinterChanged()
 {
     ui->widget_Settings->rebuildPrinterMediasModel();
 }
-void MainWindow::slot_PrinterManager_ManagerError(const QString& message)
+void MainWindow::slot_PrinterManager_ManagerError()
 {
-    ui->textEdit_Debug->append(QString("PrinterManager Error : ") + message);
+    RollScriptError *ptrError = m_ptrApplicationContext->printerManager()->takeError();
+    if(ptrError)
+    {
+        ui->textEdit_Debug->append(ptrError->messageDebug());
+        QMessageBox::critical(this, tr("PrinterManager.Error"), ptrError->messageUser());
+        delete ptrError;
+    }
+    else
+        Q_ASSERT_X(false, "MainWindow::slot_PrinterManager_ManagerError", "No RollScriptError found");
+}
+
+void MainWindow::setupFeatureBlockManager()
+{
+    FeatureBlockManager* ptrFeatureBlockManager = m_ptrApplicationContext->featureBlockManager();
+    // Connect FeatureBlockManager signals
+    connect(ptrFeatureBlockManager, &FeatureBlockManager::managerError, this, &MainWindow::slot_FeatureBlockManager_ManagerError);
+
+    // Promote to FeatureBlocksWidget
+    ui->widget_FeatureBlocks->setFeatureBlockManager(ptrFeatureBlockManager);
+}
+void MainWindow::slot_FeatureBlockManager_ManagerError()
+{
+    RollScriptError *ptrError = m_ptrApplicationContext->featureBlockManager()->takeError();
+    if(ptrError)
+    {
+        ui->textEdit_Debug->append(ptrError->messageDebug());
+        QMessageBox::critical(this, tr("FeatureBlockManager.Error"), ptrError->messageUser());
+        delete ptrError;
+    }
+    else
+        Q_ASSERT_X(false, "MainWindow::slot_FeatureBlockManager_ManagerError", "No RollScriptError found");
 }
 
 void MainWindow::on_actionAboutRollScript_triggered()
@@ -345,7 +412,20 @@ void MainWindow::slot_ComboBoxPrinters_IndexChanged(int index)
         return;
 
     QString qstrPrinterId = m_ptrComboBoxPrinters->currentData(Qt::UserRole).toString();
-    m_ptrApplicationContext->printerManager()->switchPrinter(qstrPrinterId);
+    if(!m_ptrApplicationContext->printerManager()->switchPrinter(qstrPrinterId))
+    {
+        m_ptrComboBoxPrinters->setCurrentIndex(-1);
+
+        RollScriptError *ptrError = m_ptrApplicationContext->printerManager()->takeError();
+        if(ptrError)
+        {
+            ui->textEdit_Debug->append(ptrError->messageDebug());
+            QMessageBox::critical(this, tr("Printer Error"), ptrError->messageUser());
+            delete ptrError;
+        }
+        else
+            Q_ASSERT_X(false, "MainWindow::slot_ComboBoxPrinters_IndexChanged", "No RollScriptError found");
+    }
 }
 
 

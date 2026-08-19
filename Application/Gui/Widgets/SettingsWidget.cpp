@@ -1,10 +1,14 @@
 #include "SettingsWidget.h"
 #include "ui_SettingsWidget.h"
 
-#include "Core/Document/RollScriptDocument.h"
-#include "Core/Document/RollScriptDocumentSettings.h"
+#include "Document/RollScriptDocument.h"
+#include "Document/RollScriptDocumentSettings.h"
 
 #include "Gui/Models/PrinterMediasItemModel.h"
+
+#include "Printers/PrinterManager.h"
+#include "Core/Printers/PrinterInstance.h"
+#include "Core/Printers/PrinterMedia.h"
 
 
 SettingsWidget::SettingsWidget(QWidget *parent)
@@ -29,6 +33,10 @@ void SettingsWidget::changeEvent(QEvent *event)
     QWidget::changeEvent(event);
 }
 
+void SettingsWidget::setPrinterManager(PrinterManager* ptrPrinterManager)
+{
+    m_ptrPrinterManager = ptrPrinterManager;
+}
 void SettingsWidget::setPrinterMediasItemModel(PrinterMediasItemModel* ptrPrinterMediasItemModel)
 {
     m_ptrPrinterMediasItemModel = ptrPrinterMediasItemModel;
@@ -56,16 +64,60 @@ void SettingsWidget::rebuildPrinterMediasModel()
         ui->comboBox_PrinterMedia->setPlaceholderText(tr("No labels found. Select printer ?"));
     }
 
-    if(m_qstrPrinterMediaId.isEmpty())
+    if(m_ptrDocumentSettings->printerMediaId().isEmpty())
     {
         ui->comboBox_PrinterMedia->setCurrentIndex(-1);
     }
     else
     {
-        int index = ui->comboBox_PrinterMedia->findData(m_qstrPrinterMediaId, Qt::UserRole);
+        int index = ui->comboBox_PrinterMedia->findData(m_ptrDocumentSettings->printerMediaId(), Qt::UserRole);
         ui->comboBox_PrinterMedia->setCurrentIndex(index);
-        // TASK : updateLabelConstraints();
+        updatePrinterMediaConstraints();
     }
+}
+
+void SettingsWidget::updatePrinterMediaConstraints()
+{
+    Q_ASSERT(m_ptrDocumentSettings);
+    Q_ASSERT(m_ptrPrinterManager);
+
+    QString qstrPrinterMediaId = m_ptrDocumentSettings->printerMediaId();
+    if(qstrPrinterMediaId.isEmpty())
+    {
+        resetPrinterMediaConstraints();
+        return;
+    }
+
+    PrinterInstance* ptrPrinterInstance = m_ptrPrinterManager->currentPrinter();
+    if(!ptrPrinterInstance)
+    {
+        resetPrinterMediaConstraints();
+        return;
+    }
+
+    PrinterMedia* ptrPrinterMedia = ptrPrinterInstance->media(qstrPrinterMediaId);
+    if(!ptrPrinterMedia)
+    {
+        resetPrinterMediaConstraints();
+        return;
+    }
+
+    const PrinterMediaConstraints& constraints = ptrPrinterMedia->constraints();
+    ui->marginsWidget->setMarginsMinimumMm(constraints.marginsMinMm);
+
+    ui->doubleSpinBox_LengthMin->setMinimum(constraints.lengthMinMm);
+    if(ui->doubleSpinBox_LengthMin->value() < constraints.lengthMinMm)
+    {
+        ui->doubleSpinBox_LengthMin->setValue(constraints.lengthMinMm);
+        // TASK : Message Box !!! if needed
+    }
+
+    return;
+}
+void SettingsWidget::resetPrinterMediaConstraints()
+{
+    ui->marginsWidget->setMarginsMinimumMm(QMarginsF());
+    ui->doubleSpinBox_LengthMin->setMinimum(0.0);
 }
 
 void SettingsWidget::updateUiFromDocument()
@@ -77,13 +129,13 @@ void SettingsWidget::updateUiFromDocument()
     ui->marginsWidget->setMarginsMm(m_ptrDocumentSettings->marginsMm());
 }
 
-void SettingsWidget::on_comboBox_LabelMedia_currentIndexChanged(int index)
+void SettingsWidget::on_comboBox_PrinterMedia_currentIndexChanged(int index)
 {
     if(index >= 0)
     {
         QString qstrId = ui->comboBox_PrinterMedia->itemData(index).toString();
-        // TASK : m_ptrDocumentSettings->setPrinterMediaId(qstrId);
-        // TASK : updateLabelConstraints();
+        m_ptrDocumentSettings->setPrinterMediaId(qstrId);
+        updatePrinterMediaConstraints();
     }
 }
 void SettingsWidget::on_doubleSpinBox_LengthMin_valueChanged(double value)

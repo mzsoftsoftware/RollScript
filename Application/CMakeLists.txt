@@ -4,10 +4,6 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-# -----------------------------------------------------------------------------
-# External dependencies
-# -----------------------------------------------------------------------------
-include(LibUsb.cmake)
 
 # -----------------------------------------------------------------------------
 # Qt
@@ -29,7 +25,6 @@ set(APP_SOURCES
     App/MainWindow.cpp
 
     App/DialogAbout.cpp
-
 )
 set(APP_HEADERS
     App/ApplicationContext.h
@@ -46,35 +41,39 @@ set(APP_FORMS
 )
 
 # -----------------------------------------------------------------------------
-# Core files
+# Logic files
 # -----------------------------------------------------------------------------
-set(CORE_SOURCES    
-    Core/Document/RollScriptDocument.cpp
-    Core/Document/RollScriptDocumentSettings.cpp
+set(LOGIC_SOURCES
+    Document/RollScriptDocument.cpp
+    Document/RollScriptDocumentSettings.cpp
+    Document/RollScriptDocumentBlocks.cpp
 
-    Core/Printers/PrinterManager.cpp
+    Printers/PrinterManager.cpp
 
-    Core/Translation/TranslationManager.cpp
+    Translation/TranslationManager.cpp
 
-    Core/Plugins/PluginManager.cpp
-    Core/Plugins/FeaturePluginRegistry.cpp
-    Core/Plugins/PrinterPluginRegistry.cpp
+    Plugins/PluginManager.cpp
+    Plugins/FeaturePluginRegistry.cpp
+    Plugins/PrinterPluginRegistry.cpp
 
-    Core/USB/USBManager.cpp
+    Features/FeatureBlockManager.cpp
+    Features/FeatureBlockRegistry.cpp
 )
-set(CORE_HEADERS
-    Core/Document/RollScriptDocument.h
-    Core/Document/RollScriptDocumentSettings.h
+set(LOGIC_HEADERS
+    Document/RollScriptDocument.h
+    Document/RollScriptDocumentSettings.h
+    Document/RollScriptDocumentBlocks.h
 
-    Core/Printers/PrinterManager.h
+    Printers/PrinterManager.h
 
-    Core/Translation/TranslationManager.h
+    Translation/TranslationManager.h
 
-    Core/Plugins/PluginManager.h
-    Core/Plugins/FeaturePluginRegistry.h
-    Core/Plugins/PrinterPluginRegistry.h
+    Plugins/PluginManager.h
+    Plugins/FeaturePluginRegistry.h
+    Plugins/PrinterPluginRegistry.h
 
-    Core/USB/USBManager.h
+    Features/FeatureBlockManager.h
+    Features/FeatureBlockRegistry.h
 )
 
 # -----------------------------------------------------------------------------
@@ -83,17 +82,30 @@ set(CORE_HEADERS
 set(GUI_SOURCES
     Gui/Models/PrintersItemModel.cpp
     Gui/Models/PrinterMediasItemModel.cpp
+    Gui/Models/FeatureBlocksItemModel.cpp
+
+    Gui/Helper/FeatureBlocksItemDelegate.cpp
 
     Gui/Widgets/SettingsWidget.cpp
+    Gui/Widgets/FeatureBlocksWidget.cpp
+    Gui/Widgets/FeatureBlockWidgetEmpty.cpp
 )
 set(GUI_HEADERS
     Gui/Models/PrintersItemModel.h
     Gui/Models/PrinterMediasItemModel.h
+    Gui/Models/FeatureBlocksItemModel.h
+
+    Gui/Helper/FeatureBlocksItemDelegate.h
 
     Gui/Widgets/SettingsWidget.h
+    Gui/Widgets/FeatureBlocksWidget.h
+    Gui/Widgets/FeatureBlockWidgetEmpty.h
+
 )
 set(GUI_FORMS
     Gui/Widgets/SettingsWidget.ui
+    Gui/Widgets/FeatureBlocksWidget.ui
+    Gui/Widgets/FeatureBlockWidgetEmpty.ui
 )
 
 # -----------------------------------------------------------------------------
@@ -138,8 +150,8 @@ qt_add_executable(RollScript
     ${APP_HEADERS}
     ${APP_FORMS}
 
-    ${CORE_SOURCES}
-    ${CORE_HEADERS}
+    ${LOGIC_SOURCES}
+    ${LOGIC_HEADERS}
 
     ${GUI_SOURCES}
     ${GUI_HEADERS}
@@ -150,7 +162,7 @@ qt_add_executable(RollScript
     ${COMMON_GUI_FORMS}
 
     Resources/RollScript.qrc
-    ${COMMON_DIR}/Resources/Common.qrc    
+    ${COMMON_DIR}/Resources/Common.qrc
 )
 
 # -----------------------------------------------------------------------------
@@ -164,11 +176,9 @@ qt_add_translations(
 # -----------------------------------------------------------------------------
 # Resources
 # -----------------------------------------------------------------------------
-qt_add_resources(
-    TARGETS RollScript
-#    FILES
-#        Resources/Icons/ActionExit.svg
-#        Resources/Icons/ActionFileNew.svg
+qt_add_resources(RollScript
+    Resources/RollScript.qrc
+    ${COMMON_DIR}/Resources/Common.qrc
 )
 
 # -----------------------------------------------------------------------------
@@ -186,7 +196,7 @@ target_link_libraries(RollScript
         Qt6::Gui
         Qt6::Svg
 
-        RollScript::LibUsb
+        RollScriptCore
 )
 
 # -----------------------------------------------------------------------------
