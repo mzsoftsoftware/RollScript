@@ -7,11 +7,25 @@
 #include "Core/Blocks/IFeatureBlockInfo.h"
 
 
-FeatureBlocksItemModel::FeatureBlocksItemModel(FeatureBlockManager *ptrFeatureBlockManager, RollScriptDocumentBlocks* ptrDocumentBlocks, QObject* parent)
+FeatureBlocksItemModel::FeatureBlocksItemModel(QObject* parent)
     : QAbstractListModel(parent)
-    , m_ptrFeatureBlockManager(ptrFeatureBlockManager)
-    , m_ptrDocumentBlocks(ptrDocumentBlocks)
 {
+}
+
+void FeatureBlocksItemModel::setFeatureBlockManager(FeatureBlockManager* ptrFeatureBlockManager)
+{
+    Q_ASSERT(ptrFeatureBlockManager);
+    Q_ASSERT(!m_ptrFeatureBlockManager);
+
+    m_ptrFeatureBlockManager = ptrFeatureBlockManager;
+}
+void FeatureBlocksItemModel::setRollScriptDocumentBlocks(RollScriptDocumentBlocks* ptrDocumentBlocks)
+{
+    Q_ASSERT(ptrDocumentBlocks);
+    Q_ASSERT(!m_ptrDocumentBlocks);
+
+    m_ptrDocumentBlocks = ptrDocumentBlocks;
+
     connect(m_ptrDocumentBlocks, &RollScriptDocumentBlocks::documentBlocksAboutToBeReset, this, &FeatureBlocksItemModel::slotDocumentBlocksAboutToBeReset);
     connect(m_ptrDocumentBlocks, &RollScriptDocumentBlocks::documentBlocksReset, this, &FeatureBlocksItemModel::slotDocumentBlocksReset);
 
@@ -25,6 +39,7 @@ FeatureBlocksItemModel::FeatureBlocksItemModel(FeatureBlockManager *ptrFeatureBl
     connect(m_ptrDocumentBlocks, &RollScriptDocumentBlocks::documentBlockMoved, this, &FeatureBlocksItemModel::slotDocumentBlockMoved);
 }
 
+
 int FeatureBlocksItemModel::rowCount(const QModelIndex &parent) const
 {
     // For list models only the root node (an invalid parent) should return the list's size. For all
@@ -37,7 +52,7 @@ int FeatureBlocksItemModel::rowCount(const QModelIndex &parent) const
 
 QVariant FeatureBlocksItemModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid() || !m_ptrDocumentBlocks)
+    if (!index.isValid() || !m_ptrDocumentBlocks || !m_ptrFeatureBlockManager)
         return QVariant();
 
     RollScriptBlockDocumentBase* ptrDocumentBlockBase = m_ptrDocumentBlocks->documentBlock(index.row());
@@ -63,6 +78,9 @@ QVariant FeatureBlocksItemModel::data(const QModelIndex &index, int role) const
 
 bool FeatureBlocksItemModel::moveRows(const QModelIndex &sourceParent, int sourceRow, int count, const QModelIndex &destinationParent, int destinationChild)
 {
+    if (!m_ptrDocumentBlocks)
+        return false;
+
     if (sourceRow == destinationChild || sourceRow + 1 == destinationChild)
         return false;
     if (sourceRow < 0 || sourceRow >= m_ptrDocumentBlocks->documentBlockCount())
@@ -88,7 +106,7 @@ bool FeatureBlocksItemModel::moveRows(const QModelIndex &sourceParent, int sourc
 
 bool FeatureBlocksItemModel::removeRows(int row, int count, const QModelIndex &parent)
 {
-    if(count != 1)
+    if (!m_ptrDocumentBlocks || count != 1)
         return false;
 
     beginRemoveRows(parent, row, row);

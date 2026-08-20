@@ -9,7 +9,7 @@ class RollScriptBlockDocumentBase : public QObject, public RollScriptErrorOwner
     Q_OBJECT
 
 public:
-    RollScriptBlockDocumentBase(QObject* parent);
+    RollScriptBlockDocumentBase(const QString& qstrBlockPluginId, QObject* parent);
 
     // Getter
     const QString& blockPluginId() const    { return m_qstrBlockPluginId; }

@@ -4,13 +4,13 @@
 #include <QString>
 
 
-class RollScriptBlock : public QObject
+class RollScriptBlockXXX : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit RollScriptBlock(const QString& qstrTypeId, QObject* parent);
-    virtual ~RollScriptBlock() override;
+    explicit RollScriptBlockXXX(const QString& qstrTypeId, QObject* parent);
+    virtual ~RollScriptBlockXXX() override;
 
     //QString typeId() const                      { return m_qstrTypeId; }
 

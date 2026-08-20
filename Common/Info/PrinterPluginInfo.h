@@ -11,7 +11,7 @@ public:
                       const QString& qstrPluginId,
                       const QString& qstrPluginVersion,
                       const char* pszPluginDisplayNameKey,
-                      const char* pszrPrinterDisplayNameKey,
+                      const char* pszPrinterDisplayNameKey,
                       const QIcon& iconPrinter);
     ~PrinterPluginInfo() override = default;
 

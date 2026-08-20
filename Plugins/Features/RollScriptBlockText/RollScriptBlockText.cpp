@@ -1,8 +1,8 @@
 #include "RollScriptBlockText.h"
 
 
-RollScriptBlockText::RollScriptBlockText(QObject* parent)
-    : RollScriptBlock(QStringLiteral("text"), parent)
+RollScriptBlockTextXXX::RollScriptBlockTextXXX(QObject* parent)
+    : RollScriptBlockXXX(QStringLiteral("text"), parent)
 {
 }
 

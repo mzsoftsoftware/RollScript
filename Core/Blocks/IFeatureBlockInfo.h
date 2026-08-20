@@ -2,6 +2,8 @@
 
 #include "Core/Plugins/IFeaturePluginInfo.h"
 
+#include <QIcon>
+
 
 class IFeatureBlockInfo : public virtual IFeaturePluginInfo
 {

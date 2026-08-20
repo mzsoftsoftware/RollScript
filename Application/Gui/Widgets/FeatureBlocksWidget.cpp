@@ -20,6 +20,8 @@ FeatureBlocksWidget::FeatureBlocksWidget(QWidget *parent)
     , ui(new Ui::FeatureBlocksWidget)
 {
     ui->setupUi(this);
+
+    setupListView();
 }
 
 FeatureBlocksWidget::~FeatureBlocksWidget()
@@ -40,16 +42,17 @@ void FeatureBlocksWidget::changeEvent(QEvent *event)
 void FeatureBlocksWidget::setFeatureBlockManager(FeatureBlockManager* ptrFeatureBlockManager)
 {
     m_ptrFeatureBlockManager = ptrFeatureBlockManager;
+    m_ptrFeatureBlocksItemModel->setFeatureBlockManager(m_ptrFeatureBlockManager);
 
-    setupButtons();
     setupStackedWidget();
-    setupListView();
+    setupButtons();
 }
 
 void FeatureBlocksWidget::setRollScriptDocument(RollScriptDocument* ptrDocument)
 {
     m_ptrDocument = ptrDocument;
     m_ptrDocumentBlocks = ptrDocument->blocks();
+    m_ptrFeatureBlocksItemModel->setRollScriptDocumentBlocks(m_ptrDocumentBlocks);
 
     connect(m_ptrDocument, &RollScriptDocument::documentCleared, this, &FeatureBlocksWidget::updateUiFromDocument);
     connect(m_ptrDocument, &RollScriptDocument::documentLoaded, this, &FeatureBlocksWidget::updateUiFromDocument);
@@ -59,7 +62,7 @@ void FeatureBlocksWidget::setRollScriptDocument(RollScriptDocument* ptrDocument)
 void FeatureBlocksWidget::setupListView()
 {
     ui->listView->setItemDelegate(new FeatureBlocksItemDelegate(this));
-    m_ptrFeatureBlocksItemModel = new FeatureBlocksItemModel(m_ptrFeatureBlockManager, m_ptrDocumentBlocks, this);
+    m_ptrFeatureBlocksItemModel = new FeatureBlocksItemModel(this);
     ui->listView->setModel(m_ptrFeatureBlocksItemModel);
 }
 
@@ -69,7 +72,7 @@ void FeatureBlocksWidget::setupButtons()
 
     // The Add Button
     m_ptrFeatureBlocksAddMenu = new QMenu(this);
-    QStringList qstrFeatureBlockIds = m_ptrFeatureBlockManager->availableFeatureBlockIds();
+    const QStringList qstrFeatureBlockIds = m_ptrFeatureBlockManager->availableFeatureBlockIds();
     for(const QString& qstrFeatureBlockId : qstrFeatureBlockIds)
     {
         IFeatureBlock *ptrFeatureBlock = m_ptrFeatureBlockManager->featureBlock(qstrFeatureBlockId);
@@ -91,12 +94,14 @@ void FeatureBlocksWidget::setupButtons()
 
 void FeatureBlocksWidget::setupStackedWidget()
 {
-    QStringList qstrFeatureBlockIds = m_ptrFeatureBlockManager->availableFeatureBlockIds();
+    Q_ASSERT(m_ptrFeatureBlockManager);
+
+    const QStringList qstrFeatureBlockIds = m_ptrFeatureBlockManager->availableFeatureBlockIds();
     for(const QString& qstrFeatureBlockId : qstrFeatureBlockIds)
     {
-        IFeatureBlock *ptrFeatureBlock = m_ptrFeatureBlockManager->featureBlock(qstrFeatureBlockId);
-
         RollScriptBlockWidgetBase* ptrWidget = m_ptrFeatureBlockManager->createFeatureBlockWidget(qstrFeatureBlockId, this);
+        Q_ASSERT(ptrWidget);
+
         ui->stackedWidget->addWidget(ptrWidget);
         m_hashFeatureBlockWidgets[qstrFeatureBlockId] = ptrWidget;
     }

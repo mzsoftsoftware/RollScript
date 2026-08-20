@@ -45,13 +45,13 @@ private:
 private:
     Ui::FeatureBlocksWidget *ui;
 
-    FeatureBlockManager* m_ptrFeatureBlockManager;
+    FeatureBlockManager* m_ptrFeatureBlockManager = nullptr;
 
     RollScriptDocument* m_ptrDocument = nullptr;
     RollScriptDocumentBlocks* m_ptrDocumentBlocks = nullptr;
 
-    QMenu* m_ptrFeatureBlocksAddMenu;
+    QMenu* m_ptrFeatureBlocksAddMenu = nullptr;
     QHash<QString, RollScriptBlockWidgetBase*> m_hashFeatureBlockWidgets;
 
-    FeatureBlocksItemModel* m_ptrFeatureBlocksItemModel;
+    FeatureBlocksItemModel* m_ptrFeatureBlocksItemModel = nullptr;
 };

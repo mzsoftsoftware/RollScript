@@ -106,6 +106,11 @@ Logo</translation>
         <source>priner.dymo.labelpoint350</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextFeaturePluginInfo.h" line="15"/>
+        <source>plugin.feature.block.text</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeatureBlockManager</name>
@@ -141,7 +146,7 @@ Logo</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Gui/Widgets/FeatureBlocksWidget.ui" line="121"/>
+        <location filename="../Gui/Widgets/FeatureBlocksWidget.ui" line="133"/>
         <source>Del</source>
         <translation type="unfinished"></translation>
     </message>
@@ -555,6 +560,37 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
     </message>
 </context>
 <context>
+    <name>RollScriptBlockTextLineWidget</name>
+    <message>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="25"/>
+        <source>Left</source>
+        <translation type="unfinished">Links</translation>
+    </message>
+    <message>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="26"/>
+        <source>Center</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="27"/>
+        <source>Right</source>
+        <translation type="unfinished">Rechts</translation>
+    </message>
+</context>
+<context>
+    <name>RollScriptBlockTextWidget</name>
+    <message>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextWidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RollScriptDocument</name>
     <message>
         <location filename="../Document/RollScriptDocument.cpp" line="49"/>
@@ -624,27 +660,27 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Gui/Widgets/SettingsWidget.ui" line="33"/>
+        <location filename="../Gui/Widgets/SettingsWidget.ui" line="39"/>
         <source>Length</source>
         <translation>Label-Länge :</translation>
     </message>
     <message>
-        <location filename="../Gui/Widgets/SettingsWidget.ui" line="40"/>
+        <location filename="../Gui/Widgets/SettingsWidget.ui" line="46"/>
         <source>Length.Minimum</source>
         <translation>Minimum:</translation>
     </message>
     <message>
-        <location filename="../Gui/Widgets/SettingsWidget.ui" line="50"/>
+        <location filename="../Gui/Widgets/SettingsWidget.ui" line="56"/>
         <source>Media</source>
         <translation>Medium:</translation>
     </message>
     <message>
-        <location filename="../Gui/Widgets/SettingsWidget.ui" line="60"/>
+        <location filename="../Gui/Widgets/SettingsWidget.ui" line="66"/>
         <source>Margins</source>
         <translation>Ränder:</translation>
     </message>
     <message>
-        <location filename="../Gui/Widgets/SettingsWidget.ui" line="67"/>
+        <location filename="../Gui/Widgets/SettingsWidget.ui" line="73"/>
         <source>mm</source>
         <translation></translation>
     </message>

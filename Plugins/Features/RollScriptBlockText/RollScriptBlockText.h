@@ -3,13 +3,13 @@
 #include "Core/Blocks/RollScriptBlock.h"
 
 
-class RollScriptBlockText : public RollScriptBlock
+class RollScriptBlockTextXXX : public RollScriptBlockXXX
 {
     Q_OBJECT
 
 public:
-    explicit RollScriptBlockText(QObject* parent);
-    virtual ~RollScriptBlockText() override = default;
+    explicit RollScriptBlockTextXXX(QObject* parent);
+    virtual ~RollScriptBlockTextXXX() override = default;
 
     QString text() const
     {

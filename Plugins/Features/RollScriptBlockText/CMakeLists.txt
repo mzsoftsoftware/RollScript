@@ -1,6 +1,6 @@
 project(RollScriptBlockTextFeaturePlugin)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core Gui LinguistTools)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core Gui Widgets LinguistTools)
 
 qt_standard_project_setup()
 
@@ -11,27 +11,42 @@ qt_standard_project_setup()
 set(SOURCES
     RollScriptBlockTextFeaturePlugin.cpp
     RollScriptBlockText.cpp
+
+    RollScriptBlockTextWidget.cpp
+    RollScriptBlockTextLineWidget.cpp
 )
 
 set(HEADERS
     RollScriptBlockTextFeaturePlugin.h
+    RollScriptBlockTextFeaturePluginInfo.h
     RollScriptBlockText.h
+
+    RollScriptBlockTextWidget.h
+    RollScriptBlockTextLineWidget.h
+)
+
+set(FORMS
+    RollScriptBlockTextWidget.ui
+    RollScriptBlockTextLineWidget.ui
 )
 
 set(CORE_HEADERS
     ${CMAKE_SOURCE_DIR}/Core/Plugins/IPlugin.h
     ${CMAKE_SOURCE_DIR}/Core/Plugins/IFeaturePlugin.h
     ${CMAKE_SOURCE_DIR}/Core/Blocks/IFeatureBlock.h
+    ${CMAKE_SOURCE_DIR}/Core/Blocks/IFeatureBlockInfo.h
 )
 
 set(COMMON_SOURCES
     ${CMAKE_SOURCE_DIR}/Common/Info/PluginInfo.cpp
     ${CMAKE_SOURCE_DIR}/Common/Info/FeaturePluginInfo.cpp
+    ${CMAKE_SOURCE_DIR}/Common/Info/FeatureBlockInfo.cpp
 )
 
 set(COMMON_HEADERS
     ${CMAKE_SOURCE_DIR}/Common/Info/PluginInfo.h
     ${CMAKE_SOURCE_DIR}/Common/Info/FeaturePluginInfo.h
+    ${CMAKE_SOURCE_DIR}/Common/Info/FeatureBlockInfo.h
 )
 
 # -----------------------------------------------------------------------------
@@ -51,11 +66,18 @@ qt_add_plugin(RollScriptBlockTextFeaturePlugin
 
     ${SOURCES}
     ${HEADERS}
+    ${FORMS}
     ${CORE_HEADERS}
     ${COMMON_SOURCES}
     ${COMMON_HEADERS}
 
     Resources/RollScriptBlockTextFeaturePlugin.qrc
+)
+
+target_sources(RollScriptBlockTextFeaturePlugin
+  PRIVATE
+    RollScriptBlockTextDocument.h RollScriptBlockTextDocument.cpp
+    RollScriptBlockTextLineDocument.h RollScriptBlockTextLineDocument.cpp
 )
 
 # -----------------------------------------------------------------------------
@@ -91,6 +113,7 @@ target_link_libraries(RollScriptBlockTextFeaturePlugin
     PRIVATE
         Qt6::Core
         Qt6::Gui
+        Qt6::Widgets
 )
 
 # -----------------------------------------------------------------------------
