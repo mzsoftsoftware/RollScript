@@ -34,13 +34,19 @@ set(COMMON_HEADERS
     ${CMAKE_SOURCE_DIR}/Common/Info/PrinterPluginInfo.h
 )
 
-
 # -----------------------------------------------------------------------------
 # Translations
 # -----------------------------------------------------------------------------
 set(TRANSLATIONS
     Translations/DymoLabelPoint350PrinterPlugin_de_DE.ts
     Translations/DymoLabelPoint350PrinterPlugin_en_US.ts
+)
+
+# -----------------------------------------------------------------------------
+# Ressources
+# -----------------------------------------------------------------------------
+set(RESSOURCES
+    Resources/DymoLabelPoint350PrinterPlugin.qrc
 )
 
 # -----------------------------------------------------------------------------
@@ -55,8 +61,7 @@ qt_add_plugin(DymoLabelPoint350PrinterPlugin
     ${CORE_HEADERS}
     ${COMMON_SOURCES}
     ${COMMON_HEADERS}
-
-    Resources/DymoLabelPoint350PrinterPlugin.qrc
+    ${RESSOURCES}
 )
 
 # -----------------------------------------------------------------------------
@@ -65,13 +70,6 @@ qt_add_plugin(DymoLabelPoint350PrinterPlugin
 qt_add_translations(
     TARGETS DymoLabelPoint350PrinterPlugin
     TS_FILES ${TRANSLATIONS}
-)
-
-# -----------------------------------------------------------------------------
-# Resources
-# -----------------------------------------------------------------------------
-qt_add_resources(DymoLabelPoint350PrinterPlugin
-    Resources/DymoLabelPoint350PrinterPlugin.qrc
 )
 
 # -----------------------------------------------------------------------------

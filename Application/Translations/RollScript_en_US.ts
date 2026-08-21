@@ -106,11 +106,6 @@ Logo</translation>
         <source>priner.dymo.labelpoint350</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextFeaturePluginInfo.h" line="15"/>
-        <source>plugin.feature.block.text</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>FeatureBlockManager</name>
@@ -146,7 +141,7 @@ Logo</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Gui/Widgets/FeatureBlocksWidget.ui" line="133"/>
+        <location filename="../Gui/Widgets/FeatureBlocksWidget.ui" line="139"/>
         <source>Del</source>
         <translation type="unfinished"></translation>
     </message>
@@ -478,8 +473,8 @@ Would you like to save your changes before continuing?</translation>
         <location filename="../Plugins/PluginManager.cpp" line="62"/>
         <location filename="../Plugins/PluginManager.cpp" line="86"/>
         <location filename="../Plugins/PluginManager.cpp" line="98"/>
-        <location filename="../Plugins/PluginManager.cpp" line="109"/>
-        <location filename="../Plugins/PluginManager.cpp" line="115"/>
+        <location filename="../Plugins/PluginManager.cpp" line="116"/>
+        <location filename="../Plugins/PluginManager.cpp" line="122"/>
         <source>PluginLoadFailed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -556,6 +551,14 @@ Would you like to save your changes before continuing?</translation>
     <message>
         <location filename="../Plugins/PrinterPluginRegistry.cpp" line="36"/>
         <source>PrinterPluginLoadFailed</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RollScriptBlockTextFeaturePluginInfo</name>
+    <message>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextFeaturePluginInfo.h" line="15"/>
+        <source>plugin.feature.block.text</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -7,6 +7,10 @@ project(RollScript
 
 set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+
 add_compile_definitions(
     QT_NO_CAST_FROM_ASCII
     QT_NO_CAST_TO_ASCII

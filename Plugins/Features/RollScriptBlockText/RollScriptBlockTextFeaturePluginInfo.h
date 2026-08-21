@@ -12,9 +12,9 @@ public:
         : FeatureBlockInfo("RollScriptBlockTextFeaturePluginInfo",                                                   // Translation Context
                            QStringLiteral("de.mzsoft.rollscript.feature.block.text"),                                // Plugin ID
                            QStringLiteral("1.0.0"),                                                                  // Plugin Version
-                           QT_TRANSLATE_NOOP("DymoLabelPoint350PrinterPluginInfo", "plugin.feature.block.text"),     // Plugin Display Name Key
+                           QT_TRANSLATE_NOOP("RollScriptBlockTextFeaturePluginInfo", "plugin.feature.block.text"),     // Plugin Display Name Key
                            QStringLiteral("feature.block.text"),
-                           QIcon(QStringLiteral(":/RollScriptBlockTextFeaturePlugin/icons/BlockText.svg")),
+                           QIcon(QStringLiteral(":/RollScriptBlockTextFeaturePlugin/icons/FeatureBlockText.icon.svg")),
                            "feature.block.text.name",
                            "feature.block.text.tooltip")
     {}

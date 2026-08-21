@@ -1,17 +1,11 @@
 # Application target
 
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTORCC ON)
-
-
 # -----------------------------------------------------------------------------
 # Qt
 # -----------------------------------------------------------------------------
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets Gui Svg LinguistTools)
 
 qt_standard_project_setup()
-
 
 # -----------------------------------------------------------------------------
 # Application files
@@ -140,6 +134,14 @@ set(TRANSLATIONS
 )
 
 # -----------------------------------------------------------------------------
+# Ressources
+# -----------------------------------------------------------------------------
+set(RESSOURCES
+    Resources/RollScript.qrc
+    ${COMMON_DIR}/Resources/Common.qrc
+)
+
+# -----------------------------------------------------------------------------
 # Application
 # -----------------------------------------------------------------------------
 qt_add_executable(RollScript
@@ -161,8 +163,7 @@ qt_add_executable(RollScript
     ${COMMON_GUI_HEADERS}
     ${COMMON_GUI_FORMS}
 
-    Resources/RollScript.qrc
-    ${COMMON_DIR}/Resources/Common.qrc
+    ${RESSOURCES}
 )
 
 # -----------------------------------------------------------------------------
@@ -176,10 +177,10 @@ qt_add_translations(
 # -----------------------------------------------------------------------------
 # Resources
 # -----------------------------------------------------------------------------
-qt_add_resources(RollScript
-    Resources/RollScript.qrc
-    ${COMMON_DIR}/Resources/Common.qrc
-)
+#qt_add_resources(
+#    TARGETS RollScript
+#    ${RESSOURCES}
+#)
 
 # -----------------------------------------------------------------------------
 # Includes and Libraries

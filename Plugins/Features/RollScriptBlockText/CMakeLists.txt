@@ -12,6 +12,9 @@ set(SOURCES
     RollScriptBlockTextFeaturePlugin.cpp
     RollScriptBlockText.cpp
 
+    RollScriptBlockTextDocument.cpp
+    RollScriptBlockTextLineDocument.cpp
+
     RollScriptBlockTextWidget.cpp
     RollScriptBlockTextLineWidget.cpp
 )
@@ -20,6 +23,9 @@ set(HEADERS
     RollScriptBlockTextFeaturePlugin.h
     RollScriptBlockTextFeaturePluginInfo.h
     RollScriptBlockText.h
+
+    RollScriptBlockTextDocument.h
+    RollScriptBlockTextLineDocument.h
 
     RollScriptBlockTextWidget.h
     RollScriptBlockTextLineWidget.h
@@ -58,6 +64,13 @@ set(TRANSLATIONS
 )
 
 # -----------------------------------------------------------------------------
+# Ressources
+# -----------------------------------------------------------------------------
+set(RESSOURCES
+    Resources/RollScriptBlockTextFeaturePlugin.qrc
+)
+
+# -----------------------------------------------------------------------------
 # Plugin
 # -----------------------------------------------------------------------------
 
@@ -70,14 +83,7 @@ qt_add_plugin(RollScriptBlockTextFeaturePlugin
     ${CORE_HEADERS}
     ${COMMON_SOURCES}
     ${COMMON_HEADERS}
-
-    Resources/RollScriptBlockTextFeaturePlugin.qrc
-)
-
-target_sources(RollScriptBlockTextFeaturePlugin
-  PRIVATE
-    RollScriptBlockTextDocument.h RollScriptBlockTextDocument.cpp
-    RollScriptBlockTextLineDocument.h RollScriptBlockTextLineDocument.cpp
+    ${RESSOURCES}
 )
 
 # -----------------------------------------------------------------------------
@@ -91,9 +97,10 @@ qt_add_translations(
 # -----------------------------------------------------------------------------
 # Resources
 # -----------------------------------------------------------------------------
-qt_add_resources(RollScriptBlockTextFeaturePlugin
-    Resources/RollScriptBlockTextFeaturePlugin.qrc
-)
+#qt_add_resources(
+#    TARGETS RollScriptBlockTextFeaturePlugin
+#    ${RESSOURCES}
+#)
 
 # -----------------------------------------------------------------------------
 # Include directories

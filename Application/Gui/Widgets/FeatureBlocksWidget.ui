@@ -110,6 +110,12 @@
            <property name="icon">
             <iconset theme="list-add"/>
            </property>
+           <property name="iconSize">
+            <size>
+             <width>16</width>
+             <height>16</height>
+            </size>
+           </property>
            <property name="popupMode">
             <enum>QToolButton::ToolButtonPopupMode::InstantPopup</enum>
            </property>

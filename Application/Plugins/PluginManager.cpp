@@ -104,6 +104,13 @@ bool PluginManager::loadPluginFile(const QString& qstrPluginFileName)
     IFeaturePlugin* ptrFeaturePlugin = qobject_cast<IFeaturePlugin*>(ptrInstance);
     if(ptrFeaturePlugin)
     {
+
+        const QString qstrPath =
+            QStringLiteral(":/RollScriptBlockTextFeaturePlugin/icons/FeatureBlockText.icon");
+
+        qDebug() << "exists:" << QFile::exists(qstrPath);
+        qDebug() << "resources:" << QDir(QStringLiteral(":/")).entryList();
+
         if(!m_registryFeatures->registerPlugin(ptrFeaturePlugin))
         {
             ROLLSCRIPT_ERROR_CAUSE(tr("PluginLoadFailed"), QStringLiteral("m_registryFeatures.registerPlugin failed."), m_registryFeatures->takeError());

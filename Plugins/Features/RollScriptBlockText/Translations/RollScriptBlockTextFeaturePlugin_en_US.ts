@@ -2,7 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US" sourcelanguage="en">
 <context>
-    <name>DymoLabelPoint350PrinterPluginInfo</name>
+    <name>RollScriptBlockTextFeaturePluginInfo</name>
     <message>
         <location filename="../RollScriptBlockTextFeaturePluginInfo.h" line="15"/>
         <source>plugin.feature.block.text</source>

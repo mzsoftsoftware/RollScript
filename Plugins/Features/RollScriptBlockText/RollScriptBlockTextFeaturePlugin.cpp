@@ -3,10 +3,21 @@
 #include "RollScriptBlockTextWidget.h"
 #include "RollScriptBlockTextDocument.h"
 
+#include <QFile>
+#include <QDir>
 
 RollScriptBlockTextFeaturePlugin::RollScriptBlockTextFeaturePlugin(QObject* parent)
     : IFeaturePlugin(parent)
 {
+    const QString qstrPath =
+        QStringLiteral(
+            ":/RollScriptBlockTextFeaturePlugin/icons/FeatureBlockText.icon");
+
+    qDebug() << "Constructor Plugin icon:"
+             << QFile::exists(qstrPath)
+             << QIcon(qstrPath).isNull();
+
+    qDebug() << "Constructor resources:" << QDir(QStringLiteral(":/")).entryList();
 }
 
 RollScriptBlockWidgetBase* RollScriptBlockTextFeaturePlugin::createFeatureBlockWidget(QWidget *parent)
