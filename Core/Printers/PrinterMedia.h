@@ -18,7 +18,9 @@ public:
     QString id() const                                  { return m_qstrId; }
     QString displayName() const                         { return m_qstrDisplayName; }
     QIcon icon() const                                  { return m_icon; }
+
     const PrinterMediaConstraints& constraints() const  { return m_printerMediaConstraints; }
+    const double heightMm() const                       { return m_dblHeightMm; }
 
 protected:
     QString                     m_qstrId;
@@ -26,4 +28,5 @@ protected:
     QIcon                       m_icon;
 
     PrinterMediaConstraints     m_printerMediaConstraints;
+    double                      m_dblHeightMm;
 };

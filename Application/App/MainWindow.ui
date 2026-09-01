@@ -22,6 +22,9 @@
      <widget class="FeatureBlocksWidget" name="widget_FeatureBlocks" native="true"/>
     </item>
     <item>
+     <widget class="PreviewWidget" name="widget_Preview" native="true"/>
+    </item>
+    <item>
      <widget class="QTextEdit" name="textEdit_Debug">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
@@ -308,6 +311,12 @@
    <class>FeatureBlocksWidget</class>
    <extends>QWidget</extends>
    <header>Gui/Widgets/FeatureBlocksWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PreviewWidget</class>
+   <extends>QWidget</extends>
+   <header>Gui/Widgets/PreviewWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

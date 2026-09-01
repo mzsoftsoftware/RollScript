@@ -2,6 +2,7 @@
 
 #include <QMarginsF>
 
+
 struct PrinterMediaConstraints
 {
     QMarginsF   marginsMinMm;

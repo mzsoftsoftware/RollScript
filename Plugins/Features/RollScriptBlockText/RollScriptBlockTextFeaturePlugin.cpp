@@ -2,6 +2,7 @@
 
 #include "RollScriptBlockTextWidget.h"
 #include "RollScriptBlockTextDocument.h"
+#include "RollScriptBlockTextRenderer.h"
 
 #include <QFile>
 #include <QDir>
@@ -28,4 +29,9 @@ RollScriptBlockWidgetBase* RollScriptBlockTextFeaturePlugin::createFeatureBlockW
 RollScriptBlockDocumentBase* RollScriptBlockTextFeaturePlugin::createFeatureBlockDocument(QObject* parent)
 {
     return new RollScriptBlockTextDocument(m_pluginInfo.featureBlockId(), parent);
+}
+
+RollScriptBlockRendererBase* RollScriptBlockTextFeaturePlugin::createFeatureBlockRenderer(QObject* parent)
+{
+    return new RollScriptBlockTextRenderer(m_pluginInfo.featureBlockId(), parent);
 }

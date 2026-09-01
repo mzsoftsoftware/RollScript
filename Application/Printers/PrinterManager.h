@@ -9,6 +9,7 @@ class PluginManager;
 class USBManager;
 
 class PrinterInstance;
+class PrinterMedia;
 
 #include "Core/USB/USBDeviceInfo.h"
 
@@ -29,6 +30,7 @@ public:
 
     bool scanForDevices();
     bool switchPrinter(const QString& qstrPrinterId);
+    bool print(const QImage& printImage, const PrinterMedia* ptrPrinterMediaId);
 
 private slots:
     void slotPrinterInstanceError();
@@ -36,6 +38,9 @@ private slots:
 signals:
     void scanFinished();
     void printerChanged();
+    void printStarted(int iSteps);
+    void printProgress(int iStep);
+    void printFinished();
     void managerError();
 
 private:

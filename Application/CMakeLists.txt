@@ -52,6 +52,10 @@ set(LOGIC_SOURCES
 
     Features/FeatureBlockManager.cpp
     Features/FeatureBlockRegistry.cpp
+
+    Rendering/RollScriptRenderer.cpp
+    Rendering/RenderDeviceInfo.cpp
+    Rendering/RenderLayout.cpp
 )
 set(LOGIC_HEADERS
     Document/RollScriptDocument.h
@@ -68,6 +72,10 @@ set(LOGIC_HEADERS
 
     Features/FeatureBlockManager.h
     Features/FeatureBlockRegistry.h
+
+    Rendering/RollScriptRenderer.h
+    Rendering/RenderDeviceInfo.h
+    Rendering/RenderLayout.h
 )
 
 # -----------------------------------------------------------------------------
@@ -83,6 +91,7 @@ set(GUI_SOURCES
     Gui/Widgets/SettingsWidget.cpp
     Gui/Widgets/FeatureBlocksWidget.cpp
     Gui/Widgets/FeatureBlockWidgetEmpty.cpp
+    Gui/Widgets/PreviewWidget.cpp
 )
 set(GUI_HEADERS
     Gui/Models/PrintersItemModel.h
@@ -94,7 +103,7 @@ set(GUI_HEADERS
     Gui/Widgets/SettingsWidget.h
     Gui/Widgets/FeatureBlocksWidget.h
     Gui/Widgets/FeatureBlockWidgetEmpty.h
-
+    Gui/Widgets/PreviewWidget.h
 )
 set(GUI_FORMS
     Gui/Widgets/SettingsWidget.ui

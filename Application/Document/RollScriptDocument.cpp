@@ -7,12 +7,11 @@
 #include "Document/RollScriptDocumentBlocks.h"
 
 
-RollScriptDocument::RollScriptDocument(QObject* parent)
+RollScriptDocument::RollScriptDocument(FeatureBlockManager *ptrFeatureBlockManager, QObject* parent)
     : QObject{parent}
-
 {
     m_ptrSettings = new RollScriptDocumentSettings(this);
-    m_ptrBlocks = new RollScriptDocumentBlocks(this);
+    m_ptrBlocks = new RollScriptDocumentBlocks(ptrFeatureBlockManager, this);
 
     connect(m_ptrSettings, &RollScriptDocumentSettings::settingsChanged, this, &RollScriptDocument::slotSettingsChanged);
     connect(m_ptrBlocks, &RollScriptDocumentBlocks::blocksChanged, this, &RollScriptDocument::slotBlocksChanged);
@@ -78,6 +77,10 @@ void RollScriptDocument::setModified(bool bModified)
 {
     if (m_bModified == bModified)
     {
+        if(bModified)
+        {
+            emit documentModifiedChanged(m_bModified);
+        }
         return;
     }
 
@@ -168,7 +171,7 @@ bool RollScriptDocument::saveToFile(const QString& qstrFileName)
     jsonDocument[QStringLiteral("settings")] = jsonSettings;
 
     QJsonObject jsonBlocks;
-    if(!m_ptrSettings->saveToJson(jsonBlocks))
+    if(!m_ptrBlocks->saveToJson(jsonBlocks))
     {
         ROLLSCRIPT_ERROR_CAUSE(tr("Document.SaveToFile.Json.Error"), QStringLiteral("m_ptrBlocks->saveToJson failed."), m_ptrBlocks->takeError());
         return false;

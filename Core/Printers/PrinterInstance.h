@@ -8,6 +8,7 @@
 
 class IPrinterPlugin;
 class PrinterMedia;
+#include "Core/Printers/PrinterDeviceInfo.h"
 
 
 class PrinterInstance : public QObject, public RollScriptErrorOwner
@@ -25,8 +26,11 @@ public:
 
     const IPrinterPlugin* plugin() const                  { return m_ptrPrinterPlugin; }
 
-    virtual QStringList availableMediaIds() const                               { return m_qstrPrinterMediaIds; }
-    virtual const PrinterMedia* media(const QString& qstrPrinterMediaId) const  { return m_hashPrinterMedias.value(qstrPrinterMediaId, nullptr); }
+    QStringList availableMediaIds() const                               { return m_qstrPrinterMediaIds; }
+    const PrinterMedia* media(const QString& qstrPrinterMediaId) const  { return m_hashPrinterMedias.value(qstrPrinterMediaId, nullptr); }
+    const PrinterDeviceInfo& deviceInfo() const                         { return m_printerDeviceInfo; }
+
+    bool print(const QImage& printImage, const PrinterMedia* ptrPrinterMediaId);
 
     // Connection
     virtual bool open() = 0;
@@ -38,6 +42,9 @@ private slots:
 
 signals:
     void printerError();
+    void printerPrintStarted(int iSteps);
+    void printerPrintProgress(int iStep);
+    void printerPrintFinished();
 
 protected:
     IPrinterPlugin* m_ptrPrinterPlugin = nullptr;
@@ -48,4 +55,6 @@ protected:
 
     QStringList                     m_qstrPrinterMediaIds;
     QHash<QString, PrinterMedia*>   m_hashPrinterMedias;
+
+    PrinterDeviceInfo           m_printerDeviceInfo;
 };

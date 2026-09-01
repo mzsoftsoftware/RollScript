@@ -12,6 +12,8 @@ class FeatureBlockManager;
 class PrinterManager;
 class USBManager;
 
+class RollScriptRenderer;
+
 
 class ApplicationContext : public QObject
 {
@@ -24,6 +26,7 @@ public:
     PluginManager* pluginManager() const                { return m_ptrPluginManager; }
     FeatureBlockManager* featureBlockManager() const    { return m_ptrFeatureBlockManager; }
     PrinterManager* printerManager() const              { return m_ptrPrinterManager; }
+    RollScriptRenderer* rollScriptRenderer() const      { return m_ptrRollScriptRenderer; }
 
     bool init();
 
@@ -37,4 +40,6 @@ private:
 
     PrinterManager* m_ptrPrinterManager = nullptr;
     USBManager* m_ptrUSBManager = nullptr;
+
+    RollScriptRenderer* m_ptrRollScriptRenderer = nullptr;
 };

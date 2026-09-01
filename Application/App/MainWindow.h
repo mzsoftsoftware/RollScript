@@ -10,6 +10,8 @@ class MainWindow;
 QT_END_NAMESPACE
 
 class QComboBox;
+class QProgressDialog;
+
 class PrintersItemModel;
 class PrinterMediasItemModel;
 
@@ -44,6 +46,7 @@ private:
 
     void setupPrinterManager();
     void setupFeatureBlockManager();
+    void setupRollScriptRenderer();
 
 private slots:
     void slot_SwitchLanguage();
@@ -55,9 +58,15 @@ private slots:
     void slot_PrinterManager_Scan();
     void slot_PrinterManager_ScanFinished();
     void slot_PrinterManager_PrinterChanged();
-    void slot_PrinterManager_ManagerError();
+    void slot_PrinterManager_ManagerError();    
+    void slot_PrinterManager_PrintStart();
+    void slot_PrinterManager_PrintStarted(int iSteps);
+    void slot_PrinterManager_PrintProgress(int iStep);
+    void slot_PrinterManager_PrintFinished();
 
     void slot_FeatureBlockManager_ManagerError();
+
+    void slot_RollScriptRenderer_RenderingError();
 
     void on_actionAboutRollScript_triggered();
     void on_actionFileNew_triggered();
@@ -73,6 +82,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QProgressDialog*        m_ptrDlgPrinterProgress = nullptr;
 
     QComboBox*              m_ptrComboBoxPrinters = nullptr;
     PrintersItemModel*      m_ptrPrintersItemModel = nullptr;

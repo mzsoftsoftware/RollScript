@@ -153,10 +153,6 @@ void FeatureBlocksWidget::slotAddFeatureBlockFromMenu(QAction *ptrAction)
     if( qstrFeatureBlockId.isEmpty())
         return;
 
-    RollScriptBlockDocumentBase* ptrDocumentBlockBase = m_ptrFeatureBlockManager->createFeatureBlockDocument(qstrFeatureBlockId, this);
-    if(!ptrDocumentBlockBase)
-        return;
-
     QModelIndex currentIndex = ui->listView->currentIndex();
     int iInsertIndex;
     if (currentIndex.isValid())
@@ -164,7 +160,7 @@ void FeatureBlocksWidget::slotAddFeatureBlockFromMenu(QAction *ptrAction)
     else
         iInsertIndex = m_ptrDocumentBlocks->documentBlockCount();
 
-    m_ptrDocumentBlocks->insertDocumentBlock(iInsertIndex, ptrDocumentBlockBase);
+    m_ptrDocumentBlocks->insertDocumentBlock(iInsertIndex, qstrFeatureBlockId);
 
     QModelIndex newIndex = m_ptrFeatureBlocksItemModel->index(iInsertIndex, 0);
     ui->listView->setCurrentIndex(newIndex);
@@ -192,7 +188,8 @@ void FeatureBlocksWidget::on_toolButton_Remove_clicked()
 
 void FeatureBlocksWidget::updateUiFromDocument()
 {
-    //QSignalBlocker blockerLengthMin(ui->doubleSpinBox_LengthMin);
+    slotUpdateButtons();
+    //QSignalBlocker blockerLengthMin(ui->doubleSpinBx_LengthMin);
     //QSignalBlocker blockerMargins(ui->marginsWidget);
 
     //ui->doubleSpinBox_LengthMin->setValue(m_ptrDocumentSettings->minimumLengthMm());

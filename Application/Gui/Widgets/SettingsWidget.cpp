@@ -72,16 +72,15 @@ void SettingsWidget::rebuildPrinterMediasModel()
     {
         int index = ui->comboBox_PrinterMedia->findData(m_ptrDocumentSettings->printerMediaId(), Qt::UserRole);
         ui->comboBox_PrinterMedia->setCurrentIndex(index);
-        updatePrinterMediaConstraints();
+        updatePrinterMediaConstraints(m_ptrDocumentSettings->printerMediaId());
     }
 }
 
-void SettingsWidget::updatePrinterMediaConstraints()
+void SettingsWidget::updatePrinterMediaConstraints(const QString& qstrPrinterMediaId)
 {
     Q_ASSERT(m_ptrDocumentSettings);
     Q_ASSERT(m_ptrPrinterManager);
 
-    QString qstrPrinterMediaId = m_ptrDocumentSettings->printerMediaId();
     if(qstrPrinterMediaId.isEmpty())
     {
         resetPrinterMediaConstraints();
@@ -134,8 +133,10 @@ void SettingsWidget::on_comboBox_PrinterMedia_currentIndexChanged(int index)
     if(index >= 0)
     {
         QString qstrId = ui->comboBox_PrinterMedia->itemData(index).toString();
+
+        // Update first the Constraints then the Media.
+        updatePrinterMediaConstraints(qstrId);
         m_ptrDocumentSettings->setPrinterMediaId(qstrId);
-        updatePrinterMediaConstraints();
     }
 }
 void SettingsWidget::on_doubleSpinBox_LengthMin_valueChanged(double value)

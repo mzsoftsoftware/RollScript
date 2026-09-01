@@ -10,6 +10,7 @@ class FeatureBlockRegistry;
 class IFeatureBlock;
 class RollScriptBlockWidgetBase;
 class RollScriptBlockDocumentBase;
+class RollScriptBlockRendererBase;
 
 
 class FeatureBlockManager : public QObject, public RollScriptErrorOwner
@@ -27,6 +28,7 @@ public:
     IFeatureBlock* featureBlock(const QString& qstrfeatureBlockId) const;
     RollScriptBlockWidgetBase* createFeatureBlockWidget(const QString& qstrFeatureBlockId, QWidget *parent);
     RollScriptBlockDocumentBase* createFeatureBlockDocument(const QString& qstrFeatureBlockId, QObject* parent);
+    RollScriptBlockRendererBase* createFeatureBlockRenderer(const QString& qstrFeatureBlockId, QObject* parent);
 
 signals:
     void managerError();

@@ -6,6 +6,8 @@
 #include <QFileInfo>
 #include <QFileDialog>
 #include <QComboBox>
+#include <QProgressDialog>
+#include <QTimer>
 
 #include "App/DialogAbout.h"
 
@@ -13,11 +15,15 @@
 #include "Translation/TranslationManager.h"
 #include "Printers/PrinterManager.h"
 #include "Features/FeatureBlockManager.h"
+#include "Rendering/RollScriptRenderer.h"
 
 #include "Document/RollScriptDocument.h"
+#include "Document/RollScriptDocumentSettings.h"
 
 #include "Gui/Models/PrintersItemModel.h"
 #include "Gui/Models/PrinterMediasItemModel.h"
+
+#include "Core/Printers/PrinterInstance.h"
 
 #include "Core/Errors/RollScriptError.h"
 
@@ -34,6 +40,7 @@ MainWindow::MainWindow(ApplicationContext* ptrApplicationContext, QWidget *paren
 
     setupPrinterManager();
     setupFeatureBlockManager();
+    setupRollScriptRenderer();
     setupDocument();
 
     setupActions();
@@ -135,12 +142,16 @@ void MainWindow::setupToolBar()
 
 void MainWindow::setupDocument()
 {
-    m_ptrRollScriptDocument = new RollScriptDocument(this);
+    m_ptrRollScriptDocument = new RollScriptDocument(m_ptrApplicationContext->featureBlockManager(), this);
 
     // Connect RollScriptDocument to Widgets
     // TASK : Connect RollScriptDocument to Widgets
     ui->widget_Settings->setRollScriptDocument(m_ptrRollScriptDocument);
     ui->widget_FeatureBlocks->setRollScriptDocument(m_ptrRollScriptDocument);
+    ui->widget_Preview->setRollScriptDocument(m_ptrRollScriptDocument);
+
+    // Promote Document to other things
+    m_ptrApplicationContext->rollScriptRenderer()->setRollScriptDocument(m_ptrRollScriptDocument);
 
     // Connect RollScriptDocument signals
     connect(m_ptrRollScriptDocument, &RollScriptDocument::documentModifiedChanged, this, &MainWindow::updateWindowTitle);
@@ -302,11 +313,23 @@ void MainWindow::setupPrinterManager()
     connect(ptrPrinterManager, &PrinterManager::scanFinished, this, &MainWindow::slot_PrinterManager_ScanFinished);
     connect(ptrPrinterManager, &PrinterManager::printerChanged, this, &MainWindow::slot_PrinterManager_PrinterChanged);
     connect(ptrPrinterManager, &PrinterManager::managerError, this, &MainWindow::slot_PrinterManager_ManagerError);
+    connect(ptrPrinterManager, &PrinterManager::printStarted, this, &MainWindow::slot_PrinterManager_PrintStarted);
+    connect(ptrPrinterManager, &PrinterManager::printProgress, this, &MainWindow::slot_PrinterManager_PrintProgress);
+    connect(ptrPrinterManager, &PrinterManager::printFinished, this, &MainWindow::slot_PrinterManager_PrintFinished);
 
     connect(ui->actionPrintersScan, &QAction::triggered, this, &MainWindow::slot_PrinterManager_Scan);
 
     // Promote to SettingsWidget
     ui->widget_Settings->setPrinterManager(ptrPrinterManager);
+
+    // Setup the ProgressDialog
+    m_ptrDlgPrinterProgress = new QProgressDialog(this);
+    m_ptrDlgPrinterProgress->setWindowTitle(tr("Drucken"));
+    m_ptrDlgPrinterProgress->setCancelButtonText(tr("Abbrechen"));
+    m_ptrDlgPrinterProgress->setAutoClose(false);
+    m_ptrDlgPrinterProgress->setAutoReset(false);
+    m_ptrDlgPrinterProgress->setWindowModality(Qt::WindowModal);
+    m_ptrDlgPrinterProgress->close();
 }
 
 void MainWindow::slot_PrinterManager_Scan()
@@ -347,6 +370,11 @@ void MainWindow::slot_PrinterManager_PrinterChanged()
 }
 void MainWindow::slot_PrinterManager_ManagerError()
 {
+    if(m_ptrDlgPrinterProgress->isVisible())
+    {
+        m_ptrDlgPrinterProgress->close();
+    }
+
     RollScriptError *ptrError = m_ptrApplicationContext->printerManager()->takeError();
     if(ptrError)
     {
@@ -356,6 +384,47 @@ void MainWindow::slot_PrinterManager_ManagerError()
     }
     else
         Q_ASSERT_X(false, "MainWindow::slot_PrinterManager_ManagerError", "No RollScriptError found");
+}
+void MainWindow::slot_PrinterManager_PrintStart()
+{
+    Q_ASSERT(m_ptrDlgPrinterProgress->isVisible());
+
+    RollScriptRenderer* ptrRenderer = m_ptrApplicationContext->rollScriptRenderer();
+    if(!ptrRenderer->render())
+    {
+        m_ptrDlgPrinterProgress->close();
+        return;
+    }
+
+    PrinterManager* ptrPrinterManager = m_ptrApplicationContext->printerManager();
+    RollScriptDocumentSettings* ptrDocumentSettings = m_ptrRollScriptDocument->settings();
+
+    const PrinterInstance* ptrPrinterInstance = ptrPrinterManager->currentPrinter();
+    const PrinterMedia* ptrPrinterMedia = ptrPrinterInstance->media(ptrDocumentSettings->printerMediaId());
+
+    if(!ptrPrinterManager->print(ptrRenderer->image(), ptrPrinterMedia))
+    {
+        m_ptrDlgPrinterProgress->close();
+        return;
+    }
+}
+void MainWindow::slot_PrinterManager_PrintStarted(int iSteps)
+{
+    m_ptrDlgPrinterProgress->setRange(0, iSteps);
+    m_ptrDlgPrinterProgress->setValue(0);
+    m_ptrDlgPrinterProgress->setLabelText(tr("Drucken ..."));
+}
+void MainWindow::slot_PrinterManager_PrintProgress(int iStep)
+{
+    Q_ASSERT(m_ptrDlgPrinterProgress->isVisible());
+
+    m_ptrDlgPrinterProgress->setValue(iStep);
+}
+void MainWindow::slot_PrinterManager_PrintFinished()
+{
+    Q_ASSERT(m_ptrDlgPrinterProgress->isVisible());
+
+    m_ptrDlgPrinterProgress->close();
 }
 
 void MainWindow::setupFeatureBlockManager()
@@ -378,6 +447,28 @@ void MainWindow::slot_FeatureBlockManager_ManagerError()
     }
     else
         Q_ASSERT_X(false, "MainWindow::slot_FeatureBlockManager_ManagerError", "No RollScriptError found");
+}
+
+void MainWindow::setupRollScriptRenderer()
+{
+    RollScriptRenderer *ptrRollScriptRenderer = m_ptrApplicationContext->rollScriptRenderer();
+    // Connect FeatureBlockManager signals
+    connect(ptrRollScriptRenderer, &RollScriptRenderer::renderingError, this, &MainWindow::slot_RollScriptRenderer_RenderingError);
+
+    // Promote to PreviewWidget
+    ui->widget_Preview->setRollScriptRenderer(ptrRollScriptRenderer);
+}
+void MainWindow::slot_RollScriptRenderer_RenderingError()
+{
+    RollScriptError *ptrError = m_ptrApplicationContext->rollScriptRenderer()->takeError();
+    if(ptrError)
+    {
+        ui->textEdit_Debug->append(ptrError->messageDebug());
+        QMessageBox::critical(this, tr("RollScriptRenderer.Error"), ptrError->messageUser());
+        delete ptrError;
+    }
+    else
+        Q_ASSERT_X(false, "MainWindow::slot_RollScriptRenderer_RenderingError", "No RollScriptError found");
 }
 
 void MainWindow::on_actionAboutRollScript_triggered()
@@ -403,7 +494,14 @@ void MainWindow::on_actionFileSaveAs_triggered()
 }
 void MainWindow::on_actionPrintersPrint_triggered()
 {
-    qInfo() << "on_actionPrintersPrint_triggered";
+    Q_ASSERT(!m_ptrDlgPrinterProgress->isVisible());
+
+    m_ptrDlgPrinterProgress->setRange(0, 0);
+    m_ptrDlgPrinterProgress->setValue(0);
+    m_ptrDlgPrinterProgress->setLabelText(tr("Initialisierung ..."));
+    m_ptrDlgPrinterProgress->show();
+
+    QTimer::singleShot(0, this, &MainWindow::slot_PrinterManager_PrintStart);
 }
 
 void MainWindow::slot_ComboBoxPrinters_IndexChanged(int index)

@@ -84,3 +84,13 @@ RollScriptBlockDocumentBase* FeatureBlockManager::createFeatureBlockDocument(con
 
     return ptrFeatureBlock->createFeatureBlockDocument(parent);
 }
+RollScriptBlockRendererBase* FeatureBlockManager::createFeatureBlockRenderer(const QString& qstrFeatureBlockId, QObject* parent)
+{
+    Q_ASSERT(m_ptrRegistryFeatureBlocks);
+    Q_ASSERT(parent);
+
+    IFeatureBlock* ptrFeatureBlock = m_ptrRegistryFeatureBlocks->featureBlock(qstrFeatureBlockId);
+    Q_ASSERT(ptrFeatureBlock);
+
+    return ptrFeatureBlock->createFeatureBlockRenderer(parent);
+}

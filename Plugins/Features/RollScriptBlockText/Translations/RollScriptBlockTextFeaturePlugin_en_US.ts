@@ -2,10 +2,31 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US" sourcelanguage="en">
 <context>
+    <name>RollScriptBlockTextDocument</name>
+    <message>
+        <location filename="../RollScriptBlockTextDocument.cpp" line="63"/>
+        <source>DocumentBlockText.LoadFromFile.Json.Version.Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../RollScriptBlockTextDocument.cpp" line="74"/>
+        <source>DocumentBlockText.LoadFromFile.Json.Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RollScriptBlockTextFeaturePluginInfo</name>
     <message>
         <location filename="../RollScriptBlockTextFeaturePluginInfo.h" line="15"/>
         <source>plugin.feature.block.text</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RollScriptBlockTextLineDocument</name>
+    <message>
+        <location filename="../RollScriptBlockTextLineDocument.cpp" line="50"/>
+        <source>DocumentBlockTextLine.LoadFromFile.Json.Version.Error</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

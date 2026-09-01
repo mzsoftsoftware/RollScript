@@ -9,14 +9,22 @@ qt_standard_project_setup()
 # -----------------------------------------------------------------------------
 
 set(SOURCES
-    DymoLabelPoint350PrinterPlugin.cpp
-    DymoLabelPoint350PrinterMedia.cpp
+    DLP350PrinterPlugin.cpp
+    DLP350PrinterMedia.cpp
+    DLP350PrinterWorker.cpp
+    DLP350PrinterJob.cpp
+    DLP350PrinterJobAlive.cpp
+    DLP350PrinterJobPrint.cpp
 )
 
 set(HEADERS
-    DymoLabelPoint350PrinterPlugin.h
-    DymoLabelPoint350PrinterPluginInfo.h
-    DymoLabelPoint350PrinterMedia.h
+    DLP350PrinterPlugin.h
+    DLP350PrinterPluginInfo.h
+    DLP350PrinterMedia.h
+    DLP350PrinterWorker.h
+    DLP350PrinterJob.h
+    DLP350PrinterJobAlive.h
+    DLP350PrinterJobPrint.h
 )
 
 set(CORE_HEADERS

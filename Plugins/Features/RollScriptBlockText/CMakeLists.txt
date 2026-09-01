@@ -86,6 +86,12 @@ qt_add_plugin(RollScriptBlockTextFeaturePlugin
     ${RESSOURCES}
 )
 
+target_sources(RollScriptBlockTextFeaturePlugin
+  PRIVATE
+    RollScriptBlockTextRenderer.h
+    RollScriptBlockTextRenderer.cpp
+)
+
 # -----------------------------------------------------------------------------
 # Translations
 # -----------------------------------------------------------------------------

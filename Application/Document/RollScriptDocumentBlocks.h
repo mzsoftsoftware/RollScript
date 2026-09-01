@@ -4,29 +4,29 @@
 #include "Core/Errors/RollScriptErrorOwner.h"
 
 class RollScriptBlockDocumentBase;
-
+class FeatureBlockManager;
 
 class RollScriptDocumentBlocks : public QObject, public RollScriptErrorOwner
 {
     Q_OBJECT
 
 public:
-    RollScriptDocumentBlocks(QObject* parent);
+    RollScriptDocumentBlocks(FeatureBlockManager *ptrFeatureBlockManager, QObject* parent);
 
     // Getter
 
     // Block handling
-    void insertDocumentBlock(const int index, RollScriptBlockDocumentBase* ptrBlock);
+    void insertDocumentBlock(const int index, const QString& qstrFeatureBlockId);
     void removeDocumentBlock(const int index);
     void moveDocumentBlock(const int idxFrom, const int idxTo);
     RollScriptBlockDocumentBase* documentBlock(const int index);
-    const QVector<RollScriptBlockDocumentBase*>&documentBlocks() const  { return m_vecDocumentBlocks; }
+    const QVector<RollScriptBlockDocumentBase*>& documentBlocks() const { return m_vecDocumentBlocks; }
     int documentBlockCount() const                                      { return m_vecDocumentBlocks.count(); }
 
     // JSON
     void clear();
     bool loadFromJson(const QJsonObject& jsonBlocks);
-    bool saveToJson(QJsonObject& jsonBlocks) const;
+    bool saveToJson(QJsonObject& jsonBlocks);
 
 private:
     bool loadVersion_1(const QJsonObject& jsonBlocks);
@@ -47,5 +47,7 @@ signals:
     void documentBlocksReset();
 
 private:
+    FeatureBlockManager* m_ptrFeatureBlockManager;
+
     QVector<RollScriptBlockDocumentBase*> m_vecDocumentBlocks;
 };

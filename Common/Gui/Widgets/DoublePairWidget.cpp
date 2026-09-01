@@ -80,7 +80,7 @@ void DoublePairWidget::setValueOne(const double value)
 }
 void DoublePairWidget::setMinimumOne(const double value)
 {
-    QSignalBlocker b(ui->doubleSpinBox_One);
+    //QSignalBlocker b(ui->doubleSpinBox_One);
     ui->doubleSpinBox_One->setMinimum(value);
     if(ui->doubleSpinBox_One->value() < value)
     {
@@ -95,7 +95,7 @@ void DoublePairWidget::setValueTwo(const double value)
 }
 void DoublePairWidget::setMinimumTwo(const double value)
 {
-    QSignalBlocker b(ui->doubleSpinBox_Two);
+    //QSignalBlocker b(ui->doubleSpinBox_Two);
     ui->doubleSpinBox_Two->setMinimum(value);
     if(ui->doubleSpinBox_Two->value() < value)
     {

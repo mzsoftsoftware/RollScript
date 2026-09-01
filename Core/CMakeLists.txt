@@ -23,13 +23,18 @@ set(SOURCES
     Blocks/RollScriptBlock.cpp
     Blocks/RollScriptBlockDocumentBase.cpp
     Blocks/RollScriptBlockWidgetBase.cpp
+    Blocks/RollScriptBlockRendererBase.cpp
 
     Printers/PrinterInstance.cpp
     Printers/PrinterMedia.cpp
+    Printers/PrinterDeviceInfo.cpp
 
     USB/PrinterInstanceUSB.cpp
     USB/USBDeviceInfo.cpp
     USB/USBManager.cpp
+
+    Rendering/RenderContext.cpp
+    Rendering/RenderGeometry.cpp
 )
 
 # -----------------------------------------------------------------------------
@@ -45,6 +50,7 @@ set(HEADERS
     Blocks/RollScriptBlock.h
     Blocks/RollScriptBlockDocumentBase.h
     Blocks/RollScriptBlockWidgetBase.h
+    Blocks/RollScriptBlockRendererBase.h
 
     Plugins/IPlugin.h
     Plugins/IPluginInfo.h
@@ -56,10 +62,14 @@ set(HEADERS
     Printers/PrinterInstance.h
     Printers/PrinterMedia.h
     Printers/PrinterMediaConstraints.h
+    Printers/PrinterDeviceInfo.h
 
     USB/PrinterInstanceUSB.h
     USB/USBDeviceInfo.h
     USB/USBManager.h
+
+    Rendering/RenderContext.h
+    Rendering/RenderGeometry.h
 )
 
 # -----------------------------------------------------------------------------
@@ -82,7 +92,7 @@ set(HEADERS
 
 add_library(RollScriptCore SHARED
     ${SOURCES}
-    ${HEADERS}
+    ${HEADERS}    
 )
 
 # -----------------------------------------------------------------------------

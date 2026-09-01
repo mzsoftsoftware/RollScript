@@ -25,6 +25,7 @@ public:
     // IFeatureBlock
     virtual RollScriptBlockWidgetBase* createFeatureBlockWidget(QWidget *parent) override;
     virtual RollScriptBlockDocumentBase* createFeatureBlockDocument(QObject* parent) override;
+    virtual RollScriptBlockRendererBase* createFeatureBlockRenderer(QObject* parent) override;
 
 private:
     RollScriptBlockTextFeaturePluginInfo m_pluginInfo;

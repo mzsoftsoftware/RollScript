@@ -7,20 +7,21 @@
 
 class RollScriptDocumentSettings;
 class RollScriptDocumentBlocks;
+class FeatureBlockManager;
 
 
 class RollScriptDocument : public QObject, public RollScriptErrorOwner
 {
     Q_OBJECT
 public:
-    explicit RollScriptDocument(QObject* parent = nullptr);
+    explicit RollScriptDocument(FeatureBlockManager *ptrFeatureBlockManager, QObject* parent);
 
     // Getters
-    bool isModified() const                   { return m_bModified; }
-    QString fileName() const                  { return m_qstrFileName; }
+    bool isModified() const                         { return m_bModified; }
+    QString fileName() const                        { return m_qstrFileName; }
 
-    RollScriptDocumentSettings* settings()          { return m_ptrSettings; }
-    RollScriptDocumentBlocks* blocks()              { return m_ptrBlocks; }
+    RollScriptDocumentSettings* settings() const    { return m_ptrSettings; }
+    RollScriptDocumentBlocks* blocks() const        { return m_ptrBlocks; }
 
     // Setters
 

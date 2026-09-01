@@ -14,6 +14,8 @@
 
 #include "Features/FeatureBlockManager.h"
 
+#include "Rendering/RollScriptRenderer.h"
+
 #include "Core/Errors/RollScriptError.h"
 
 
@@ -125,6 +127,24 @@ bool ApplicationContext::init()
 
         return false;
     }
+
+    m_ptrRollScriptRenderer = new RollScriptRenderer(m_ptrPrinterManager, m_ptrFeatureBlockManager, this);
+    if(!m_ptrRollScriptRenderer->init())
+    {
+        RollScriptError *ptrError = m_ptrRollScriptRenderer->takeError();
+        if(ptrError)
+        {
+            // TASK : Use correct tr !!!
+            QMessageBox::critical(nullptr, tr("Startup.Title"), ptrError->messageUser());
+            qDebug() << ptrError->messageDebug();
+            delete ptrError;
+        }
+        else
+            Q_ASSERT_X(false, "ApplicationContext::init", "No RollScriptError found");
+
+        return false;
+    }
+
 
     return true;
 }

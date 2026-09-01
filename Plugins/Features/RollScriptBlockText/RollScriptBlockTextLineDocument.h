@@ -27,8 +27,11 @@ public:
 
     // JSON
     void clear();
-    bool loadFromJson(const QJsonObject& jsonBlocks);
-    bool saveToJson(QJsonObject& jsonBlocks) const;
+    bool loadFromJson(const QJsonObject& jsonBlockTextLine);
+    bool saveToJson(QJsonObject& jsonBlockTextLine);
+
+private:
+    bool loadVersion_1(const QJsonObject& jsonBlockTextLine);
 
 signals:
     void documentCleared();

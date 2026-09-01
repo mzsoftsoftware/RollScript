@@ -12,6 +12,9 @@ public:
     virtual ~DymoLabelPoint350PrinterMedia() override;
 
     // Getter
+    int headOffsetTopPx() const { return m_iHeadOffsetTopPx; }
+    int headPrintablePx() const { return m_iHeadPrintablePx; }
+    int mediaHeightBytes() const;
 
     // Setter
     void setMediaDataMm(double dblHeightMm, double dblMarginTopMm, double dblMarginBottomMm, double dblLengthMinMm);

@@ -27,11 +27,11 @@ public:
 
     void rebuildPrinterMediasModel();
 
-    protected:
-        void changeEvent(QEvent *event) override;
+protected:
+    void changeEvent(QEvent *event) override;
 
 private:
-    void updatePrinterMediaConstraints();
+    void updatePrinterMediaConstraints(const QString& qstrPrinterMediaId);
     void resetPrinterMediaConstraints();
 
 private slots:

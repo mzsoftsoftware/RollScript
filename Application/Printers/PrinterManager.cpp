@@ -82,6 +82,9 @@ bool PrinterManager::scanForDevices()
 
         PrinterInstance* ptrPrinterInstance = new PrinterInstanceUSB(ptrPrinterPlugin, m_ptrUSBManager, ptrDeviceInfo, this);
         connect(ptrPrinterInstance, &PrinterInstance::printerError, this, &PrinterManager::slotPrinterInstanceError);
+        connect(ptrPrinterInstance, &PrinterInstance::printerPrintStarted, this, &PrinterManager::printStarted);
+        connect(ptrPrinterInstance, &PrinterInstance::printerPrintProgress, this, &PrinterManager::printProgress);
+        connect(ptrPrinterInstance, &PrinterInstance::printerPrintFinished, this, &PrinterManager::printFinished);
 
         m_hashPrinterInstances.insert(ptrPrinterInstance->id(), ptrPrinterInstance);
         m_qstrPrinterIds.append(ptrPrinterInstance->id());
@@ -125,6 +128,25 @@ bool PrinterManager::switchPrinter(const QString& qstrPrinterId)
     m_ptrCurrentPrinterInstance = ptrPrinterInstance;
 
     emit printerChanged();
+    return true;
+}
+
+bool PrinterManager::print(const QImage& printImage, const PrinterMedia* ptrPrinterMediaId)
+{
+    if(!m_ptrCurrentPrinterInstance)
+    {
+        ROLLSCRIPT_ERROR(tr("PrinterManagerPrintError"), QStringLiteral("m_ptrCurrentPrinterInstance not set."));
+        emit managerError();
+        return false;
+    }
+
+    if(!m_ptrCurrentPrinterInstance->print(printImage, ptrPrinterMediaId))
+    {
+        ROLLSCRIPT_ERROR_CAUSE(tr("PrinterManagerPrintError"), QStringLiteral("m_ptrCurrentPrinterInstance->print() failed."), m_ptrCurrentPrinterInstance->takeError());
+        emit managerError();
+        return false;
+    }
+
     return true;
 }
 

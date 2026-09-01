@@ -4,12 +4,13 @@
 <context>
     <name>ApplicationContext</name>
     <message>
-        <location filename="../App/ApplicationContext.cpp" line="34"/>
-        <location filename="../App/ApplicationContext.cpp" line="51"/>
-        <location filename="../App/ApplicationContext.cpp" line="68"/>
-        <location filename="../App/ApplicationContext.cpp" line="85"/>
-        <location filename="../App/ApplicationContext.cpp" line="102"/>
-        <location filename="../App/ApplicationContext.cpp" line="119"/>
+        <location filename="../App/ApplicationContext.cpp" line="36"/>
+        <location filename="../App/ApplicationContext.cpp" line="53"/>
+        <location filename="../App/ApplicationContext.cpp" line="70"/>
+        <location filename="../App/ApplicationContext.cpp" line="87"/>
+        <location filename="../App/ApplicationContext.cpp" line="104"/>
+        <location filename="../App/ApplicationContext.cpp" line="121"/>
+        <location filename="../App/ApplicationContext.cpp" line="138"/>
         <source>Startup.Title</source>
         <translation type="unfinished"></translation>
     </message>
@@ -69,40 +70,65 @@ Logo</translation>
     </message>
 </context>
 <context>
-    <name>DymoLabelPoint350PrinterPlugin</name>
+    <name>DymoLabelPoint350PrinterJob</name>
     <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DymoLabelPoint350PrinterPlugin.cpp" line="64"/>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DymoLabelPoint350PrinterPlugin.cpp" line="178"/>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJob.cpp" line="30"/>
         <source>NoPrinterInstance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DymoLabelPoint350PrinterPlugin.cpp" line="121"/>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DymoLabelPoint350PrinterPlugin.cpp" line="144"/>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DymoLabelPoint350PrinterPlugin.cpp" line="157"/>
-        <source>AliveError</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DymoLabelPoint350PrinterPlugin.cpp" line="184"/>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJob.cpp" line="36"/>
         <source>SendError</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DymoLabelPoint350PrinterPlugin.cpp" line="193"/>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJob.cpp" line="45"/>
         <source>ReceiveError</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DymoLabelPoint350PrinterJobAlive</name>
+    <message>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJobAlive.cpp" line="33"/>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJobAlive.cpp" line="56"/>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJobAlive.cpp" line="69"/>
+        <source>AliveError</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DymoLabelPoint350PrinterJobPrint</name>
+    <message>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJobPrint.cpp" line="38"/>
+        <source>PrintError</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DymoLabelPoint350PrinterPlugin</name>
+    <message>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterPlugin.cpp" line="107"/>
+        <source>NoPrinterInstance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterPlugin.cpp" line="137"/>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterPlugin.cpp" line="143"/>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterPlugin.cpp" line="149"/>
+        <source>PrintError</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>DymoLabelPoint350PrinterPluginInfo</name>
     <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DymoLabelPoint350PrinterPluginInfo.h" line="13"/>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterPluginInfo.h" line="13"/>
         <source>plugin.dymo.labelpoint350</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DymoLabelPoint350PrinterPluginInfo.h" line="14"/>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterPluginInfo.h" line="14"/>
         <source>priner.dymo.labelpoint350</source>
         <translation type="unfinished"></translation>
     </message>
@@ -162,99 +188,99 @@ Logo</translation>
         <translation>RollScript</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="63"/>
+        <location filename="../App/MainWindow.ui" line="66"/>
         <source>Debug Data ...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="80"/>
+        <location filename="../App/MainWindow.ui" line="83"/>
         <source>Menu.File</source>
         <translation>&amp;File</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="91"/>
+        <location filename="../App/MainWindow.ui" line="94"/>
         <source>Menu.View</source>
         <translation>&amp;View</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="102"/>
+        <location filename="../App/MainWindow.ui" line="105"/>
         <source>Menu.Help</source>
         <translation>&amp;Help</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="114"/>
+        <location filename="../App/MainWindow.ui" line="117"/>
         <source>toolBar</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="145"/>
+        <location filename="../App/MainWindow.ui" line="148"/>
         <source>Action.Exit</source>
         <translation>&amp;Exit</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="148"/>
+        <location filename="../App/MainWindow.ui" line="151"/>
         <source>Tooltip.Exit</source>
         <translation>Exits RollScript.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="151"/>
+        <location filename="../App/MainWindow.ui" line="154"/>
         <source>Status.Exit</source>
         <translation>Exits RollScript.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="159"/>
+        <location filename="../App/MainWindow.ui" line="162"/>
         <source>Action.About.Qt</source>
         <translation>About &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="162"/>
+        <location filename="../App/MainWindow.ui" line="165"/>
         <source>Tooltip.About.Qt</source>
         <translation>Displays the About Qt dialog.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="165"/>
+        <location filename="../App/MainWindow.ui" line="168"/>
         <source>Status.About.Qt</source>
         <translation>Displays the About Qt dialog.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="173"/>
+        <location filename="../App/MainWindow.ui" line="176"/>
         <source>Action.About.RollScript</source>
         <translation>About &amp;RollScript</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="176"/>
+        <location filename="../App/MainWindow.ui" line="179"/>
         <source>Tooltip.About.RollScript</source>
         <translation>Displays the About RollScript dialog.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="179"/>
+        <location filename="../App/MainWindow.ui" line="182"/>
         <source>Status.About.RollScript</source>
         <translation>Displays the About RollScript dialog.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="192"/>
+        <location filename="../App/MainWindow.ui" line="195"/>
         <source>Action.File.New</source>
         <translation>&amp;New</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="195"/>
-        <location filename="../App/MainWindow.ui" line="214"/>
+        <location filename="../App/MainWindow.ui" line="198"/>
+        <location filename="../App/MainWindow.ui" line="217"/>
         <source>Tooltip.File.New</source>
         <translation>Creates a new RollScipt project.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="198"/>
-        <location filename="../App/MainWindow.ui" line="217"/>
+        <location filename="../App/MainWindow.ui" line="201"/>
+        <location filename="../App/MainWindow.ui" line="220"/>
         <source>Status.File.New</source>
         <translation>Creates a new RollScipt project.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="211"/>
+        <location filename="../App/MainWindow.ui" line="214"/>
         <source>Action.File.Open</source>
         <translation>&amp;Open …</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="293"/>
+        <location filename="../App/MainWindow.ui" line="296"/>
         <source>Status.Printers.Print</source>
         <translation>Prints the current RollScipt project.</translation>
     </message>
@@ -263,62 +289,62 @@ Logo</translation>
         <translation type="vanished">Opens a saved RollScipt project file.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="230"/>
+        <location filename="../App/MainWindow.ui" line="233"/>
         <source>Action.File.Save</source>
         <translation>&amp;Save</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="233"/>
+        <location filename="../App/MainWindow.ui" line="236"/>
         <source>Tooltip.File.Save</source>
         <translation>Saves the current RollScipt project.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="236"/>
+        <location filename="../App/MainWindow.ui" line="239"/>
         <source>Status.File.Save</source>
         <translation>Saves the current RollScipt project.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="249"/>
+        <location filename="../App/MainWindow.ui" line="252"/>
         <source>Action.File.SaveAs</source>
         <translation>Save &amp;As …</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="252"/>
+        <location filename="../App/MainWindow.ui" line="255"/>
         <source>Tooltip.File.SaveAs</source>
         <translation>Saves the current RollScipt project with a new name.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="255"/>
+        <location filename="../App/MainWindow.ui" line="258"/>
         <source>Status.File.SaveAs</source>
         <translation>Saves the current RollScipt project with a new name.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="268"/>
+        <location filename="../App/MainWindow.ui" line="271"/>
         <source>Action.Printers.Scan</source>
         <translation>Scan for Printers</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="271"/>
+        <location filename="../App/MainWindow.ui" line="274"/>
         <source>Tooltip.Printers.Scan</source>
         <translation>Scans for newly connected printers.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="274"/>
+        <location filename="../App/MainWindow.ui" line="277"/>
         <source>Status.Printers.Scan</source>
         <translation>Scans for newly connected printers.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="287"/>
+        <location filename="../App/MainWindow.ui" line="290"/>
         <source>Action.Printers.Print</source>
         <translation>Print</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="290"/>
+        <location filename="../App/MainWindow.ui" line="293"/>
         <source>Tooltip.Printers.Print</source>
         <translation>Prints the current RollScipt project.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="95"/>
+        <location filename="../App/MainWindow.ui" line="98"/>
         <source>Menu.View.Language</source>
         <translation>&amp;Language</translation>
     </message>
@@ -332,109 +358,134 @@ Logo</translation>
 Would you like to save your changes before exiting?</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="283"/>
+        <location filename="../App/MainWindow.cpp" line="294"/>
         <source>Document.Cleared</source>
         <translation>New RollScript document created.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="289"/>
+        <location filename="../App/MainWindow.cpp" line="300"/>
         <source>Document.Loaded</source>
         <translation>RollScript document loaded successfully.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="295"/>
+        <location filename="../App/MainWindow.cpp" line="306"/>
         <source>Document.Saved</source>
         <translation>RollScript document saved successfully.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="236"/>
-        <location filename="../App/MainWindow.cpp" line="268"/>
+        <location filename="../App/MainWindow.cpp" line="247"/>
+        <location filename="../App/MainWindow.cpp" line="279"/>
         <source>FileSave.Error.Title</source>
         <translation>Save RollScript Document</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="250"/>
+        <location filename="../App/MainWindow.cpp" line="261"/>
         <source>FileSaveAs.Title</source>
         <translation>Save RollScript Document As</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="248"/>
+        <location filename="../App/MainWindow.cpp" line="259"/>
         <source>FileSaveAs.Filter</source>
         <translation>RollScript Files (*%1)</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="124"/>
+        <location filename="../App/MainWindow.cpp" line="131"/>
         <source>No printers found, please rescan.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="167"/>
+        <location filename="../App/MainWindow.cpp" line="178"/>
         <source>ConfirmDiscardChanges.Title</source>
         <translation>Unsaved Changes</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="167"/>
+        <location filename="../App/MainWindow.cpp" line="178"/>
         <source>ConfirmDiscardChanges.Message</source>
         <translation>The current RollScript document contains unsaved changes.
 Would you like to save your changes before continuing?</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="199"/>
+        <location filename="../App/MainWindow.cpp" line="210"/>
         <source>FileOpen.Filter</source>
         <translation>RollScript Files (*%1)</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="200"/>
+        <location filename="../App/MainWindow.cpp" line="211"/>
         <source>FileOpen.Title</source>
         <translation>Open RollScript Document</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="212"/>
+        <location filename="../App/MainWindow.cpp" line="223"/>
         <source>FileOpen.Error.Title</source>
         <translation>Open RollScript Document</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="320"/>
+        <location filename="../App/MainWindow.cpp" line="327"/>
+        <source>Drucken</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="328"/>
+        <source>Abbrechen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="343"/>
         <source>Printer.Scan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="334"/>
+        <location filename="../App/MainWindow.cpp" line="357"/>
         <source>Printer.Select.Combo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="339"/>
+        <location filename="../App/MainWindow.cpp" line="362"/>
         <source>Printer.NoPrinter.Combo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="354"/>
+        <location filename="../App/MainWindow.cpp" line="382"/>
         <source>PrinterManager.Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="376"/>
+        <location filename="../App/MainWindow.cpp" line="415"/>
+        <source>Drucken ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="445"/>
         <source>FeatureBlockManager.Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="423"/>
+        <location filename="../App/MainWindow.cpp" line="467"/>
+        <source>RollScriptRenderer.Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="501"/>
+        <source>Initialisierung ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../App/MainWindow.cpp" line="521"/>
         <source>Printer Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="435"/>
+        <location filename="../App/MainWindow.cpp" line="533"/>
         <source>MainWindow.DocumentUntitled</source>
         <translation>Untitled</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="439"/>
+        <location filename="../App/MainWindow.cpp" line="537"/>
         <source>MainWindow.DocumentModified</source>
         <translation> *</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="442"/>
+        <location filename="../App/MainWindow.cpp" line="540"/>
         <source>MainWindow.WindowTitle</source>
         <translation>RollScript - %1%2</translation>
     </message>
@@ -476,6 +527,14 @@ Would you like to save your changes before continuing?</translation>
         <location filename="../Plugins/PluginManager.cpp" line="116"/>
         <location filename="../Plugins/PluginManager.cpp" line="122"/>
         <source>PluginLoadFailed</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PrinterInstance</name>
+    <message>
+        <location filename="../../Core/Printers/PrinterInstance.cpp" line="47"/>
+        <source>PrinterInstancePrintError</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -539,10 +598,16 @@ Would you like to save your changes before continuing?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Printers/PrinterManager.cpp" line="98"/>
-        <location filename="../Printers/PrinterManager.cpp" line="111"/>
-        <location filename="../Printers/PrinterManager.cpp" line="120"/>
+        <location filename="../Printers/PrinterManager.cpp" line="101"/>
+        <location filename="../Printers/PrinterManager.cpp" line="114"/>
+        <location filename="../Printers/PrinterManager.cpp" line="123"/>
         <source>PrinterManagerSwitchError</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Printers/PrinterManager.cpp" line="138"/>
+        <location filename="../Printers/PrinterManager.cpp" line="145"/>
+        <source>PrinterManagerPrintError</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -555,10 +620,39 @@ Would you like to save your changes before continuing?</translation>
     </message>
 </context>
 <context>
+    <name>RenderContext</name>
+    <message>
+        <location filename="../../Core/Rendering/RenderContext.cpp" line="29"/>
+        <source>RenderContextError</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RollScriptBlockTextDocument</name>
+    <message>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextDocument.cpp" line="63"/>
+        <source>DocumentBlockText.LoadFromFile.Json.Version.Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextDocument.cpp" line="74"/>
+        <source>DocumentBlockText.LoadFromFile.Json.Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RollScriptBlockTextFeaturePluginInfo</name>
     <message>
         <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextFeaturePluginInfo.h" line="15"/>
         <source>plugin.feature.block.text</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RollScriptBlockTextLineDocument</name>
+    <message>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineDocument.cpp" line="50"/>
+        <source>DocumentBlockTextLine.LoadFromFile.Json.Version.Error</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -596,45 +690,45 @@ Would you like to save your changes before continuing?</translation>
 <context>
     <name>RollScriptDocument</name>
     <message>
-        <location filename="../Document/RollScriptDocument.cpp" line="49"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="48"/>
         <source>Document.Save.NoFileName</source>
         <translation>The document cannot be saved because no file name has been specified.</translation>
     </message>
     <message>
-        <location filename="../Document/RollScriptDocument.cpp" line="93"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="96"/>
         <source>Document.LoadFromFile.Open.Error</source>
         <translation>The file &quot;%1&quot; could not be opened for reading.</translation>
     </message>
     <message>
-        <location filename="../Document/RollScriptDocument.cpp" line="103"/>
-        <location filename="../Document/RollScriptDocument.cpp" line="133"/>
-        <location filename="../Document/RollScriptDocument.cpp" line="140"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="106"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="136"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="143"/>
         <source>Document.LoadFromFile.Json.Error</source>
         <translation>The file does not contain valid RollScript data.</translation>
     </message>
     <message>
-        <location filename="../Document/RollScriptDocument.cpp" line="111"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="114"/>
         <source>Document.LoadFromFile.Json.Format.Error</source>
         <translation>The file does not contain a valid RollScript format.</translation>
     </message>
     <message>
-        <location filename="../Document/RollScriptDocument.cpp" line="122"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="125"/>
         <source>Document.LoadFromFile.Json.Version.Error</source>
         <translation>The file uses an unsupported version (%1).</translation>
     </message>
     <message>
-        <location filename="../Document/RollScriptDocument.cpp" line="151"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="154"/>
         <source>Document.SaveToFile.Open.Error</source>
         <translation>The file &quot;%1&quot; could not be opened for writing.</translation>
     </message>
     <message>
-        <location filename="../Document/RollScriptDocument.cpp" line="165"/>
-        <location filename="../Document/RollScriptDocument.cpp" line="173"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="168"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="176"/>
         <source>Document.SaveToFile.Json.Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Document/RollScriptDocument.cpp" line="185"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="188"/>
         <source>Document.SaveToFile.Save.Error</source>
         <translation>The file &quot;%1&quot; could not be saved.</translation>
     </message>
@@ -642,8 +736,18 @@ Would you like to save your changes before continuing?</translation>
 <context>
     <name>RollScriptDocumentBlocks</name>
     <message>
-        <location filename="../Document/RollScriptDocumentBlocks.cpp" line="85"/>
+        <location filename="../Document/RollScriptDocumentBlocks.cpp" line="101"/>
         <source>DocumentBlocks.LoadFromFile.Json.Version.Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Document/RollScriptDocumentBlocks.cpp" line="120"/>
+        <source>Document.LoadFromFile.Json.Error</source>
+        <translation type="unfinished">The file does not contain valid RollScript data.</translation>
+    </message>
+    <message>
+        <location filename="../Document/RollScriptDocumentBlocks.cpp" line="145"/>
+        <source>Document.SaveToFile.Json.Error</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -653,6 +757,30 @@ Would you like to save your changes before continuing?</translation>
         <location filename="../Document/RollScriptDocumentSettings.cpp" line="44"/>
         <source>DocumentSettings.LoadFromFile.Json.Version.Error</source>
         <translation>The file uses an unsupported settings-version (%1).</translation>
+    </message>
+</context>
+<context>
+    <name>RollScriptRenderer</name>
+    <message>
+        <location filename="../Rendering/RollScriptRenderer.cpp" line="102"/>
+        <location filename="../Rendering/RollScriptRenderer.cpp" line="110"/>
+        <location filename="../Rendering/RollScriptRenderer.cpp" line="117"/>
+        <source>RollScriptRendererCreateDeviceInfoError</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Rendering/RollScriptRenderer.cpp" line="128"/>
+        <location filename="../Rendering/RollScriptRenderer.cpp" line="143"/>
+        <location filename="../Rendering/RollScriptRenderer.cpp" line="151"/>
+        <source>RollScriptRendererCreateLayoutError</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Rendering/RollScriptRenderer.cpp" line="162"/>
+        <location filename="../Rendering/RollScriptRenderer.cpp" line="171"/>
+        <location filename="../Rendering/RollScriptRenderer.cpp" line="179"/>
+        <source>RollScriptRendererCreateRenderingError</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

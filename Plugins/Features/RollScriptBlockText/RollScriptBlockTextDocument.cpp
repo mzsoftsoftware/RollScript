@@ -49,22 +49,39 @@ void RollScriptBlockTextDocument::clear()
     {
         ptrBlockTextLine->clear();
     }
+    emit documentCleared();
 }
-bool RollScriptBlockTextDocument::loadFromJson(const QJsonObject& jsonBlocks)
+bool RollScriptBlockTextDocument::loadFromJson(const QJsonObject& jsonBlockText)
 {
-    QJsonArray linesArray = jsonBlocks[QStringLiteral("lines")].toArray();
+    const int iVersion = jsonBlockText[QStringLiteral("version")].toInt();
+    switch(iVersion)
+    {
+    case 1:
+        return loadVersion_1(jsonBlockText);
+        break;
+    default:
+        ROLLSCRIPT_ERROR(tr("DocumentBlockText.LoadFromFile.Json.Version.Error").arg(iVersion), QStringLiteral("version is unknown."));
+        return false;
+    }
+}
+bool RollScriptBlockTextDocument::loadVersion_1(const QJsonObject& jsonBlockText)
+{
+    QJsonArray linesArray = jsonBlockText[QStringLiteral("lines")].toArray();
     for(int index=0; index<linesArray.count(); index++)
     {
         if(!m_vecBlockTextLines[index]->loadFromJson(linesArray[index].toObject()))
         {
+            ROLLSCRIPT_ERROR_CAUSE(tr("DocumentBlockText.LoadFromFile.Json.Error"), QStringLiteral("m_vecBlockTextLines->loadFromJson failed."), m_vecBlockTextLines[index]->takeError());
             return false;
         }
     }
+    emit documentLoaded();
 
     return true;
 }
-bool RollScriptBlockTextDocument::saveToJson(QJsonObject& jsonBlocks) const
+bool RollScriptBlockTextDocument::saveToJson(QJsonObject& jsonBlockText)
 {
+    jsonBlockText[QStringLiteral("version")] = 1;
     QJsonArray linesArray;
     for(RollScriptBlockTextLineDocument* ptrBlockTextLine : m_vecBlockTextLines)
     {
@@ -75,7 +92,7 @@ bool RollScriptBlockTextDocument::saveToJson(QJsonObject& jsonBlocks) const
         }
         linesArray.append(line);
     }
-    jsonBlocks[QStringLiteral("lines")] = linesArray;
+    jsonBlockText[QStringLiteral("lines")] = linesArray;
 
     return true;
 }

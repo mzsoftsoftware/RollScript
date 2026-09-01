@@ -76,8 +76,8 @@ void MarginsWidget::setMarginsMm(const QMarginsF& marginsMm)
 }
 void MarginsWidget::setMarginsMinimumMm(const QMarginsF& marginsMinMm)
 {
-    QSignalBlocker blockerLeftRight(ui->doublePairWidget_MarginsLeftRight);
-    QSignalBlocker blockerTopBottom(ui->doublePairWidget_MarginsTopBottom);
+    //QSignalBlocker blockerLeftRight(ui->doublePairWidget_MarginsLeftRight);
+    //QSignalBlocker blockerTopBottom(ui->doublePairWidget_MarginsTopBottom);
     ui->doublePairWidget_MarginsLeftRight->setMinimumOne(marginsMinMm.left());
     ui->doublePairWidget_MarginsLeftRight->setMinimumTwo(marginsMinMm.right());
     ui->doublePairWidget_MarginsTopBottom->setMinimumOne(marginsMinMm.top());

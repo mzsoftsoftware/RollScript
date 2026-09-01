@@ -8,6 +8,7 @@
 class IFeatureBlockInfo;
 class RollScriptBlockWidgetBase;
 class RollScriptBlockDocumentBase;
+class RollScriptBlockRendererBase;
 
 
 class IFeatureBlock
@@ -24,6 +25,7 @@ public:
     // Instances
     virtual RollScriptBlockWidgetBase* createFeatureBlockWidget(QWidget *parent) = 0;
     virtual RollScriptBlockDocumentBase* createFeatureBlockDocument(QObject* parent) = 0;
+    virtual RollScriptBlockRendererBase* createFeatureBlockRenderer(QObject* parent) = 0;
 };
 
 #define ROLLSCRIPT_IFEATUREBLOCK_IID \
