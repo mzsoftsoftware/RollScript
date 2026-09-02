@@ -18,17 +18,19 @@ class FeatureBlockManager : public QObject, public RollScriptErrorOwner
     Q_OBJECT
 
 public:
+    // Constructor / Destructor
     explicit FeatureBlockManager(PluginManager* ptrPluginManager, QObject* parent);
-    virtual ~FeatureBlockManager() override;
-
-    bool init();
+    ~FeatureBlockManager() override;
 
     // Getter
     QStringList availableFeatureBlockIds() const;
     IFeatureBlock* featureBlock(const QString& qstrfeatureBlockId) const;
-    RollScriptBlockWidgetBase* createFeatureBlockWidget(const QString& qstrFeatureBlockId, QWidget *parent);
+    RollScriptBlockWidgetBase* createFeatureBlockWidget(const QString& qstrFeatureBlockId, QWidget* parent);
     RollScriptBlockDocumentBase* createFeatureBlockDocument(const QString& qstrFeatureBlockId, QObject* parent);
     RollScriptBlockRendererBase* createFeatureBlockRenderer(const QString& qstrFeatureBlockId, QObject* parent);
+
+    // Operations
+    bool init();
 
 signals:
     void managerError();

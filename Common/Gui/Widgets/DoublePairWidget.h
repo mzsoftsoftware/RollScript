@@ -1,4 +1,5 @@
 #pragma once
+// clazy:excludeall=connect-by-name
 
 #include <QWidget>
 #include <QString>
@@ -25,9 +26,11 @@ class DoublePairWidget : public QWidget
     Q_PROPERTY(bool locked READ isLocked WRITE setLocked NOTIFY lockedToggled)
 
 public:
-    explicit DoublePairWidget(QWidget *parent);
-    virtual ~DoublePairWidget() override;
+    // Constructor / Destructor
+    explicit DoublePairWidget(QWidget* parent);
+    ~DoublePairWidget() override;
 
+    // Getters
     QString labelOne() const;
     QString suffixOne() const;
     QString labelTwo() const;
@@ -38,33 +41,35 @@ public:
     double valueTwo() const;
     double minimumTwo() const;
 
-    void setLabelOne(const QString& label);
-    void setSuffixOne(const QString& suffix);
-    void setLabelTwo(const QString& label);
-    void setSuffixTwo(const QString& suffix);
+    // Setters
+    void setLabelOne(const QString& qstrLabel);
+    void setSuffixOne(const QString& qstrSuffix);
+    void setLabelTwo(const QString& qstrLabel);
+    void setSuffixTwo(const QString& qstrSuffix);
 
-    void setValueOne(const double value);
-    void setMinimumOne(const double value);
-    void setValueTwo(const double value);
-    void setMinimumTwo(const double value);
+    void setValueOne(const double dblValue);
+    void setMinimumOne(const double dblValue);
+    void setValueTwo(const double dblValue);
+    void setMinimumTwo(const double dblValue);
 
+    // Operations
     bool isLocked() const;
-    void setLocked(const bool locked);
+    void setLocked(const bool bLocked);
 
 signals:
-    void valueOneEdited(const double value);
-    void valueTwoEdited(const double value);
-    void lockedToggled(const bool locked);
+    void valueOneEdited(const double dblValue);
+    void valueTwoEdited(const double dblValue);
+    void lockedToggled(const bool bLocked);
 
 private slots:
-    void on_toolButton_toggled(bool checked);
-    void on_doubleSpinBox_One_valueChanged(const double value);
-    void on_doubleSpinBox_Two_valueChanged(const double value);
+    void on_toolButton_toggled(bool bChecked);
+    void on_doubleSpinBox_One_valueChanged(const double dblValue);
+    void on_doubleSpinBox_Two_valueChanged(const double dblValue);
 
 private:
     void updateLockState();
 
 private:
-    Ui::DoublePairWidget *ui;
+    Ui::DoublePairWidget* ui;
 };
 

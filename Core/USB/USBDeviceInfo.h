@@ -7,7 +7,9 @@ struct libusb_device;
 class USBDeviceInfo
 {
 public:
+    // Constructor / Destructor
     explicit USBDeviceInfo();
+    virtual ~USBDeviceInfo();
 
     // Getter
     uint16_t vendorId() const                       { return m_ui16VendorId; }

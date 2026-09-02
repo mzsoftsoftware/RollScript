@@ -11,26 +11,25 @@
 #include "Core/Printers/PrinterMedia.h"
 
 
-SettingsWidget::SettingsWidget(QWidget *parent)
+SettingsWidget::SettingsWidget(QWidget* parent)
     : QWidget{parent}
     , ui(new Ui::SettingsWidget)
 {
     ui->setupUi(this);
 }
-
 SettingsWidget::~SettingsWidget()
 {
     delete ui;
 }
 
-void SettingsWidget::changeEvent(QEvent *event)
+void SettingsWidget::changeEvent(QEvent* ptrEvent)
 {
-    if(event->type() == QEvent::LanguageChange)
+    if(ptrEvent->type() == QEvent::LanguageChange)
     {
         ui->retranslateUi(this);
     }
 
-    QWidget::changeEvent(event);
+    QWidget::changeEvent(ptrEvent);
 }
 
 void SettingsWidget::setPrinterManager(PrinterManager* ptrPrinterManager)
@@ -54,6 +53,8 @@ void SettingsWidget::setRollScriptDocument(RollScriptDocument* ptrDocument)
 }
 void SettingsWidget::rebuildPrinterMediasModel()
 {
+    QSignalBlocker blocker(ui->comboBox_PrinterMedia);
+
     m_ptrPrinterMediasItemModel->rebuildModel();
     if(m_ptrPrinterMediasItemModel->rowCount() > 0)
     {
@@ -128,20 +129,20 @@ void SettingsWidget::updateUiFromDocument()
     ui->marginsWidget->setMarginsMm(m_ptrDocumentSettings->marginsMm());
 }
 
-void SettingsWidget::on_comboBox_PrinterMedia_currentIndexChanged(int index)
+void SettingsWidget::on_comboBox_PrinterMedia_currentIndexChanged(int iIndex)
 {
-    if(index >= 0)
+    if(iIndex >= 0)
     {
-        QString qstrId = ui->comboBox_PrinterMedia->itemData(index).toString();
+        QString qstrId = ui->comboBox_PrinterMedia->itemData(iIndex).toString();
 
         // Update first the Constraints then the Media.
         updatePrinterMediaConstraints(qstrId);
         m_ptrDocumentSettings->setPrinterMediaId(qstrId);
     }
 }
-void SettingsWidget::on_doubleSpinBox_LengthMin_valueChanged(double value)
+void SettingsWidget::on_doubleSpinBox_LengthMin_valueChanged(double dblValue)
 {
-    m_ptrDocumentSettings->setMinimumLengthMm(value);
+    m_ptrDocumentSettings->setMinimumLengthMm(dblValue);
 }
 void SettingsWidget::on_marginsWidget_marginsMmEdited(QMarginsF margins)
 {

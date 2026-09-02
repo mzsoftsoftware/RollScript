@@ -13,10 +13,13 @@ RenderLayout::RenderLayout(QObject* parent)
     : QObject(parent)
 {
 }
+RenderLayout::~RenderLayout()
+{
+}
 
 void RenderLayout::reset()
 {
-    m_vecRenderGeometries.clear();
+    m_qvecRenderGeometries.clear();
     m_sizeRendering = QSize();
     m_bClipping = false;
 
@@ -77,7 +80,7 @@ bool RenderLayout::addBlock(const RollScriptBlockDocumentBase* ptrBlockDocument,
     blockGeometry.setRectBlock(rectBlock);
     blockGeometry.setRectContent(rectContent);
 
-    m_vecRenderGeometries.append(blockGeometry);
+    m_qvecRenderGeometries.append(blockGeometry);
     m_uiLengthPx += sizeBlock.width();
 
     return true;

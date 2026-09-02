@@ -7,6 +7,9 @@ RollScriptBlockTextLineDocument::RollScriptBlockTextLineDocument(QObject* parent
     : QObject(parent)
 {
 }
+RollScriptBlockTextLineDocument::~RollScriptBlockTextLineDocument()
+{
+}
 
 void RollScriptBlockTextLineDocument::setLineActive(const bool bActive)
 {

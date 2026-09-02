@@ -8,9 +8,10 @@ class DymoLabelPoint350PrinterJobAlive : public DymoLabelPoint350PrinterJob
     Q_OBJECT
 
 public:
+    // Constructor / Destructor
     explicit DymoLabelPoint350PrinterJobAlive(PrinterInstanceUSB* ptrPrinterInstanceUSB);
-    virtual ~DymoLabelPoint350PrinterJobAlive() override;
+    ~DymoLabelPoint350PrinterJobAlive() override;
 
+    // Operations
     bool execute() override;
-
 };

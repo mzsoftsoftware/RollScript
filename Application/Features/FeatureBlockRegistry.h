@@ -13,15 +13,17 @@ class FeatureBlockRegistry : public QObject, public RollScriptErrorOwner
     Q_OBJECT
 
 public:
-    FeatureBlockRegistry(QObject* parent);
-
-    bool registerFeatureBlock(IFeatureBlock* ptrFeatureBlock);
+    explicit FeatureBlockRegistry(QObject* parent);
+    ~FeatureBlockRegistry() override;
 
     // Getter
     QStringList availableFeatureBlockIds() const                            { return m_qstrFeatureBlockIds; }
-    IFeatureBlock* featureBlock(const QString& qstrfeatureBlockId) const    { return m_hashFeatureBlocks.value(qstrfeatureBlockId, nullptr); }
+    IFeatureBlock* featureBlock(const QString& qstrfeatureBlockId) const    { return m_qhashFeatureBlocks.value(qstrfeatureBlockId, nullptr); }
+
+    // Operations
+    bool registerFeatureBlock(IFeatureBlock* ptrFeatureBlock);
 
 private:
     QStringList m_qstrFeatureBlockIds;
-    QHash<QString, IFeatureBlock*> m_hashFeatureBlocks;
+    QHash<QString, IFeatureBlock*> m_qhashFeatureBlocks;
 };

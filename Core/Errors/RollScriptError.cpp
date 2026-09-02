@@ -15,7 +15,6 @@ RollScriptError::RollScriptError(const QString& qstrUserMessage,
     , m_iLine(iLine)
 {
 }
-
 RollScriptError::~RollScriptError()
 {
     delete m_ptrCause;

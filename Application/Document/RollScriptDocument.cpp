@@ -7,7 +7,7 @@
 #include "Document/RollScriptDocumentBlocks.h"
 
 
-RollScriptDocument::RollScriptDocument(FeatureBlockManager *ptrFeatureBlockManager, QObject* parent)
+RollScriptDocument::RollScriptDocument(FeatureBlockManager* ptrFeatureBlockManager, QObject* parent)
     : QObject{parent}
 {
     m_ptrSettings = new RollScriptDocumentSettings(this);
@@ -15,6 +15,9 @@ RollScriptDocument::RollScriptDocument(FeatureBlockManager *ptrFeatureBlockManag
 
     connect(m_ptrSettings, &RollScriptDocumentSettings::settingsChanged, this, &RollScriptDocument::slotSettingsChanged);
     connect(m_ptrBlocks, &RollScriptDocumentBlocks::blocksChanged, this, &RollScriptDocument::slotBlocksChanged);
+}
+RollScriptDocument::~RollScriptDocument()
+{
 }
 
 void RollScriptDocument::clear()

@@ -20,16 +20,21 @@ class RollScriptRenderer : public QObject, public RollScriptErrorOwner
     Q_OBJECT
 
 public:
-    explicit RollScriptRenderer(PrinterManager* ptrPrinterManager, FeatureBlockManager* ptrFeatureBlockManager, QObject *parent);
-    virtual ~RollScriptRenderer() override;
+    explicit RollScriptRenderer(PrinterManager* ptrPrinterManager, FeatureBlockManager* ptrFeatureBlockManager, QObject* parent);
+    ~RollScriptRenderer() override;
 
     // Getter
     const QImage& image() const;
 
-    bool init();
+    // Setter
     void setRollScriptDocument(const RollScriptDocument* ptrDocument);
 
+    // Operations
+    bool init();
     bool render();
+
+signals:
+    void renderingError();
 
 private:
     void reset();
@@ -37,17 +42,14 @@ private:
     bool createLayout();
     bool createRendering();
 
-signals:
-    void renderingError();
-
 private:
-    PrinterManager* m_ptrPrinterManager;
-    FeatureBlockManager* m_ptrFeatureBlockManager = nullptr;
-    const RollScriptDocument* m_ptrDocument = nullptr;
+    PrinterManager*             m_ptrPrinterManager;
+    FeatureBlockManager*        m_ptrFeatureBlockManager = nullptr;
+    const RollScriptDocument*   m_ptrDocument = nullptr;
 
-    QHash<QString, RollScriptBlockRendererBase*> m_hashFeatureBlockRenderers;
+    QHash<QString, RollScriptBlockRendererBase*> m_qhashFeatureBlockRenderers;
 
-    RenderDeviceInfo* m_ptrRenderDeviceInfo;
-    RenderLayout* m_ptrRenderLayout = nullptr;
-    RenderContext* m_ptrRenderContext = nullptr;
+    RenderDeviceInfo*   m_ptrRenderDeviceInfo;
+    RenderLayout*       m_ptrRenderLayout = nullptr;
+    RenderContext*      m_ptrRenderContext = nullptr;
 };

@@ -15,30 +15,33 @@ class MarginsWidget : public QWidget
     Q_PROPERTY(QMarginsF marginsMinimumMm READ marginsMinimumMm WRITE setMarginsMinimumMm)
 
 public:
-    explicit MarginsWidget(QWidget *parent);
-    virtual ~MarginsWidget() override;
+    // Constructor / Destructor
+    explicit MarginsWidget(QWidget* parent);
+    ~MarginsWidget() override;
 
+    // Getter
     QMarginsF marginsMm() const;
     QMarginsF marginsMinimumMm() const;
 
+    // Setter
     void setMarginsMm(const QMarginsF& marginsMm);
     void setMarginsMinimumMm(const QMarginsF& marginsMinMm);
-
-protected:
-    void changeEvent(QEvent *event) override;
-
-private:
-    void retranslateUi() const;
 
 signals:
     void marginsMmEdited(const QMarginsF& marginsMm);
 
-private slots:
-    void slot_LeftValueEdited(const double value);
-    void slot_RightValueEdited(const double value);
-    void slot_TopValueEdited(const double value);
-    void slot_BottomValueEdited(const double value);
+protected:
+    void changeEvent(QEvent* ptrEvent) override;
 
 private:
-    Ui::MarginsWidget *ui;
+    void retranslateUi() const;
+
+private slots:
+    void slot_LeftValueEdited(const double dblValue);
+    void slot_RightValueEdited(const double dblValue);
+    void slot_TopValueEdited(const double dblValue);
+    void slot_BottomValueEdited(const double dblValue);
+
+private:
+    Ui::MarginsWidget* ui;
 };

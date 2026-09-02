@@ -8,12 +8,13 @@
 class PluginInfo : public virtual IPluginInfo
 {
 public:
-    PluginInfo(const char* pszContext,
-               const QString& qstrPluginId,
-               const QString& qstrPluginVersion,
-               const char* pszPluginDisplayNameKey);
-    ~PluginInfo() override = default;
+    explicit PluginInfo(const char* pszContext,
+                        const QString& qstrPluginId,
+                        const QString& qstrPluginVersion,
+                        const char* pszPluginDisplayNameKey);
+    ~PluginInfo() override;
 
+    // Getter
     const QString& pluginId() const override        { return m_qstrPluginId; }
     const QString& pluginVersion() const override   { return m_qstrPluginVersion; }
     QString pluginDisplayName() const override      { return translate(m_pszPluginDisplayNameKey); }

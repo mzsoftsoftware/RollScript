@@ -8,6 +8,9 @@ FeatureBlockRegistry::FeatureBlockRegistry(QObject* parent)
     : QObject{parent}
 {
 }
+FeatureBlockRegistry::~FeatureBlockRegistry()
+{
+}
 
 bool FeatureBlockRegistry::registerFeatureBlock(IFeatureBlock* ptrFeatureBlock)
 {
@@ -20,7 +23,7 @@ bool FeatureBlockRegistry::registerFeatureBlock(IFeatureBlock* ptrFeatureBlock)
         return false;
     }
 
-    m_hashFeatureBlocks.insert(qstrFeatureBlockId, ptrFeatureBlock);
+    m_qhashFeatureBlocks.insert(qstrFeatureBlockId, ptrFeatureBlock);
     m_qstrFeatureBlockIds.append(qstrFeatureBlockId);
 
     return true;

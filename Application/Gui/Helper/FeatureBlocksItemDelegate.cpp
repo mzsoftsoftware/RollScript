@@ -7,8 +7,11 @@ FeatureBlocksItemDelegate::FeatureBlocksItemDelegate(QObject* parent)
     : QStyledItemDelegate(parent)
 {
 }
+FeatureBlocksItemDelegate::~FeatureBlocksItemDelegate()
+{
+}
 
-QSize FeatureBlocksItemDelegate::sizeHint(const QStyleOptionViewItem &, const QModelIndex &) const
+QSize FeatureBlocksItemDelegate::sizeHint(const QStyleOptionViewItem&, const QModelIndex&) const
 {
     constexpr int iconSize = 48;
     constexpr int textHeight = 20;
@@ -18,12 +21,12 @@ QSize FeatureBlocksItemDelegate::sizeHint(const QStyleOptionViewItem &, const QM
     return QSize(77, topMargin + iconSize + spacing + textHeight);
 }
 
-void FeatureBlocksItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+void FeatureBlocksItemDelegate::paint(QPainter* ptrPainter, const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
-    painter->save();
+    ptrPainter->save();
 
     if (option.state & QStyle::State_Selected)
-        painter->fillRect(option.rect, option.palette.highlight());
+        ptrPainter->fillRect(option.rect, option.palette.highlight());
 
     QIcon icon = qvariant_cast<QIcon>(index.data(Qt::DecorationRole));
     QString text = index.data(Qt::DisplayRole).toString();
@@ -32,10 +35,10 @@ void FeatureBlocksItemDelegate::paint(QPainter *painter, const QStyleOptionViewI
     constexpr int textHeight = 20;
 
     QRect iconRect(option.rect.left(), option.rect.top() + 4, option.rect.width(), iconSize);
-    icon.paint(painter, iconRect, Qt::AlignCenter, QIcon::Normal, QIcon::On);
+    icon.paint(ptrPainter, iconRect, Qt::AlignCenter, QIcon::Normal, QIcon::On);
 
     QRect textRect(option.rect.left(), option.rect.top() + iconSize + 4, option.rect.width(), textHeight);
-    painter->drawText(textRect, Qt::AlignCenter, text);
+    ptrPainter->drawText(textRect, Qt::AlignCenter, text);
 
-    painter->restore();
+    ptrPainter->restore();
 }

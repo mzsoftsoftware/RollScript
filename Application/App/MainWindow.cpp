@@ -28,7 +28,7 @@
 #include "Core/Errors/RollScriptError.h"
 
 
-MainWindow::MainWindow(ApplicationContext* ptrApplicationContext, QWidget *parent)
+MainWindow::MainWindow(ApplicationContext* ptrApplicationContext, QWidget* parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , m_ptrApplicationContext(ptrApplicationContext)
@@ -66,22 +66,12 @@ void MainWindow::closeEvent(QCloseEvent* event)
 
 void MainWindow::createLanguageMenu()
 {
-    const QList<TranslationInfo> translations =
-        m_ptrApplicationContext->translationManager()->availableTranslations();
-
-    for (const TranslationInfo &translation :
-         translations)
+    const QList<TranslationInfo> translations = m_ptrApplicationContext->translationManager()->availableTranslations();
+    for (const TranslationInfo& translation : translations)
     {
-        QAction *action =
-            new QAction(
-                translation.qstrLanguageName,
-                this
-                );
-
+        QAction* action = new QAction(translation.qstrLanguageName, this);
         action->setCheckable(true);
-        action->setData(
-            translation.qLocale
-            );
+        action->setData(translation.qLocale);
         connect(action, &QAction::triggered, this, &MainWindow::slot_SwitchLanguage);
 
         ui->menuViewLanguage->addAction(action);
@@ -91,8 +81,8 @@ void MainWindow::updateLanguageMenu()
 {
     const QLocale currentLocale = m_ptrApplicationContext->translationManager()->currentLocale();
 
-    const QList<QAction *> actions = ui->menuViewLanguage->actions();
-    for (QAction *action : actions)
+    const QList<QAction*> actions = ui->menuViewLanguage->actions();
+    for (QAction* action : actions)
     {
         const QLocale locale = action->data().value<QLocale>();
         action->setChecked( locale == currentLocale );
@@ -100,7 +90,7 @@ void MainWindow::updateLanguageMenu()
 }
 void MainWindow::slot_SwitchLanguage()
 {
-    QAction *action = qobject_cast<QAction*>(sender());
+    QAction* action = qobject_cast<QAction*>(sender());
     if(!action)
         return;
 
@@ -216,7 +206,7 @@ bool MainWindow::documentOpen()
 
     if(!m_ptrRollScriptDocument->load(qstrFileName))
     {
-        RollScriptError *ptrError = m_ptrRollScriptDocument->takeError();
+        RollScriptError* ptrError = m_ptrRollScriptDocument->takeError();
         if(ptrError)
         {
             ui->textEdit_Debug->append(ptrError->messageDebug());
@@ -240,7 +230,7 @@ bool MainWindow::documentSave()
 
     if(!m_ptrRollScriptDocument->save())
     {
-        RollScriptError *ptrError = m_ptrRollScriptDocument->takeError();
+        RollScriptError* ptrError = m_ptrRollScriptDocument->takeError();
         if(ptrError)
         {
             ui->textEdit_Debug->append(ptrError->messageDebug());
@@ -271,7 +261,7 @@ bool MainWindow::documentSaveAs()
 
     if(!m_ptrRollScriptDocument->saveAs(qstrFileName))
     {
-        RollScriptError *ptrError = m_ptrRollScriptDocument->takeError();
+        RollScriptError* ptrError = m_ptrRollScriptDocument->takeError();
         if(ptrError)
         {
             ui->textEdit_Debug->append(ptrError->messageDebug());
@@ -336,7 +326,7 @@ void MainWindow::slot_PrinterManager_Scan()
 {
     if(!m_ptrApplicationContext->printerManager()->scanForDevices())
     {
-        RollScriptError *ptrError = m_ptrApplicationContext->printerManager()->takeError();
+        RollScriptError* ptrError = m_ptrApplicationContext->printerManager()->takeError();
         if(ptrError)
         {
             ui->textEdit_Debug->append(ptrError->messageDebug());
@@ -375,7 +365,7 @@ void MainWindow::slot_PrinterManager_ManagerError()
         m_ptrDlgPrinterProgress->close();
     }
 
-    RollScriptError *ptrError = m_ptrApplicationContext->printerManager()->takeError();
+    RollScriptError* ptrError = m_ptrApplicationContext->printerManager()->takeError();
     if(ptrError)
     {
         ui->textEdit_Debug->append(ptrError->messageDebug());
@@ -438,7 +428,7 @@ void MainWindow::setupFeatureBlockManager()
 }
 void MainWindow::slot_FeatureBlockManager_ManagerError()
 {
-    RollScriptError *ptrError = m_ptrApplicationContext->featureBlockManager()->takeError();
+    RollScriptError* ptrError = m_ptrApplicationContext->featureBlockManager()->takeError();
     if(ptrError)
     {
         ui->textEdit_Debug->append(ptrError->messageDebug());
@@ -451,7 +441,7 @@ void MainWindow::slot_FeatureBlockManager_ManagerError()
 
 void MainWindow::setupRollScriptRenderer()
 {
-    RollScriptRenderer *ptrRollScriptRenderer = m_ptrApplicationContext->rollScriptRenderer();
+    RollScriptRenderer* ptrRollScriptRenderer = m_ptrApplicationContext->rollScriptRenderer();
     // Connect FeatureBlockManager signals
     connect(ptrRollScriptRenderer, &RollScriptRenderer::renderingError, this, &MainWindow::slot_RollScriptRenderer_RenderingError);
 
@@ -460,7 +450,7 @@ void MainWindow::setupRollScriptRenderer()
 }
 void MainWindow::slot_RollScriptRenderer_RenderingError()
 {
-    RollScriptError *ptrError = m_ptrApplicationContext->rollScriptRenderer()->takeError();
+    RollScriptError* ptrError = m_ptrApplicationContext->rollScriptRenderer()->takeError();
     if(ptrError)
     {
         ui->textEdit_Debug->append(ptrError->messageDebug());
@@ -514,7 +504,7 @@ void MainWindow::slot_ComboBoxPrinters_IndexChanged(int index)
     {
         m_ptrComboBoxPrinters->setCurrentIndex(-1);
 
-        RollScriptError *ptrError = m_ptrApplicationContext->printerManager()->takeError();
+        RollScriptError* ptrError = m_ptrApplicationContext->printerManager()->takeError();
         if(ptrError)
         {
             ui->textEdit_Debug->append(ptrError->messageDebug());

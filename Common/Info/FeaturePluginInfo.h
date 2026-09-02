@@ -7,11 +7,9 @@
 class FeaturePluginInfo : public PluginInfo, public virtual IFeaturePluginInfo
 {
 public:
-    FeaturePluginInfo(const char* pszContext,
-                      const QString& qstrPluginId,
-                      const QString& qstrPluginVersion,
-                      const char* pszPluginDisplayNameKey);
-
-
-private:
+    explicit FeaturePluginInfo(const char* pszContext,
+                               const QString& qstrPluginId,
+                               const QString& qstrPluginVersion,
+                               const char* pszPluginDisplayNameKey);
+    ~FeaturePluginInfo() override;
 };

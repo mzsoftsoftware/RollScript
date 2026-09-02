@@ -19,15 +19,17 @@ class TranslationManager : public QObject, public RollScriptErrorOwner
     Q_OBJECT
 
 public:
-    explicit TranslationManager(QObject* parent = nullptr);
-
-    bool init();
-
-    QList<TranslationInfo> availableTranslations() const;
-    bool loadLanguage(const QLocale &locale);
+    explicit TranslationManager(QObject* parent);
+    ~TranslationManager() override;
 
     // Getter
     QLocale currentLocale() const                   { return m_qLocaleCurrent; }
+
+    // Operations
+    bool init();
+
+    QList<TranslationInfo> availableTranslations() const;
+    bool loadLanguage(const QLocale& locale);
 
 private:
     bool loadSystemLanguage();

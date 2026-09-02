@@ -7,15 +7,18 @@
 class FeatureBlockInfo : public FeaturePluginInfo, public virtual IFeatureBlockInfo
 {
 public:
-    FeatureBlockInfo(const char* pszContext,
-                     const QString& qstrPluginId,
-                     const QString& qstrPluginVersion,
-                     const char* pszPluginDisplayNameKey,
-                     const QString& qstrFeatureBlockId,
-                     const QIcon& iconFeatureBlock,
-                     const char* pszFeatureBlockDisplayNameKey,
-                     const char* pszFeatureBlockTooltipKey);
+    // Constructor / Destructor
+    explicit FeatureBlockInfo(const char* pszContext,
+                              const QString& qstrPluginId,
+                              const QString& qstrPluginVersion,
+                              const char* pszPluginDisplayNameKey,
+                              const QString& qstrFeatureBlockId,
+                              const QIcon& iconFeatureBlock,
+                              const char* pszFeatureBlockDisplayNameKey,
+                              const char* pszFeatureBlockTooltipKey);
+    ~FeatureBlockInfo() override;
 
+    // Getter
     const QString& featureBlockId() const override          { return m_qstrFeatureBlockId; }
     const QIcon& featureBlockIcon() const override          { return m_iconFeatureBlock; }
 

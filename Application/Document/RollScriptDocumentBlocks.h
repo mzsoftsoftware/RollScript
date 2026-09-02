@@ -6,30 +6,27 @@
 class RollScriptBlockDocumentBase;
 class FeatureBlockManager;
 
+
 class RollScriptDocumentBlocks : public QObject, public RollScriptErrorOwner
 {
     Q_OBJECT
 
 public:
-    RollScriptDocumentBlocks(FeatureBlockManager *ptrFeatureBlockManager, QObject* parent);
-
-    // Getter
+    explicit RollScriptDocumentBlocks(FeatureBlockManager* ptrFeatureBlockManager, QObject* parent);
+    ~RollScriptDocumentBlocks() override;
 
     // Block handling
     void insertDocumentBlock(const int index, const QString& qstrFeatureBlockId);
     void removeDocumentBlock(const int index);
     void moveDocumentBlock(const int idxFrom, const int idxTo);
     RollScriptBlockDocumentBase* documentBlock(const int index);
-    const QVector<RollScriptBlockDocumentBase*>& documentBlocks() const { return m_vecDocumentBlocks; }
-    int documentBlockCount() const                                      { return m_vecDocumentBlocks.count(); }
+    const QVector<RollScriptBlockDocumentBase*>& documentBlocks() const { return m_qvecDocumentBlocks; }
+    int documentBlockCount() const                                      { return m_qvecDocumentBlocks.count(); }
 
     // JSON
     void clear();
     bool loadFromJson(const QJsonObject& jsonBlocks);
     bool saveToJson(QJsonObject& jsonBlocks);
-
-private:
-    bool loadVersion_1(const QJsonObject& jsonBlocks);
 
 private slots:
     void onDocumentBlockChanged();
@@ -47,7 +44,10 @@ signals:
     void documentBlocksReset();
 
 private:
+    bool loadVersion_1(const QJsonObject& jsonBlocks);
+
+private:
     FeatureBlockManager* m_ptrFeatureBlockManager;
 
-    QVector<RollScriptBlockDocumentBase*> m_vecDocumentBlocks;
+    QVector<RollScriptBlockDocumentBase*> m_qvecDocumentBlocks;
 };

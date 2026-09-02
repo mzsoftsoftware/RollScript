@@ -8,6 +8,9 @@ RenderDeviceInfo::RenderDeviceInfo(QObject* parent)
     : QObject(parent)
 {
 }
+RenderDeviceInfo::~RenderDeviceInfo()
+{
+}
 
 void RenderDeviceInfo::reset()
 {
@@ -28,9 +31,9 @@ bool RenderDeviceInfo::create(const PrinterInstance* ptrPrinterInstance, const P
     return true;
 }
 
-int RenderDeviceInfo::convertMmToPx(double valueMm) const
+int RenderDeviceInfo::convertMmToPx(double dblValueMm) const
 {
-    return qRound(valueMm * m_dblPxPerMm);
+    return qRound(dblValueMm * m_dblPxPerMm);
 }
 
 QMargins RenderDeviceInfo::convertMmToPx(const QMarginsF& marginsMm ) const

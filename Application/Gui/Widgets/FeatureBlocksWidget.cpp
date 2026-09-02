@@ -15,7 +15,7 @@
 #include "Gui/Helper/FeatureBlocksItemDelegate.h"
 
 
-FeatureBlocksWidget::FeatureBlocksWidget(QWidget *parent)
+FeatureBlocksWidget::FeatureBlocksWidget(QWidget* parent)
     : QWidget(parent)
     , ui(new Ui::FeatureBlocksWidget)
 {
@@ -23,20 +23,19 @@ FeatureBlocksWidget::FeatureBlocksWidget(QWidget *parent)
 
     setupListView();
 }
-
 FeatureBlocksWidget::~FeatureBlocksWidget()
 {
     delete ui;
 }
 
-void FeatureBlocksWidget::changeEvent(QEvent *event)
+void FeatureBlocksWidget::changeEvent(QEvent* ptrEvent)
 {
-    if(event->type() == QEvent::LanguageChange)
+    if(ptrEvent->type() == QEvent::LanguageChange)
     {
         ui->retranslateUi(this);
     }
 
-    QWidget::changeEvent(event);
+    QWidget::changeEvent(ptrEvent);
 }
 
 void FeatureBlocksWidget::setFeatureBlockManager(FeatureBlockManager* ptrFeatureBlockManager)
@@ -75,7 +74,7 @@ void FeatureBlocksWidget::setupButtons()
     const QStringList qstrFeatureBlockIds = m_ptrFeatureBlockManager->availableFeatureBlockIds();
     for(const QString& qstrFeatureBlockId : qstrFeatureBlockIds)
     {
-        IFeatureBlock *ptrFeatureBlock = m_ptrFeatureBlockManager->featureBlock(qstrFeatureBlockId);
+        IFeatureBlock* ptrFeatureBlock = m_ptrFeatureBlockManager->featureBlock(qstrFeatureBlockId);
 
         QAction* ptrAction = new QAction(this);
         ptrAction->setText(tr(ptrFeatureBlock->featureBlockInfo()->featureBlockDisplayName().toUtf8().constData()));
@@ -103,12 +102,12 @@ void FeatureBlocksWidget::setupStackedWidget()
         Q_ASSERT(ptrWidget);
 
         ui->stackedWidget->addWidget(ptrWidget);
-        m_hashFeatureBlockWidgets[qstrFeatureBlockId] = ptrWidget;
+        m_qhashFeatureBlockWidgets[qstrFeatureBlockId] = ptrWidget;
     }
 
     RollScriptBlockWidgetBase* ptrWidgetEmpty = new FeatureBlockWidgetEmpty(this);
     ui->stackedWidget->addWidget(ptrWidgetEmpty);
-    m_hashFeatureBlockWidgets[QStringLiteral("Empty")] = ptrWidgetEmpty;
+    m_qhashFeatureBlockWidgets[QStringLiteral("Empty")] = ptrWidgetEmpty;
 }
 
 void FeatureBlocksWidget::slotUpdateButtons()
@@ -120,15 +119,15 @@ void FeatureBlocksWidget::slotUpdateButtons()
     if(!hasSelection)
     {
         ui->stackedWidget->setEnabled(false);
-        ui->stackedWidget->setCurrentWidget(m_hashFeatureBlockWidgets[QStringLiteral("Empty")]);
+        ui->stackedWidget->setCurrentWidget(m_qhashFeatureBlockWidgets[QStringLiteral("Empty")]);
     }
     else
     {
         QModelIndex index = ui->listView->currentIndex();
-        RollScriptBlockDocumentBase *ptrLabelBlock = m_ptrDocumentBlocks->documentBlock(index.row());
+        RollScriptBlockDocumentBase* ptrLabelBlock = m_ptrDocumentBlocks->documentBlock(index.row());
         if(ptrLabelBlock)
         {
-            RollScriptBlockWidgetBase* ptrWidgetBase = m_hashFeatureBlockWidgets[ptrLabelBlock->blockPluginId()];
+            RollScriptBlockWidgetBase* ptrWidgetBase = m_qhashFeatureBlockWidgets[ptrLabelBlock->blockPluginId()];
             if(ptrWidgetBase)
             {
                 ptrWidgetBase->setDocumentBlock(ptrLabelBlock);
@@ -139,12 +138,12 @@ void FeatureBlocksWidget::slotUpdateButtons()
         else
         {
             ui->stackedWidget->setEnabled(false);
-            ui->stackedWidget->setCurrentWidget(m_hashFeatureBlockWidgets[QStringLiteral("Empty")]);
+            ui->stackedWidget->setCurrentWidget(m_qhashFeatureBlockWidgets[QStringLiteral("Empty")]);
         }
     }
 }
 
-void FeatureBlocksWidget::slotAddFeatureBlockFromMenu(QAction *ptrAction)
+void FeatureBlocksWidget::slotAddFeatureBlockFromMenu(QAction* ptrAction)
 {
     if(!ptrAction)
         return;

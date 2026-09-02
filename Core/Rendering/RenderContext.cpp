@@ -7,6 +7,9 @@ RenderContext::RenderContext(QObject* parent)
     m_ptrPainter = new QPainter();
     m_ptrPainter->setPen(Qt::black);
 }
+RenderContext::~RenderContext()
+{
+}
 
 void RenderContext::reset()
 {

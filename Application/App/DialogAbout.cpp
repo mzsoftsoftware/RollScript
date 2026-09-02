@@ -1,7 +1,7 @@
 #include "DialogAbout.h"
 #include "ui_DialogAbout.h"
 
-DialogAbout::DialogAbout(QWidget *parent)
+DialogAbout::DialogAbout(QWidget* parent)
     : QDialog(parent)
     , ui(new Ui::DialogAbout)
 {
@@ -11,7 +11,6 @@ DialogAbout::DialogAbout(QWidget *parent)
 
     // TASK : Make a better AboutDialog
 }
-
 DialogAbout::~DialogAbout()
 {
     delete ui;

@@ -13,6 +13,9 @@ PluginInfo::PluginInfo(const char* pszContext,
     , m_pszPluginDisplayNameKey(pszPluginDisplayNameKey)
 {
 }
+PluginInfo::~PluginInfo()
+{
+}
 
 QString PluginInfo::translate(const char* pszKey) const
 {

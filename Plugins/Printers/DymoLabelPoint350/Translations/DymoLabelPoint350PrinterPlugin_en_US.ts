@@ -4,17 +4,17 @@
 <context>
     <name>DymoLabelPoint350PrinterJob</name>
     <message>
-        <location filename="../DLP350PrinterJob.cpp" line="30"/>
+        <location filename="../DLP350PrinterJob.cpp" line="18"/>
         <source>NoPrinterInstance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../DLP350PrinterJob.cpp" line="36"/>
+        <location filename="../DLP350PrinterJob.cpp" line="24"/>
         <source>SendError</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../DLP350PrinterJob.cpp" line="45"/>
+        <location filename="../DLP350PrinterJob.cpp" line="33"/>
         <source>ReceiveError</source>
         <translation type="unfinished"></translation>
     </message>
@@ -55,12 +55,12 @@
 <context>
     <name>DymoLabelPoint350PrinterPluginInfo</name>
     <message>
-        <location filename="../DLP350PrinterPluginInfo.h" line="13"/>
+        <location filename="../DLP350PrinterPluginInfo.h" line="14"/>
         <source>plugin.dymo.labelpoint350</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../DLP350PrinterPluginInfo.h" line="14"/>
+        <location filename="../DLP350PrinterPluginInfo.h" line="15"/>
         <source>priner.dymo.labelpoint350</source>
         <translation type="unfinished"></translation>
     </message>

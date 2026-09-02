@@ -10,10 +10,12 @@ class RollScriptBlockTextDocument : public RollScriptBlockDocumentBase
     Q_OBJECT
 
 public:
+    // Constructor / Destructor
     RollScriptBlockTextDocument(const QString& qstrBlockPluginId, QObject* parent);
-    virtual ~RollScriptBlockTextDocument();
+    ~RollScriptBlockTextDocument() override;
 
-    unsigned int lineCount() const            { return m_vecBlockTextLines.count(); }
+    // Getter
+    unsigned int lineCount() const            { return m_qvecBlockTextLines.count(); }
     RollScriptBlockTextLineDocument* textLine(const unsigned int index) const;
 
     // JSON
@@ -30,5 +32,5 @@ private:
     bool loadVersion_1(const QJsonObject& jsonBlocks);
 
 private:
-    QVector<RollScriptBlockTextLineDocument*>  m_vecBlockTextLines;
+    QVector<RollScriptBlockTextLineDocument*>  m_qvecBlockTextLines;
 };

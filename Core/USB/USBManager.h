@@ -12,10 +12,16 @@ struct libusb_device_handle;
 class USBManager : public QObject, public RollScriptErrorOwner
 {
     Q_OBJECT
-public:
-    explicit USBManager(QObject* parent);
-    virtual ~USBManager() override;
 
+public:
+    // Constructor / Destructor
+    explicit USBManager(QObject* parent);
+    ~USBManager() override;
+
+    // Getter
+    const QList<USBDeviceInfo*>& devices() const    { return m_qlstUSBDeviceInfo; }
+
+    // Operations
     bool init();
 
     bool scanForDevices();
@@ -25,8 +31,6 @@ public:
     bool send(const QByteArray& baData, int timeoutMs = 1000);
     bool receive(QByteArray&baData, int maxLength = 512, int timeoutMs = 1000);
 
-    // Getter
-    const QList<USBDeviceInfo*>& devices() const    { return m_qlstUSBDeviceInfo; }
 
 private:
     void clearUSBDeviceInfo();

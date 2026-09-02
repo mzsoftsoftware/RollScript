@@ -24,29 +24,9 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(ApplicationContext* ptrApplicationContext, QWidget *parent = nullptr);
+    // Consructor / Destructor
+    explicit MainWindow(ApplicationContext* ptrApplicationContext, QWidget* parent = nullptr);
     ~MainWindow() override;
-
-protected:
-    void closeEvent(QCloseEvent* event) override;
-
-private:
-    void createLanguageMenu();
-    void updateLanguageMenu();
-
-    void setupActions();
-    void setupToolBar();
-    void setupDocument();
-
-    bool documentConfirmDiscardChanges();
-    bool documentClear();
-    bool documentOpen();
-    bool documentSave();
-    bool documentSaveAs();
-
-    void setupPrinterManager();
-    void setupFeatureBlockManager();
-    void setupRollScriptRenderer();
 
 private slots:
     void slot_SwitchLanguage();
@@ -65,7 +45,6 @@ private slots:
     void slot_PrinterManager_PrintFinished();
 
     void slot_FeatureBlockManager_ManagerError();
-
     void slot_RollScriptRenderer_RenderingError();
 
     void on_actionAboutRollScript_triggered();
@@ -80,8 +59,31 @@ private slots:
     void updateWindowTitle();
     void updateActionAvailability();
 
+protected:
+    // Reimplemented Operations
+    void closeEvent(QCloseEvent* event) override;
+
 private:
-    Ui::MainWindow *ui;
+    // Operations
+    void createLanguageMenu();
+    void updateLanguageMenu();
+
+    void setupActions();
+    void setupToolBar();
+    void setupDocument();
+
+    bool documentConfirmDiscardChanges();
+    bool documentClear();
+    bool documentOpen();
+    bool documentSave();
+    bool documentSaveAs();
+
+    void setupPrinterManager();
+    void setupFeatureBlockManager();
+    void setupRollScriptRenderer();
+
+private:
+    Ui::MainWindow* ui;
     QProgressDialog*        m_ptrDlgPrinterProgress = nullptr;
 
     QComboBox*              m_ptrComboBoxPrinters = nullptr;

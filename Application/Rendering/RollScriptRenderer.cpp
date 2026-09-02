@@ -15,7 +15,7 @@
 #include "Core/Rendering/RenderContext.h"
 
 
-RollScriptRenderer::RollScriptRenderer(PrinterManager* ptrPrinterManager, FeatureBlockManager* ptrFeatureBlockManager, QObject *parent)
+RollScriptRenderer::RollScriptRenderer(PrinterManager* ptrPrinterManager, FeatureBlockManager* ptrFeatureBlockManager, QObject* parent)
     : QObject{parent}
     , m_ptrPrinterManager(ptrPrinterManager)
     , m_ptrFeatureBlockManager(ptrFeatureBlockManager)
@@ -29,7 +29,7 @@ RollScriptRenderer::RollScriptRenderer(PrinterManager* ptrPrinterManager, Featur
 }
 RollScriptRenderer::~RollScriptRenderer()
 {
-    m_hashFeatureBlockRenderers.clear();
+    m_qhashFeatureBlockRenderers.clear();
 }
 
 const QImage& RollScriptRenderer::image() const
@@ -47,7 +47,7 @@ bool RollScriptRenderer::init()
         RollScriptBlockRendererBase* ptrRenderer = m_ptrFeatureBlockManager->createFeatureBlockRenderer(qstrFeatureBlockId, this);
         Q_ASSERT(ptrRenderer);
 
-        m_hashFeatureBlockRenderers.insert(qstrFeatureBlockId, ptrRenderer);
+        m_qhashFeatureBlockRenderers.insert(qstrFeatureBlockId, ptrRenderer);
     }
 
 
@@ -135,7 +135,7 @@ bool RollScriptRenderer::createLayout()
     {
         Q_ASSERT(ptrBlockDocument);
 
-        RollScriptBlockRendererBase* ptrBlockRenderer = m_hashFeatureBlockRenderers[ptrBlockDocument->blockPluginId()];
+        RollScriptBlockRendererBase* ptrBlockRenderer = m_qhashFeatureBlockRenderers[ptrBlockDocument->blockPluginId()];
         Q_ASSERT(ptrBlockRenderer);
 
         if(!m_ptrRenderLayout->addBlock(ptrBlockDocument, ptrBlockRenderer, m_ptrRenderDeviceInfo))

@@ -49,7 +49,7 @@ bool USBManager::scanForDevices()
         return false;
     }
 
-    libusb_device **list = nullptr;
+    libusb_device** list = nullptr;
     ssize_t count = libusb_get_device_list(m_ptrLibUsbContext, &list);
     if(count<0)
     {

@@ -11,19 +11,20 @@ class QPluginLoader;
 class PrinterPluginRegistry;
 class FeaturePluginRegistry;
 
+
 class PluginManager : public QObject, public RollScriptErrorOwner
 {
     Q_OBJECT
 
 public:
     explicit PluginManager(QObject* parent);
-    virtual ~PluginManager() override;
+    ~PluginManager() override;
 
     bool init();
 
     // Getter
-    PrinterPluginRegistry* registryPrinters()            { return m_registryPrinters; }
-    FeaturePluginRegistry* registryFeatures()            { return m_registryFeatures; }
+    PrinterPluginRegistry* registryPrinters()            { return m_ptrRegistryPrinters; }
+    FeaturePluginRegistry* registryFeatures()            { return m_ptrRegistryFeatures; }
 
 private:
     bool loadPlugins();
@@ -34,11 +35,9 @@ private:
     void registerPrinterPlugin(IPrinterPlugin* ptrPrinterPlugin);
     void registerFeaturePlugin(IFeaturePlugin* ptrFeaturePlugin);
 
-    //QList<IPlugin*> plugins() const     { return m_qlstPlugins; }
-
 private:
-    QList<QPluginLoader*> m_lstPluginLoaders;
+    QList<QPluginLoader*> m_qlstPluginLoaders;
 
-    PrinterPluginRegistry* m_registryPrinters;
-    FeaturePluginRegistry* m_registryFeatures;
+    PrinterPluginRegistry* m_ptrRegistryPrinters;
+    FeaturePluginRegistry* m_ptrRegistryFeatures;
 };

@@ -4,7 +4,7 @@
 #include "DLP350PrinterJob.h"
 
 
-DymoLabelPoint350PrinterWorker::DymoLabelPoint350PrinterWorker(QObject *parent)
+DymoLabelPoint350PrinterWorker::DymoLabelPoint350PrinterWorker(QObject* parent)
     : QObject{parent}
 {
 }

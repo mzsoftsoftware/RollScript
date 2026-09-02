@@ -2,7 +2,7 @@
 #include "ui_MarginsWidget.h"
 
 
-MarginsWidget::MarginsWidget(QWidget *parent)
+MarginsWidget::MarginsWidget(QWidget* parent)
     : QWidget(parent)
     , ui(new Ui::MarginsWidget)
 {
@@ -22,20 +22,19 @@ MarginsWidget::MarginsWidget(QWidget *parent)
     connect(ui->doublePairWidget_MarginsTopBottom, &DoublePairWidget::valueOneEdited, this, &MarginsWidget::slot_TopValueEdited);
     connect(ui->doublePairWidget_MarginsTopBottom, &DoublePairWidget::valueTwoEdited, this, &MarginsWidget::slot_BottomValueEdited);
 }
-
 MarginsWidget::~MarginsWidget()
 {
     delete ui;
 }
 
-void MarginsWidget::changeEvent(QEvent *event)
+void MarginsWidget::changeEvent(QEvent* ptrEvent)
 {
-    if(event->type() == QEvent::LanguageChange)
+    if(ptrEvent->type() == QEvent::LanguageChange)
     {
         retranslateUi();
     }
 
-    QWidget::changeEvent(event);
+    QWidget::changeEvent(ptrEvent);
 }
 void MarginsWidget::retranslateUi() const
 {
@@ -84,19 +83,19 @@ void MarginsWidget::setMarginsMinimumMm(const QMarginsF& marginsMinMm)
     ui->doublePairWidget_MarginsTopBottom->setMinimumTwo(marginsMinMm.bottom());
 }
 
-void MarginsWidget::slot_LeftValueEdited(const double value)
+void MarginsWidget::slot_LeftValueEdited(const double dblValue)
 {
     emit marginsMmEdited(marginsMm());
 }
-void MarginsWidget::slot_RightValueEdited(const double value)
+void MarginsWidget::slot_RightValueEdited(const double dblValue)
 {
     emit marginsMmEdited(marginsMm());
 }
-void MarginsWidget::slot_TopValueEdited(const double value)
+void MarginsWidget::slot_TopValueEdited(const double dblValue)
 {
     emit marginsMmEdited(marginsMm());
 }
-void MarginsWidget::slot_BottomValueEdited(const double value)
+void MarginsWidget::slot_BottomValueEdited(const double dblValue)
 {
     emit marginsMmEdited(marginsMm());
 }

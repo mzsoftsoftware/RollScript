@@ -64,7 +64,7 @@ IFeatureBlock* FeatureBlockManager::featureBlock(const QString& qstrfeatureBlock
 
     return m_ptrRegistryFeatureBlocks->featureBlock(qstrfeatureBlockId);
 }
-RollScriptBlockWidgetBase* FeatureBlockManager::createFeatureBlockWidget(const QString& qstrFeatureBlockId, QWidget *parent)
+RollScriptBlockWidgetBase* FeatureBlockManager::createFeatureBlockWidget(const QString& qstrFeatureBlockId, QWidget* parent)
 {
     Q_ASSERT(m_ptrRegistryFeatureBlocks);
     Q_ASSERT(parent);

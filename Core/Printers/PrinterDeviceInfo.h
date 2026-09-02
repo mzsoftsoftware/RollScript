@@ -4,7 +4,8 @@
 class PrinterDeviceInfo
 {
 public:
-    PrinterDeviceInfo(const unsigned int iRenderDpi);
+    explicit PrinterDeviceInfo(const unsigned int iRenderDpi);
+    virtual ~PrinterDeviceInfo();
 
     // Getter
     const unsigned int renderDpi() const        { return m_uiRenderDpi; }

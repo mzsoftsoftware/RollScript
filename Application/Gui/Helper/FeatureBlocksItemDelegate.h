@@ -6,9 +6,11 @@
 class FeatureBlocksItemDelegate : public QStyledItemDelegate
 {
 public:
-    FeatureBlocksItemDelegate(QObject* parent);
+    // Constructor / Destructor
+    explicit FeatureBlocksItemDelegate(QObject* parent);
+    ~FeatureBlocksItemDelegate() override;
 
-    QSize sizeHint(const QStyleOptionViewItem &, const QModelIndex &) const override;
-
-    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index ) const override;
+    // Operations
+    QSize sizeHint(const QStyleOptionViewItem&, const QModelIndex&) const override;
+    void paint(QPainter* ptrPainter, const QStyleOptionViewItem& option, const QModelIndex& index) const override;
 };

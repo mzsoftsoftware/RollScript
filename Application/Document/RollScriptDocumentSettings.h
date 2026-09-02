@@ -11,6 +11,7 @@ class RollScriptDocumentSettings : public QObject, public RollScriptErrorOwner
     Q_OBJECT
 public:
     explicit RollScriptDocumentSettings(QObject* parent);
+    ~RollScriptDocumentSettings() override;
 
     // Getter
     QString printerMediaId() const                  { return m_qstrPrinterMediaId; }
@@ -27,11 +28,11 @@ public:
     bool loadFromJson(const QJsonObject& jsonSettings);
     bool saveToJson(QJsonObject& jsonSettings) const;
 
-private:
-    bool loadVersion_1(const QJsonObject& jsonSettings);
-
 signals:
     void settingsChanged();
+
+private:
+    bool loadVersion_1(const QJsonObject& jsonSettings);
 
 private:
     QString     m_qstrPrinterMediaId;

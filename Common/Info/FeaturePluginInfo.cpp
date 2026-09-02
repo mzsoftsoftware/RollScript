@@ -7,3 +7,6 @@ FeaturePluginInfo::FeaturePluginInfo(const char* pszContext,
     : PluginInfo(pszContext, qstrPluginId, qstrPluginVersion, pszPluginDisplayNameKey)
 {
 }
+FeaturePluginInfo::~FeaturePluginInfo()
+{
+}

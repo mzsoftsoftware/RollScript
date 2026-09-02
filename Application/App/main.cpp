@@ -6,24 +6,17 @@
 
 
 #include <iostream>
-void messageHandler(
-    QtMsgType type,
-    const QMessageLogContext &context,
-    const QString &msg
-    )
+void messageHandler(QtMsgType type,
+                    const QMessageLogContext& context,
+                    const QString& msg)
 {
     Q_UNUSED(type)
     Q_UNUSED(context)
-
-    std::cerr
-        << "MESSAGE HANDLER: "
-        //<< type.
-        << msg.toStdString()
-        << std::endl;
+    std::cerr << "MESSAGE HANDLER: " << msg.toStdString() << std::endl;
 }
 
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
     qInstallMessageHandler(messageHandler);
 

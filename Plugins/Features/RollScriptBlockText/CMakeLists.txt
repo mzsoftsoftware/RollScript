@@ -10,7 +10,7 @@ qt_standard_project_setup()
 
 set(SOURCES
     RollScriptBlockTextFeaturePlugin.cpp
-    RollScriptBlockText.cpp
+
 
     RollScriptBlockTextDocument.cpp
     RollScriptBlockTextLineDocument.cpp
@@ -22,7 +22,7 @@ set(SOURCES
 set(HEADERS
     RollScriptBlockTextFeaturePlugin.h
     RollScriptBlockTextFeaturePluginInfo.h
-    RollScriptBlockText.h
+
 
     RollScriptBlockTextDocument.h
     RollScriptBlockTextLineDocument.h

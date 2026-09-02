@@ -1,12 +1,13 @@
 #include "PreviewWidget.h"
 
-#include "Document/RollScriptDocument.h"
-#include "Rendering/RollScriptRenderer.h"
 #include <QTimer>
 #include <QPainter>
 
+#include "Document/RollScriptDocument.h"
+#include "Rendering/RollScriptRenderer.h"
 
-PreviewWidget::PreviewWidget(QWidget *parent)
+
+PreviewWidget::PreviewWidget(QWidget* parent)
     : QWidget{parent}
 {
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
@@ -56,11 +57,11 @@ void PreviewWidget::slot_TimerUpdate()
     update();
 }
 
-void PreviewWidget::paintEvent(QPaintEvent *event)
+void PreviewWidget::paintEvent(QPaintEvent* ptrEvent)
 {
     if(m_imagePreview.isNull())
     {
-        QWidget::paintEvent(event);
+        QWidget::paintEvent(ptrEvent);
         return;
     }
 
@@ -75,5 +76,5 @@ void PreviewWidget::paintEvent(QPaintEvent *event)
     QImage imagePreview = m_imagePreview.scaledToHeight(rectImage.height(), Qt::SmoothTransformation);
     painter.drawImage(rectImage.left(), rectImage.top(), imagePreview);
 
-    QWidget::paintEvent(event);
+    QWidget::paintEvent(ptrEvent);
 }

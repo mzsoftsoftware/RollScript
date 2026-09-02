@@ -13,13 +13,13 @@ PrintersItemModel::~PrintersItemModel()
 {
 }
 
-int PrintersItemModel::rowCount(const QModelIndex &parent) const
+int PrintersItemModel::rowCount(const QModelIndex& parent) const
 {
     Q_UNUSED(parent)
     return m_qstrPrinterIds.count();
 }
 
-QVariant PrintersItemModel::data(const QModelIndex &index, int role) const
+QVariant PrintersItemModel::data(const QModelIndex& index, int iRole) const
 {
     if (!index.isValid())
         return QVariant();
@@ -30,7 +30,7 @@ QVariant PrintersItemModel::data(const QModelIndex &index, int role) const
     const QString& qstrId = m_qstrPrinterIds.at(index.row());
     const PrinterInstance* ptrPrinterInstance = m_ptrPrinterManager->printerInstance(qstrId);
 
-    switch(role)
+    switch(iRole)
     {
     case Qt::DisplayRole:
         return ptrPrinterInstance->displayName();

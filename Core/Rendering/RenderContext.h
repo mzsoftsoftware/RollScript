@@ -13,7 +13,9 @@ class RenderContext : public QObject, public RollScriptErrorOwner
     Q_OBJECT
 
 public:
-    RenderContext(QObject* parent);
+    // Constructor / Destructor
+    explicit RenderContext(QObject* parent);
+    ~RenderContext() override;
 
     // Getter
     const QImage& image() const             { return m_image; }

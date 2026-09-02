@@ -6,3 +6,6 @@ RollScriptBlockRendererBase::RollScriptBlockRendererBase(const QString& qstrBloc
     , m_qstrBlockPluginId(qstrBlockPluginId)
 {
 }
+RollScriptBlockRendererBase::~RollScriptBlockRendererBase()
+{
+}

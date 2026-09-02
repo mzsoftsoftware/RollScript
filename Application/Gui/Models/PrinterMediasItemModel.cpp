@@ -14,13 +14,13 @@ PrinterMediasItemModel::~PrinterMediasItemModel()
 {
 }
 
-int PrinterMediasItemModel::rowCount(const QModelIndex &parent) const
+int PrinterMediasItemModel::rowCount(const QModelIndex& parent) const
 {
     Q_UNUSED(parent)
     return m_qstrPrinterMediaIds.count();
 }
 
-QVariant PrinterMediasItemModel::data(const QModelIndex &index, int role) const
+QVariant PrinterMediasItemModel::data(const QModelIndex& index, int role) const
 {
     if (!index.isValid())
         return QVariant();

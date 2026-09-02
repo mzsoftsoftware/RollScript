@@ -12,18 +12,22 @@ class PrinterMedia;
 class RenderDeviceInfo : public QObject, public RollScriptErrorOwner
 {
 public:
-    RenderDeviceInfo(QObject* parent);
+    // Constructor / Destructor
+    explicit RenderDeviceInfo(QObject* parent);
+    ~RenderDeviceInfo() override;
 
-    void reset();
-    bool create(const PrinterInstance* ptrPrinterInstance, const PrinterMedia* ptrPrinterMedia);
-
-    int convertMmToPx(double valueMm) const;
-    QMargins convertMmToPx(const QMarginsF& marginsMm ) const;
-
+    // Getters
     double minimumMarginTopMm() const       { return m_dblMinimumMarginTopMm; }
     double minimumMarginBottomMm() const    { return m_dblMinimumMarginBottomMm; }
 
     int heightPx() const                    { return m_iHeightPx; }
+
+    // Operations
+    void reset();
+    bool create(const PrinterInstance* ptrPrinterInstance, const PrinterMedia* ptrPrinterMedia);
+
+    int convertMmToPx(double dblValueMm) const;
+    QMargins convertMmToPx(const QMarginsF& marginsMm ) const;
 
 private:
     double m_dblPxPerMm = 0.0;

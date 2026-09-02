@@ -14,10 +14,7 @@ PrinterInstanceUSB::PrinterInstanceUSB(IPrinterPlugin* ptrPrinterPlugin, USBMana
 }
 PrinterInstanceUSB::~PrinterInstanceUSB()
 {
-    if(isConnected())
-    {
-        close();
-    }
+    close();
 }
 
 bool PrinterInstanceUSB::open()

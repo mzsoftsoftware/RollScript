@@ -2,13 +2,12 @@
 #include "ui_DoublePairWidget.h"
 
 
-DoublePairWidget::DoublePairWidget(QWidget *parent)
+DoublePairWidget::DoublePairWidget(QWidget* parent)
     : QWidget(parent)
     , ui(new Ui::DoublePairWidget)
 {
     ui->setupUi(this);
 }
-
 DoublePairWidget::~DoublePairWidget()
 {
     delete ui;
@@ -50,56 +49,56 @@ double DoublePairWidget::minimumTwo() const
     return ui->doubleSpinBox_Two->minimum();
 }
 
-void DoublePairWidget::setLabelOne(const QString& label)
+void DoublePairWidget::setLabelOne(const QString& qstrLabel)
 {
-    ui->label_One->setText(label);
+    ui->label_One->setText(qstrLabel);
 }
-void DoublePairWidget::setSuffixOne(const QString& suffix)
+void DoublePairWidget::setSuffixOne(const QString& qstrSuffix)
 {
-    ui->doubleSpinBox_One->setSuffix(suffix);
-}
-
-void DoublePairWidget::setLabelTwo(const QString& label)
-{
-    ui->label_Two->setText(label);
-}
-void DoublePairWidget::setSuffixTwo(const QString& suffix)
-{
-    ui->doubleSpinBox_Two->setSuffix(suffix);
+    ui->doubleSpinBox_One->setSuffix(qstrSuffix);
 }
 
-void DoublePairWidget::setValueOne(const double value)
+void DoublePairWidget::setLabelTwo(const QString& qstrLabel)
+{
+    ui->label_Two->setText(qstrLabel);
+}
+void DoublePairWidget::setSuffixTwo(const QString& qstrSuffix)
+{
+    ui->doubleSpinBox_Two->setSuffix(qstrSuffix);
+}
+
+void DoublePairWidget::setValueOne(const double dblValue)
 {
     QSignalBlocker b(ui->doubleSpinBox_One);
-    ui->doubleSpinBox_One->setValue(value);
+    ui->doubleSpinBox_One->setValue(dblValue);
     if(ui->toolButton->isChecked())
     {
         QSignalBlocker b(ui->doubleSpinBox_Two);
-        ui->doubleSpinBox_Two->setValue(value);
+        ui->doubleSpinBox_Two->setValue(dblValue);
     }
 }
-void DoublePairWidget::setMinimumOne(const double value)
+void DoublePairWidget::setMinimumOne(const double dblValue)
 {
     //QSignalBlocker b(ui->doubleSpinBox_One);
-    ui->doubleSpinBox_One->setMinimum(value);
-    if(ui->doubleSpinBox_One->value() < value)
+    ui->doubleSpinBox_One->setMinimum(dblValue);
+    if(ui->doubleSpinBox_One->value() < dblValue)
     {
-        ui->doubleSpinBox_One->setValue(value);
+        ui->doubleSpinBox_One->setValue(dblValue);
     }
 }
 
-void DoublePairWidget::setValueTwo(const double value)
+void DoublePairWidget::setValueTwo(const double dblValue)
 {
     QSignalBlocker b(ui->doubleSpinBox_Two);
-    ui->doubleSpinBox_Two->setValue(value);
+    ui->doubleSpinBox_Two->setValue(dblValue);
 }
-void DoublePairWidget::setMinimumTwo(const double value)
+void DoublePairWidget::setMinimumTwo(const double dblValue)
 {
     //QSignalBlocker b(ui->doubleSpinBox_Two);
-    ui->doubleSpinBox_Two->setMinimum(value);
-    if(ui->doubleSpinBox_Two->value() < value)
+    ui->doubleSpinBox_Two->setMinimum(dblValue);
+    if(ui->doubleSpinBox_Two->value() < dblValue)
     {
-        ui->doubleSpinBox_Two->setValue(value);
+        ui->doubleSpinBox_Two->setValue(dblValue);
     }
 }
 
@@ -107,34 +106,34 @@ bool DoublePairWidget::isLocked() const
 {
     return ui->toolButton->isChecked();
 }
-void DoublePairWidget::setLocked(const bool locked)
+void DoublePairWidget::setLocked(const bool bLocked)
 {
-    if(locked != ui->toolButton->isChecked())
+    if(bLocked != ui->toolButton->isChecked())
     {
         QSignalBlocker bTwo(ui->doubleSpinBox_Two);
         QSignalBlocker bLock(ui->toolButton);
-        ui->toolButton->setChecked(locked);
+        ui->toolButton->setChecked(bLocked);
         updateLockState();
     }
 }
 
 
-void DoublePairWidget::on_toolButton_toggled(bool checked)
+void DoublePairWidget::on_toolButton_toggled(bool bChecked)
 {
     updateLockState();
-    emit lockedToggled(checked);
+    emit lockedToggled(bChecked);
 }
-void DoublePairWidget::on_doubleSpinBox_One_valueChanged(const double value)
+void DoublePairWidget::on_doubleSpinBox_One_valueChanged(const double dblValue)
 {
-    emit valueOneEdited(value);
+    emit valueOneEdited(dblValue);
     if(ui->toolButton->isChecked())
     {
-        ui->doubleSpinBox_Two->setValue(value);
+        ui->doubleSpinBox_Two->setValue(dblValue);
     }
 }
-void DoublePairWidget::on_doubleSpinBox_Two_valueChanged(const double value)
+void DoublePairWidget::on_doubleSpinBox_Two_valueChanged(const double dblValue)
 {
-    emit valueTwoEdited(value);
+    emit valueTwoEdited(dblValue);
 }
 
 void DoublePairWidget::updateLockState()

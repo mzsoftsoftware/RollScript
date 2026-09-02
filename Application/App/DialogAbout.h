@@ -12,9 +12,10 @@ class DialogAbout : public QDialog
     Q_OBJECT
 
 public:
-    explicit DialogAbout(QWidget *parent = nullptr);
-    ~DialogAbout();
+    // Constructor / Destructor
+    explicit DialogAbout(QWidget* parent);
+    ~DialogAbout() override;
 
 private:
-    Ui::DialogAbout *ui;
+    Ui::DialogAbout* ui;
 };

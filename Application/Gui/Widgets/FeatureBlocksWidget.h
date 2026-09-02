@@ -1,4 +1,5 @@
 #pragma once
+// clazy:excludeall=connect-by-name
 
 #include <QWidget>
 #include <QMenu>
@@ -20,22 +21,24 @@ class FeatureBlocksWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit FeatureBlocksWidget(QWidget *parent);
-    virtual ~FeatureBlocksWidget();
+    // Constructor / Destructor
+    explicit FeatureBlocksWidget(QWidget* parent);
+    ~FeatureBlocksWidget() override;
 
+    // Operations
     void setFeatureBlockManager(FeatureBlockManager* ptrFeatureBlockManager);
     void setRollScriptDocument(RollScriptDocument* ptrDocument);
 
-protected:
-    void changeEvent(QEvent *event) override;
-
 private slots:
     void slotUpdateButtons();
-    void slotAddFeatureBlockFromMenu(QAction *ptrAction);
+    void slotAddFeatureBlockFromMenu(QAction* ptrAction);
 
     void on_toolButton_Remove_clicked();
 
     void updateUiFromDocument();
+
+protected:
+    void changeEvent(QEvent* ptrEvent) override;
 
 private:
     void setupListView();
@@ -43,15 +46,15 @@ private:
     void setupStackedWidget();
 
 private:
-    Ui::FeatureBlocksWidget *ui;
+    Ui::FeatureBlocksWidget* ui;
 
-    FeatureBlockManager* m_ptrFeatureBlockManager = nullptr;
+    FeatureBlockManager*                        m_ptrFeatureBlockManager = nullptr;
 
-    RollScriptDocument* m_ptrDocument = nullptr;
-    RollScriptDocumentBlocks* m_ptrDocumentBlocks = nullptr;
+    RollScriptDocument*                         m_ptrDocument = nullptr;
+    RollScriptDocumentBlocks*                   m_ptrDocumentBlocks = nullptr;
 
-    QMenu* m_ptrFeatureBlocksAddMenu = nullptr;
-    QHash<QString, RollScriptBlockWidgetBase*> m_hashFeatureBlockWidgets;
+    QMenu*                                      m_ptrFeatureBlocksAddMenu = nullptr;
+    QHash<QString, RollScriptBlockWidgetBase*>  m_qhashFeatureBlockWidgets;
 
-    FeatureBlocksItemModel* m_ptrFeatureBlocksItemModel = nullptr;
+    FeatureBlocksItemModel*                     m_ptrFeatureBlocksItemModel = nullptr;
 };

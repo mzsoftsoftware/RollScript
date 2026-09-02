@@ -7,7 +7,7 @@
 class RollScriptErrorOwner
 {
 public:
-    RollScriptErrorOwner();
+    explicit RollScriptErrorOwner();
     virtual ~RollScriptErrorOwner();
 
     /*

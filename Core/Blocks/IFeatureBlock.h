@@ -14,8 +14,10 @@ class RollScriptBlockRendererBase;
 class IFeatureBlock
 {
 public:
+    // Constructor / Destructor
     virtual ~IFeatureBlock() = default;
 
+    // Getter
     virtual const IFeatureBlockInfo* featureBlockInfo() const = 0;
     //virtual const QString& featureBlockId() const = 0;
     //virtual const QString& featureBlockDisplayName() const = 0;
@@ -23,7 +25,7 @@ public:
     //virtual const QString& featureBlockTooltip() const = 0;
 
     // Instances
-    virtual RollScriptBlockWidgetBase* createFeatureBlockWidget(QWidget *parent) = 0;
+    virtual RollScriptBlockWidgetBase* createFeatureBlockWidget(QWidget* parent) = 0;
     virtual RollScriptBlockDocumentBase* createFeatureBlockDocument(QObject* parent) = 0;
     virtual RollScriptBlockRendererBase* createFeatureBlockRenderer(QObject* parent) = 0;
 };

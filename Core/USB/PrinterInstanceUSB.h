@@ -12,11 +12,12 @@ class PrinterInstanceUSB : public PrinterInstance
     Q_OBJECT
 
 public:
+    // Constructor / Destructor
     explicit PrinterInstanceUSB(IPrinterPlugin* ptrPrinterPlugin,
                                 USBManager* ptrUSBManager,
                                 const USBDeviceInfo* ptrDeviceInfo,
                                 QObject* parent);
-    virtual ~PrinterInstanceUSB() override;
+    ~PrinterInstanceUSB() override;
 
     // Getter
     const USBDeviceInfo* deviceInfo() const         { return m_ptrDeviceInfo; }
@@ -26,6 +27,7 @@ public:
     bool close() override;
     bool isConnected() override                     { return m_bConnected; }
 
+    // Operations
     bool send(const QByteArray& baData);
     bool receive(QByteArray&baData, int maxLength = 512, int timeoutMs = 1000);
 

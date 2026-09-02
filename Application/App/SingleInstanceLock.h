@@ -10,9 +10,11 @@ class SingleInstanceLock : public QObject, public RollScriptErrorOwner
 {
     Q_OBJECT
 public:
+    // Constructor / Destructor
     explicit SingleInstanceLock(QObject* parent);
-    virtual ~SingleInstanceLock() override;
+    ~SingleInstanceLock() override;
 
+    // Operations
     bool lock();
 
 private:

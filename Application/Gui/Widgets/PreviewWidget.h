@@ -1,4 +1,5 @@
 #pragma once
+// clazy:excludeall=connect-by-name
 
 #include <QWidget>
 
@@ -10,9 +11,11 @@ class PreviewWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit PreviewWidget(QWidget *parent);
-    virtual ~PreviewWidget();
+    // Constructor / Destructor
+    explicit PreviewWidget(QWidget* parent);
+    ~PreviewWidget() override;
 
+    // Operations
     void setRollScriptRenderer(RollScriptRenderer* ptrRenderer);
     void setRollScriptDocument(RollScriptDocument* ptrDocument);
 
@@ -21,7 +24,7 @@ private slots:
     void slot_TimerUpdate();
 
 protected:
-    void paintEvent(QPaintEvent *event) override;
+    void paintEvent(QPaintEvent* ptrEvent) override;
 
 private:
     RollScriptRenderer* m_ptrRenderer = nullptr;

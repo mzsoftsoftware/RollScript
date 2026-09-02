@@ -6,13 +6,15 @@
 class RollScriptError
 {
 public:
-    RollScriptError(const QString& qstrUserMessage,
-                    const QString& qstrTechnicalMessage,
-                    const QString& qstrFile,
-                    const QString& qstrFunction,
-                    const int line);
+    // Constructor / Destructor
+    explicit RollScriptError(const QString& qstrUserMessage,
+                             const QString& qstrTechnicalMessage,
+                             const QString& qstrFile,
+                             const QString& qstrFunction,
+                             const int iLine);
     virtual ~RollScriptError();
 
+    // Operations
     QString messageUser() const;
     QString messageDebug(int iIndentLevel = 0) const;
 

@@ -14,7 +14,9 @@ class RollScriptDocument : public QObject, public RollScriptErrorOwner
 {
     Q_OBJECT
 public:
-    explicit RollScriptDocument(FeatureBlockManager *ptrFeatureBlockManager, QObject* parent);
+    // Constructor / Destructor
+    explicit RollScriptDocument(FeatureBlockManager* ptrFeatureBlockManager, QObject* parent);
+    ~RollScriptDocument() override;
 
     // Getters
     bool isModified() const                         { return m_bModified; }
@@ -22,8 +24,6 @@ public:
 
     RollScriptDocumentSettings* settings() const    { return m_ptrSettings; }
     RollScriptDocumentBlocks* blocks() const        { return m_ptrBlocks; }
-
-    // Setters
 
     // Document handling
     void clear();
@@ -35,16 +35,16 @@ public:
 
     static QString fileExtension()  { return QStringLiteral(".rollscript"); }
 
+private slots:
+    void slotSettingsChanged();
+    void slotBlocksChanged();
+
 signals:
     void documentModifiedChanged(bool bModified);
     void documentFileNameChanged(const QString& qstrFileName);
     void documentCleared();
     void documentLoaded();
     void documentSaved();
-
-private slots:
-    void slotSettingsChanged();
-    void slotBlocksChanged();
 
 private:
     void setModified(bool bModified);

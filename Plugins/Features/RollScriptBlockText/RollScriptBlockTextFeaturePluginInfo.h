@@ -8,6 +8,7 @@
 class RollScriptBlockTextFeaturePluginInfo : public FeatureBlockInfo
 {
 public:
+    // Constructor / Destructor
     explicit RollScriptBlockTextFeaturePluginInfo()
         : FeatureBlockInfo("RollScriptBlockTextFeaturePluginInfo",                                                   // Translation Context
                            QStringLiteral("de.mzsoft.rollscript.feature.block.text"),                                // Plugin ID

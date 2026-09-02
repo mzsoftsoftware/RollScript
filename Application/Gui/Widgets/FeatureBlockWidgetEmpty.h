@@ -1,4 +1,5 @@
 #pragma once
+// clazy:excludeall=connect-by-name
 
 #include "Core/Blocks/RollScriptBlockWidgetBase.h"
 
@@ -12,11 +13,13 @@ class FeatureBlockWidgetEmpty : public RollScriptBlockWidgetBase
     Q_OBJECT
 
 public:
-    explicit FeatureBlockWidgetEmpty(QWidget *parent);
-    virtual ~FeatureBlockWidgetEmpty();
+    // Constructor / Destructor
+    explicit FeatureBlockWidgetEmpty(QWidget* parent);
+    ~FeatureBlockWidgetEmpty() override;
 
-    virtual void setDocumentBlock(RollScriptBlockDocumentBase *ptrBlockDocumentBase) override;
+    // Operations
+    virtual void setDocumentBlock(RollScriptBlockDocumentBase* ptrBlockDocumentBase) override;
 
 private:
-    Ui::FeatureBlockWidgetEmpty *ui;
+    Ui::FeatureBlockWidgetEmpty* ui;
 };

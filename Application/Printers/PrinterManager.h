@@ -18,15 +18,17 @@ class PrinterManager : public QObject, public RollScriptErrorOwner
 {
     Q_OBJECT
 public:
+    // Constructor / Destructor
     explicit PrinterManager(PluginManager* ptrPluginManager, USBManager* ptrUSBManager, QObject* parent);
-    virtual ~PrinterManager() override;
-
-    bool init();
+    ~PrinterManager() override;
 
     // Getter
     const QStringList& availablePrinterIds() const                                { return m_qstrPrinterIds; }
-    const PrinterInstance* printerInstance(const QString& qstrDeviceId) const     { return m_hashPrinterInstances.value(qstrDeviceId, nullptr); }
+    const PrinterInstance* printerInstance(const QString& qstrDeviceId) const     { return m_qhashPrinterInstances.value(qstrDeviceId, nullptr); }
     const PrinterInstance* currentPrinter() const                                 { return m_ptrCurrentPrinterInstance; }
+
+    // Operations
+    bool init();
 
     bool scanForDevices();
     bool switchPrinter(const QString& qstrPrinterId);
@@ -48,7 +50,7 @@ private:
     USBManager* m_ptrUSBManager = nullptr;
 
     QStringList m_qstrPrinterIds;
-    QHash<QString, PrinterInstance*> m_hashPrinterInstances;
+    QHash<QString, PrinterInstance*> m_qhashPrinterInstances;
 
     // RollScript supports one active printer only.
     // The current printer is managed by PrinterManager.

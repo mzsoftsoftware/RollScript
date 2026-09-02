@@ -8,6 +8,9 @@ FeaturePluginRegistry::FeaturePluginRegistry(QObject* parent)
     : QObject{parent}
 {
 }
+FeaturePluginRegistry::~FeaturePluginRegistry()
+{
+}
 
 bool FeaturePluginRegistry::registerPlugin(IFeaturePlugin* ptrFeaturePlugin)
 {
@@ -20,9 +23,8 @@ bool FeaturePluginRegistry::registerPlugin(IFeaturePlugin* ptrFeaturePlugin)
         return false;
     }
 
-    m_hashFeaturePlugins.insert(qstrPluginId, ptrFeaturePlugin);
+    m_qhashFeaturePlugins.insert(qstrPluginId, ptrFeaturePlugin);
     m_qstrFeaturePluginIds.append(qstrPluginId);
 
     return true;
 }
-

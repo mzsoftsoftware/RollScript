@@ -11,19 +11,7 @@ DymoLabelPoint350PrinterJob::~DymoLabelPoint350PrinterJob()
 {
 }
 
-/*
-bool DymoLabelPoint350PrinterPlugin::readStatus()
-{
-    return false;
-}
-
-bool DymoLabelPoint350PrinterPlugin::readMedia()
-{
-    return false;
-}
-*/
-
-bool DymoLabelPoint350PrinterJob::sendCommand(const QByteArray& baCommand, QByteArray* ptrBaResponse)
+bool DymoLabelPoint350PrinterJob::sendCommand(const QByteArray& qbaCommand, QByteArray* ptrQbaResponse)
 {
     if(!m_ptrPrinterInstanceUSB)
     {
@@ -31,16 +19,16 @@ bool DymoLabelPoint350PrinterJob::sendCommand(const QByteArray& baCommand, QByte
         return false;
     }
 
-    if(!m_ptrPrinterInstanceUSB->send(baCommand))
+    if(!m_ptrPrinterInstanceUSB->send(qbaCommand))
     {
         ROLLSCRIPT_ERROR_CAUSE(tr("SendError"), QStringLiteral("m_ptrPrinterInstanceUSB->send() failed"), m_ptrPrinterInstanceUSB->takeError());
         return false;
     }
 
-    if(ptrBaResponse)
+    if(ptrQbaResponse)
     {
-        ptrBaResponse->clear();
-        if(!m_ptrPrinterInstanceUSB->receive(*ptrBaResponse))
+        ptrQbaResponse->clear();
+        if(!m_ptrPrinterInstanceUSB->receive(*ptrQbaResponse))
         {
             ROLLSCRIPT_ERROR_CAUSE(tr("ReceiveError"), QStringLiteral("m_ptrPrinterInstanceUSB->receive() failed"), m_ptrPrinterInstanceUSB->takeError());
             return false;

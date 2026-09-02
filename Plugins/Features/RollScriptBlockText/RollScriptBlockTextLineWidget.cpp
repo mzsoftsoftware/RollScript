@@ -4,7 +4,7 @@
 #include "RollScriptBlockTextLineDocument.h"
 
 
-RollScriptBlockTextLineWidget::RollScriptBlockTextLineWidget(QWidget *parent)
+RollScriptBlockTextLineWidget::RollScriptBlockTextLineWidget(QWidget* parent)
     : QWidget(parent)
     , ui(new Ui::RollScriptBlockTextLineWidget)
 {
@@ -12,7 +12,6 @@ RollScriptBlockTextLineWidget::RollScriptBlockTextLineWidget(QWidget *parent)
 
     setupComboAlignment();
 }
-
 RollScriptBlockTextLineWidget::~RollScriptBlockTextLineWidget()
 {
     delete ui;
@@ -88,13 +87,13 @@ void RollScriptBlockTextLineWidget::on_checkBox_Active_toggled(bool checked)
 }
 
 
-void RollScriptBlockTextLineWidget::on_lineEdit_Text_textChanged(const QString &qstrText)
+void RollScriptBlockTextLineWidget::on_lineEdit_Text_textChanged(const QString& qstrText)
 {
     m_ptrBlockTextLineDocument->setLineText(qstrText);
 }
 
 
-void RollScriptBlockTextLineWidget::on_fontComboBox_Font_currentFontChanged(const QFont &font)
+void RollScriptBlockTextLineWidget::on_fontComboBox_Font_currentFontChanged(const QFont& font)
 {
     QFont myFont = font;
     myFont.setPointSize(ui->spinBox_FontSize->value());

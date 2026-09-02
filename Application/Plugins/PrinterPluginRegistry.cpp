@@ -8,16 +8,19 @@ PrinterPluginRegistry::PrinterPluginRegistry(QObject* parent)
     : QObject{parent}
 {
 }
+PrinterPluginRegistry::~PrinterPluginRegistry()
+{
+}
 
 bool PrinterPluginRegistry::registerPlugin(IPrinterPlugin* ptrPrinterPlugin)
 {
     if(!ptrPrinterPlugin)
         return false;
 
-    if(m_registryPlugins.contains(ptrPrinterPlugin))
+    if(m_qlstPrinterPlugins.contains(ptrPrinterPlugin))
         return false;
 
-    m_registryPlugins.append(ptrPrinterPlugin);
+    m_qlstPrinterPlugins.append(ptrPrinterPlugin);
 
     return true;
 }
@@ -26,7 +29,7 @@ IPrinterPlugin* PrinterPluginRegistry::supportsUsb(const USBDeviceInfo* ptrDevic
 {
     IPrinterPlugin* ptrPrinterPluginResult = nullptr;
 
-    for(IPrinterPlugin* ptrPrinterPlugin : m_registryPlugins)
+    for(IPrinterPlugin* ptrPrinterPlugin : m_qlstPrinterPlugins)
     {
         if(!ptrPrinterPlugin->supportsUsb(ptrDeviceInfo))
             continue;

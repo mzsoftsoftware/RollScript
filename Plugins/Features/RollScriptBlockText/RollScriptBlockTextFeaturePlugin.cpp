@@ -21,7 +21,7 @@ RollScriptBlockTextFeaturePlugin::RollScriptBlockTextFeaturePlugin(QObject* pare
     qDebug() << "Constructor resources:" << QDir(QStringLiteral(":/")).entryList();
 }
 
-RollScriptBlockWidgetBase* RollScriptBlockTextFeaturePlugin::createFeatureBlockWidget(QWidget *parent)
+RollScriptBlockWidgetBase* RollScriptBlockTextFeaturePlugin::createFeatureBlockWidget(QWidget* parent)
 {
     return new RollScriptBlockTextWidget(m_pluginInfo.featureBlockId(), m_pluginInfo.featureBlockDisplayName(), parent);
 }

@@ -5,14 +5,13 @@
 #include <QLibraryInfo>
 
 
-static const char *languageNameTranslation =
-    QT_TRANSLATE_NOOP(
-        "TranslationManager",
-        "Translation.LanguageName"
-        );
+static const char* languageNameTranslation = QT_TRANSLATE_NOOP("TranslationManager", "Translation.LanguageName");
 
 TranslationManager::TranslationManager(QObject* parent)
     : QObject{parent}
+{
+}
+TranslationManager::~TranslationManager()
 {
 }
 
@@ -30,7 +29,7 @@ void TranslationManager::scanTranslations()
         QDir::Files,
         QDir::Name);
 
-    for (const QString &fileName : translationFiles)
+    for (const QString& fileName : translationFiles)
     {
         const QString fullPath = resourceDirectory.filePath(fileName);
         const QString baseName = QFileInfo(fileName).completeBaseName();
@@ -79,7 +78,7 @@ bool TranslationManager::loadSystemLanguage()
 {
     const QStringList uiLanguages = QLocale::system().uiLanguages();
 
-    for (const QString &language : uiLanguages)
+    for (const QString& language : uiLanguages)
     {
         const QLocale locale(language);
         const auto it = m_qhashTranslations.constFind(locale);
@@ -108,7 +107,7 @@ bool TranslationManager::loadSystemLanguage()
     return loadLanguage(fallbackLocale);
 }
 
-bool TranslationManager::loadLanguage(const QLocale &locale)
+bool TranslationManager::loadLanguage(const QLocale& locale)
 {
     const auto it = m_qhashTranslations.constFind(locale);
     if (it == m_qhashTranslations.constEnd())

@@ -5,6 +5,7 @@
 class DymoLabelPoint350PrinterPluginInfo : public PrinterPluginInfo
 {
 public:
+    // Constructor / Destructor
     explicit DymoLabelPoint350PrinterPluginInfo()
         : PrinterPluginInfo(
               "DymoLabelPoint350PrinterPluginInfo",                                                     // Translation Context

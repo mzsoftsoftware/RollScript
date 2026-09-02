@@ -20,14 +20,18 @@ class ApplicationContext : public QObject
     Q_OBJECT
 
 public:
-    ApplicationContext(QObject* parent);
+    // Constructor / Destructor
+    explicit ApplicationContext(QObject* parent);
+    ~ApplicationContext() override;
 
+    // Getters
     TranslationManager* translationManager() const      { return m_ptrTranslationManager; }
     PluginManager* pluginManager() const                { return m_ptrPluginManager; }
     FeatureBlockManager* featureBlockManager() const    { return m_ptrFeatureBlockManager; }
     PrinterManager* printerManager() const              { return m_ptrPrinterManager; }
     RollScriptRenderer* rollScriptRenderer() const      { return m_ptrRollScriptRenderer; }
 
+    // Operations
     bool init();
 
 private:

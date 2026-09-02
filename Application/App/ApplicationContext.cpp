@@ -23,13 +23,16 @@ ApplicationContext::ApplicationContext(QObject* parent)
     : QObject{parent}
 {
 }
+ApplicationContext::~ApplicationContext()
+{
+}
 
 bool ApplicationContext::init()
 {
     m_ptrSingleInstanceLock = new SingleInstanceLock(this);
     if(!m_ptrSingleInstanceLock->lock())
     {
-        RollScriptError *ptrError = m_ptrSingleInstanceLock->takeError();
+        RollScriptError* ptrError = m_ptrSingleInstanceLock->takeError();
         if(ptrError)
         {
             // TASK : Use correct tr !!!
@@ -46,7 +49,7 @@ bool ApplicationContext::init()
     m_ptrTranslationManager = new TranslationManager(this);
     if(!m_ptrTranslationManager->init())
     {
-        RollScriptError *ptrError = m_ptrTranslationManager->takeError();
+        RollScriptError* ptrError = m_ptrTranslationManager->takeError();
         if(ptrError)
         {
             // TASK : Use correct tr !!!
@@ -63,7 +66,7 @@ bool ApplicationContext::init()
     m_ptrPluginManager = new PluginManager(this);
     if(!m_ptrPluginManager->init())
     {
-        RollScriptError *ptrError = m_ptrPluginManager->takeError();
+        RollScriptError* ptrError = m_ptrPluginManager->takeError();
         if(ptrError)
         {
             // TASK : Use correct tr !!!
@@ -80,7 +83,7 @@ bool ApplicationContext::init()
     m_ptrFeatureBlockManager = new FeatureBlockManager(m_ptrPluginManager, this);
     if(!m_ptrFeatureBlockManager->init())
     {
-        RollScriptError *ptrError = m_ptrFeatureBlockManager->takeError();
+        RollScriptError* ptrError = m_ptrFeatureBlockManager->takeError();
         if(ptrError)
         {
             // TASK : Use correct tr !!!
@@ -97,7 +100,7 @@ bool ApplicationContext::init()
     m_ptrUSBManager = new USBManager(this);
     if(!m_ptrUSBManager->init())
     {
-        RollScriptError *ptrError = m_ptrUSBManager->takeError();
+        RollScriptError* ptrError = m_ptrUSBManager->takeError();
         if(ptrError)
         {
             // TASK : Use correct tr !!!
@@ -114,7 +117,7 @@ bool ApplicationContext::init()
     m_ptrPrinterManager = new PrinterManager(m_ptrPluginManager, m_ptrUSBManager, this);
     if(!m_ptrPrinterManager->init())
     {
-        RollScriptError *ptrError = m_ptrPrinterManager->takeError();
+        RollScriptError* ptrError = m_ptrPrinterManager->takeError();
         if(ptrError)
         {
             // TASK : Use correct tr !!!
@@ -131,7 +134,7 @@ bool ApplicationContext::init()
     m_ptrRollScriptRenderer = new RollScriptRenderer(m_ptrPrinterManager, m_ptrFeatureBlockManager, this);
     if(!m_ptrRollScriptRenderer->init())
     {
-        RollScriptError *ptrError = m_ptrRollScriptRenderer->takeError();
+        RollScriptError* ptrError = m_ptrRollScriptRenderer->takeError();
         if(ptrError)
         {
             // TASK : Use correct tr !!!
@@ -144,7 +147,6 @@ bool ApplicationContext::init()
 
         return false;
     }
-
 
     return true;
 }

@@ -6,3 +6,6 @@ RollScriptBlockDocumentBase::RollScriptBlockDocumentBase(const QString& qstrBloc
     , m_qstrBlockPluginId(qstrBlockPluginId)
 {
 }
+RollScriptBlockDocumentBase::~RollScriptBlockDocumentBase()
+{
+}

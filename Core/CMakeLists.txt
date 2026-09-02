@@ -20,7 +20,7 @@ set(SOURCES
     Errors/RollScriptError.cpp
     Errors/RollScriptErrorOwner.cpp
 
-    Blocks/RollScriptBlock.cpp
+
     Blocks/RollScriptBlockDocumentBase.cpp
     Blocks/RollScriptBlockWidgetBase.cpp
     Blocks/RollScriptBlockRendererBase.cpp
@@ -47,7 +47,7 @@ set(HEADERS
 
     Blocks/IFeatureBlock.h
     Blocks/IFeatureBlockInfo.h
-    Blocks/RollScriptBlock.h
+
     Blocks/RollScriptBlockDocumentBase.h
     Blocks/RollScriptBlockWidgetBase.h
     Blocks/RollScriptBlockRendererBase.h

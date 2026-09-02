@@ -14,12 +14,14 @@ class DymoLabelPoint350PrinterJobPrint : public DymoLabelPoint350PrinterJob
     Q_OBJECT
 
 public:
+    // Constructor / Destructor
     explicit DymoLabelPoint350PrinterJobPrint(PrinterInstanceUSB* ptrPrinterInstanceUSB,
                                               const QImage& imagePrint,
                                               const DymoLabelPoint350PrinterMedia* ptrPrinterMedia,
                                               const PrinterDeviceInfo& ptrPrinterDeviceInfo);
-    virtual ~DymoLabelPoint350PrinterJobPrint() override;
+    ~DymoLabelPoint350PrinterJobPrint() override;
 
+    // Operations
     bool execute() override;
 
 private:

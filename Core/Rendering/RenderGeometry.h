@@ -9,7 +9,9 @@ class RollScriptBlockRendererBase;
 class RenderGeometry
 {
 public:
-    RenderGeometry(const RollScriptBlockDocumentBase* ptrBlockDocument, RollScriptBlockRendererBase* ptrBlockRenderer);
+    // Constructor / Destructor
+    explicit RenderGeometry(const RollScriptBlockDocumentBase* ptrBlockDocument, RollScriptBlockRendererBase* ptrBlockRenderer);
+    virtual ~RenderGeometry();
 
     // Getter
     const RollScriptBlockDocumentBase* blockDocument() const    { return m_ptrBlockDocument; }

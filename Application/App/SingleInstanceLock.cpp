@@ -12,7 +12,6 @@ SingleInstanceLock::SingleInstanceLock(QObject* parent)
 
     m_ptrLockFile = new QLockFile(qstrLockFilePath);
 }
-
 SingleInstanceLock::~SingleInstanceLock()
 {
     if(m_ptrLockFile)

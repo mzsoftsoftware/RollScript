@@ -11,13 +11,12 @@ class RollScriptBlockDocumentBase : public QObject, public RollScriptErrorOwner
     Q_OBJECT
 
 public:
-    RollScriptBlockDocumentBase(const QString& qstrBlockPluginId, QObject* parent);
+    explicit RollScriptBlockDocumentBase(const QString& qstrBlockPluginId, QObject* parent);
+    ~RollScriptBlockDocumentBase() override;
 
     // Getter
     const QString& blockPluginId() const    { return m_qstrBlockPluginId; }
     const QMarginsF& marginsMm() const      { return m_marginsMm; }
-
-    // Setter
 
     // JSON
     virtual void clear() = 0;
@@ -29,6 +28,5 @@ signals:
 
 protected:
     QString m_qstrBlockPluginId;
-
     QMarginsF m_marginsMm;
 };

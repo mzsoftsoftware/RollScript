@@ -16,13 +16,13 @@
 PluginManager::PluginManager(QObject* parent)
     : QObject{parent}
 {
-    m_registryPrinters = new PrinterPluginRegistry(this);
-    m_registryFeatures = new FeaturePluginRegistry(this);
+    m_ptrRegistryPrinters = new PrinterPluginRegistry(this);
+    m_ptrRegistryFeatures = new FeaturePluginRegistry(this);
 }
 PluginManager::~PluginManager()
 {
-    qDeleteAll(m_lstPluginLoaders);
-    m_lstPluginLoaders.clear();
+    qDeleteAll(m_qlstPluginLoaders);
+    m_qlstPluginLoaders.clear();
 }
 
 bool PluginManager::init()
@@ -88,14 +88,14 @@ bool PluginManager::loadPluginFile(const QString& qstrPluginFileName)
         return false;
     }
 
-    m_lstPluginLoaders.append(ptrPluginLoader);
+    m_qlstPluginLoaders.append(ptrPluginLoader);
 
     IPrinterPlugin* ptrPrinterPlugin = qobject_cast<IPrinterPlugin*>(ptrInstance);
     if(ptrPrinterPlugin)
     {
-        if(!m_registryPrinters->registerPlugin(ptrPrinterPlugin))
+        if(!m_ptrRegistryPrinters->registerPlugin(ptrPrinterPlugin))
         {
-            ROLLSCRIPT_ERROR_CAUSE(tr("PluginLoadFailed"), QStringLiteral("m_registryPrinters.registerPlugin failed."), m_registryPrinters->takeError());
+            ROLLSCRIPT_ERROR_CAUSE(tr("PluginLoadFailed"), QStringLiteral("m_registryPrinters.registerPlugin failed."), m_ptrRegistryPrinters->takeError());
             return false;
         }
         return true;
@@ -111,9 +111,9 @@ bool PluginManager::loadPluginFile(const QString& qstrPluginFileName)
         qDebug() << "exists:" << QFile::exists(qstrPath);
         qDebug() << "resources:" << QDir(QStringLiteral(":/")).entryList();
 
-        if(!m_registryFeatures->registerPlugin(ptrFeaturePlugin))
+        if(!m_ptrRegistryFeatures->registerPlugin(ptrFeaturePlugin))
         {
-            ROLLSCRIPT_ERROR_CAUSE(tr("PluginLoadFailed"), QStringLiteral("m_registryFeatures.registerPlugin failed."), m_registryFeatures->takeError());
+            ROLLSCRIPT_ERROR_CAUSE(tr("PluginLoadFailed"), QStringLiteral("m_registryFeatures.registerPlugin failed."), m_ptrRegistryFeatures->takeError());
             return false;
         }
         return true;

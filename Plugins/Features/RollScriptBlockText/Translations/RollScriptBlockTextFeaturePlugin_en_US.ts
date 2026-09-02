@@ -17,7 +17,7 @@
 <context>
     <name>RollScriptBlockTextFeaturePluginInfo</name>
     <message>
-        <location filename="../RollScriptBlockTextFeaturePluginInfo.h" line="15"/>
+        <location filename="../RollScriptBlockTextFeaturePluginInfo.h" line="16"/>
         <source>plugin.feature.block.text</source>
         <translation type="unfinished"></translation>
     </message>
@@ -25,7 +25,7 @@
 <context>
     <name>RollScriptBlockTextLineDocument</name>
     <message>
-        <location filename="../RollScriptBlockTextLineDocument.cpp" line="50"/>
+        <location filename="../RollScriptBlockTextLineDocument.cpp" line="53"/>
         <source>DocumentBlockTextLine.LoadFromFile.Json.Version.Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -38,17 +38,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../RollScriptBlockTextLineWidget.cpp" line="25"/>
+        <location filename="../RollScriptBlockTextLineWidget.cpp" line="24"/>
         <source>Left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../RollScriptBlockTextLineWidget.cpp" line="26"/>
+        <location filename="../RollScriptBlockTextLineWidget.cpp" line="25"/>
         <source>Center</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../RollScriptBlockTextLineWidget.cpp" line="27"/>
+        <location filename="../RollScriptBlockTextLineWidget.cpp" line="26"/>
         <source>Right</source>
         <translation type="unfinished"></translation>
     </message>

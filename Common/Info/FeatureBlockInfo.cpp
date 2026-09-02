@@ -16,3 +16,6 @@ FeatureBlockInfo::FeatureBlockInfo(const char* pszContext,
     , m_pszFeatureBlockTooltipKey(pszFeatureBlockTooltipKey)
 {
 }
+FeatureBlockInfo::~FeatureBlockInfo()
+{
+}

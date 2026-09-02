@@ -11,7 +11,9 @@ class RollScriptBlockTextLineDocument : public QObject, public RollScriptErrorOw
     Q_OBJECT
 
 public:
-    RollScriptBlockTextLineDocument(QObject* parent);
+    // Constructor / Destructor
+    explicit RollScriptBlockTextLineDocument(QObject* parent);
+    ~RollScriptBlockTextLineDocument() override;
 
     // Getter
     const bool lineActive() const               { return m_bActive; }
@@ -30,13 +32,13 @@ public:
     bool loadFromJson(const QJsonObject& jsonBlockTextLine);
     bool saveToJson(QJsonObject& jsonBlockTextLine);
 
-private:
-    bool loadVersion_1(const QJsonObject& jsonBlockTextLine);
-
 signals:
     void documentCleared();
     void documentLoaded();
     void blockTextLineChanged();
+
+private:
+    bool loadVersion_1(const QJsonObject& jsonBlockTextLine);
 
 private:
     bool            m_bActive = false;

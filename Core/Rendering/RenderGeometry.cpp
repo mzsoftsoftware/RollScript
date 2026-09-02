@@ -6,3 +6,6 @@ RenderGeometry::RenderGeometry(const RollScriptBlockDocumentBase* ptrBlockDocume
     , m_ptrBlockRenderer(ptrBlockRenderer)
 {
 }
+RenderGeometry::~RenderGeometry()
+{
+}

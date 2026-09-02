@@ -4,3 +4,6 @@
 USBDeviceInfo::USBDeviceInfo()
 {
 }
+USBDeviceInfo::~USBDeviceInfo()
+{
+}

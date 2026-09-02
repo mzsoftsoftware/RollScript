@@ -7,14 +7,15 @@
 class PrinterPluginInfo : public PluginInfo, public virtual IPrinterPluginInfo
 {
 public:
-    PrinterPluginInfo(const char* pszContext,
-                      const QString& qstrPluginId,
-                      const QString& qstrPluginVersion,
-                      const char* pszPluginDisplayNameKey,
-                      const char* pszPrinterDisplayNameKey,
-                      const QIcon& iconPrinter);
-    ~PrinterPluginInfo() override = default;
+    explicit PrinterPluginInfo(const char* pszContext,
+                               const QString& qstrPluginId,
+                               const QString& qstrPluginVersion,
+                               const char* pszPluginDisplayNameKey,
+                               const char* pszPrinterDisplayNameKey,
+                               const QIcon& iconPrinter);
+    ~PrinterPluginInfo() override;
 
+    // Getter
     QString printerDisplayName() const  { return translate(m_pszPrinterDisplayNameKey); }
     const QIcon& printerIcon() const    { return m_iconPrinter; }
 

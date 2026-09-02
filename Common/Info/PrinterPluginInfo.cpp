@@ -11,3 +11,6 @@ PrinterPluginInfo::PrinterPluginInfo(const char* pszContext,
     , m_iconPrinter(iconPrinter)
 {
 }
+PrinterPluginInfo::~PrinterPluginInfo()
+{
+}

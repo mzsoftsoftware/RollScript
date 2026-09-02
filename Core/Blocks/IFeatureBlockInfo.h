@@ -8,7 +8,10 @@
 class IFeatureBlockInfo : public virtual IFeaturePluginInfo
 {
 public:
+    // Constructor / Destructor
     ~IFeatureBlockInfo() override = default;
+
+    // Getter
     virtual const QString& featureBlockId() const = 0;
     virtual const QIcon& featureBlockIcon() const = 0;
 

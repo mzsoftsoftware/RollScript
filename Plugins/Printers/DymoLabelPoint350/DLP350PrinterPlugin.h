@@ -20,6 +20,7 @@ class DymoLabelPoint350PrinterPlugin : public IPrinterPlugin
     Q_INTERFACES(IPrinterPlugin)
 
 public:
+    // Constructor / Destructor
     explicit DymoLabelPoint350PrinterPlugin(QObject* parent = nullptr);
     ~DymoLabelPoint350PrinterPlugin() override;
 
@@ -27,6 +28,7 @@ public:
     const IPluginInfo* pluginInfo() const override                  { return &m_pluginInfo; }
     const IPrinterPluginInfo* printerPluginInfo() const override    { return &m_pluginInfo; }
 
+    // Operations
     virtual bool supportsUsb(const USBDeviceInfo* ptrDevice) const override;
 
     virtual QList<PrinterMedia*> createPrinterMedias() override;
@@ -50,24 +52,9 @@ private slots:
     void slot_JobAlive_Error();
 
 private:
-    //bool fillDataFromImage(const QImage& printImage, const DymoLabelPoint350PrinterMedia* ptrPluginMedia, QVector<QByteArray>& vecArrData);
-    //bool fillDataFromImageLine(const int iLine, const QImage& printImage, const int iEmptyBits, const int iImageBits, const int iImageLineOffset, QByteArray& baLineData);
-
-    //bool alive();
-    //bool readStatus();
-    //bool readMedia();
-    //bool sendCommand(const QByteArray& baCommand, QByteArray* baResponse = nullptr);
-
-private:
     DymoLabelPoint350PrinterPluginInfo m_pluginInfo;
-    //const QString m_qstrPluginId = "dymo.labelpoint350";
-    //const QString m_qstrDisplayName = "Dymo LabelPoint 350";
-    //const QString m_qstrVersion = "1.0.0";
-    //const QIcon m_icon;
-
     QThread* m_ptrWorkerThread = nullptr;
     DymoLabelPoint350PrinterWorker* m_ptrWorker = nullptr;
-
 
     // Active printer instance.
     // Only one active printer is supported.
@@ -75,5 +62,4 @@ private:
     PrinterInstanceUSB* m_ptrPrinterInstanceUSB = nullptr;
 
     QTimer* m_ptrTimerAlive = nullptr;
-
 };

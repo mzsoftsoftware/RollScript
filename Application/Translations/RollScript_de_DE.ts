@@ -4,13 +4,13 @@
 <context>
     <name>ApplicationContext</name>
     <message>
-        <location filename="../App/ApplicationContext.cpp" line="36"/>
-        <location filename="../App/ApplicationContext.cpp" line="53"/>
-        <location filename="../App/ApplicationContext.cpp" line="70"/>
-        <location filename="../App/ApplicationContext.cpp" line="87"/>
-        <location filename="../App/ApplicationContext.cpp" line="104"/>
-        <location filename="../App/ApplicationContext.cpp" line="121"/>
-        <location filename="../App/ApplicationContext.cpp" line="138"/>
+        <location filename="../App/ApplicationContext.cpp" line="39"/>
+        <location filename="../App/ApplicationContext.cpp" line="56"/>
+        <location filename="../App/ApplicationContext.cpp" line="73"/>
+        <location filename="../App/ApplicationContext.cpp" line="90"/>
+        <location filename="../App/ApplicationContext.cpp" line="107"/>
+        <location filename="../App/ApplicationContext.cpp" line="124"/>
+        <location filename="../App/ApplicationContext.cpp" line="141"/>
         <source>Startup.Title</source>
         <translation type="unfinished"></translation>
     </message>
@@ -72,17 +72,17 @@ Logo</translation>
 <context>
     <name>DymoLabelPoint350PrinterJob</name>
     <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJob.cpp" line="30"/>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJob.cpp" line="18"/>
         <source>NoPrinterInstance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJob.cpp" line="36"/>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJob.cpp" line="24"/>
         <source>SendError</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJob.cpp" line="45"/>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJob.cpp" line="33"/>
         <source>ReceiveError</source>
         <translation type="unfinished"></translation>
     </message>
@@ -123,12 +123,12 @@ Logo</translation>
 <context>
     <name>DymoLabelPoint350PrinterPluginInfo</name>
     <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterPluginInfo.h" line="13"/>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterPluginInfo.h" line="14"/>
         <source>plugin.dymo.labelpoint350</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterPluginInfo.h" line="14"/>
+        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterPluginInfo.h" line="15"/>
         <source>priner.dymo.labelpoint350</source>
         <translation type="unfinished"></translation>
     </message>
@@ -146,7 +146,7 @@ Logo</translation>
 <context>
     <name>FeatureBlockRegistry</name>
     <message>
-        <location filename="../Features/FeatureBlockRegistry.cpp" line="19"/>
+        <location filename="../Features/FeatureBlockRegistry.cpp" line="22"/>
         <source>FeatureBlockAlreadyRegistered</source>
         <translation type="unfinished"></translation>
     </message>
@@ -175,7 +175,7 @@ Logo</translation>
 <context>
     <name>FeaturePluginRegistry</name>
     <message>
-        <location filename="../Plugins/FeaturePluginRegistry.cpp" line="19"/>
+        <location filename="../Plugins/FeaturePluginRegistry.cpp" line="22"/>
         <source>FeaturePluginAlreadyRegistered</source>
         <translation type="unfinished"></translation>
     </message>
@@ -358,134 +358,134 @@ Logo</translation>
 Möchten Sie es vor dem Beenden speichern?</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="294"/>
+        <location filename="../App/MainWindow.cpp" line="284"/>
         <source>Document.Cleared</source>
         <translation>Neues RollScript-Dokument wurde angelegt.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="300"/>
+        <location filename="../App/MainWindow.cpp" line="290"/>
         <source>Document.Loaded</source>
         <translation>RollScript-Dokument erfolgreich geladen.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="306"/>
+        <location filename="../App/MainWindow.cpp" line="296"/>
         <source>Document.Saved</source>
         <translation>RollScript-Dokument erfolgreich gespeichert.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="247"/>
-        <location filename="../App/MainWindow.cpp" line="279"/>
+        <location filename="../App/MainWindow.cpp" line="237"/>
+        <location filename="../App/MainWindow.cpp" line="269"/>
         <source>FileSave.Error.Title</source>
         <translation>RollScript-Dokument speichern</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="261"/>
+        <location filename="../App/MainWindow.cpp" line="251"/>
         <source>FileSaveAs.Title</source>
         <translation>RollScript-Dokument speichern unter</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="259"/>
+        <location filename="../App/MainWindow.cpp" line="249"/>
         <source>FileSaveAs.Filter</source>
         <translation>RollScript-Dateien (*%1)</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="131"/>
+        <location filename="../App/MainWindow.cpp" line="121"/>
         <source>No printers found, please rescan.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="178"/>
+        <location filename="../App/MainWindow.cpp" line="168"/>
         <source>ConfirmDiscardChanges.Title</source>
         <translation>Ungespeicherte Änderungen</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="178"/>
+        <location filename="../App/MainWindow.cpp" line="168"/>
         <source>ConfirmDiscardChanges.Message</source>
         <translation>Das aktuelle RollScript-Dokument enthält ungespeicherte Änderungen.
 Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="210"/>
+        <location filename="../App/MainWindow.cpp" line="200"/>
         <source>FileOpen.Filter</source>
         <translation>RollScript-Dateien (*%1)</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="211"/>
+        <location filename="../App/MainWindow.cpp" line="201"/>
         <source>FileOpen.Title</source>
         <translation>RollScript-Dokument öffnen</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="223"/>
+        <location filename="../App/MainWindow.cpp" line="213"/>
         <source>FileOpen.Error.Title</source>
         <translation>RollScript-Dokument öffnen</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="327"/>
+        <location filename="../App/MainWindow.cpp" line="317"/>
         <source>Drucken</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="328"/>
+        <location filename="../App/MainWindow.cpp" line="318"/>
         <source>Abbrechen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="343"/>
+        <location filename="../App/MainWindow.cpp" line="333"/>
         <source>Printer.Scan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="357"/>
+        <location filename="../App/MainWindow.cpp" line="347"/>
         <source>Printer.Select.Combo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="362"/>
+        <location filename="../App/MainWindow.cpp" line="352"/>
         <source>Printer.NoPrinter.Combo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="382"/>
+        <location filename="../App/MainWindow.cpp" line="372"/>
         <source>PrinterManager.Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="415"/>
+        <location filename="../App/MainWindow.cpp" line="405"/>
         <source>Drucken ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="445"/>
+        <location filename="../App/MainWindow.cpp" line="435"/>
         <source>FeatureBlockManager.Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="467"/>
+        <location filename="../App/MainWindow.cpp" line="457"/>
         <source>RollScriptRenderer.Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="501"/>
+        <location filename="../App/MainWindow.cpp" line="491"/>
         <source>Initialisierung ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="521"/>
+        <location filename="../App/MainWindow.cpp" line="511"/>
         <source>Printer Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="533"/>
+        <location filename="../App/MainWindow.cpp" line="523"/>
         <source>MainWindow.DocumentUntitled</source>
         <translation>Unbenannt</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="537"/>
+        <location filename="../App/MainWindow.cpp" line="527"/>
         <source>MainWindow.DocumentModified</source>
         <translation> *</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.cpp" line="540"/>
+        <location filename="../App/MainWindow.cpp" line="530"/>
         <source>MainWindow.WindowTitle</source>
         <translation>RollScript - %1%2</translation>
     </message>
@@ -498,22 +498,22 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Common/Gui/Widgets/MarginsWidget.cpp" line="42"/>
+        <location filename="../../Common/Gui/Widgets/MarginsWidget.cpp" line="41"/>
         <source>Left</source>
         <translation>Links</translation>
     </message>
     <message>
-        <location filename="../../Common/Gui/Widgets/MarginsWidget.cpp" line="43"/>
+        <location filename="../../Common/Gui/Widgets/MarginsWidget.cpp" line="42"/>
         <source>Right</source>
         <translation>Rechts</translation>
     </message>
     <message>
-        <location filename="../../Common/Gui/Widgets/MarginsWidget.cpp" line="45"/>
+        <location filename="../../Common/Gui/Widgets/MarginsWidget.cpp" line="44"/>
         <source>Top</source>
         <translation>Oben</translation>
     </message>
     <message>
-        <location filename="../../Common/Gui/Widgets/MarginsWidget.cpp" line="46"/>
+        <location filename="../../Common/Gui/Widgets/MarginsWidget.cpp" line="45"/>
         <source>Bottom</source>
         <translation>Unten</translation>
     </message>
@@ -541,44 +541,44 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
 <context>
     <name>PrinterInstanceUSB</name>
     <message>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="27"/>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="63"/>
+        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="24"/>
+        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="60"/>
         <source>NoPlugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="33"/>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="69"/>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="96"/>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="118"/>
+        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="30"/>
+        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="66"/>
+        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="93"/>
+        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="115"/>
         <source>NoUSBManager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="42"/>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="52"/>
+        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="39"/>
+        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="49"/>
         <source>OpenFailed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="78"/>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="84"/>
+        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="75"/>
+        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="81"/>
         <source>CloseFailed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="102"/>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="124"/>
+        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="99"/>
+        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="121"/>
         <source>NotConnected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="108"/>
+        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="105"/>
         <source>SendFailed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="130"/>
+        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="127"/>
         <source>ReceiveFailed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -614,7 +614,7 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
 <context>
     <name>PrinterPluginRegistry</name>
     <message>
-        <location filename="../Plugins/PrinterPluginRegistry.cpp" line="36"/>
+        <location filename="../Plugins/PrinterPluginRegistry.cpp" line="39"/>
         <source>PrinterPluginLoadFailed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -622,7 +622,7 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
 <context>
     <name>RenderContext</name>
     <message>
-        <location filename="../../Core/Rendering/RenderContext.cpp" line="29"/>
+        <location filename="../../Core/Rendering/RenderContext.cpp" line="32"/>
         <source>RenderContextError</source>
         <translation type="unfinished"></translation>
     </message>
@@ -643,7 +643,7 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
 <context>
     <name>RollScriptBlockTextFeaturePluginInfo</name>
     <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextFeaturePluginInfo.h" line="15"/>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextFeaturePluginInfo.h" line="16"/>
         <source>plugin.feature.block.text</source>
         <translation type="unfinished"></translation>
     </message>
@@ -651,7 +651,7 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
 <context>
     <name>RollScriptBlockTextLineDocument</name>
     <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineDocument.cpp" line="50"/>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineDocument.cpp" line="53"/>
         <source>DocumentBlockTextLine.LoadFromFile.Json.Version.Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -664,17 +664,17 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="25"/>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="24"/>
         <source>Left</source>
         <translation type="unfinished">Links</translation>
     </message>
     <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="26"/>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="25"/>
         <source>Center</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="27"/>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="26"/>
         <source>Right</source>
         <translation type="unfinished">Rechts</translation>
     </message>
@@ -690,45 +690,45 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
 <context>
     <name>RollScriptDocument</name>
     <message>
-        <location filename="../Document/RollScriptDocument.cpp" line="48"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="51"/>
         <source>Document.Save.NoFileName</source>
         <translation>Das Dokument kann nicht gespeichert werden, da kein Dateiname festgelegt ist.</translation>
     </message>
     <message>
-        <location filename="../Document/RollScriptDocument.cpp" line="96"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="99"/>
         <source>Document.LoadFromFile.Open.Error</source>
         <translation>ie Datei „%1“ konnte nicht zum Lesen geöffnet werden.</translation>
     </message>
     <message>
-        <location filename="../Document/RollScriptDocument.cpp" line="106"/>
-        <location filename="../Document/RollScriptDocument.cpp" line="136"/>
-        <location filename="../Document/RollScriptDocument.cpp" line="143"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="109"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="139"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="146"/>
         <source>Document.LoadFromFile.Json.Error</source>
         <translation>Die Datei enthält keine gültigen RollScipt-Daten.</translation>
     </message>
     <message>
-        <location filename="../Document/RollScriptDocument.cpp" line="114"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="117"/>
         <source>Document.LoadFromFile.Json.Format.Error</source>
         <translation>Die Datei enthält kein gültiges RollScript-Format.</translation>
     </message>
     <message>
-        <location filename="../Document/RollScriptDocument.cpp" line="125"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="128"/>
         <source>Document.LoadFromFile.Json.Version.Error</source>
         <translation>Die Datei verwendet eine nicht unterstützte Version (%1).</translation>
     </message>
     <message>
-        <location filename="../Document/RollScriptDocument.cpp" line="154"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="157"/>
         <source>Document.SaveToFile.Open.Error</source>
         <translation>Die Datei „%1“ konnte nicht zum Schreiben geöffnet werden.</translation>
     </message>
     <message>
-        <location filename="../Document/RollScriptDocument.cpp" line="168"/>
-        <location filename="../Document/RollScriptDocument.cpp" line="176"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="171"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="179"/>
         <source>Document.SaveToFile.Json.Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Document/RollScriptDocument.cpp" line="188"/>
+        <location filename="../Document/RollScriptDocument.cpp" line="191"/>
         <source>Document.SaveToFile.Save.Error</source>
         <translation>Die Datei „%1“ konnte nicht gespeichert werden.</translation>
     </message>
@@ -736,17 +736,17 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
 <context>
     <name>RollScriptDocumentBlocks</name>
     <message>
-        <location filename="../Document/RollScriptDocumentBlocks.cpp" line="101"/>
+        <location filename="../Document/RollScriptDocumentBlocks.cpp" line="104"/>
         <source>DocumentBlocks.LoadFromFile.Json.Version.Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Document/RollScriptDocumentBlocks.cpp" line="120"/>
+        <location filename="../Document/RollScriptDocumentBlocks.cpp" line="123"/>
         <source>Document.LoadFromFile.Json.Error</source>
         <translation type="unfinished">Die Datei enthält keine gültigen RollScipt-Daten.</translation>
     </message>
     <message>
-        <location filename="../Document/RollScriptDocumentBlocks.cpp" line="145"/>
+        <location filename="../Document/RollScriptDocumentBlocks.cpp" line="148"/>
         <source>Document.SaveToFile.Json.Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -754,7 +754,7 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
 <context>
     <name>RollScriptDocumentSettings</name>
     <message>
-        <location filename="../Document/RollScriptDocumentSettings.cpp" line="44"/>
+        <location filename="../Document/RollScriptDocumentSettings.cpp" line="47"/>
         <source>DocumentSettings.LoadFromFile.Json.Version.Error</source>
         <translation>Die Datei verwendet eine nicht unterstützte Settings-Version (%1).</translation>
     </message>
@@ -816,12 +816,12 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Gui/Widgets/SettingsWidget.cpp" line="60"/>
+        <location filename="../Gui/Widgets/SettingsWidget.cpp" line="61"/>
         <source>Select label ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Gui/Widgets/SettingsWidget.cpp" line="64"/>
+        <location filename="../Gui/Widgets/SettingsWidget.cpp" line="65"/>
         <source>No labels found. Select printer ?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -829,12 +829,12 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
 <context>
     <name>SingleInstanceLock</name>
     <message>
-        <location filename="../App/SingleInstanceLock.cpp" line="28"/>
+        <location filename="../App/SingleInstanceLock.cpp" line="27"/>
         <source>LockFailed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../App/SingleInstanceLock.cpp" line="34"/>
+        <location filename="../App/SingleInstanceLock.cpp" line="33"/>
         <source>LockFailed.Running</source>
         <translation type="unfinished"></translation>
     </message>
@@ -842,7 +842,7 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
 <context>
     <name>TranslationManager</name>
     <message>
-        <location filename="../Translation/TranslationManager.cpp" line="9"/>
+        <location filename="../Translation/TranslationManager.cpp" line="8"/>
         <source>Translation.LanguageName</source>
         <translation>Deutsch</translation>
     </message>

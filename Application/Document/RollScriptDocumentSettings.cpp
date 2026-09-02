@@ -7,6 +7,9 @@ RollScriptDocumentSettings::RollScriptDocumentSettings(QObject* parent)
     : QObject{parent}
 {
 }
+RollScriptDocumentSettings::~RollScriptDocumentSettings()
+{
+}
 
 
 void RollScriptDocumentSettings::setPrinterMediaId(const QString& qstrPrinterMediaId)

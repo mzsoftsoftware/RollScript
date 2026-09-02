@@ -18,7 +18,7 @@ RollScriptBlockTextLineDocument* RollScriptBlockTextDocument::textLine(const uns
 {
     Q_ASSERT(index<4);
 
-    return m_vecBlockTextLines[index];
+    return m_qvecBlockTextLines[index];
 }
 
 void RollScriptBlockTextDocument::setupBlockTextLines()
@@ -28,24 +28,24 @@ void RollScriptBlockTextDocument::setupBlockTextLines()
     ptrBlockTextLine = new RollScriptBlockTextLineDocument(this);
     ptrBlockTextLine->setLineActive(true);
     connect(ptrBlockTextLine, &RollScriptBlockTextLineDocument::blockTextLineChanged, this, &RollScriptBlockTextDocument::blockChanged);
-    m_vecBlockTextLines.append(ptrBlockTextLine);
+    m_qvecBlockTextLines.append(ptrBlockTextLine);
 
     ptrBlockTextLine = new RollScriptBlockTextLineDocument(this);
     connect(ptrBlockTextLine, &RollScriptBlockTextLineDocument::blockTextLineChanged, this, &RollScriptBlockTextDocument::blockChanged);
-    m_vecBlockTextLines.append(ptrBlockTextLine);
+    m_qvecBlockTextLines.append(ptrBlockTextLine);
 
     ptrBlockTextLine = new RollScriptBlockTextLineDocument(this);
     connect(ptrBlockTextLine, &RollScriptBlockTextLineDocument::blockTextLineChanged, this, &RollScriptBlockTextDocument::blockChanged);
-    m_vecBlockTextLines.append(ptrBlockTextLine);
+    m_qvecBlockTextLines.append(ptrBlockTextLine);
 
     ptrBlockTextLine = new RollScriptBlockTextLineDocument(this);
     connect(ptrBlockTextLine, &RollScriptBlockTextLineDocument::blockTextLineChanged, this, &RollScriptBlockTextDocument::blockChanged);
-    m_vecBlockTextLines.append(ptrBlockTextLine);
+    m_qvecBlockTextLines.append(ptrBlockTextLine);
 }
 
 void RollScriptBlockTextDocument::clear()
 {
-    for(RollScriptBlockTextLineDocument* ptrBlockTextLine : m_vecBlockTextLines)
+    for(RollScriptBlockTextLineDocument* ptrBlockTextLine : m_qvecBlockTextLines)
     {
         ptrBlockTextLine->clear();
     }
@@ -69,9 +69,9 @@ bool RollScriptBlockTextDocument::loadVersion_1(const QJsonObject& jsonBlockText
     QJsonArray linesArray = jsonBlockText[QStringLiteral("lines")].toArray();
     for(int index=0; index<linesArray.count(); index++)
     {
-        if(!m_vecBlockTextLines[index]->loadFromJson(linesArray[index].toObject()))
+        if(!m_qvecBlockTextLines[index]->loadFromJson(linesArray[index].toObject()))
         {
-            ROLLSCRIPT_ERROR_CAUSE(tr("DocumentBlockText.LoadFromFile.Json.Error"), QStringLiteral("m_vecBlockTextLines->loadFromJson failed."), m_vecBlockTextLines[index]->takeError());
+            ROLLSCRIPT_ERROR_CAUSE(tr("DocumentBlockText.LoadFromFile.Json.Error"), QStringLiteral("m_vecBlockTextLines->loadFromJson failed."), m_qvecBlockTextLines[index]->takeError());
             return false;
         }
     }
@@ -83,7 +83,7 @@ bool RollScriptBlockTextDocument::saveToJson(QJsonObject& jsonBlockText)
 {
     jsonBlockText[QStringLiteral("version")] = 1;
     QJsonArray linesArray;
-    for(RollScriptBlockTextLineDocument* ptrBlockTextLine : m_vecBlockTextLines)
+    for(RollScriptBlockTextLineDocument* ptrBlockTextLine : m_qvecBlockTextLines)
     {
         QJsonObject line;
         if(!ptrBlockTextLine->saveToJson(line))

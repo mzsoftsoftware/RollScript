@@ -23,8 +23,8 @@ PrinterManager::~PrinterManager()
         m_ptrCurrentPrinterInstance = nullptr;
     }
 
-    qDeleteAll(m_hashPrinterInstances);
-    m_hashPrinterInstances.clear();
+    qDeleteAll(m_qhashPrinterInstances);
+    m_qhashPrinterInstances.clear();
     m_qstrPrinterIds.clear();
 }
 
@@ -61,8 +61,8 @@ bool PrinterManager::scanForDevices()
     }
 
     // Cleanup
-    qDeleteAll(m_hashPrinterInstances);
-    m_hashPrinterInstances.clear();
+    qDeleteAll(m_qhashPrinterInstances);
+    m_qhashPrinterInstances.clear();
     m_qstrPrinterIds.clear();
 
     // Scan the USB
@@ -86,7 +86,7 @@ bool PrinterManager::scanForDevices()
         connect(ptrPrinterInstance, &PrinterInstance::printerPrintProgress, this, &PrinterManager::printProgress);
         connect(ptrPrinterInstance, &PrinterInstance::printerPrintFinished, this, &PrinterManager::printFinished);
 
-        m_hashPrinterInstances.insert(ptrPrinterInstance->id(), ptrPrinterInstance);
+        m_qhashPrinterInstances.insert(ptrPrinterInstance->id(), ptrPrinterInstance);
         m_qstrPrinterIds.append(ptrPrinterInstance->id());
     }
 
@@ -96,14 +96,14 @@ bool PrinterManager::scanForDevices()
 
 bool PrinterManager::switchPrinter(const QString& qstrPrinterId)
 {
-    if(!m_hashPrinterInstances.contains(qstrPrinterId))
+    if(!m_qhashPrinterInstances.contains(qstrPrinterId))
     {
         ROLLSCRIPT_ERROR(tr("PrinterManagerSwitchError"), QStringLiteral("printer not found: %1").arg(qstrPrinterId));
         emit managerError();
         return false;
     }
 
-    PrinterInstance* ptrPrinterInstance = m_hashPrinterInstances.value(qstrPrinterId);
+    PrinterInstance* ptrPrinterInstance = m_qhashPrinterInstances.value(qstrPrinterId);
     if(ptrPrinterInstance == m_ptrCurrentPrinterInstance)
         return true;
 

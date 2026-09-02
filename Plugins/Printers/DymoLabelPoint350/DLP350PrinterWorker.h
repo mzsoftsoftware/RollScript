@@ -12,10 +12,13 @@ class RollScriptError;
 class DymoLabelPoint350PrinterWorker : public QObject
 {
     Q_OBJECT
+
 public:
-    explicit DymoLabelPoint350PrinterWorker(QObject *parent = nullptr);
+    // Constructor / Destructor
+    explicit DymoLabelPoint350PrinterWorker(QObject* parent = nullptr);
     ~DymoLabelPoint350PrinterWorker() override;
 
+    // Getter
     RollScriptError* jobError();
 
 public slots:

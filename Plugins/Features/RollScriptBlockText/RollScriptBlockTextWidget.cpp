@@ -5,7 +5,7 @@
 #include "RollScriptBlockTextLineDocument.h"
 
 
-RollScriptBlockTextWidget::RollScriptBlockTextWidget(const QString &qstrPluginId, const QString &qstrTitle, QWidget *parent)
+RollScriptBlockTextWidget::RollScriptBlockTextWidget(const QString& qstrPluginId, const QString& qstrTitle, QWidget* parent)
     : RollScriptBlockWidgetBase(qstrPluginId, qstrTitle, parent)
     , ui(new Ui::RollScriptBlockTextWidget)
 {

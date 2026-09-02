@@ -11,6 +11,9 @@ FeatureBlocksItemModel::FeatureBlocksItemModel(QObject* parent)
     : QAbstractListModel(parent)
 {
 }
+FeatureBlocksItemModel::~FeatureBlocksItemModel()
+{
+}
 
 void FeatureBlocksItemModel::setFeatureBlockManager(FeatureBlockManager* ptrFeatureBlockManager)
 {
@@ -40,7 +43,7 @@ void FeatureBlocksItemModel::setRollScriptDocumentBlocks(RollScriptDocumentBlock
 }
 
 
-int FeatureBlocksItemModel::rowCount(const QModelIndex &parent) const
+int FeatureBlocksItemModel::rowCount(const QModelIndex& parent) const
 {
     // For list models only the root node (an invalid parent) should return the list's size. For all
     // other (valid) parents, rowCount() should return 0 so that it does not become a tree model.
@@ -50,7 +53,7 @@ int FeatureBlocksItemModel::rowCount(const QModelIndex &parent) const
     return m_ptrDocumentBlocks->documentBlockCount();
 }
 
-QVariant FeatureBlocksItemModel::data(const QModelIndex &index, int role) const
+QVariant FeatureBlocksItemModel::data(const QModelIndex& index, int role) const
 {
     if (!index.isValid() || !m_ptrDocumentBlocks || !m_ptrFeatureBlockManager)
         return QVariant();
@@ -76,42 +79,42 @@ QVariant FeatureBlocksItemModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-bool FeatureBlocksItemModel::moveRows(const QModelIndex &sourceParent, int sourceRow, int count, const QModelIndex &destinationParent, int destinationChild)
+bool FeatureBlocksItemModel::moveRows(const QModelIndex& sourceParent, int iSourceRow, int iCount, const QModelIndex& destinationParent, int iDestinationChild)
 {
     if (!m_ptrDocumentBlocks)
         return false;
 
-    if (sourceRow == destinationChild || sourceRow + 1 == destinationChild)
+    if (iSourceRow == iDestinationChild || iSourceRow + 1 == iDestinationChild)
         return false;
-    if (sourceRow < 0 || sourceRow >= m_ptrDocumentBlocks->documentBlockCount())
+    if (iSourceRow < 0 || iSourceRow >= m_ptrDocumentBlocks->documentBlockCount())
         return false;
     // Qt erlaubt destinationChild == rowCount() (append)
-    if (destinationChild > m_ptrDocumentBlocks->documentBlockCount())
-        destinationChild = m_ptrDocumentBlocks->documentBlockCount();
+    if (iDestinationChild > m_ptrDocumentBlocks->documentBlockCount())
+        iDestinationChild = m_ptrDocumentBlocks->documentBlockCount();
 
     // gleiche Position → nix tun
-    if (sourceRow == destinationChild || sourceRow + 1 == destinationChild)
+    if (iSourceRow == iDestinationChild || iSourceRow + 1 == iDestinationChild)
         return false;
 
-    beginMoveRows(sourceParent, sourceRow, sourceRow, destinationParent, destinationChild);
+    beginMoveRows(sourceParent, iSourceRow, iSourceRow, destinationParent, iDestinationChild);
 
-    int adjustedDest = destinationChild;
-    if (destinationChild > sourceRow)
+    int adjustedDest = iDestinationChild;
+    if (iDestinationChild > iSourceRow)
         adjustedDest--;   // weil Element vorher entfernt wird
-    m_ptrDocumentBlocks->moveDocumentBlock(sourceRow, adjustedDest);
+    m_ptrDocumentBlocks->moveDocumentBlock(iSourceRow, adjustedDest);
 
     endMoveRows();
     return true;
 }
 
-bool FeatureBlocksItemModel::removeRows(int row, int count, const QModelIndex &parent)
+bool FeatureBlocksItemModel::removeRows(int iRow, int iCount, const QModelIndex& parent)
 {
-    if (!m_ptrDocumentBlocks || count != 1)
+    if (!m_ptrDocumentBlocks || iCount != 1)
         return false;
 
-    beginRemoveRows(parent, row, row);
+    beginRemoveRows(parent, iRow, iRow);
 
-    m_ptrDocumentBlocks->removeDocumentBlock(row);
+    m_ptrDocumentBlocks->removeDocumentBlock(iRow);
 
     endRemoveRows();
     return true;

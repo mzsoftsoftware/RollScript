@@ -9,10 +9,13 @@ class PrinterInstanceUSB;
 class DymoLabelPoint350PrinterJob : public QObject, public RollScriptErrorOwner
 {
     Q_OBJECT
-public:
-    explicit DymoLabelPoint350PrinterJob(PrinterInstanceUSB* ptrPrinterInstanceUSB);
-    virtual ~DymoLabelPoint350PrinterJob() override;
 
+public:
+    // Constructor / Destructor
+    explicit DymoLabelPoint350PrinterJob(PrinterInstanceUSB* ptrPrinterInstanceUSB);
+    ~DymoLabelPoint350PrinterJob() override;
+
+    // Operations
     virtual bool execute() = 0;
 
 signals:
@@ -22,9 +25,7 @@ signals:
     void error(const RollScriptError& error);
 
 protected:
-    bool sendCommand(const QByteArray& baCommand, QByteArray* ptrBaResponse = nullptr);
-    //PrinterInstanceUSB* printerInstance() const;
-    //void setError(const QString& qstrError);
+    bool sendCommand(const QByteArray& qbaCommand, QByteArray* ptrQbaResponse = nullptr);
 
 private:
     PrinterInstanceUSB* m_ptrPrinterInstanceUSB = nullptr;

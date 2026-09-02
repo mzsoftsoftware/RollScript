@@ -22,10 +22,10 @@ PrinterInstance::PrinterInstance(IPrinterPlugin* ptrPrinterPlugin, QObject* pare
 
         const QString qstrMediaId = ptrMedia->id();
         Q_ASSERT(!qstrMediaId.isEmpty());
-        Q_ASSERT(!m_hashPrinterMedias.contains(qstrMediaId));
+        Q_ASSERT(!m_qhashPrinterMedias.contains(qstrMediaId));
 
         m_qstrPrinterMediaIds.append(qstrMediaId);
-        m_hashPrinterMedias.insert(qstrMediaId, ptrMedia);
+        m_qhashPrinterMedias.insert(qstrMediaId, ptrMedia);
     }
 
     connect(m_ptrPrinterPlugin, &IPrinterPlugin::printerError, this, &PrinterInstance::slotPrinterPluginError);
@@ -35,8 +35,8 @@ PrinterInstance::PrinterInstance(IPrinterPlugin* ptrPrinterPlugin, QObject* pare
 }
 PrinterInstance::~PrinterInstance()
 {
-    qDeleteAll(m_hashPrinterMedias);
-    m_hashPrinterMedias.clear();
+    qDeleteAll(m_qhashPrinterMedias);
+    m_qhashPrinterMedias.clear();
 }
 
 bool PrinterInstance::print(const QImage& printImage, const PrinterMedia* ptrPrinterMediaId)
