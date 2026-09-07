@@ -1,10 +1,14 @@
 # RollScript
 
-Open-source label printing software for continuous label rolls.
+**Open-source software for designing and printing labels on continuous rolls.**
 
-RollScript is a cross-platform application for designing and printing labels on continuous label media. It is designed to provide a flexible and extensible foundation for label printing, with support for different printers, label formats, and extensions through a plugin architecture.
+RollScript is a cross-platform label printing application focused on continuous label media.
 
-> 🚧 RollScript is currently under active development.
+It is designed from the beginning to be modular and extensible. Printer support and application features are implemented through a plugin architecture, allowing RollScript to grow without turning the core application into a monolithic codebase.
+
+> 🚧 **RollScript is currently under active development.**
+
+![RollScript main window](docs/images/rollscript-main-window.png)
 
 ## Features
 
