@@ -52,6 +52,20 @@ install(TARGETS RollScript
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
+install(TARGETS RollScriptCore
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+
+install(TARGETS DymoLabelPoint350PrinterPlugin
+    LIBRARY DESTINATION plugins/printers
+)
+
+install(TARGETS RollScriptBlockTextFeaturePlugin
+    LIBRARY DESTINATION plugins/features
+)
+
 # -----------------------------------------------------------------------------
 # Deployment
 # -----------------------------------------------------------------------------
