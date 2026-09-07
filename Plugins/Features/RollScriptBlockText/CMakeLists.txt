@@ -1,16 +1,11 @@
 project(RollScriptBlockTextFeaturePlugin)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core Gui Widgets LinguistTools)
-
-qt_standard_project_setup()
-
 # -----------------------------------------------------------------------------
 # Sources
 # -----------------------------------------------------------------------------
 
 set(SOURCES
     RollScriptBlockTextFeaturePlugin.cpp
-
 
     RollScriptBlockTextDocument.cpp
     RollScriptBlockTextLineDocument.cpp
@@ -22,7 +17,6 @@ set(SOURCES
 set(HEADERS
     RollScriptBlockTextFeaturePlugin.h
     RollScriptBlockTextFeaturePluginInfo.h
-
 
     RollScriptBlockTextDocument.h
     RollScriptBlockTextLineDocument.h

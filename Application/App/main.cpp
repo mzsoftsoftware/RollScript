@@ -21,6 +21,7 @@ int main(int argc, char* argv[])
     qInstallMessageHandler(messageHandler);
 
     QApplication app(argc, argv);
+    app.setWindowIcon(QIcon(QStringLiteral(":/Application/RollScript.svg")));
 
     //qDebug() << "qDebug funktioniert";
     //qInfo() << "qInfo funktioniert";

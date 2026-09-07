@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 512 512"
+    >
+    <!-- RollScript placeholder application icon -->
+
+    <!-- Background -->
+    <rect
+        x="32"
+        y="32"
+        width="448"
+        height="448"
+        rx="96"
+        fill="#3F7FEF"
+        />
+
+    <!-- Label -->
+    <rect
+        x="104"
+        y="128"
+        width="304"
+        height="204"
+        rx="24"
+        fill="#FFFFFF"
+        />
+
+    <!-- Label lines -->
+    <rect
+        x="148"
+        y="180"
+        width="216"
+        height="24"
+        rx="12"
+        fill="#3F7FEF"
+        />
+
+    <rect
+        x="148"
+        y="236"
+        width="160"
+        height="24"
+        rx="12"
+        fill="#3F7FEF"
+        />
+
+    <!-- Roll -->
+    <path
+        d="M 156 332
+        C 156 386, 194 416, 256 416
+        C 318 416, 356 386, 356 332"
+        fill="none"
+        stroke="#FFFFFF"
+        stroke-width="28"
+        stroke-linecap="round"
+        />
+
+    <!-- Roll center -->
+    <circle
+        cx="256"
+        cy="384"
+        r="16"
+        fill="#FFFFFF"
+        />
+</svg>

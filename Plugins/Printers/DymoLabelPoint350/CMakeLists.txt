@@ -1,9 +1,5 @@
 project(DymoLabelPoint350PrinterPlugin)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core Gui LinguistTools)
-
-qt_standard_project_setup()
-
 # -----------------------------------------------------------------------------
 # Sources
 # -----------------------------------------------------------------------------
