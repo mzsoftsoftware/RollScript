@@ -10,62 +10,133 @@ It is designed from the beginning to be modular and extensible. Printer support 
 
 ![RollScript main window](doc/images/rollscript-main-window.png)
 
+## Current Status
+
+RollScript is currently in an early development stage.
+
+The application already provides the basic foundation for designing labels and printing them on supported continuous-roll printers.
+
+The project is being developed openly on GitHub, and contributions, ideas and feedback are welcome.
+
 ## Features
 
-RollScript is being developed with the following goals:
+Current functionality includes:
 
-* Printing on continuous label rolls
-* Support for different label printers
-* Flexible label layout and design
-* Extensible plugin architecture
-* Cross-platform support
-* Open-source development
-* Community-driven improvements
+* Label design using blocks
+* Text blocks
+* Continuous-roll label support
+* Configurable label width and margins
+* Minimum label length configuration
+* Printer selection
+* Automatic printer discovery
+* Plugin-based architecture
+* Qt 6 / C++
+* Linux support
 
-The feature set is actively evolving as development progresses.
+The feature set will continue to evolve as development progresses.
 
 ## Supported Printers
 
-Printer support is being developed progressively.
+### DYMO LabelPOINT 350
+
+The first printer supported by RollScript is the **DYMO LabelPOINT 350**.
+
+Printer support is implemented as a separate printer plugin. This architecture allows additional printers to be added without modifying the core application.
+
+More printers will be added over time.
 
 The project is designed to support different printers and printing technologies through an extensible architecture.
 
 ## Plugin Architecture
 
-RollScript is designed around a plugin-based architecture.
+RollScript uses a plugin-based architecture for extending the application.
 
-This allows functionality to be extended without requiring every feature to be part of the core application.
+Plugins are separated into different categories, including:
 
-Possible extensions include:
+* Printer plugins
+* Feature plugins
 
-* Printer support
-* Additional label formats
-* Import and export functionality
-* Additional design elements
-* Community-developed extensions
+This allows functionality to be added independently from the core application.
 
-The plugin API and development documentation will be expanded as the project develops.
+The long-term goal is to make it possible for the community to develop and distribute additional plugins.
 
-## Getting Started
+More information about the plugin architecture can be found in:
 
-RollScript is currently under active development.
+* [ARCHITECTURE.md](ARCHITECTURE.md)
 
-Build and installation instructions will be added as the project reaches a usable development state.
+Plugin developer documentation will be added as the plugin API becomes stable.
+
+## Technology
+
+RollScript is written in:
+
+* **C++**
+* **Qt 6**
+* **CMake**
+
+The project is developed with a strong focus on:
+
+* Clean separation of responsibilities
+* Modular architecture
+* Low coupling between components
+* Extensibility through plugins
+* Cross-platform development
+
+The project's coding conventions are documented in:
+
+* [CODING_STYLE.md](CODING_STYLE.md)
+* [CODING_STYLE_SOURCE.md](CODING_STYLE_SOURCE.md)
+* [CODING_STYLE_HEADER.md](CODING_STYLE_HEADER.md)
+
+## Building
+
+RollScript is currently primarily developed and tested on Linux.
+
+A local development build requires:
+
+* C++ compiler with C++ support required by the project
+* Qt 6
+* CMake 3.24 or newer
+
+Clone the repository:
+
+```bash
+git clone https://github.com/mzsoftsoftware/RollScript.git
+cd RollScript
+```
+
+Create a build directory:
+
+```bash
+cmake -S . -B build
+```
+
+Build the project:
+
+```bash
+cmake --build build
+```
+
+The project is still under active development, so build and installation requirements may change.
 
 ## Contributing
 
 Contributions are welcome!
 
-You can contribute by:
+There are many ways to contribute:
 
-* Reporting bugs
-* Suggesting features
-* Improving documentation
-* Contributing code
-* Developing plugins
-* Helping other users in Discussions
+* Report bugs
+* Suggest features
+* Improve documentation
+* Improve the user interface
+* Add printer support
+* Develop plugins
+* Improve the code
+* Test RollScript with different hardware
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting a contribution.
+Before contributing code, please read [CONTRIBUTING.md](CONTRIBUTING.md) and the project's coding style documentation.
+
+For larger changes, opening an issue first is recommended so that the proposed approach can be discussed before implementation.
 
 ## Community
 
@@ -82,9 +153,15 @@ Use GitHub Issues for:
 * Concrete feature requests
 * Actionable development tasks
 
+## Roadmap
+
+See [ROADMAP.md](ROADMAP.md) for planned features and development goals.
+
+The roadmap is intentionally flexible and will evolve together with the project.
+
 ## Security
 
-Please do not report security vulnerabilities through public Issues or Discussions.
+Please do not report security vulnerabilities through public GitHub Issues or Discussions.
 
 For security-related reports, please see [SECURITY.md](SECURITY.md).
 
@@ -94,6 +171,6 @@ RollScript is open-source software licensed under the [Apache License 2.0](LICEN
 
 ## About
 
-RollScript is developed and maintained by [MZ Software GmbH](https://www.mzsoft.de).
+RollScript is developed and maintained by **MZ Software GmbH**.
 
-For more information about MZ Software GmbH, please visit [www.mzsoft.de](https://www.mzsoft.de).
+For more information about MZ Software GmbH, visit [www.mzsoft.de](https://www.mzsoft.de).
