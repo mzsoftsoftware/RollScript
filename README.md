@@ -8,7 +8,21 @@ It is designed from the beginning to be modular and extensible. Printer support 
 
 > 🚧 **RollScript is currently under active development.**
 
-![RollScript main window](doc/images/rollscript-main-window.png)
+![RollScript main window](docs/images/rollscript-main-window.png)
+
+## Why RollScript?
+
+RollScript is intended for users who want a simple, native application
+for designing and printing labels on continuous-roll printers without
+depending on proprietary vendor software.
+
+The project is especially focused on:
+
+* Linux desktop users
+* Open-source workflows
+* Continuous-roll label media
+* Extensible printer support
+* Community-developed plugins
 
 ## Current Status
 

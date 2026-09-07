@@ -42,6 +42,7 @@ Longer-term goals include:
 Possible future areas include:
 
 * Additional platforms
+* Additional languages
 * Import and export functionality
 * Improved project and label management
 * Additional printing workflows
