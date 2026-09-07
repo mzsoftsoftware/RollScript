@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/RollScriptBlockTextFeaturePlugin/icons">
         <file alias="FeatureBlockText.icon.svg">icons/FeatureBlockText.svg</file>
+        <file alias="text-align-center.icon.svg">icons/text-align-center.svg</file>
+        <file alias="text-align-right.icon.svg">icons/text-align-end.svg</file>
+        <file alias="text-align-left.icon.svg">icons/text-align-start.svg</file>
     </qresource>
 </RCC>

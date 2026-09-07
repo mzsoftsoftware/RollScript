@@ -209,7 +209,7 @@ bool MainWindow::documentOpen()
         RollScriptError* ptrError = m_ptrRollScriptDocument->takeError();
         if(ptrError)
         {
-            ui->textEdit_Debug->append(ptrError->messageDebug());
+            // TASK : ui->textEdit_Debug->append(ptrError->messageDebug());
             QMessageBox::critical(this, tr("FileOpen.Error.Title"), ptrError->messageUser());
             delete ptrError;
         }
@@ -233,7 +233,7 @@ bool MainWindow::documentSave()
         RollScriptError* ptrError = m_ptrRollScriptDocument->takeError();
         if(ptrError)
         {
-            ui->textEdit_Debug->append(ptrError->messageDebug());
+            // TASK : ui->textEdit_Debug->append(ptrError->messageDebug());
             QMessageBox::critical(this, tr("FileSave.Error.Title"), ptrError->messageUser());
             delete ptrError;
         }
@@ -264,7 +264,7 @@ bool MainWindow::documentSaveAs()
         RollScriptError* ptrError = m_ptrRollScriptDocument->takeError();
         if(ptrError)
         {
-            ui->textEdit_Debug->append(ptrError->messageDebug());
+            // TASK : ui->textEdit_Debug->append(ptrError->messageDebug());
             // TASK : Use correct tr !!!
             QMessageBox::critical(this, tr("FileSave.Error.Title"), ptrError->messageUser());
             delete ptrError;
@@ -329,7 +329,7 @@ void MainWindow::slot_PrinterManager_Scan()
         RollScriptError* ptrError = m_ptrApplicationContext->printerManager()->takeError();
         if(ptrError)
         {
-            ui->textEdit_Debug->append(ptrError->messageDebug());
+            // TASK : ui->textEdit_Debug->append(ptrError->messageDebug());
             QMessageBox::critical(this, tr("Printer.Scan"), ptrError->messageUser());
             delete ptrError;
         }
@@ -368,7 +368,7 @@ void MainWindow::slot_PrinterManager_ManagerError()
     RollScriptError* ptrError = m_ptrApplicationContext->printerManager()->takeError();
     if(ptrError)
     {
-        ui->textEdit_Debug->append(ptrError->messageDebug());
+        // TASK : ui->textEdit_Debug->append(ptrError->messageDebug());
         QMessageBox::critical(this, tr("PrinterManager.Error"), ptrError->messageUser());
         delete ptrError;
     }
@@ -431,7 +431,7 @@ void MainWindow::slot_FeatureBlockManager_ManagerError()
     RollScriptError* ptrError = m_ptrApplicationContext->featureBlockManager()->takeError();
     if(ptrError)
     {
-        ui->textEdit_Debug->append(ptrError->messageDebug());
+        // TASK : ui->textEdit_Debug->append(ptrError->messageDebug());
         QMessageBox::critical(this, tr("FeatureBlockManager.Error"), ptrError->messageUser());
         delete ptrError;
     }
@@ -453,7 +453,7 @@ void MainWindow::slot_RollScriptRenderer_RenderingError()
     RollScriptError* ptrError = m_ptrApplicationContext->rollScriptRenderer()->takeError();
     if(ptrError)
     {
-        ui->textEdit_Debug->append(ptrError->messageDebug());
+        // TASK : ui->textEdit_Debug->append(ptrError->messageDebug());
         QMessageBox::critical(this, tr("RollScriptRenderer.Error"), ptrError->messageUser());
         delete ptrError;
     }
@@ -507,7 +507,7 @@ void MainWindow::slot_ComboBoxPrinters_IndexChanged(int index)
         RollScriptError* ptrError = m_ptrApplicationContext->printerManager()->takeError();
         if(ptrError)
         {
-            ui->textEdit_Debug->append(ptrError->messageDebug());
+            // TASK : ui->textEdit_Debug->append(ptrError->messageDebug());
             QMessageBox::critical(this, tr("Printer Error"), ptrError->messageUser());
             delete ptrError;
         }

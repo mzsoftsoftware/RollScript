@@ -35,9 +35,13 @@ private slots:
     void on_spinBox_FontSize_valueChanged(int iSize);
     void on_comboBox_Alignment_currentIndexChanged(int index);
 
+protected:
+    void changeEvent(QEvent* ptrEvent) override;
+
 private:
     void setupComboAlignment();
     void updateActiveStatus(bool bActive);
+    void retranslateComboAlignment();
 
 private:
     Ui::RollScriptBlockTextLineWidget* ui;

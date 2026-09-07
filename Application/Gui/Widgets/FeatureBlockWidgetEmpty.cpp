@@ -3,7 +3,7 @@
 
 
 FeatureBlockWidgetEmpty::FeatureBlockWidgetEmpty(QWidget* parent)
-    : RollScriptBlockWidgetBase(QStringLiteral("Empty"), QString(), parent)
+    : RollScriptBlockWidgetBase(QStringLiteral("Empty"), parent)
     , ui(new Ui::FeatureBlockWidgetEmpty)
 {
     ui->setupUi(this);

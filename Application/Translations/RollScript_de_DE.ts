@@ -188,99 +188,94 @@ Logo</translation>
         <translation>RollScript</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="66"/>
-        <source>Debug Data ...</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../App/MainWindow.ui" line="83"/>
+        <location filename="../App/MainWindow.ui" line="40"/>
         <source>Menu.File</source>
         <translation>&amp;Datei</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="94"/>
+        <location filename="../App/MainWindow.ui" line="51"/>
         <source>Menu.View</source>
         <translation>&amp;Ansicht</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="105"/>
+        <location filename="../App/MainWindow.ui" line="62"/>
         <source>Menu.Help</source>
         <translation>&amp;Hilfe</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="117"/>
+        <location filename="../App/MainWindow.ui" line="74"/>
         <source>toolBar</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="148"/>
+        <location filename="../App/MainWindow.ui" line="105"/>
         <source>Action.Exit</source>
         <translation>&amp;Beenden</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="151"/>
+        <location filename="../App/MainWindow.ui" line="108"/>
         <source>Tooltip.Exit</source>
         <translation>Beendet RollScript</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="154"/>
+        <location filename="../App/MainWindow.ui" line="111"/>
         <source>Status.Exit</source>
         <translation>Beendet RollScript</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="162"/>
+        <location filename="../App/MainWindow.ui" line="119"/>
         <source>Action.About.Qt</source>
         <translation>Über &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="165"/>
+        <location filename="../App/MainWindow.ui" line="122"/>
         <source>Tooltip.About.Qt</source>
         <translation>Zeigt den Dialog über Qt an.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="168"/>
+        <location filename="../App/MainWindow.ui" line="125"/>
         <source>Status.About.Qt</source>
         <translation>Zeigt den Dialog über Qt an.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="176"/>
+        <location filename="../App/MainWindow.ui" line="133"/>
         <source>Action.About.RollScript</source>
         <translation>Über &amp;RollScript</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="179"/>
+        <location filename="../App/MainWindow.ui" line="136"/>
         <source>Tooltip.About.RollScript</source>
         <translation>Zeigt den Dialog über RollScript an.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="182"/>
+        <location filename="../App/MainWindow.ui" line="139"/>
         <source>Status.About.RollScript</source>
         <translation>Zeigt den Dialog über RollScript an.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="195"/>
+        <location filename="../App/MainWindow.ui" line="152"/>
         <source>Action.File.New</source>
         <translation>&amp;Neu</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="198"/>
-        <location filename="../App/MainWindow.ui" line="217"/>
+        <location filename="../App/MainWindow.ui" line="155"/>
+        <location filename="../App/MainWindow.ui" line="174"/>
         <source>Tooltip.File.New</source>
         <translation>Legt ein neues RollScript-Projekt an.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="201"/>
-        <location filename="../App/MainWindow.ui" line="220"/>
+        <location filename="../App/MainWindow.ui" line="158"/>
+        <location filename="../App/MainWindow.ui" line="177"/>
         <source>Status.File.New</source>
         <translation>Legt ein neues RollScript-Projekt an.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="214"/>
+        <location filename="../App/MainWindow.ui" line="171"/>
         <source>Action.File.Open</source>
         <translation>Ö&amp;ffnen …</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="296"/>
+        <location filename="../App/MainWindow.ui" line="253"/>
         <source>Status.Printers.Print</source>
         <translation>Druckt das aktuelle RollScript-Projekt.</translation>
     </message>
@@ -289,62 +284,62 @@ Logo</translation>
         <translation type="vanished">Öffnet ein gespeichertes RollScript-Projekt.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="233"/>
+        <location filename="../App/MainWindow.ui" line="190"/>
         <source>Action.File.Save</source>
         <translation>&amp;Speichern</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="236"/>
+        <location filename="../App/MainWindow.ui" line="193"/>
         <source>Tooltip.File.Save</source>
         <translation>Speichert das aktuelle RollScript-Projekt.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="239"/>
+        <location filename="../App/MainWindow.ui" line="196"/>
         <source>Status.File.Save</source>
         <translation>Speichert das aktuelle RollScript-Projekt.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="252"/>
+        <location filename="../App/MainWindow.ui" line="209"/>
         <source>Action.File.SaveAs</source>
         <translation>Speichern &amp;unter …</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="255"/>
+        <location filename="../App/MainWindow.ui" line="212"/>
         <source>Tooltip.File.SaveAs</source>
         <translation>Speichert das aktuelle RollScript-Projekt unter einem neuen Namen.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="258"/>
+        <location filename="../App/MainWindow.ui" line="215"/>
         <source>Status.File.SaveAs</source>
         <translation>Speichert das aktuelle RollScript-Projekt unter einem neuen Namen.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="271"/>
+        <location filename="../App/MainWindow.ui" line="228"/>
         <source>Action.Printers.Scan</source>
         <translation>Nach Druckern suchen</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="274"/>
+        <location filename="../App/MainWindow.ui" line="231"/>
         <source>Tooltip.Printers.Scan</source>
         <translation>Sucht nach neu angeschlossenen Druckern.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="277"/>
+        <location filename="../App/MainWindow.ui" line="234"/>
         <source>Status.Printers.Scan</source>
         <translation>Sucht nach neu angeschlossenen Druckern.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="290"/>
+        <location filename="../App/MainWindow.ui" line="247"/>
         <source>Action.Printers.Print</source>
         <translation>Drucken</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="293"/>
+        <location filename="../App/MainWindow.ui" line="250"/>
         <source>Tooltip.Printers.Print</source>
         <translation>Druckt das aktuelle RollScript-Projekt.</translation>
     </message>
     <message>
-        <location filename="../App/MainWindow.ui" line="98"/>
+        <location filename="../App/MainWindow.ui" line="55"/>
         <source>Menu.View.Language</source>
         <translation>&amp;Sprache</translation>
     </message>
@@ -521,11 +516,12 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
 <context>
     <name>PluginManager</name>
     <message>
-        <location filename="../Plugins/PluginManager.cpp" line="62"/>
-        <location filename="../Plugins/PluginManager.cpp" line="86"/>
-        <location filename="../Plugins/PluginManager.cpp" line="98"/>
-        <location filename="../Plugins/PluginManager.cpp" line="116"/>
-        <location filename="../Plugins/PluginManager.cpp" line="122"/>
+        <location filename="../Plugins/PluginManager.cpp" line="65"/>
+        <location filename="../Plugins/PluginManager.cpp" line="81"/>
+        <location filename="../Plugins/PluginManager.cpp" line="96"/>
+        <location filename="../Plugins/PluginManager.cpp" line="108"/>
+        <location filename="../Plugins/PluginManager.cpp" line="126"/>
+        <location filename="../Plugins/PluginManager.cpp" line="132"/>
         <source>PluginLoadFailed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -647,6 +643,16 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
         <source>plugin.feature.block.text</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextFeaturePluginInfo.h" line="19"/>
+        <source>feature.block.text.name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextFeaturePluginInfo.h" line="20"/>
+        <source>feature.block.text.tooltip</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RollScriptBlockTextLineDocument</name>
@@ -664,17 +670,20 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="24"/>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="35"/>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="153"/>
         <source>Left</source>
         <translation type="unfinished">Links</translation>
     </message>
     <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="25"/>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="36"/>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="157"/>
         <source>Center</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="26"/>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="37"/>
+        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="161"/>
         <source>Right</source>
         <translation type="unfinished">Rechts</translation>
     </message>

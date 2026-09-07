@@ -24,12 +24,13 @@ public:
 
     // Getter
     QLocale currentLocale() const                   { return m_qLocaleCurrent; }
+    QList<TranslationInfo> availableTranslations() const;
 
     // Operations
     bool init();
 
-    QList<TranslationInfo> availableTranslations() const;
     bool loadLanguage(const QLocale& locale);
+    bool loadPluginTranslation(const QString& qstrPluginFileName);
 
 private:
     bool loadSystemLanguage();
@@ -38,6 +39,9 @@ private:
 private:
     QTranslator m_translator;
     QTranslator m_qtTranslator;
+
     QHash<QLocale, TranslationInfo> m_qhashTranslations;
+    QHash<QString, QTranslator*> m_qhashPluginTranslators;
+
     QLocale m_qLocaleCurrent;
 };

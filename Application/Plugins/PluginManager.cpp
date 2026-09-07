@@ -12,9 +12,12 @@
 #include "PrinterPluginRegistry.h"
 #include "FeaturePluginRegistry.h"
 
+#include "Translation/TranslationManager.h"
 
-PluginManager::PluginManager(QObject* parent)
+
+PluginManager::PluginManager(TranslationManager* ptrTranslationManager, QObject* parent)
     : QObject{parent}
+    , m_ptrTranslationManager(ptrTranslationManager)
 {
     m_ptrRegistryPrinters = new PrinterPluginRegistry(this);
     m_ptrRegistryFeatures = new FeaturePluginRegistry(this);
@@ -69,6 +72,13 @@ bool PluginManager::loadPluginDirectory(const QString& qstrPluginDirectory)
     {
         if(!loadPluginFile(fileInfo.absoluteFilePath()))
         {
+            result = false;
+            break;
+        }
+
+        if(!m_ptrTranslationManager->loadPluginTranslation(fileInfo.completeBaseName()))
+        {
+            ROLLSCRIPT_ERROR_CAUSE(tr("PluginLoadFailed"), QStringLiteral("loadPluginTranslation failed."), m_ptrTranslationManager->takeError());
             result = false;
             break;
         }

@@ -33,6 +33,8 @@ void FeatureBlocksWidget::changeEvent(QEvent* ptrEvent)
     if(ptrEvent->type() == QEvent::LanguageChange)
     {
         ui->retranslateUi(this);
+        retranslateActions();
+        retranslateFeatureBlockWidgets();
     }
 
     QWidget::changeEvent(ptrEvent);
@@ -77,7 +79,7 @@ void FeatureBlocksWidget::setupButtons()
         IFeatureBlock* ptrFeatureBlock = m_ptrFeatureBlockManager->featureBlock(qstrFeatureBlockId);
 
         QAction* ptrAction = new QAction(this);
-        ptrAction->setText(tr(ptrFeatureBlock->featureBlockInfo()->featureBlockDisplayName().toUtf8().constData()));
+        ptrAction->setText(ptrFeatureBlock->featureBlockInfo()->featureBlockDisplayName());
         ptrAction->setIcon(ptrFeatureBlock->featureBlockInfo()->featureBlockIcon());
         ptrAction->setData(qstrFeatureBlockId);
 
@@ -193,4 +195,40 @@ void FeatureBlocksWidget::updateUiFromDocument()
 
     //ui->doubleSpinBox_LengthMin->setValue(m_ptrDocumentSettings->minimumLengthMm());
     //ui->marginsWidget->setMarginsMm(m_ptrDocumentSettings->marginsMm());
+}
+
+void FeatureBlocksWidget::retranslateActions()
+{
+    const QList<QAction*> qlstActions = m_ptrFeatureBlocksAddMenu->actions();
+    for(QAction* ptrAction : qlstActions)
+    {
+        Q_ASSERT(ptrAction);
+
+        const QString qstrFeatureBlockId = ptrAction->data().toString();
+        Q_ASSERT(!qstrFeatureBlockId.isEmpty());
+
+        IFeatureBlock* ptrFeatureBlock = m_ptrFeatureBlockManager->featureBlock(qstrFeatureBlockId);
+        Q_ASSERT(ptrFeatureBlock);
+
+        ptrAction->setText(ptrFeatureBlock->featureBlockInfo()->featureBlockDisplayName());
+    }
+}
+
+void FeatureBlocksWidget::retranslateFeatureBlockWidgets()
+{
+    QHash<QString, RollScriptBlockWidgetBase*>::const_iterator iterator = m_qhashFeatureBlockWidgets.constBegin();
+    while(iterator != m_qhashFeatureBlockWidgets.constEnd())
+    {
+        RollScriptBlockWidgetBase* ptrWidget = iterator.value();
+        if(ptrWidget)
+        {
+            IFeatureBlock* ptrFeatureBlock = m_ptrFeatureBlockManager->featureBlock(iterator.key());
+            if(ptrFeatureBlock)
+            {
+                ptrWidget->setTitle(ptrFeatureBlock->featureBlockInfo()->featureBlockDisplayName());
+            }
+        }
+
+        ++iterator;
+    }
 }

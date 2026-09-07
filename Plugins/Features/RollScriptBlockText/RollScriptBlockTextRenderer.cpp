@@ -35,10 +35,11 @@ QSize RollScriptBlockTextRenderer::measureContent(const RenderDeviceInfo* ptrDev
         {
             QFontMetrics fm(ptrBlockTextLine->lineFont());
 
-            QRect boundingRect = fm.boundingRect(ptrBlockTextLine->lineText());
+            int iLineWidth = fm.horizontalAdvance(ptrBlockTextLine->lineText());
+            int iLineHeight = fm.height();
 
-            iWidth = qMax(iWidth, boundingRect.width());
-            iHeight += boundingRect.height();
+            iWidth = qMax(iWidth, iLineWidth);
+            iHeight += iLineHeight;
         }
     }
 
@@ -51,7 +52,6 @@ bool RollScriptBlockTextRenderer::render(RenderContext* ptrRenderContext, const 
     Q_ASSERT(ptrDocumentBlockBase);
 
     QRect rectDraw = geometry.rectContent();
-    ptrRenderContext->painter()->drawRect(rectDraw);
 
     const RollScriptBlockTextDocument* ptrDocumentBlockText = dynamic_cast<const RollScriptBlockTextDocument*>(ptrDocumentBlockBase);
     for(int index=0; index<ptrDocumentBlockText->lineCount(); index++)
@@ -59,12 +59,18 @@ bool RollScriptBlockTextRenderer::render(RenderContext* ptrRenderContext, const 
         const RollScriptBlockTextLineDocument* ptrBlockTextLine = ptrDocumentBlockText->textLine(index);
         if(ptrBlockTextLine->lineActive())
         {
-            ptrRenderContext->painter()->setFont(ptrBlockTextLine->lineFont());
+            QFont font = ptrBlockTextLine->lineFont();
+            QFontMetrics fm(font);
+
+            ptrRenderContext->painter()->setFont(font);
+
             int drawFlags = ptrBlockTextLine->lineAlignment() | Qt::AlignTop | Qt::TextSingleLine;
 
-            ptrRenderContext->painter()->drawText(rectDraw, drawFlags, ptrBlockTextLine->lineText());
+            QString qstrText = ptrBlockTextLine->lineText();
+            QRect textBoundingRect = fm.boundingRect(rectDraw, drawFlags, qstrText);
 
-            QFontMetrics fm(ptrBlockTextLine->lineFont());
+            ptrRenderContext->painter()->drawText(rectDraw, drawFlags, qstrText);
+
             rectDraw.adjust(0, fm.height(), 0, 0);
         }
     }

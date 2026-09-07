@@ -17,13 +17,24 @@ RollScriptBlockTextLineWidget::~RollScriptBlockTextLineWidget()
     delete ui;
 }
 
+void RollScriptBlockTextLineWidget::changeEvent(QEvent* ptrEvent)
+{
+    if(ptrEvent->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+        retranslateComboAlignment();
+    }
+
+    QWidget::changeEvent(ptrEvent);
+}
+
 void RollScriptBlockTextLineWidget::setupComboAlignment()
 {
     QSignalBlocker blockerComboBoxAlignment(ui->comboBox_Alignment);
 
-    ui->comboBox_Alignment->addItem( QIcon(QStringLiteral(":/RollScriptBlockTextFeaturePlugin/icons/FontFormatJustifyLeft")), tr("Left"), Qt::AlignLeft );
-    ui->comboBox_Alignment->addItem( QIcon(QStringLiteral(":/RollScriptBlockTextFeaturePlugin/icons/FontFormatJustifyCenter")), tr("Center"), Qt::AlignHCenter );
-    ui->comboBox_Alignment->addItem( QIcon(QStringLiteral(":/RollScriptBlockTextFeaturePlugin/icons/FontFormatJustifyRight")), tr("Right"), Qt::AlignRight );
+    ui->comboBox_Alignment->addItem( QIcon(QStringLiteral(":/RollScriptBlockTextFeaturePlugin/icons/text-align-left.icon.svg")), tr("Left"), Qt::AlignLeft );
+    ui->comboBox_Alignment->addItem( QIcon(QStringLiteral(":/RollScriptBlockTextFeaturePlugin/icons/text-align-center.icon.svg")), tr("Center"), Qt::AlignHCenter );
+    ui->comboBox_Alignment->addItem( QIcon(QStringLiteral(":/RollScriptBlockTextFeaturePlugin/icons/text-align-right.icon.svg")), tr("Right"), Qt::AlignRight );
 
     ui->comboBox_Alignment->setCurrentIndex(1);
 }
@@ -130,3 +141,24 @@ void RollScriptBlockTextLineWidget::on_comboBox_Alignment_currentIndexChanged(in
     m_ptrBlockTextLineDocument->setLineAlignment(static_cast<Qt::Alignment>(ui->comboBox_Alignment->currentData().toInt()));
 }
 
+void RollScriptBlockTextLineWidget::retranslateComboAlignment()
+{
+    QSignalBlocker blockerComboBoxAlignment(ui->comboBox_Alignment);
+
+    for(int i = 0; i < ui->comboBox_Alignment->count(); ++i)
+    {
+        const Qt::Alignment alignment = static_cast<Qt::Alignment>(ui->comboBox_Alignment->itemData(i).toInt());
+        if(alignment == Qt::AlignLeft)
+        {
+            ui->comboBox_Alignment->setItemText(i, tr("Left"));
+        }
+        else if(alignment == Qt::AlignHCenter)
+        {
+            ui->comboBox_Alignment->setItemText(i, tr("Center"));
+        }
+        else if(alignment == Qt::AlignRight)
+        {
+            ui->comboBox_Alignment->setItemText(i, tr("Right"));
+        }
+    }
+}

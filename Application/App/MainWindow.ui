@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>768</height>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,49 +23,6 @@
     </item>
     <item>
      <widget class="PreviewWidget" name="widget_Preview" native="true"/>
-    </item>
-    <item>
-     <widget class="QTextEdit" name="textEdit_Debug">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>96</height>
-       </size>
-      </property>
-      <property name="baseSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::FocusPolicy::NoFocus</enum>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::StyledPanel</enum>
-      </property>
-      <property name="documentTitle">
-       <string/>
-      </property>
-      <property name="textInteractionFlags">
-       <set>Qt::TextInteractionFlag::TextSelectableByKeyboard|Qt::TextInteractionFlag::TextSelectableByMouse</set>
-      </property>
-      <property name="placeholderText">
-       <string>Debug Data ...</string>
-      </property>
-     </widget>
     </item>
    </layout>
   </widget>

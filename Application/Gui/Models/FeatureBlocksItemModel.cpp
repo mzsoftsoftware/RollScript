@@ -73,7 +73,7 @@ QVariant FeatureBlocksItemModel::data(const QModelIndex& index, int role) const
     }
     if( role == Qt::ToolTipRole )
     {
-        return tr(ptrFeatureBlock->featureBlockInfo()->featureBlockTooltip().toUtf8().constData());
+        return ptrFeatureBlock->featureBlockInfo()->featureBlockTooltip();
     }
 
     return QVariant();

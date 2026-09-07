@@ -81,7 +81,7 @@ bool TranslationManager::loadSystemLanguage()
     for (const QString& language : uiLanguages)
     {
         const QLocale locale(language);
-        const auto it = m_qhashTranslations.constFind(locale);
+        const QHash<QLocale, TranslationInfo>::const_iterator it = m_qhashTranslations.constFind(locale);
         if (it == m_qhashTranslations.constEnd())
         {
             continue;
@@ -96,7 +96,7 @@ bool TranslationManager::loadSystemLanguage()
         QLocale::UnitedStates
         );
 
-    const auto it = m_qhashTranslations.constFind(fallbackLocale);
+    const QHash<QLocale, TranslationInfo>::const_iterator it = m_qhashTranslations.constFind(fallbackLocale);
     if (it == m_qhashTranslations.constEnd())
     {
         qWarning()
@@ -109,7 +109,7 @@ bool TranslationManager::loadSystemLanguage()
 
 bool TranslationManager::loadLanguage(const QLocale& locale)
 {
-    const auto it = m_qhashTranslations.constFind(locale);
+    const QHash<QLocale, TranslationInfo>::const_iterator it = m_qhashTranslations.constFind(locale);
     if (it == m_qhashTranslations.constEnd())
     {
         qWarning()
@@ -118,11 +118,21 @@ bool TranslationManager::loadLanguage(const QLocale& locale)
         return false;
     }
 
+    // Plugin-Translator entfernen
+    QHash<QString, QTranslator*>::iterator itPluginTranslator = m_qhashPluginTranslators.begin();
+    while(itPluginTranslator != m_qhashPluginTranslators.end())
+    {
+        qApp->removeTranslator(itPluginTranslator.value());
+        ++itPluginTranslator;
+    }
+
+    // Hauptübersetzungen entfernen
     qApp->removeTranslator(&m_qtTranslator);
     qApp->removeTranslator(&m_translator);
 
     QLocale::setDefault(locale);
 
+    // RollScript-Übersetzung
     if (!m_translator.load(it->qstrResourcePath))
     {
         qWarning()
@@ -132,6 +142,7 @@ bool TranslationManager::loadLanguage(const QLocale& locale)
     }
     qApp->installTranslator(&m_translator);
 
+    // Qt-Übersetzung
     if(!m_qtTranslator.load(locale, QStringLiteral("qtbase"), QStringLiteral("_"), QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
     {
         qWarning()
@@ -141,6 +152,26 @@ bool TranslationManager::loadLanguage(const QLocale& locale)
     }
     qApp->installTranslator(&m_qtTranslator);
 
+    // Plugin-Übersetzungen
+    itPluginTranslator = m_qhashPluginTranslators.begin();
+    while(itPluginTranslator != m_qhashPluginTranslators.end())
+    {
+        QTranslator* ptrTranslator = itPluginTranslator.value();
+        const QString qstrResourcePath = QStringLiteral(":/i18n/%1_%2.qm").arg(itPluginTranslator.key(), locale.name());
+        if(!ptrTranslator->load(qstrResourcePath))
+        {
+            qWarning()
+            << "Could not load plugin translation:"
+            << qstrResourcePath;
+        }
+        else
+        {
+            qApp->installTranslator(ptrTranslator);
+        }
+
+        ++itPluginTranslator;
+    }
+
     m_qLocaleCurrent = locale;
 
     return true;
@@ -149,4 +180,39 @@ bool TranslationManager::loadLanguage(const QLocale& locale)
 QList<TranslationInfo> TranslationManager::availableTranslations() const
 {
     return m_qhashTranslations.values();
+}
+
+bool TranslationManager::loadPluginTranslation( const QString& qstrPluginFileName)
+{
+    QFileInfo pluginFileInfo(qstrPluginFileName);
+    QString qstrPluginName = pluginFileInfo.completeBaseName();
+
+    // Unter Linux/Unix entfernt completeBaseName()
+    // den Suffix .so, aber nicht den lib-Prefix.
+    if(qstrPluginName.startsWith(QStringLiteral("lib")))
+    {
+        qstrPluginName = qstrPluginName.mid(3);
+    }
+    if(qstrPluginName.isEmpty())
+    {
+        qWarning() << "Could not determine plugin name from:" << qstrPluginFileName;
+        return false;
+    }
+    if(m_qhashPluginTranslators.contains(qstrPluginName))
+    {
+        qWarning() << "Plugin translation already registered:" << qstrPluginName;
+        return true;
+    }
+
+    QTranslator* ptrTranslator = new QTranslator(this);
+    const QString qstrResourcePath = QStringLiteral(":/i18n/%1_%2.qm") .arg( qstrPluginName, m_qLocaleCurrent.name());
+    if(!ptrTranslator->load(qstrResourcePath))
+    {
+        qWarning() << "Could not load plugin translation:" << qstrResourcePath;
+        delete ptrTranslator;
+        return false;
+    }
+    qApp->installTranslator(ptrTranslator);
+    m_qhashPluginTranslators.insert( qstrPluginName, ptrTranslator);
+    return true;
 }

@@ -44,6 +44,8 @@ private:
     void setupListView();
     void setupButtons();
     void setupStackedWidget();
+    void retranslateActions();
+    void retranslateFeatureBlockWidgets();
 
 private:
     Ui::FeatureBlocksWidget* ui;

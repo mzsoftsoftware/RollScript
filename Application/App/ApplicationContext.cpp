@@ -63,7 +63,7 @@ bool ApplicationContext::init()
         return false;
     }
 
-    m_ptrPluginManager = new PluginManager(this);
+    m_ptrPluginManager = new PluginManager(m_ptrTranslationManager, this);
     if(!m_ptrPluginManager->init())
     {
         RollScriptError* ptrError = m_ptrPluginManager->takeError();

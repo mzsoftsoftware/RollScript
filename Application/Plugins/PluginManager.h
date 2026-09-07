@@ -11,13 +11,15 @@ class QPluginLoader;
 class PrinterPluginRegistry;
 class FeaturePluginRegistry;
 
+class TranslationManager;
+
 
 class PluginManager : public QObject, public RollScriptErrorOwner
 {
     Q_OBJECT
 
 public:
-    explicit PluginManager(QObject* parent);
+    explicit PluginManager(TranslationManager* ptrTranslationManager, QObject* parent);
     ~PluginManager() override;
 
     bool init();
@@ -36,8 +38,11 @@ private:
     void registerFeaturePlugin(IFeaturePlugin* ptrFeaturePlugin);
 
 private:
+    TranslationManager* m_ptrTranslationManager;
+
     QList<QPluginLoader*> m_qlstPluginLoaders;
 
     PrinterPluginRegistry* m_ptrRegistryPrinters;
     FeaturePluginRegistry* m_ptrRegistryFeatures;
+
 };

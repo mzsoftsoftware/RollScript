@@ -6,17 +6,18 @@
 
 
 RollScriptBlockTextWidget::RollScriptBlockTextWidget(const QString& qstrPluginId, const QString& qstrTitle, QWidget* parent)
-    : RollScriptBlockWidgetBase(qstrPluginId, qstrTitle, parent)
+    : RollScriptBlockWidgetBase(qstrPluginId, parent)
     , ui(new Ui::RollScriptBlockTextWidget)
 {
     ui->setupUi(this);
+
+    setTitle(qstrTitle);
 
     connect(ui->widget_TextLine0, &RollScriptBlockTextLineWidget::lineActiveChanged, this, &RollScriptBlockTextWidget::updateFromBlockTextDocument);
     connect(ui->widget_TextLine1, &RollScriptBlockTextLineWidget::lineActiveChanged, this, &RollScriptBlockTextWidget::updateFromBlockTextDocument);
     connect(ui->widget_TextLine2, &RollScriptBlockTextLineWidget::lineActiveChanged, this, &RollScriptBlockTextWidget::updateFromBlockTextDocument);
     connect(ui->widget_TextLine3, &RollScriptBlockTextLineWidget::lineActiveChanged, this, &RollScriptBlockTextWidget::updateFromBlockTextDocument);
 }
-
 RollScriptBlockTextWidget::~RollScriptBlockTextWidget()
 {
     delete ui;

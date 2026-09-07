@@ -16,7 +16,7 @@ public:
                            QT_TRANSLATE_NOOP("RollScriptBlockTextFeaturePluginInfo", "plugin.feature.block.text"),     // Plugin Display Name Key
                            QStringLiteral("feature.block.text"),
                            QIcon(QStringLiteral(":/RollScriptBlockTextFeaturePlugin/icons/FeatureBlockText.icon.svg")),
-                           "feature.block.text.name",
-                           "feature.block.text.tooltip")
+                           QT_TRANSLATE_NOOP("RollScriptBlockTextFeaturePluginInfo", "feature.block.text.name"),
+                           QT_TRANSLATE_NOOP("RollScriptBlockTextFeaturePluginInfo", "feature.block.text.tooltip"))
     {}
 };

@@ -10,10 +10,11 @@ class RollScriptBlockWidgetBase : public QGroupBox
     Q_OBJECT
 
 public:
-    explicit RollScriptBlockWidgetBase(const QString& qstrBLockPluginId, const QString& qstrTitle, QWidget* parent);
+    explicit RollScriptBlockWidgetBase(const QString& qstrBLockPluginId, QWidget* parent);
     ~RollScriptBlockWidgetBase() override;
 
     // Setter
+    //void setTitle(const QString& qstrTitle);
     virtual void setDocumentBlock(RollScriptBlockDocumentBase* ptrBlockDocumentBase) = 0;
 
 protected:
