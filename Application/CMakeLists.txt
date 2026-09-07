@@ -1,4 +1,5 @@
 # Application target
+set(ROLLSCRIPT_APPLICATION_VERSION 0.1.0)
 
 # -----------------------------------------------------------------------------
 # Application files
@@ -210,22 +211,3 @@ target_compile_definitions(RollScript
         ROLLSCRIPT_VERSION="${PROJECT_VERSION}"
 )
 
-# -----------------------------------------------------------------------------
-# Installation
-# -----------------------------------------------------------------------------
-install(TARGETS RollScript
-    BUNDLE  DESTINATION .
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-)
-
-# -----------------------------------------------------------------------------
-# Deployment
-# -----------------------------------------------------------------------------
-qt_generate_deploy_app_script(
-    TARGET RollScript
-    OUTPUT_SCRIPT deploy_script
-    NO_UNSUPPORTED_PLATFORM_ERROR
-)
-
-install(SCRIPT ${deploy_script})

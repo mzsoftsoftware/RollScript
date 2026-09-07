@@ -22,22 +22,17 @@ add_compile_definitions(
 # Qt
 # -----------------------------------------------------------------------------
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets Gui Svg LinguistTools)
-
 qt_standard_project_setup()
 
 # -----------------------------------------------------------------------------
 # Core Library
 # -----------------------------------------------------------------------------
-
 add_subdirectory(Core)
-
 
 # -----------------------------------------------------------------------------
 # Application
 # -----------------------------------------------------------------------------
-
 add_subdirectory(Application)
-
 
 # -----------------------------------------------------------------------------
 # Plugins
@@ -47,3 +42,22 @@ add_subdirectory(Plugins/Printers/DymoLabelPoint350)
 
 # --- Features ----------------------------------------------------------------
 add_subdirectory(Plugins/Features/RollScriptBlockText)
+
+# -----------------------------------------------------------------------------
+# Installation
+# -----------------------------------------------------------------------------
+install(TARGETS RollScript
+    BUNDLE  DESTINATION .
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+
+# -----------------------------------------------------------------------------
+# Deployment
+# -----------------------------------------------------------------------------
+qt_generate_deploy_app_script(
+    TARGET RollScript
+    OUTPUT_SCRIPT deploy_script
+    NO_UNSUPPORTED_PLATFORM_ERROR
+)
+install(SCRIPT ${deploy_script})

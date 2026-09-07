@@ -1,4 +1,6 @@
-project(RollScriptBlockTextFeaturePlugin)
+project(RollScriptBlockTextFeaturePlugin
+    VERSION 0.1.0
+)
 
 # -----------------------------------------------------------------------------
 # Sources

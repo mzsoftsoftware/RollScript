@@ -1,4 +1,6 @@
-project(DymoLabelPoint350PrinterPlugin)
+project(DymoLabelPoint350PrinterPlugin
+    VERSION 0.1.0
+)
 
 # -----------------------------------------------------------------------------
 # Sources

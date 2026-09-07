@@ -1,4 +1,6 @@
-project(RollScriptCore)
+project(RollScriptCore
+    VERSION 0.1.0
+)
 
 # -----------------------------------------------------------------------------
 # External dependencies
