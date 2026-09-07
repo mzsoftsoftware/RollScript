@@ -8,7 +8,7 @@ It is designed from the beginning to be modular and extensible. Printer support 
 
 > 🚧 **RollScript is currently under active development.**
 
-![RollScript main window](doc/images/rollscript-main-window.png)
+![RollScript main window](docs/images/rollscript-main-window.png)
 
 ## Current Status
 
