@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=RollScript
+Comment=Label design and printing application
+Exec=RollScript
+Icon=RollScript
+Categories=Utility;
+Terminal=false
+

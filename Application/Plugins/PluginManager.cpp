@@ -36,13 +36,8 @@ bool PluginManager::init()
 
 bool PluginManager::loadPlugins()
 {
-    QString qstrBasePath = QCoreApplication::applicationDirPath();
-    QDir dir(qstrBasePath);
-    if(dir.dirName() == QStringLiteral("Application"))
-    {
-        qstrBasePath = dir.absolutePath() + QStringLiteral("/..");
-    }
-    const QString qstrPluginPath = qstrBasePath + QStringLiteral("/plugins");
+    const QString qstrBasePath = QDir(QCoreApplication::applicationDirPath()).absoluteFilePath(QStringLiteral(".."));
+    const QString qstrPluginPath = QDir::cleanPath(qstrBasePath + QStringLiteral("/plugins"));
 
     if(!loadPluginDirectory(qstrPluginPath + QStringLiteral("/printers")))
     {

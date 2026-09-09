@@ -516,12 +516,12 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
 <context>
     <name>PluginManager</name>
     <message>
-        <location filename="../Plugins/PluginManager.cpp" line="65"/>
-        <location filename="../Plugins/PluginManager.cpp" line="81"/>
-        <location filename="../Plugins/PluginManager.cpp" line="96"/>
-        <location filename="../Plugins/PluginManager.cpp" line="108"/>
-        <location filename="../Plugins/PluginManager.cpp" line="126"/>
-        <location filename="../Plugins/PluginManager.cpp" line="132"/>
+        <location filename="../Plugins/PluginManager.cpp" line="60"/>
+        <location filename="../Plugins/PluginManager.cpp" line="76"/>
+        <location filename="../Plugins/PluginManager.cpp" line="91"/>
+        <location filename="../Plugins/PluginManager.cpp" line="103"/>
+        <location filename="../Plugins/PluginManager.cpp" line="121"/>
+        <location filename="../Plugins/PluginManager.cpp" line="127"/>
         <source>PluginLoadFailed</source>
         <translation type="unfinished"></translation>
     </message>

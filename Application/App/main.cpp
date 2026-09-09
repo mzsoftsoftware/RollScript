@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 
 #include <QApplication>
+#include <QStyleFactory>
 
 #include "App/ApplicationContext.h"
 
@@ -20,6 +21,7 @@ int main(int argc, char* argv[])
 {
     qInstallMessageHandler(messageHandler);
 
+    QApplication::setStyle(QStyleFactory::create(QStringLiteral("Fusion")));
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon(QStringLiteral(":/Application/RollScript.svg")));
 

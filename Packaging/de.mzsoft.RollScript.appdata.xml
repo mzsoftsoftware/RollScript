@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>de.mzsoft.RollScript</id>
+
+    <name>RollScript</name>
+    <summary>Label printing software for continuous rolls</summary>
+
+    <description>
+        <p>
+            RollScript is a desktop application for creating and printing
+            labels on continuous label rolls.
+        </p>
+    </description>
+
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-3.0-or-later</project_license>
+
+    <url type="homepage">https://github.com/mzsoftsoftware/RollScript</url>
+
+    <launchable type="desktop-id">de.mzsoft.RollScript.desktop</launchable>
+
+    <provides>
+        <binary>RollScript</binary>
+    </provides>
+</component>
+
