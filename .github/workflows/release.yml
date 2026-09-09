@@ -9,10 +9,5 @@ on:
                 type: string
 
 jobs:
-    release:
-        runs-on: ubuntu-24.04
-
-        steps:
-            - name: Show release version
-              run: |
-                  echo "Release version: ${{ inputs.version }}"
+    build:
+        uses: ./.github/workflows/build-ubuntu-24.04-reusable.yml
