@@ -56,3 +56,13 @@ jobs:
               with:
                   name: RollScript-AppImage
                   path: release
+                  
+            - name: Create GitHub Release
+              env:
+                  GH_TOKEN: ${{ github.token }}
+              run: |
+                  gh release create \
+                      "v${{ inputs.version }}" \
+                      release/*.AppImage \
+                      --title "RollScript ${{ inputs.version }}" \
+                      --generate-notes                  
