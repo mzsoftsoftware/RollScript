@@ -45,12 +45,18 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QListView" name="listView">
+       <widget class="FeatureBlocksListView" name="listView">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
         </property>
         <property name="sizeAdjustPolicy">
          <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
@@ -80,7 +86,10 @@
          <enum>QListView::Flow::LeftToRight</enum>
         </property>
         <property name="isWrapping" stdset="0">
-         <bool>true</bool>
+         <bool>false</bool>
+        </property>
+        <property name="resizeMode">
+         <enum>QListView::ResizeMode::Fixed</enum>
         </property>
         <property name="layoutMode">
          <enum>QListView::LayoutMode::SinglePass</enum>
@@ -89,13 +98,13 @@
          <number>3</number>
         </property>
         <property name="viewMode">
-         <enum>QListView::ViewMode::ListMode</enum>
+         <enum>QListView::ViewMode::IconMode</enum>
+        </property>
+        <property name="uniformItemSizes">
+         <bool>false</bool>
         </property>
         <property name="wordWrap">
          <bool>true</bool>
-        </property>
-        <property name="itemAlignment">
-         <set>Qt::AlignmentFlag::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -158,6 +167,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>FeatureBlocksListView</class>
+   <extends>QListView</extends>
+   <header>Gui/Widgets/FeatureBlocksListView.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

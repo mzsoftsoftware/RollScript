@@ -167,6 +167,7 @@ qt_add_executable(RollScript
     ${COMMON_GUI_FORMS}
 
     ${RESSOURCES}
+    Gui/Widgets/FeatureBlocksListView.h Gui/Widgets/FeatureBlocksListView.cpp
 )
 
 # -----------------------------------------------------------------------------

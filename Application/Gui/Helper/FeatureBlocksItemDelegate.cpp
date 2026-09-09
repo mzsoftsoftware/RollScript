@@ -13,12 +13,14 @@ FeatureBlocksItemDelegate::~FeatureBlocksItemDelegate()
 
 QSize FeatureBlocksItemDelegate::sizeHint(const QStyleOptionViewItem&, const QModelIndex&) const
 {
+    constexpr int width = 77;
     constexpr int iconSize = 48;
     constexpr int textHeight = 20;
     constexpr int topMargin = 4;
+    constexpr int bottomMargin = 4;
     constexpr int spacing = 4;
 
-    return QSize(77, topMargin + iconSize + spacing + textHeight);
+    return QSize(width, topMargin + iconSize + spacing + textHeight + bottomMargin);
 }
 
 void FeatureBlocksItemDelegate::paint(QPainter* ptrPainter, const QStyleOptionViewItem& option, const QModelIndex& index) const
