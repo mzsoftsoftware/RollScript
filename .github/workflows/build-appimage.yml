@@ -21,7 +21,8 @@ jobs:
                       libgl1-mesa-dev \
                       libxkbcommon-dev \
                       libxkbcommon-x11-0 \
-                      libxcb-cursor0
+                      libxcb-cursor0 \
+                      libudev-dev
         
             - name: Install Qt
               uses: jurplel/install-qt-action@v4
