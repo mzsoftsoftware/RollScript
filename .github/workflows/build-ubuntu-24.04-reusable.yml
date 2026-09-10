@@ -1,0 +1,60 @@
+name: Reusable Build Ubuntu 24.04
+
+on:
+    workflow_call:
+
+jobs:
+    build-appimage:
+        runs-on: ubuntu-24.04
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+
+            - name: Install build dependencies
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y \
+                      build-essential \
+                      cmake \
+                      ninja-build \
+                      libgl1-mesa-dev \
+                      libxkbcommon-dev \
+                      libxkbcommon-x11-0 \
+                      libxcb-cursor0 \
+                      libudev-dev
+
+            - name: Install Qt
+              uses: jurplel/install-qt-action@v4
+              with:
+                  version: '6.11.2'
+                  host: 'linux'
+                  target: 'desktop'
+                  arch: 'linux_gcc_64'
+
+            - name: Configure
+              run: |
+                  cmake \
+                      -S . \
+                      -B build \
+                      -G Ninja \
+                      -DCMAKE_BUILD_TYPE=Release
+
+            - name: Build AppImage
+              run: |
+                  cmake \
+                      --build build \
+                      --target AppImage \
+                      --parallel
+
+            - name: Show generated files
+              run: |
+                  find build -maxdepth 3 -type f \
+                      \( -name '*.AppImage' -o -name 'RollScript' \) \
+                      -print
+
+            - name: Upload AppImage
+              uses: actions/upload-artifact@v7
+              with:
+                  name: RollScript-AppImage
+                  path: build/**/RollScript-x86_64.AppImage
