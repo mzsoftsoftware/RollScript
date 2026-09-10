@@ -64,13 +64,63 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v6
-              
+              with:
+                  fetch-depth: 0
+
             - name: Download AppImage
               uses: actions/download-artifact@v8
               with:
                   name: RollScript-AppImage
                   path: release
-                  
+
+            - name: Generate release notes
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  RELEASE_VERSION: ${{ inputs.version }}
+              run: |
+                  TAG="v${RELEASE_VERSION}"
+
+                  PREVIOUS_TAG=$(git tag --list 'v*' --sort=-version:refname \
+                      | grep -v "^${TAG}$" \
+                      | head -n 1 || true)
+
+                  echo "Release tag:  ${TAG}"
+                  echo "Previous tag: ${PREVIOUS_TAG:-<none>}"
+
+                  if [ -n "$PREVIOUS_TAG" ]; then
+                      NOTES_JSON=$(gh api \
+                          --method POST \
+                          "repos/${GITHUB_REPOSITORY}/releases/generate-notes" \
+                          -f tag_name="$TAG" \
+                          -f previous_tag_name="$PREVIOUS_TAG")
+                  else
+                      NOTES_JSON=$(gh api \
+                          --method POST \
+                          "repos/${GITHUB_REPOSITORY}/releases/generate-notes" \
+                          -f tag_name="$TAG")
+                  fi
+
+                  echo "$NOTES_JSON" | jq -r '.body // ""' > release-notes.md
+
+                  echo "" >> release-notes.md
+                  echo "## Commits" >> release-notes.md
+                  echo "" >> release-notes.md
+
+                  if [ -n "$PREVIOUS_TAG" ]; then
+                      git log "${PREVIOUS_TAG}..HEAD" \
+                          --pretty=format:'- %s (`%h`)' \
+                          >> release-notes.md
+                  else
+                      git log HEAD \
+                          --pretty=format:'- %s (`%h`)' \
+                          >> release-notes.md
+                  fi
+
+                  echo "" >> release-notes.md
+
+                  echo "Generated release notes:"
+                  cat release-notes.md
+
             - name: Create GitHub Draft Release
               env:
                   GH_TOKEN: ${{ github.token }}
@@ -80,4 +130,4 @@ jobs:
                       release/*.AppImage \
                       --draft \
                       --title "RollScript ${{ inputs.version }}" \
-                      --generate-notes
+                      --notes-file release-notes.md
