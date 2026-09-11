@@ -16,6 +16,9 @@ public:
     explicit DialogAbout(QWidget* parent);
     ~DialogAbout() override;
 
+private slots:
+    void on_pushButton_Copy_clicked();
+
 private:
     Ui::DialogAbout* ui;
 };

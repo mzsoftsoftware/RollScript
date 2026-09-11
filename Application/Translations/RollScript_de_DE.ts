@@ -18,41 +18,150 @@
 <context>
     <name>DialogAbout</name>
     <message>
-        <location filename="../App/DialogAbout.ui" line="14"/>
+        <location filename="../Gui/About/DialogAbout.ui" line="14"/>
         <source>About.Title</source>
         <translation>Über RollScript</translation>
     </message>
     <message>
-        <location filename="../App/DialogAbout.ui" line="25"/>
-        <source>About.Logo</source>
-        <translation>Platz
-für
-Logo</translation>
+        <location filename="../Gui/About/DialogAbout.ui" line="27"/>
+        <source>Overview</source>
+        <translation>Über</translation>
     </message>
     <message>
-        <location filename="../App/DialogAbout.ui" line="37"/>
-        <source>About.Product</source>
+        <location filename="../Gui/About/DialogAbout.ui" line="32"/>
+        <source>License</source>
+        <translation>Lizenz</translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAbout.ui" line="37"/>
+        <source>Components</source>
+        <translation>Komponenten</translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAbout.ui" line="42"/>
+        <source>Features</source>
+        <translation>Features</translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAbout.ui" line="47"/>
+        <source>Printers</source>
+        <translation>Drucker</translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAbout.ui" line="64"/>
+        <source>Copy</source>
+        <translation>Informationen kopieren</translation>
+    </message>
+</context>
+<context>
+    <name>DialogAboutComponentsWidget</name>
+    <message>
+        <location filename="../Gui/About/DialogAboutComponentsWidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAboutComponentsWidget.ui" line="49"/>
+        <source>Title</source>
+        <translation type="unfinished">RollScript</translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="17"/>
+        <source>Version %1</source>
+        <translation type="unfinished">Version %1</translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="23"/>
+        <source>Application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="23"/>
+        <source>Rollscript application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="24"/>
+        <source>Core</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="24"/>
+        <source>Rollscript Core library</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="25"/>
+        <source>Qt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="25"/>
+        <source>Qt Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="26"/>
+        <source>Target system</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="26"/>
+        <source>Operating system and windowing system</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogAboutFeaturesWidget</name>
+    <message>
+        <location filename="../Gui/About/DialogAboutFeaturesWidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogAboutLicenseWidget</name>
+    <message>
+        <location filename="../Gui/About/DialogAboutLicenseWidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogAboutOverviewWidget</name>
+    <message>
+        <location filename="../Gui/About/DialogAboutOverviewWidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAboutOverviewWidget.ui" line="65"/>
+        <source>Title</source>
         <translation>RollScript</translation>
     </message>
     <message>
-        <location filename="../App/DialogAbout.ui" line="44"/>
-        <source>About.Version</source>
+        <location filename="../Gui/About/DialogAboutOverviewWidget.ui" line="77"/>
+        <source>Description</source>
+        <translation>Open-Source-Software
+zum Drucken von Etiketten</translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAboutOverviewWidget.ui" line="119"/>
+        <source>Copyright</source>
+        <translation>© 2026 MZ Software GmbH</translation>
+    </message>
+    <message>
+        <location filename="../Gui/About/DialogAboutOverviewWidget.cpp" line="10"/>
+        <source>Version %1</source>
         <translation>Version %1</translation>
     </message>
+</context>
+<context>
+    <name>DialogAboutPrintersWidget</name>
     <message>
-        <location filename="../App/DialogAbout.ui" line="51"/>
-        <source>About.Description</source>
-        <translation>Eine Anwendung zum Erstellen und Verwalten von RollScript-Projekten.</translation>
-    </message>
-    <message>
-        <location filename="../App/DialogAbout.ui" line="69"/>
-        <source>About.Copyright</source>
-        <translation>Copyright © 2026 MZ Software GmbH</translation>
-    </message>
-    <message>
-        <location filename="../App/DialogAbout.ui" line="76"/>
-        <source>About.License</source>
-        <translation>Lizenziert unter der Apache License 2.0.</translation>
+        <location filename="../Gui/About/DialogAboutPrintersWidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -67,70 +176,6 @@ Logo</translation>
         <location filename="../../Common/Gui/Widgets/DoublePairWidget.ui" line="86"/>
         <source>TextLabel</source>
         <translation></translation>
-    </message>
-</context>
-<context>
-    <name>DymoLabelPoint350PrinterJob</name>
-    <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJob.cpp" line="18"/>
-        <source>NoPrinterInstance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJob.cpp" line="24"/>
-        <source>SendError</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJob.cpp" line="33"/>
-        <source>ReceiveError</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DymoLabelPoint350PrinterJobAlive</name>
-    <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJobAlive.cpp" line="33"/>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJobAlive.cpp" line="56"/>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJobAlive.cpp" line="69"/>
-        <source>AliveError</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DymoLabelPoint350PrinterJobPrint</name>
-    <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterJobPrint.cpp" line="38"/>
-        <source>PrintError</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DymoLabelPoint350PrinterPlugin</name>
-    <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterPlugin.cpp" line="107"/>
-        <source>NoPrinterInstance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterPlugin.cpp" line="137"/>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterPlugin.cpp" line="143"/>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterPlugin.cpp" line="149"/>
-        <source>PrintError</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DymoLabelPoint350PrinterPluginInfo</name>
-    <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterPluginInfo.h" line="14"/>
-        <source>plugin.dymo.labelpoint350</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Plugins/Printers/DymoLabelPoint350/DLP350PrinterPluginInfo.h" line="15"/>
-        <source>priner.dymo.labelpoint350</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -167,7 +212,7 @@ Logo</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Gui/Widgets/FeatureBlocksWidget.ui" line="139"/>
+        <location filename="../Gui/Widgets/FeatureBlocksWidget.ui" line="148"/>
         <source>Del</source>
         <translation type="unfinished"></translation>
     </message>
@@ -280,10 +325,6 @@ Logo</translation>
         <translation>Druckt das aktuelle RollScript-Projekt.</translation>
     </message>
     <message>
-        <source>Tooltip.File.Open</source>
-        <translation type="vanished">Öffnet ein gespeichertes RollScript-Projekt.</translation>
-    </message>
-    <message>
         <location filename="../App/MainWindow.ui" line="190"/>
         <source>Action.File.Save</source>
         <translation>&amp;Speichern</translation>
@@ -342,15 +383,6 @@ Logo</translation>
         <location filename="../App/MainWindow.ui" line="55"/>
         <source>Menu.View.Language</source>
         <translation>&amp;Sprache</translation>
-    </message>
-    <message>
-        <source>ConfirmClose.Title</source>
-        <translation type="vanished">RollScript beenden</translation>
-    </message>
-    <message>
-        <source>ConfirmClose.Message</source>
-        <translation type="vanished">Das aktuelle RollScript-Projekt wurde geändert.
-Möchten Sie es vor dem Beenden speichern?</translation>
     </message>
     <message>
         <location filename="../App/MainWindow.cpp" line="284"/>
@@ -527,59 +559,6 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
     </message>
 </context>
 <context>
-    <name>PrinterInstance</name>
-    <message>
-        <location filename="../../Core/Printers/PrinterInstance.cpp" line="47"/>
-        <source>PrinterInstancePrintError</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PrinterInstanceUSB</name>
-    <message>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="24"/>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="60"/>
-        <source>NoPlugin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="30"/>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="66"/>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="93"/>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="115"/>
-        <source>NoUSBManager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="39"/>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="49"/>
-        <source>OpenFailed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="75"/>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="81"/>
-        <source>CloseFailed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="99"/>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="121"/>
-        <source>NotConnected</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="105"/>
-        <source>SendFailed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Core/USB/PrinterInstanceUSB.cpp" line="127"/>
-        <source>ReceiveFailed</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>PrinterManager</name>
     <message>
         <location filename="../Printers/PrinterManager.cpp" line="35"/>
@@ -612,87 +591,6 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
     <message>
         <location filename="../Plugins/PrinterPluginRegistry.cpp" line="39"/>
         <source>PrinterPluginLoadFailed</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>RenderContext</name>
-    <message>
-        <location filename="../../Core/Rendering/RenderContext.cpp" line="32"/>
-        <source>RenderContextError</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>RollScriptBlockTextDocument</name>
-    <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextDocument.cpp" line="63"/>
-        <source>DocumentBlockText.LoadFromFile.Json.Version.Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextDocument.cpp" line="74"/>
-        <source>DocumentBlockText.LoadFromFile.Json.Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>RollScriptBlockTextFeaturePluginInfo</name>
-    <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextFeaturePluginInfo.h" line="16"/>
-        <source>plugin.feature.block.text</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextFeaturePluginInfo.h" line="19"/>
-        <source>feature.block.text.name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextFeaturePluginInfo.h" line="20"/>
-        <source>feature.block.text.tooltip</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>RollScriptBlockTextLineDocument</name>
-    <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineDocument.cpp" line="53"/>
-        <source>DocumentBlockTextLine.LoadFromFile.Json.Version.Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>RollScriptBlockTextLineWidget</name>
-    <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="35"/>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="153"/>
-        <source>Left</source>
-        <translation type="unfinished">Links</translation>
-    </message>
-    <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="36"/>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="157"/>
-        <source>Center</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="37"/>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextLineWidget.cpp" line="161"/>
-        <source>Right</source>
-        <translation type="unfinished">Rechts</translation>
-    </message>
-</context>
-<context>
-    <name>RollScriptBlockTextWidget</name>
-    <message>
-        <location filename="../../Plugins/Features/RollScriptBlockText/RollScriptBlockTextWidget.ui" line="14"/>
-        <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -854,64 +752,6 @@ Möchten Sie Ihre Änderungen vor dem Fortfahren speichern?</translation>
         <location filename="../Translation/TranslationManager.cpp" line="8"/>
         <source>Translation.LanguageName</source>
         <translation>Deutsch</translation>
-    </message>
-</context>
-<context>
-    <name>USBManager</name>
-    <message>
-        <location filename="../../Core/USB/USBManager.cpp" line="35"/>
-        <location filename="../../Core/USB/USBManager.cpp" line="48"/>
-        <source>USBInitError</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Core/USB/USBManager.cpp" line="57"/>
-        <source>USBScanError</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Core/USB/USBManager.cpp" line="137"/>
-        <location filename="../../Core/USB/USBManager.cpp" line="143"/>
-        <source>ErrorDeviceInfo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Core/USB/USBManager.cpp" line="149"/>
-        <source>AlreadyOpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Core/USB/USBManager.cpp" line="156"/>
-        <location filename="../../Core/USB/USBManager.cpp" line="171"/>
-        <location filename="../../Core/USB/USBManager.cpp" line="219"/>
-        <location filename="../../Core/USB/USBManager.cpp" line="226"/>
-        <location filename="../../Core/USB/USBManager.cpp" line="236"/>
-        <location filename="../../Core/USB/USBManager.cpp" line="246"/>
-        <source>USBOpenError</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Core/USB/USBManager.cpp" line="279"/>
-        <location filename="../../Core/USB/USBManager.cpp" line="290"/>
-        <source>USBCloseError</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Core/USB/USBManager.cpp" line="315"/>
-        <location filename="../../Core/USB/USBManager.cpp" line="321"/>
-        <location filename="../../Core/USB/USBManager.cpp" line="327"/>
-        <location filename="../../Core/USB/USBManager.cpp" line="338"/>
-        <location filename="../../Core/USB/USBManager.cpp" line="344"/>
-        <source>USBSendError</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Core/USB/USBManager.cpp" line="354"/>
-        <location filename="../../Core/USB/USBManager.cpp" line="360"/>
-        <location filename="../../Core/USB/USBManager.cpp" line="366"/>
-        <location filename="../../Core/USB/USBManager.cpp" line="381"/>
-        <source>USBReceiveError</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

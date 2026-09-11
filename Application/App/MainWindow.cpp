@@ -9,8 +9,6 @@
 #include <QProgressDialog>
 #include <QTimer>
 
-#include "App/DialogAbout.h"
-
 #include "App/ApplicationContext.h"
 #include "Translation/TranslationManager.h"
 #include "Printers/PrinterManager.h"
@@ -19,6 +17,8 @@
 
 #include "Document/RollScriptDocument.h"
 #include "Document/RollScriptDocumentSettings.h"
+
+#include "Gui/About/DialogAbout.h"
 
 #include "Gui/Models/PrintersItemModel.h"
 #include "Gui/Models/PrinterMediasItemModel.h"
