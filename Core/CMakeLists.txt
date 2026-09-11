@@ -14,6 +14,8 @@ set(SOURCES
     Errors/RollScriptError.cpp
     Errors/RollScriptErrorOwner.cpp
 
+    Licensing/LicenseInfo.cpp
+    Licensing/CoreLicenseProvider.cpp
 
     Blocks/RollScriptBlockDocumentBase.cpp
     Blocks/RollScriptBlockWidgetBase.cpp
@@ -38,6 +40,10 @@ set(HEADERS
     Errors/RollScriptError.h
     Errors/RollScriptErrorOwner.h
     Errors/RollScriptErrorMacros.h
+
+    Licensing/ILicenseProvider.h
+    Licensing/LicenseInfo.h
+    Licensing/CoreLicenseProvider.h
 
     Blocks/IFeatureBlock.h
     Blocks/IFeatureBlockInfo.h
@@ -86,7 +92,12 @@ set(HEADERS
 
 add_library(RollScriptCore SHARED
     ${SOURCES}
-    ${HEADERS}    
+    ${HEADERS}
+)
+
+target_compile_definitions(RollScriptCore
+    PUBLIC
+        LIBUSB_VERSION="${LIBUSB_VERSION}"
 )
 
 # -----------------------------------------------------------------------------

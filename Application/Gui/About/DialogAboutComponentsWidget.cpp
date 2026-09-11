@@ -14,14 +14,13 @@ DialogAboutComponentsWidget::DialogAboutComponentsWidget(QWidget* parent)
 {
     ui->setupUi(this);
 
-    ui->label_Version->setText(tr("Version %1").arg(ROLLSCRIPT_VERSION));
-
     ui->tableWidget->setItemDelegate(new DialogAboutTableItemDelegate(ui->tableWidget));
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
 
     addComponent(tr("Application"), tr("Rollscript application"), QStringLiteral(ROLLSCRIPT_APPLICATION_VERSION));
     addComponent(tr("Core"), tr("Rollscript Core library"), QStringLiteral("0.1.0"));
+    addComponent(tr("USB"), tr("LibUSB Libraray"), QStringLiteral(LIBUSB_VERSION));
     addComponent(tr("Qt"), tr("Qt Version"), QString::fromLatin1(qVersion()));
     addComponent(tr("Target system"), tr("Operating system and windowing system"), targetSystem());
 }

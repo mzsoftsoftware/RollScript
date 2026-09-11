@@ -20,16 +20,16 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="DialogAboutOverviewWidget" name="tab1_Overview">
       <attribute name="title">
        <string>Overview</string>
       </attribute>
      </widget>
-     <widget class="DialogAboutLicenseWidget" name="tab2_License">
+     <widget class="DialogAboutLicenseWidget" name="tab2_Licenses">
       <attribute name="title">
-       <string>License</string>
+       <string>Licenses</string>
       </attribute>
      </widget>
      <widget class="DialogAboutComponentsWidget" name="tab3_Components">

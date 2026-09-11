@@ -8,6 +8,8 @@
 
 #include "Translation/TranslationManager.h"
 #include "Plugins/PluginManager.h"
+#include "Plugins/LicenseProviderRegistry.h"
+#include "Core/Licensing/CoreLicenseProvider.h"
 
 #include "Printers/PrinterManager.h"
 #include "Core/USB/USBManager.h"
@@ -22,6 +24,7 @@
 ApplicationContext::ApplicationContext(QObject* parent)
     : QObject{parent}
 {
+    m_ptrCoreLicenseProvider = new CoreLicenseProvider(this);
 }
 ApplicationContext::~ApplicationContext()
 {
@@ -67,6 +70,24 @@ bool ApplicationContext::init()
     if(!m_ptrPluginManager->init())
     {
         RollScriptError* ptrError = m_ptrPluginManager->takeError();
+        if(ptrError)
+        {
+            // TASK : Use correct tr !!!
+            QMessageBox::critical(nullptr, tr("Startup.Title"), ptrError->messageUser());
+            qDebug() << ptrError->messageDebug();
+            delete ptrError;
+        }
+        else
+            Q_ASSERT_X(false, "ApplicationContext::init", "No RollScriptError found");
+
+        return false;
+    }
+
+
+    m_ptrLicenseProviderRegistry = m_ptrPluginManager->registryLicenses();
+    if(!m_ptrLicenseProviderRegistry->registerProvider(m_ptrCoreLicenseProvider))
+    {
+        RollScriptError* ptrError = m_ptrLicenseProviderRegistry->takeError();
         if(ptrError)
         {
             // TASK : Use correct tr !!!

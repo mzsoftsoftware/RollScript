@@ -31,10 +31,10 @@ set(LOGIC_SOURCES
     Document/RollScriptDocumentBlocks.cpp
 
     Printers/PrinterManager.cpp
-
     Translation/TranslationManager.cpp
 
     Plugins/PluginManager.cpp
+    Plugins/LicenseProviderRegistry.cpp
     Plugins/FeaturePluginRegistry.cpp
     Plugins/PrinterPluginRegistry.cpp
 
@@ -51,10 +51,10 @@ set(LOGIC_HEADERS
     Document/RollScriptDocumentBlocks.h
 
     Printers/PrinterManager.h
-
     Translation/TranslationManager.h
 
     Plugins/PluginManager.h
+    Plugins/LicenseProviderRegistry.h
     Plugins/FeaturePluginRegistry.h
     Plugins/PrinterPluginRegistry.h
 
@@ -76,6 +76,7 @@ set(GUI_SOURCES
     Gui/About/DialogAboutComponentsWidget.h
     Gui/About/DialogAboutFeaturesWidget.h
     Gui/About/DialogAboutPrintersWidget.h
+    Gui/About/DialogAboutHeaderWidget.h
     Gui/About/DialogAboutTableItemDelegate.h
 
     Gui/Models/PrintersItemModel.cpp
@@ -97,6 +98,7 @@ set(GUI_HEADERS
     Gui/About/DialogAboutComponentsWidget.cpp
     Gui/About/DialogAboutFeaturesWidget.cpp
     Gui/About/DialogAboutPrintersWidget.cpp
+    Gui/About/DialogAboutHeaderWidget.cpp
     Gui/About/DialogAboutTableItemDelegate.cpp
 
     Gui/Models/PrintersItemModel.h
@@ -118,6 +120,7 @@ set(GUI_FORMS
     Gui/About/DialogAboutComponentsWidget.ui
     Gui/About/DialogAboutFeaturesWidget.ui
     Gui/About/DialogAboutPrintersWidget.ui
+    Gui/About/DialogAboutHeaderWidget.ui
 
     Gui/Widgets/SettingsWidget.ui
     Gui/Widgets/FeatureBlocksWidget.ui

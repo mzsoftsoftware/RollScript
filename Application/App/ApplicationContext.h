@@ -7,6 +7,9 @@ class SingleInstanceLock;
 class TranslationManager;
 class PluginManager;
 
+class CoreLicenseProvider;
+class LicenseProviderRegistry;
+
 class FeatureBlockManager;
 
 class PrinterManager;
@@ -39,6 +42,9 @@ private:
 
     TranslationManager* m_ptrTranslationManager = nullptr;
     PluginManager* m_ptrPluginManager = nullptr;
+
+    CoreLicenseProvider* m_ptrCoreLicenseProvider = nullptr;
+    LicenseProviderRegistry* m_ptrLicenseProviderRegistry = nullptr;
 
     FeatureBlockManager* m_ptrFeatureBlockManager = nullptr;
 

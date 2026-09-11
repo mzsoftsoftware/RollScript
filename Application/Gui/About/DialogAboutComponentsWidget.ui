@@ -15,62 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,1,0,1">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_Header">
-     <item>
-      <widget class="QLabel" name="label_Logo">
-       <property name="maximumSize">
-        <size>
-         <width>48</width>
-         <height>48</height>
-        </size>
-       </property>
-       <property name="text">
-        <string notr="true"/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="../../Resources/RollScript.qrc">:/Application/RollScript.svg</pixmap>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_Header">
-       <item>
-        <widget class="QLabel" name="label_Title">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Title</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_Version">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string notr="true">Version Information</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
+    <widget class="DialogAboutHeaderWidget" name="widget_Header" native="true"/>
    </item>
    <item>
     <widget class="Line" name="line">
@@ -87,7 +32,7 @@
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>65</height>
+       <height>85</height>
       </size>
      </property>
     </spacer>
@@ -148,15 +93,21 @@
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>64</height>
+       <height>84</height>
       </size>
      </property>
     </spacer>
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../../Resources/RollScript.qrc"/>
- </resources>
+ <customwidgets>
+  <customwidget>
+   <class>DialogAboutHeaderWidget</class>
+   <extends>QWidget</extends>
+   <header>Gui/About/DialogAboutHeaderWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
  <connections/>
 </ui>

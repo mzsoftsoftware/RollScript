@@ -9,6 +9,9 @@
 #include "Core/Plugins/IPrinterPlugin.h"
 #include "Core/Plugins/IFeaturePlugin.h"
 
+#include "Core/Licensing/ILicenseProvider.h"
+
+#include "LicenseProviderRegistry.h"
 #include "PrinterPluginRegistry.h"
 #include "FeaturePluginRegistry.h"
 
@@ -95,6 +98,16 @@ bool PluginManager::loadPluginFile(const QString& qstrPluginFileName)
 
     m_qlstPluginLoaders.append(ptrPluginLoader);
 
+    ILicenseProvider* ptrLicenseProvider = qobject_cast<ILicenseProvider*>(ptrInstance);
+    if(ptrLicenseProvider)
+    {
+        if(!m_ptrRegistryLicenses->registerProvider(ptrLicenseProvider))
+        {
+            ROLLSCRIPT_ERROR_CAUSE(tr("PluginLoadFailed"), QStringLiteral("m_registryFeatures.registerPlugin failed."), m_ptrRegistryFeatures->takeError());
+            return false;
+        }
+    }
+
     IPrinterPlugin* ptrPrinterPlugin = qobject_cast<IPrinterPlugin*>(ptrInstance);
     if(ptrPrinterPlugin)
     {
@@ -109,13 +122,6 @@ bool PluginManager::loadPluginFile(const QString& qstrPluginFileName)
     IFeaturePlugin* ptrFeaturePlugin = qobject_cast<IFeaturePlugin*>(ptrInstance);
     if(ptrFeaturePlugin)
     {
-
-        const QString qstrPath =
-            QStringLiteral(":/RollScriptBlockTextFeaturePlugin/icons/FeatureBlockText.icon");
-
-        qDebug() << "exists:" << QFile::exists(qstrPath);
-        qDebug() << "resources:" << QDir(QStringLiteral(":/")).entryList();
-
         if(!m_ptrRegistryFeatures->registerPlugin(ptrFeaturePlugin))
         {
             ROLLSCRIPT_ERROR_CAUSE(tr("PluginLoadFailed"), QStringLiteral("m_registryFeatures.registerPlugin failed."), m_ptrRegistryFeatures->takeError());
