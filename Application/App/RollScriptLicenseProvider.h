@@ -1,17 +1,17 @@
 #pragma once
 
 #include <QObject>
-#include "ILicenseProvider.h"
+#include "Core/Licensing/ILicenseProvider.h"
 
 #include <QList>
 
 
-class CoreLicenseProvider : public QObject, public ILicenseProvider
+class RollScriptLicenseProvider : public QObject, public ILicenseProvider
 {
     Q_OBJECT
 
 public:
-    CoreLicenseProvider(QObject* parent);
+    RollScriptLicenseProvider(QObject* parent);
 
     // Getter
     QList<const LicenseInfo*> licenses() const override     { return m_qlstLicenses; }

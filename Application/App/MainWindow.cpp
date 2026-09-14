@@ -463,7 +463,7 @@ void MainWindow::slot_RollScriptRenderer_RenderingError()
 
 void MainWindow::on_actionAboutRollScript_triggered()
 {
-    DialogAbout dialog(this);
+    DialogAbout dialog(m_ptrApplicationContext, this);
     dialog.exec();
 }
 void MainWindow::on_actionFileNew_triggered()

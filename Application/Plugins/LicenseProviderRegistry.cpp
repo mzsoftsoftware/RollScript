@@ -1,5 +1,8 @@
 #include "LicenseProviderRegistry.h"
 
+#include "Core/Licensing/ILicenseProvider.h"
+#include "Core/Licensing/LicenseInfo.h"
+
 
 LicenseProviderRegistry::LicenseProviderRegistry(QObject* parent)
     : QObject{parent}
@@ -7,21 +10,25 @@ LicenseProviderRegistry::LicenseProviderRegistry(QObject* parent)
 }
 LicenseProviderRegistry::~LicenseProviderRegistry()
 {
+    // No delete because the Registry doesn't own the License pointers.
 }
 
 bool LicenseProviderRegistry::registerProvider(ILicenseProvider* ptrLicenseProvider)
 {
     Q_ASSERT(ptrLicenseProvider);
 
-/*    const QString qstrPluginId = ptrFeaturePlugin->pluginInfo()->pluginId();
-    if(m_qstrFeaturePluginIds.contains(qstrPluginId))
+    const QList<const LicenseInfo*> licenses = ptrLicenseProvider->licenses();
+    for(const LicenseInfo* ptrLicense : licenses)
     {
-        ROLLSCRIPT_ERROR(tr("FeaturePluginAlreadyRegistered"), QStringLiteral("Plugin ID already registered: %1").arg(qstrPluginId));
-        return false;
+        const QString qstrLicenseId = ptrLicense->id();
+        Q_ASSERT(!qstrLicenseId.isEmpty());
+
+        if(m_qhashLicenses.contains(qstrLicenseId))
+            continue;
+
+        m_qstrLicenseIds.append(qstrLicenseId);
+        m_qhashLicenses.insert(qstrLicenseId, ptrLicense);
     }
 
-    m_qhashFeaturePlugins.insert(qstrPluginId, ptrFeaturePlugin);
-    m_qstrFeaturePluginIds.append(qstrPluginId);
-*/
     return true;
 }

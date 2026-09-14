@@ -189,6 +189,51 @@ qt_add_executable(RollScript
     ${COMMON_GUI_FORMS}
 
     ${RESSOURCES}
+    App/RollScriptLicenseProvider.h App/RollScriptLicenseProvider.cpp
+)
+
+# -----------------------------------------------------------------------------
+# RollScript license resources
+# -----------------------------------------------------------------------------
+set(ROLLSCRIPT_LICENSE_RESOURCE
+    "${CMAKE_BINARY_DIR}/Resources/Licenses/RollScript-license.txt"
+)
+
+set(ROLLSCRIPT_LICENSE_METADATA_RESOURCE
+    "${CMAKE_BINARY_DIR}/Resources/Licenses/RollScript-license.json"
+)
+
+set_source_files_properties(
+    "${ROLLSCRIPT_LICENSE_RESOURCE}"
+    PROPERTIES
+        QT_RESOURCE_ALIAS "RollScript-license.txt"
+)
+
+set_property(
+    TARGET RollScript
+    PROPERTY QT_EXCLUDE_SOURCES_FROM_TRANSLATION
+        "${ROLLSCRIPT_LICENSE_RESOURCE}"
+        "${ROLLSCRIPT_LICENSE_METADATA_RESOURCE}"
+)
+
+set_source_files_properties(
+    "${ROLLSCRIPT_LICENSE_METADATA_RESOURCE}"
+    PROPERTIES
+        QT_RESOURCE_ALIAS "RollScript-license.json"
+)
+
+qt_add_resources(
+    RollScript
+    "RollScriptLicenseResources"
+    PREFIX "/Licenses"
+    FILES
+        "${ROLLSCRIPT_LICENSE_RESOURCE}"
+        "${ROLLSCRIPT_LICENSE_METADATA_RESOURCE}"
+)
+
+add_dependencies(
+    RollScript
+    RollScriptLicenseMetadata
 )
 
 # -----------------------------------------------------------------------------

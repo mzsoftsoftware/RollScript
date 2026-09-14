@@ -95,6 +95,11 @@ add_library(RollScriptCore SHARED
     ${HEADERS}
 )
 
+add_dependencies(
+    RollScriptCore
+    RollScriptLibUsbLicenseMetadata
+)
+
 target_compile_definitions(RollScriptCore
     PUBLIC
         LIBUSB_VERSION="${LIBUSB_VERSION}"
@@ -111,10 +116,38 @@ target_compile_definitions(RollScriptCore
 # -----------------------------------------------------------------------------
 # Resources
 # -----------------------------------------------------------------------------
-#qt_add_resources(
-#    TARGETS RollScriptCore
-#    ${RESSOURCES}
-#)
+set(LIBUSB_LICENSE_RESOURCE
+    "${CMAKE_CURRENT_BINARY_DIR}/Resources/Licenses/libusb-license.txt"
+)
+set(LIBUSB_LICENSE_METADATA_RESOURCE
+    "${CMAKE_CURRENT_BINARY_DIR}/Resources/Licenses/libusb-license.json"
+)
+
+set_source_files_properties(
+    "${LIBUSB_LICENSE_RESOURCE}"
+    PROPERTIES
+        QT_RESOURCE_ALIAS "libusb-license.txt"
+)
+set_source_files_properties(
+    "${LIBUSB_LICENSE_METADATA_RESOURCE}"
+    PROPERTIES
+        QT_RESOURCE_ALIAS "libusb-license.json"
+)
+set_property(
+    TARGET RollScriptCore
+    PROPERTY QT_EXCLUDE_SOURCES_FROM_TRANSLATION
+        "${LIBUSB_LICENSE_RESOURCE}"
+        "${LIBUSB_LICENSE_METADATA_RESOURCE}"
+)
+
+qt_add_resources(
+    RollScriptCore
+    "RollScriptCoreResources"
+    PREFIX "/Licenses"
+    FILES
+        "${LIBUSB_LICENSE_RESOURCE}"
+        "${LIBUSB_LICENSE_METADATA_RESOURCE}"
+)
 
 # -----------------------------------------------------------------------------
 # Include directories

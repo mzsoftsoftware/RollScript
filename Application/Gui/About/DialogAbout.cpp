@@ -1,16 +1,19 @@
 #include "DialogAbout.h"
 #include "ui_DialogAbout.h"
 
+#include "App/ApplicationContext.h"
 
-DialogAbout::DialogAbout(QWidget* parent)
+
+DialogAbout::DialogAbout(ApplicationContext* ptrApplicationContext, QWidget* parent)
     : QDialog(parent)
     , ui(new Ui::DialogAbout)
 {
     ui->setupUi(this);
 
-    //ui->labelVersion->setText(ui->labelVersion->text().arg(ROLLSCRIPT_VERSION));
+    // Fill the contents
+    ui->tab2_Licenses->setLicenseProviderRegistry(ptrApplicationContext->licenseProviderRegistry());
 
-    // TASK : Make a better AboutDialog
+    //ui->labelVersion->setText(ui->labelVersion->text().arg(ROLLSCRIPT_VERSION));
 }
 DialogAbout::~DialogAbout()
 {

@@ -7,6 +7,71 @@ project(RollScript
 
 include(GNUInstallDirs)
 
+# -----------------------------------------------------------------------------
+# RollScript license
+# -----------------------------------------------------------------------------
+
+set(ROLLSCRIPT_LICENSE_FILE
+    "${CMAKE_CURRENT_BINARY_DIR}/Resources/Licenses/RollScript-license.txt"
+)
+
+file(MAKE_DIRECTORY
+    "${CMAKE_CURRENT_BINARY_DIR}/Resources/Licenses"
+)
+
+configure_file(
+    "${CMAKE_SOURCE_DIR}/LICENSE"
+    "${ROLLSCRIPT_LICENSE_FILE}"
+    COPYONLY
+)
+
+# -----------------------------------------------------------------------------
+# RollScript license metadata
+# -----------------------------------------------------------------------------
+
+set(ROLLSCRIPT_LICENSE_METADATA
+    "${CMAKE_CURRENT_BINARY_DIR}/Resources/Licenses/RollScript-license.json"
+)
+
+set(LICENSE_METADATA_SCRIPT
+    "${CMAKE_SOURCE_DIR}/tools/update-license-metadata.sh"
+)
+
+if(NOT EXISTS "${LICENSE_METADATA_SCRIPT}")
+    message(FATAL_ERROR
+        "License metadata script not found: "
+        "${LICENSE_METADATA_SCRIPT}"
+    )
+endif()
+
+add_custom_command(
+    OUTPUT
+        "${ROLLSCRIPT_LICENSE_METADATA}"
+
+    COMMAND
+        "${LICENSE_METADATA_SCRIPT}"
+        "mzsoftsoftware/RollScript"
+        "${ROLLSCRIPT_LICENSE_METADATA}"
+
+    DEPENDS
+        "${LICENSE_METADATA_SCRIPT}"
+
+    COMMENT
+        "Updating RollScript license metadata"
+
+    VERBATIM
+)
+
+add_custom_target(
+    RollScriptLicenseMetadata
+    DEPENDS
+        "${ROLLSCRIPT_LICENSE_METADATA}"
+)
+
+message(STATUS
+    "RollScript license metadata: ${ROLLSCRIPT_LICENSE_METADATA}"
+)
+
 set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 
 set(CMAKE_AUTOMOC ON)

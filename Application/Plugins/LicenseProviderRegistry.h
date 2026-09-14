@@ -6,6 +6,7 @@
 #include <QHash>
 
 class ILicenseProvider;
+class LicenseInfo;
 
 
 class LicenseProviderRegistry : public QObject, public RollScriptErrorOwner
@@ -18,13 +19,13 @@ public:
     ~LicenseProviderRegistry() override;
 
     // Getter
-    //QStringList availableFeaturePluginIds() const                       { return m_qstrFeaturePluginIds; }
-    //IFeaturePlugin* featurePlugin(const QString& qstrPluginId) const    { return m_qhashFeaturePlugins.value(qstrPluginId, nullptr); }
+    QStringList availableLicenseIds() const                         { return m_qstrLicenseIds; }
+    const LicenseInfo* license(const QString& qstrLicenseId) const  { return m_qhashLicenses.value(qstrLicenseId, nullptr); }
 
     // Operations
     bool registerProvider(ILicenseProvider* ptrLicenseProvider);
 
 private:
-    //QStringList m_qstrFeaturePluginIds;
-    //QHash<QString, IFeaturePlugin*> m_qhashFeaturePlugins;
+    QStringList m_qstrLicenseIds;
+    QHash<QString, const LicenseInfo*> m_qhashLicenses;
 };

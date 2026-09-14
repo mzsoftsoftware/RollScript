@@ -4,14 +4,15 @@
 <context>
     <name>ApplicationContext</name>
     <message>
-        <location filename="../App/ApplicationContext.cpp" line="42"/>
-        <location filename="../App/ApplicationContext.cpp" line="59"/>
-        <location filename="../App/ApplicationContext.cpp" line="76"/>
-        <location filename="../App/ApplicationContext.cpp" line="94"/>
-        <location filename="../App/ApplicationContext.cpp" line="111"/>
-        <location filename="../App/ApplicationContext.cpp" line="128"/>
-        <location filename="../App/ApplicationContext.cpp" line="145"/>
-        <location filename="../App/ApplicationContext.cpp" line="162"/>
+        <location filename="../App/ApplicationContext.cpp" line="44"/>
+        <location filename="../App/ApplicationContext.cpp" line="61"/>
+        <location filename="../App/ApplicationContext.cpp" line="78"/>
+        <location filename="../App/ApplicationContext.cpp" line="97"/>
+        <location filename="../App/ApplicationContext.cpp" line="115"/>
+        <location filename="../App/ApplicationContext.cpp" line="132"/>
+        <location filename="../App/ApplicationContext.cpp" line="149"/>
+        <location filename="../App/ApplicationContext.cpp" line="166"/>
+        <location filename="../App/ApplicationContext.cpp" line="183"/>
         <source>Startup.Title</source>
         <translation type="unfinished"></translation>
     </message>
@@ -567,13 +568,14 @@ Would you like to save your changes before continuing?</translation>
 <context>
     <name>PluginManager</name>
     <message>
-        <location filename="../Plugins/PluginManager.cpp" line="63"/>
-        <location filename="../Plugins/PluginManager.cpp" line="79"/>
-        <location filename="../Plugins/PluginManager.cpp" line="94"/>
-        <location filename="../Plugins/PluginManager.cpp" line="106"/>
+        <location filename="../Plugins/PluginManager.cpp" line="64"/>
+        <location filename="../Plugins/PluginManager.cpp" line="80"/>
+        <location filename="../Plugins/PluginManager.cpp" line="95"/>
+        <location filename="../Plugins/PluginManager.cpp" line="107"/>
         <location filename="../Plugins/PluginManager.cpp" line="116"/>
-        <location filename="../Plugins/PluginManager.cpp" line="127"/>
-        <location filename="../Plugins/PluginManager.cpp" line="133"/>
+        <location filename="../Plugins/PluginManager.cpp" line="129"/>
+        <location filename="../Plugins/PluginManager.cpp" line="138"/>
+        <location filename="../Plugins/PluginManager.cpp" line="146"/>
         <source>PluginLoadFailed</source>
         <translation type="unfinished"></translation>
     </message>

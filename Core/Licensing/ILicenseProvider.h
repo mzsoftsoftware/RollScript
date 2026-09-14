@@ -1,16 +1,12 @@
 #pragma once
 
-#include <QObject>
+class LicenseInfo;
 
 
-class ILicenseProvider : public QObject
+class ILicenseProvider
 {
-    Q_OBJECT
-
 public:
-    explicit ILicenseProvider(QObject* parent)
-        : QObject(parent)
-    {}
     virtual ~ILicenseProvider() = default;
 
+    virtual QList<const LicenseInfo*> licenses() const = 0;
 };
