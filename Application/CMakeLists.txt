@@ -213,14 +213,6 @@ qt_add_translations(
 )
 
 # -----------------------------------------------------------------------------
-# Resources
-# -----------------------------------------------------------------------------
-#qt_add_resources(
-#    TARGETS RollScript
-#    ${RESSOURCES}
-#)
-
-# -----------------------------------------------------------------------------
 # Includes and Libraries
 # -----------------------------------------------------------------------------
 target_include_directories(RollScript
@@ -246,4 +238,3 @@ target_compile_definitions(RollScript
         ROLLSCRIPT_VERSION="${PROJECT_VERSION}"
         ROLLSCRIPT_APPLICATION_VERSION="${ROLLSCRIPT_APPLICATION_VERSION}"
 )
-

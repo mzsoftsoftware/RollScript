@@ -5,7 +5,6 @@ project(DymoLabelPoint350PrinterPlugin
 # -----------------------------------------------------------------------------
 # Sources
 # -----------------------------------------------------------------------------
-
 set(SOURCES
     DLP350PrinterPlugin.cpp
     DLP350PrinterMedia.cpp
@@ -58,7 +57,6 @@ set(RESSOURCES
 # -----------------------------------------------------------------------------
 # Plugin
 # -----------------------------------------------------------------------------
-
 qt_add_plugin(DymoLabelPoint350PrinterPlugin
     CLASS_NAME DymoLabelPoint350PrinterPlugin
 
@@ -81,7 +79,6 @@ qt_add_translations(
 # -----------------------------------------------------------------------------
 # Include directories
 # -----------------------------------------------------------------------------
-
 target_include_directories(DymoLabelPoint350PrinterPlugin
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
@@ -91,7 +88,6 @@ target_include_directories(DymoLabelPoint350PrinterPlugin
 # -----------------------------------------------------------------------------
 # Libraries
 # -----------------------------------------------------------------------------
-
 target_link_libraries(DymoLabelPoint350PrinterPlugin
     PRIVATE
         Qt6::Core
@@ -101,7 +97,6 @@ target_link_libraries(DymoLabelPoint350PrinterPlugin
 # -----------------------------------------------------------------------------
 # Metadata
 # -----------------------------------------------------------------------------
-
 set_target_properties(DymoLabelPoint350PrinterPlugin PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY
         "${CMAKE_BINARY_DIR}/plugins/printers"

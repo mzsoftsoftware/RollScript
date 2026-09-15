@@ -5,7 +5,6 @@ project(RollScriptBlockTextFeaturePlugin
 # -----------------------------------------------------------------------------
 # Sources
 # -----------------------------------------------------------------------------
-
 set(SOURCES
     RollScriptBlockTextFeaturePlugin.cpp
 
@@ -69,7 +68,6 @@ set(RESSOURCES
 # -----------------------------------------------------------------------------
 # Plugin
 # -----------------------------------------------------------------------------
-
 qt_add_plugin(RollScriptBlockTextFeaturePlugin
         CLASS_NAME RollScriptBlockTextFeaturePlugin
 
@@ -97,17 +95,8 @@ qt_add_translations(
 )
 
 # -----------------------------------------------------------------------------
-# Resources
-# -----------------------------------------------------------------------------
-#qt_add_resources(
-#    TARGETS RollScriptBlockTextFeaturePlugin
-#    ${RESSOURCES}
-#)
-
-# -----------------------------------------------------------------------------
 # Include directories
 # -----------------------------------------------------------------------------
-
 target_include_directories(RollScriptBlockTextFeaturePlugin
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
@@ -117,7 +106,6 @@ target_include_directories(RollScriptBlockTextFeaturePlugin
 # -----------------------------------------------------------------------------
 # Libraries
 # -----------------------------------------------------------------------------
-
 target_link_libraries(RollScriptBlockTextFeaturePlugin
     PRIVATE
         Qt6::Core
@@ -128,7 +116,6 @@ target_link_libraries(RollScriptBlockTextFeaturePlugin
 # -----------------------------------------------------------------------------
 # Metadata
 # -----------------------------------------------------------------------------
-
 set_target_properties(RollScriptBlockTextFeaturePlugin PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY
     "${CMAKE_BINARY_DIR}/plugins/features"
