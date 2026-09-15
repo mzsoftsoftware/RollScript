@@ -10,13 +10,13 @@ class RollScriptBlockTextFeaturePluginInfo : public FeatureBlockInfo
 public:
     // Constructor / Destructor
     explicit RollScriptBlockTextFeaturePluginInfo()
-        : FeatureBlockInfo("RollScriptBlockTextFeaturePluginInfo",                                                   // Translation Context
-                           QStringLiteral("de.mzsoft.rollscript.feature.block.text"),                                // Plugin ID
-                           QStringLiteral("1.0.0"),                                                                  // Plugin Version
-                           QT_TRANSLATE_NOOP("RollScriptBlockTextFeaturePluginInfo", "plugin.feature.block.text"),     // Plugin Display Name Key
-                           QStringLiteral("feature.block.text"),
-                           QIcon(QStringLiteral(":/RollScriptBlockTextFeaturePlugin/icons/FeatureBlockText.icon.svg")),
-                           QT_TRANSLATE_NOOP("RollScriptBlockTextFeaturePluginInfo", "feature.block.text.name"),
-                           QT_TRANSLATE_NOOP("RollScriptBlockTextFeaturePluginInfo", "feature.block.text.tooltip"))
+        : FeatureBlockInfo("RollScriptBlockTextFeaturePluginInfo",                                                      // Translation Context
+                           QStringLiteral("de.mzsoft.rollscript.feature.block.text"),                                   // Plugin ID
+                           QStringLiteral("1.0.0"),                                                                     // Plugin Version
+                           QT_TRANSLATE_NOOP("RollScriptBlockTextFeaturePluginInfo", "plugin.feature.block.text"),      // Plugin Display Name Key
+                           QIcon(QStringLiteral(":/RollScriptBlockTextFeaturePlugin/icons/FeatureBlockText.icon.svg")), // Plugin Icon
+                           //QStringLiteral("feature.block.text"),
+                           //QT_TRANSLATE_NOOP("RollScriptBlockTextFeaturePluginInfo", "feature.block.text.name"),
+                           QT_TRANSLATE_NOOP("RollScriptBlockTextFeaturePluginInfo", "feature.block.text.tooltip"))     // FeatureBlockTooltip
     {}
 };

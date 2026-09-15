@@ -22,9 +22,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../RollScriptBlockTextFeaturePluginInfo.h" line="19"/>
         <source>feature.block.text.name</source>
-        <translation>Textblock</translation>
+        <translation type="vanished">Textblock</translation>
     </message>
     <message>
         <location filename="../RollScriptBlockTextFeaturePluginInfo.h" line="20"/>

@@ -11,15 +11,10 @@ public:
                                const QString& qstrPluginId,
                                const QString& qstrPluginVersion,
                                const char* pszPluginDisplayNameKey,
-                               const char* pszPrinterDisplayNameKey,
-                               const QIcon& iconPrinter);
+                               const QIcon& iconPlugin);
     ~PrinterPluginInfo() override;
 
     // Getter
-    QString printerDisplayName() const  { return translate(m_pszPrinterDisplayNameKey); }
-    const QIcon& printerIcon() const    { return m_iconPrinter; }
 
 private:
-    const char* m_pszPrinterDisplayNameKey;
-    QIcon m_iconPrinter;
 };

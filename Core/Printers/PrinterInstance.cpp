@@ -13,7 +13,7 @@ PrinterInstance::PrinterInstance(IPrinterPlugin* ptrPrinterPlugin, QObject* pare
     Q_ASSERT(m_ptrPrinterPlugin);
 
     // TASK : Braucht PrinterInstance wirklich das Icon oder besser durchreichen ?
-    m_icon = ptrPrinterPlugin->printerPluginInfo()->printerIcon();
+    m_icon = ptrPrinterPlugin->printerPluginInfo()->pluginIcon();
 
     const QList<PrinterMedia*> medias = m_ptrPrinterPlugin->createPrinterMedias();
     for(PrinterMedia* ptrMedia : medias)

@@ -65,11 +65,11 @@ QVariant FeatureBlocksItemModel::data(const QModelIndex& index, int role) const
     IFeatureBlock* ptrFeatureBlock = m_ptrFeatureBlockManager->featureBlock(ptrDocumentBlockBase->blockPluginId());
     if( role == Qt::DisplayRole )
     {
-        return tr(ptrFeatureBlock->featureBlockInfo()->featureBlockDisplayName().toUtf8().constData());
+        return ptrFeatureBlock->featureBlockInfo()->pluginDisplayName();//featureBlockDisplayName().toUtf8().constData());
     }
     if(role == Qt::DecorationRole )
     {
-        return ptrFeatureBlock->featureBlockInfo()->featureBlockIcon();
+        return ptrFeatureBlock->featureBlockInfo()->pluginIcon();//featureBlockIcon();
     }
     if( role == Qt::ToolTipRole )
     {

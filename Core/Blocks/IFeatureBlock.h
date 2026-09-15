@@ -19,10 +19,6 @@ public:
 
     // Getter
     virtual const IFeatureBlockInfo* featureBlockInfo() const = 0;
-    //virtual const QString& featureBlockId() const = 0;
-    //virtual const QString& featureBlockDisplayName() const = 0;
-    //virtual const QIcon& featureBlockIcon() const = 0;
-    //virtual const QString& featureBlockTooltip() const = 0;
 
     // Instances
     virtual RollScriptBlockWidgetBase* createFeatureBlockWidget(QWidget* parent) = 0;

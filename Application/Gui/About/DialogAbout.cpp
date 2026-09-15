@@ -2,6 +2,7 @@
 #include "ui_DialogAbout.h"
 
 #include "App/ApplicationContext.h"
+#include "Plugins/PluginManager.h"
 
 
 DialogAbout::DialogAbout(ApplicationContext* ptrApplicationContext, QWidget* parent)
@@ -12,8 +13,8 @@ DialogAbout::DialogAbout(ApplicationContext* ptrApplicationContext, QWidget* par
 
     // Fill the contents
     ui->tab2_Licenses->setLicenseProviderRegistry(ptrApplicationContext->licenseProviderRegistry());
-
-    //ui->labelVersion->setText(ui->labelVersion->text().arg(ROLLSCRIPT_VERSION));
+    ui->tab4_Features->setFeaturePluginRegistry(ptrApplicationContext->pluginManager()->registryFeatures());
+    ui->tab5_Printers->setPrinterPluginRegistry(ptrApplicationContext->pluginManager()->registryPrinters());
 }
 DialogAbout::~DialogAbout()
 {

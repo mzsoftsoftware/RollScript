@@ -3,6 +3,7 @@
 #include "Core/Plugins/IPluginInfo.h"
 
 #include <QString>
+#include <QIcon>
 
 
 class PluginInfo : public virtual IPluginInfo
@@ -11,13 +12,15 @@ public:
     explicit PluginInfo(const char* pszContext,
                         const QString& qstrPluginId,
                         const QString& qstrPluginVersion,
-                        const char* pszPluginDisplayNameKey);
+                        const char* pszPluginDisplayNameKey,
+                        const QIcon& iconPlugin);
     ~PluginInfo() override;
 
     // Getter
     const QString& pluginId() const override        { return m_qstrPluginId; }
     const QString& pluginVersion() const override   { return m_qstrPluginVersion; }
     QString pluginDisplayName() const override      { return translate(m_pszPluginDisplayNameKey); }
+    const QIcon& pluginIcon() const override        { return m_iconPlugin; }
 
 protected:
     QString translate(const char* pszKey) const;
@@ -27,4 +30,5 @@ private:
     QString m_qstrPluginId;
     QString m_qstrPluginVersion;
     const char* m_pszPluginDisplayNameKey;
+    QIcon m_iconPlugin;
 };

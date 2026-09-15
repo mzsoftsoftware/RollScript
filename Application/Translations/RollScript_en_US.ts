@@ -611,7 +611,12 @@ Would you like to save your changes before continuing?</translation>
 <context>
     <name>PrinterPluginRegistry</name>
     <message>
-        <location filename="../Plugins/PrinterPluginRegistry.cpp" line="39"/>
+        <location filename="../Plugins/PrinterPluginRegistry.cpp" line="23"/>
+        <source>PrinterPluginAlreadyRegistered</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Plugins/PrinterPluginRegistry.cpp" line="44"/>
         <source>PrinterPluginLoadFailed</source>
         <translation type="unfinished"></translation>
     </message>

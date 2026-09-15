@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QString>
+#include <QIcon>
+
 
 class IPluginInfo
 {
@@ -11,4 +13,5 @@ public:
     virtual const QString& pluginVersion() const = 0;
 
     virtual QString pluginDisplayName() const = 0;
+    virtual const QIcon& pluginIcon() const = 0;
 };

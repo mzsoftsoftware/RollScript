@@ -10,6 +10,7 @@ public:
     explicit FeaturePluginInfo(const char* pszContext,
                                const QString& qstrPluginId,
                                const QString& qstrPluginVersion,
-                               const char* pszPluginDisplayNameKey);
+                               const char* pszPluginDisplayNameKey,
+                               const QIcon& iconPlugin);
     ~FeaturePluginInfo() override;
 };

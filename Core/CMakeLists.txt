@@ -83,6 +83,7 @@ add_library(RollScriptCore SHARED
 target_compile_definitions(RollScriptCore
     PUBLIC
         LIBUSB_VERSION="${LIBUSB_VERSION}"
+        ROLLSCRIPT_CORE_VERSION="${PROJECT_VERSION}"
 )
 
 # -----------------------------------------------------------------------------
