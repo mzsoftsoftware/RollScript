@@ -50,3 +50,22 @@ void DialogAboutFeaturesWidget::setFeaturePluginRegistry(const FeaturePluginRegi
         ui->tableWidget->setRowHeight(row, 52);
     }
 }
+
+QString DialogAboutFeaturesWidget::supportInformation() const
+{
+    QString result;
+
+    for(int row = 0; row < ui->tableWidget->rowCount(); ++row)
+    {
+        const QTableWidgetItem* ptrTitleItem = ui->tableWidget->item(row, 0);
+        const QTableWidgetItem* ptrVersionItem = ui->tableWidget->item(row, 1);
+
+        if(!ptrTitleItem || !ptrVersionItem)
+            continue;
+
+        result += QStringLiteral("%1: %2\n")
+                      .arg(ptrTitleItem->text(), ptrVersionItem->text());
+    }
+
+    return result;
+}

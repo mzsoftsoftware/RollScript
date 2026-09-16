@@ -15,6 +15,9 @@ public:
     explicit DialogAboutComponentsWidget(QWidget* parent = nullptr);
     ~DialogAboutComponentsWidget();
 
+    // Getters
+    QString supportInformation() const;
+
 private:
     void addComponent(const QString& title, const QString& description, const QString& value);
     QString targetOperatingSystem();

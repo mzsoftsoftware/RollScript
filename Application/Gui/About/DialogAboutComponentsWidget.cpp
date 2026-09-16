@@ -20,7 +20,7 @@ DialogAboutComponentsWidget::DialogAboutComponentsWidget(QWidget* parent)
 
     addComponent(tr("Application"), tr("Rollscript application"), QStringLiteral(ROLLSCRIPT_APPLICATION_VERSION));
     addComponent(tr("Core"), tr("Rollscript Core library"), QStringLiteral(ROLLSCRIPT_CORE_VERSION));
-    addComponent(tr("USB"), tr("LibUSB Libraray"), QStringLiteral(LIBUSB_VERSION));
+    addComponent(tr("USB"), tr("LibUSB Library"), QStringLiteral(LIBUSB_VERSION));
     addComponent(tr("Qt"), tr("Qt Version"), QString::fromLatin1(qVersion()));
     addComponent(tr("Target system"), tr("Operating system and windowing system"), targetSystem());
 }
@@ -71,4 +71,23 @@ QString DialogAboutComponentsWidget::targetSystem()
         return operatingSystem;
 
     return QStringLiteral("%1 (%2)").arg(operatingSystem, windowingSystem);
+}
+
+QString DialogAboutComponentsWidget::supportInformation() const
+{
+    QString result;
+
+    for(int row = 0; row < ui->tableWidget->rowCount(); ++row)
+    {
+        const QTableWidgetItem* ptrTitleItem = ui->tableWidget->item(row, 0);
+        const QTableWidgetItem* ptrValueItem = ui->tableWidget->item(row, 1);
+
+        if(!ptrTitleItem || !ptrValueItem)
+            continue;
+
+        result += QStringLiteral("%1: %2\n")
+                      .arg(ptrTitleItem->text(), ptrValueItem->text());
+    }
+
+    return result;
 }

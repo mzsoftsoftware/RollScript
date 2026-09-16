@@ -89,7 +89,7 @@
     </message>
     <message>
         <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="23"/>
-        <source>LibUSB Libraray</source>
+        <source>LibUSB Library</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

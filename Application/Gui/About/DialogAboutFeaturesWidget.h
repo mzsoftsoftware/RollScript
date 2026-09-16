@@ -17,6 +17,9 @@ public:
     explicit DialogAboutFeaturesWidget(QWidget* parent = nullptr);
     ~DialogAboutFeaturesWidget();
 
+    // Getters
+    QString supportInformation() const;
+
     // Setter
     void setFeaturePluginRegistry(const FeaturePluginRegistry* ptrFeaturePluginRegistry);
 

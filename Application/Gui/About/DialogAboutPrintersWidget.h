@@ -17,6 +17,9 @@ public:
     explicit DialogAboutPrintersWidget(QWidget* parent = nullptr);
     ~DialogAboutPrintersWidget();
 
+    // Getters
+    QString supportInformation() const;
+
     // Setter
     void setPrinterPluginRegistry(const PrinterPluginRegistry* ptrPrinterPluginRegistry);
 
