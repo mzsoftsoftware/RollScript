@@ -67,6 +67,10 @@ qt_add_plugin(DymoLabelPoint350PrinterPlugin
     ${COMMON_HEADERS}
     ${RESSOURCES}
 )
+target_compile_definitions(DymoLabelPoint350PrinterPlugin
+    PRIVATE
+        ROLLSCRIPT_PLUGIN_VERSION="${PROJECT_VERSION}"
+)
 
 # -----------------------------------------------------------------------------
 # Translations

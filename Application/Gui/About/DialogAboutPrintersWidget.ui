@@ -66,6 +66,9 @@
      <property name="cornerButtonEnabled">
       <bool>false</bool>
      </property>
+     <property name="columnCount">
+      <number>2</number>
+     </property>
      <property name="supportedDragActions">
       <set>Qt::DropAction::IgnoreAction</set>
      </property>
@@ -75,6 +78,8 @@
      <attribute name="verticalHeaderVisible">
       <bool>false</bool>
      </attribute>
+     <column/>
+     <column/>
     </widget>
    </item>
    <item>

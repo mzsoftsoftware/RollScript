@@ -10,7 +10,8 @@ public:
     explicit PrinterPluginInfo(const char* pszContext,
                                const QString& qstrPluginId,
                                const QString& qstrPluginVersion,
-                               const char* pszPluginDisplayNameKey,
+                               const char* pszPluginNameKey,
+                               const char* pszPluginDescriptionKey,
                                const QIcon& iconPlugin);
     ~PrinterPluginInfo() override;
 

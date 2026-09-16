@@ -13,6 +13,8 @@ set(SOURCES
 
     RollScriptBlockTextWidget.cpp
     RollScriptBlockTextLineWidget.cpp
+
+    RollScriptBlockTextRenderer.cpp
 )
 
 set(HEADERS
@@ -24,6 +26,8 @@ set(HEADERS
 
     RollScriptBlockTextWidget.h
     RollScriptBlockTextLineWidget.h
+
+    RollScriptBlockTextRenderer.h
 )
 
 set(FORMS
@@ -79,11 +83,9 @@ qt_add_plugin(RollScriptBlockTextFeaturePlugin
     ${COMMON_HEADERS}
     ${RESSOURCES}
 )
-
-target_sources(RollScriptBlockTextFeaturePlugin
-  PRIVATE
-    RollScriptBlockTextRenderer.h
-    RollScriptBlockTextRenderer.cpp
+target_compile_definitions(RollScriptBlockTextFeaturePlugin
+    PRIVATE
+        ROLLSCRIPT_PLUGIN_VERSION="${PROJECT_VERSION}"
 )
 
 # -----------------------------------------------------------------------------

@@ -18,12 +18,18 @@
     <name>RollScriptBlockTextFeaturePluginInfo</name>
     <message>
         <location filename="../RollScriptBlockTextFeaturePluginInfo.h" line="16"/>
-        <source>plugin.feature.block.text</source>
+        <source>plugin.feature.block.text.name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../RollScriptBlockTextFeaturePluginInfo.h" line="17"/>
+        <source>plugin.feature.block.text.description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../RollScriptBlockTextFeaturePluginInfo.h" line="19"/>
         <source>feature.block.text.name</source>
-        <translation type="vanished">Textblock</translation>
+        <translation>Textblock</translation>
     </message>
     <message>
         <location filename="../RollScriptBlockTextFeaturePluginInfo.h" line="20"/>

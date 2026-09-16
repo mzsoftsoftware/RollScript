@@ -11,14 +11,18 @@ public:
     explicit FeatureBlockInfo(const char* pszContext,
                               const QString& qstrPluginId,
                               const QString& qstrPluginVersion,
-                              const char* pszPluginDisplayNameKey,
+                              const char* pszPluginNameKey,
+                              const char* pszPluginDescriptionKey,
                               const QIcon& iconPlugin,
+                              const char* pszFeatureBlockNameKey,
                               const char* pszFeatureBlockTooltipKey);
     ~FeatureBlockInfo() override;
 
     // Getter
-    QString featureBlockTooltip() const override            { return translate(m_pszFeatureBlockTooltipKey); }
+    QString featureBlockName() const override       { return translate(m_pszFeatureBlockNameKey); }
+    QString featureBlockTooltip() const override    { return translate(m_pszFeatureBlockTooltipKey); }
 
 private:
+    const char* m_pszFeatureBlockNameKey;
     const char* m_pszFeatureBlockTooltipKey;
 };

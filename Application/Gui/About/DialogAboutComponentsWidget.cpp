@@ -35,12 +35,12 @@ void DialogAboutComponentsWidget::addComponent(const QString& title, const QStri
     const int row = ui->tableWidget->rowCount();
     ui->tableWidget->insertRow(row);
 
-    QTableWidgetItem* pItem = new QTableWidgetItem(title);
-    pItem->setData(DialogAboutTableItemDelegate::DescriptionRole, description);
-    ui->tableWidget->setItem(row, 0, pItem);
+    QTableWidgetItem* ptrItem = new QTableWidgetItem(title);
+    ptrItem->setData(DialogAboutTableItemDelegate::DescriptionRole, description);
+    ui->tableWidget->setItem(row, 0, ptrItem);
 
-    QTableWidgetItem* pItemValue = new QTableWidgetItem(value);
-    ui->tableWidget->setItem(row, 1, pItemValue);
+    QTableWidgetItem* ptrItemValue = new QTableWidgetItem(value);
+    ui->tableWidget->setItem(row, 1, ptrItemValue);
 
     ui->tableWidget->setRowHeight(row, 52);
 }

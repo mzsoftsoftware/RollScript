@@ -56,7 +56,12 @@
     <name>DymoLabelPoint350PrinterPluginInfo</name>
     <message>
         <location filename="../DLP350PrinterPluginInfo.h" line="15"/>
-        <source>plugin.dymo.labelpoint350</source>
+        <source>printer.dymo.labelpoint350.name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../DLP350PrinterPluginInfo.h" line="16"/>
+        <source>printer.dymo.labelpoint350.description</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -12,5 +12,6 @@ public:
     ~IFeatureBlockInfo() override = default;
 
     // Getter
+    virtual QString featureBlockName() const = 0;
     virtual QString featureBlockTooltip() const = 0;
 };

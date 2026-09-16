@@ -11,8 +11,9 @@ public:
         : PrinterPluginInfo(
               "DymoLabelPoint350PrinterPluginInfo",                                                     // Translation Context
               QStringLiteral("printer.dymo.labelpoint350"),                                             // Plugin ID
-              QStringLiteral("1.0.0"),                                                                  // Plugin Version
-              QT_TRANSLATE_NOOP("DymoLabelPoint350PrinterPluginInfo", "plugin.dymo.labelpoint350"),     // Plugin Display Name Key
+              QStringLiteral(ROLLSCRIPT_PLUGIN_VERSION),                                                // Plugin Version
+              QT_TRANSLATE_NOOP("DymoLabelPoint350PrinterPluginInfo", "printer.dymo.labelpoint350.name"),     // Name Key
+              QT_TRANSLATE_NOOP("DymoLabelPoint350PrinterPluginInfo", "printer.dymo.labelpoint350.description"),     // Description Key
               QIcon(QStringLiteral(":/DymoLabelPoint350PrinterPlugin/icons/printer.png")))
     {}
 };

@@ -39,7 +39,8 @@ void DialogAboutFeaturesWidget::setFeaturePluginRegistry(const FeaturePluginRegi
         const int row = ui->tableWidget->rowCount();
         ui->tableWidget->insertRow(row);
 
-        QTableWidgetItem* ptrItem = new QTableWidgetItem(ptrPluginInfo->pluginDisplayName());
+        QTableWidgetItem* ptrItem = new QTableWidgetItem(ptrPluginInfo->pluginName());
+        ptrItem->setData(DialogAboutTableItemDelegate::DescriptionRole, ptrPluginInfo->pluginDescription());
         ptrItem->setData( Qt::DecorationRole, ptrPluginInfo->pluginIcon());
         ui->tableWidget->setItem(row, 0, ptrItem);
 

@@ -23,7 +23,7 @@ RollScriptBlockTextFeaturePlugin::RollScriptBlockTextFeaturePlugin(QObject* pare
 
 RollScriptBlockWidgetBase* RollScriptBlockTextFeaturePlugin::createFeatureBlockWidget(QWidget* parent)
 {
-    return new RollScriptBlockTextWidget(m_pluginInfo.pluginId(), m_pluginInfo.pluginDisplayName(), parent);
+    return new RollScriptBlockTextWidget(m_pluginInfo.pluginId(), m_pluginInfo.featureBlockName(), parent);
 }
 
 RollScriptBlockDocumentBase* RollScriptBlockTextFeaturePlugin::createFeatureBlockDocument(QObject* parent)
