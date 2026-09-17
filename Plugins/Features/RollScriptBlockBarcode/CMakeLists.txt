@@ -1,0 +1,106 @@
+project(RollScriptBlockBarcodeFeaturePlugin
+    VERSION 0.1.0
+)
+
+# -----------------------------------------------------------------------------
+# Sources
+# -----------------------------------------------------------------------------
+set(SOURCES
+    RollScriptBlockBarcodeFeaturePlugin.cpp
+)
+
+set(HEADERS
+    RollScriptBlockBarcodeFeaturePlugin.h
+    RollScriptBlockBarcodeFeaturePluginInfo.h
+)
+
+set(FORMS
+)
+
+set(CORE_HEADERS
+    ${CMAKE_SOURCE_DIR}/Core/Plugins/IPlugin.h
+    ${CMAKE_SOURCE_DIR}/Core/Plugins/IFeaturePlugin.h
+    ${CMAKE_SOURCE_DIR}/Core/Blocks/IFeatureBlock.h
+    ${CMAKE_SOURCE_DIR}/Core/Blocks/IFeatureBlockInfo.h
+)
+
+set(COMMON_SOURCES
+    ${CMAKE_SOURCE_DIR}/Common/Info/PluginInfo.cpp
+    ${CMAKE_SOURCE_DIR}/Common/Info/FeaturePluginInfo.cpp
+    ${CMAKE_SOURCE_DIR}/Common/Info/FeatureBlockInfo.cpp
+)
+
+set(COMMON_HEADERS
+    ${CMAKE_SOURCE_DIR}/Common/Info/PluginInfo.h
+    ${CMAKE_SOURCE_DIR}/Common/Info/FeaturePluginInfo.h
+    ${CMAKE_SOURCE_DIR}/Common/Info/FeatureBlockInfo.h
+)
+
+# -----------------------------------------------------------------------------
+# Translations
+# -----------------------------------------------------------------------------
+set(TRANSLATIONS
+    Translations/RollScriptBlockBarcodeFeaturePlugin_de_DE.ts
+    Translations/RollScriptBlockBarcodeFeaturePlugin_en_US.ts
+)
+
+# -----------------------------------------------------------------------------
+# Ressources
+# -----------------------------------------------------------------------------
+set(RESSOURCES
+    Resources/RollScriptBlockBarcodeFeaturePlugin.qrc
+)
+
+# -----------------------------------------------------------------------------
+# Plugin
+# -----------------------------------------------------------------------------
+qt_add_plugin(RollScriptBlockBarcodeFeaturePlugin
+	CLASS_NAME RollScriptBlockBarcodeFeaturePlugin
+
+    ${SOURCES}
+    ${HEADERS}
+    ${FORMS}
+    ${CORE_HEADERS}
+    ${COMMON_SOURCES}
+    ${COMMON_HEADERS}
+    ${RESSOURCES}
+)
+target_compile_definitions(RollScriptBlockBarcodeFeaturePlugin
+    PRIVATE
+        ROLLSCRIPT_PLUGIN_VERSION="${PROJECT_VERSION}"
+)
+
+# -----------------------------------------------------------------------------
+# Translations
+# -----------------------------------------------------------------------------
+qt_add_translations(
+	TARGETS RollScriptBlockBarcodeFeaturePlugin
+    TS_FILES ${TRANSLATIONS}
+)
+
+# -----------------------------------------------------------------------------
+# Include directories
+# -----------------------------------------------------------------------------
+target_include_directories(RollScriptBlockBarcodeFeaturePlugin
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_SOURCE_DIR}
+)
+
+# -----------------------------------------------------------------------------
+# Libraries
+# -----------------------------------------------------------------------------
+target_link_libraries(RollScriptBlockBarcodeFeaturePlugin
+    PRIVATE
+        Qt6::Core
+        Qt6::Gui
+        Qt6::Widgets
+)
+
+# -----------------------------------------------------------------------------
+# Metadata
+# -----------------------------------------------------------------------------
+set_target_properties(RollScriptBlockBarcodeFeaturePlugin PROPERTIES
+    LIBRARY_OUTPUT_DIRECTORY
+    "${CMAKE_BINARY_DIR}/plugins/features"
+)
