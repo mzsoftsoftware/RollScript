@@ -3,8 +3,10 @@
 FeaturePluginInfo::FeaturePluginInfo(const char* pszContext,
                                      const QString& qstrPluginId,
                                      const QString& qstrPluginVersion,
-                                     const char* pszPluginDisplayNameKey)
-    : PluginInfo(pszContext, qstrPluginId, qstrPluginVersion, pszPluginDisplayNameKey)
+                                     const char* pszPluginNameKey,
+                                     const char* pszPluginDescriptionKey,
+                                     const QIcon& iconPlugin)
+    : PluginInfo(pszContext, qstrPluginId, qstrPluginVersion, pszPluginNameKey, pszPluginDescriptionKey, iconPlugin)
 {
 }
 FeaturePluginInfo::~FeaturePluginInfo()

@@ -1,6 +1,7 @@
 #include "PrinterPluginRegistry.h"
 
 #include "Core/Plugins/IPrinterPlugin.h"
+#include "Core/Plugins/IPluginInfo.h"
 #include "Core/USB/USBDeviceInfo.h"
 
 
@@ -14,13 +15,17 @@ PrinterPluginRegistry::~PrinterPluginRegistry()
 
 bool PrinterPluginRegistry::registerPlugin(IPrinterPlugin* ptrPrinterPlugin)
 {
-    if(!ptrPrinterPlugin)
-        return false;
+    Q_ASSERT(ptrPrinterPlugin);
 
-    if(m_qlstPrinterPlugins.contains(ptrPrinterPlugin))
+    const QString qstrPluginId = ptrPrinterPlugin->pluginInfo()->pluginId();
+    if(m_qstrPrinterPluginIds.contains(qstrPluginId))
+    {
+        ROLLSCRIPT_ERROR(tr("PrinterPluginAlreadyRegistered"), QStringLiteral("Plugin ID already registered: %1").arg(qstrPluginId));
         return false;
+    }
 
-    m_qlstPrinterPlugins.append(ptrPrinterPlugin);
+    m_qhashPrinterPlugins.insert(qstrPluginId, ptrPrinterPlugin);
+    m_qstrPrinterPluginIds.append(qstrPluginId);
 
     return true;
 }
@@ -29,9 +34,9 @@ IPrinterPlugin* PrinterPluginRegistry::supportsUsb(const USBDeviceInfo* ptrDevic
 {
     IPrinterPlugin* ptrPrinterPluginResult = nullptr;
 
-    for(IPrinterPlugin* ptrPrinterPlugin : m_qlstPrinterPlugins)
+    for(const QString& qstrPluginId : m_qstrPrinterPluginIds)
     {
-        if(!ptrPrinterPlugin->supportsUsb(ptrDeviceInfo))
+        if(!printerPlugin(qstrPluginId)->supportsUsb(ptrDeviceInfo))
             continue;
 
         if(ptrPrinterPluginResult != nullptr)
@@ -43,7 +48,7 @@ IPrinterPlugin* PrinterPluginRegistry::supportsUsb(const USBDeviceInfo* ptrDevic
             return nullptr;
         }
 
-        ptrPrinterPluginResult = ptrPrinterPlugin;
+        ptrPrinterPluginResult = printerPlugin(qstrPluginId);
     }
 
     return ptrPrinterPluginResult;

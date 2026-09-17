@@ -9,8 +9,6 @@
 #include <QProgressDialog>
 #include <QTimer>
 
-#include "App/DialogAbout.h"
-
 #include "App/ApplicationContext.h"
 #include "Translation/TranslationManager.h"
 #include "Printers/PrinterManager.h"
@@ -19,6 +17,8 @@
 
 #include "Document/RollScriptDocument.h"
 #include "Document/RollScriptDocumentSettings.h"
+
+#include "Gui/About/DialogAbout.h"
 
 #include "Gui/Models/PrintersItemModel.h"
 #include "Gui/Models/PrinterMediasItemModel.h"
@@ -463,7 +463,7 @@ void MainWindow::slot_RollScriptRenderer_RenderingError()
 
 void MainWindow::on_actionAboutRollScript_triggered()
 {
-    DialogAbout dialog(this);
+    DialogAbout dialog(m_ptrApplicationContext, this);
     dialog.exec();
 }
 void MainWindow::on_actionFileNew_triggered()

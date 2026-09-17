@@ -4,15 +4,13 @@
 FeatureBlockInfo::FeatureBlockInfo(const char* pszContext,
                                    const QString& qstrPluginId,
                                    const QString& qstrPluginVersion,
-                                   const char* pszPluginDisplayNameKey,
-                                   const QString& qstrFeatureBlockId,
-                                   const QIcon& iconFeatureBlock,
-                                   const char* pszFeatureBlockDisplayNameKey,
+                                   const char* pszPluginNameKey,
+                                   const char* pszPluginDescriptionKey,
+                                   const QIcon& iconPlugin,
+                                   const char* pszFeatureBlockNameKey,
                                    const char* pszFeatureBlockTooltipKey)
-    : FeaturePluginInfo(pszContext, qstrPluginId, qstrPluginVersion, pszPluginDisplayNameKey)
-    , m_qstrFeatureBlockId(qstrFeatureBlockId)
-    , m_iconFeatureBlock(iconFeatureBlock)
-    , m_pszFeatureBlockDisplayNameKey(pszFeatureBlockDisplayNameKey)
+    : FeaturePluginInfo(pszContext, qstrPluginId, qstrPluginVersion, pszPluginNameKey, pszPluginDescriptionKey, iconPlugin)
+    , m_pszFeatureBlockNameKey(pszFeatureBlockNameKey)
     , m_pszFeatureBlockTooltipKey(pszFeatureBlockTooltipKey)
 {
 }

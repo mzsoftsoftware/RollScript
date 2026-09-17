@@ -23,15 +23,15 @@ RollScriptBlockTextFeaturePlugin::RollScriptBlockTextFeaturePlugin(QObject* pare
 
 RollScriptBlockWidgetBase* RollScriptBlockTextFeaturePlugin::createFeatureBlockWidget(QWidget* parent)
 {
-    return new RollScriptBlockTextWidget(m_pluginInfo.featureBlockId(), m_pluginInfo.featureBlockDisplayName(), parent);
+    return new RollScriptBlockTextWidget(m_pluginInfo.pluginId(), m_pluginInfo.featureBlockName(), parent);
 }
 
 RollScriptBlockDocumentBase* RollScriptBlockTextFeaturePlugin::createFeatureBlockDocument(QObject* parent)
 {
-    return new RollScriptBlockTextDocument(m_pluginInfo.featureBlockId(), parent);
+    return new RollScriptBlockTextDocument(m_pluginInfo.pluginId(), parent);
 }
 
 RollScriptBlockRendererBase* RollScriptBlockTextFeaturePlugin::createFeatureBlockRenderer(QObject* parent)
 {
-    return new RollScriptBlockTextRenderer(m_pluginInfo.featureBlockId(), parent);
+    return new RollScriptBlockTextRenderer(m_pluginInfo.pluginId(), parent);
 }

@@ -9,6 +9,9 @@
 #include "Core/Plugins/IPrinterPlugin.h"
 #include "Core/Plugins/IFeaturePlugin.h"
 
+#include "Core/Licensing/ILicenseProvider.h"
+
+#include "LicenseProviderRegistry.h"
 #include "PrinterPluginRegistry.h"
 #include "FeaturePluginRegistry.h"
 
@@ -19,6 +22,7 @@ PluginManager::PluginManager(TranslationManager* ptrTranslationManager, QObject*
     : QObject{parent}
     , m_ptrTranslationManager(ptrTranslationManager)
 {
+    m_ptrRegistryLicenses = new LicenseProviderRegistry(this);
     m_ptrRegistryPrinters = new PrinterPluginRegistry(this);
     m_ptrRegistryFeatures = new FeaturePluginRegistry(this);
 }
@@ -103,24 +107,39 @@ bool PluginManager::loadPluginFile(const QString& qstrPluginFileName)
             ROLLSCRIPT_ERROR_CAUSE(tr("PluginLoadFailed"), QStringLiteral("m_registryPrinters.registerPlugin failed."), m_ptrRegistryPrinters->takeError());
             return false;
         }
+
+        ILicenseProvider* ptrLicenseProvider = dynamic_cast<ILicenseProvider*>(ptrPrinterPlugin);
+        if(ptrLicenseProvider)
+        {
+            if(!m_ptrRegistryLicenses->registerProvider(ptrLicenseProvider))
+            {
+                ROLLSCRIPT_ERROR_CAUSE(tr("PluginLoadFailed"), QStringLiteral("m_registryLicenses.registerProvider failed."), m_ptrRegistryFeatures->takeError());
+                return false;
+            }
+        }
+
         return true;
     }
 
     IFeaturePlugin* ptrFeaturePlugin = qobject_cast<IFeaturePlugin*>(ptrInstance);
     if(ptrFeaturePlugin)
     {
-
-        const QString qstrPath =
-            QStringLiteral(":/RollScriptBlockTextFeaturePlugin/icons/FeatureBlockText.icon");
-
-        qDebug() << "exists:" << QFile::exists(qstrPath);
-        qDebug() << "resources:" << QDir(QStringLiteral(":/")).entryList();
-
         if(!m_ptrRegistryFeatures->registerPlugin(ptrFeaturePlugin))
         {
             ROLLSCRIPT_ERROR_CAUSE(tr("PluginLoadFailed"), QStringLiteral("m_registryFeatures.registerPlugin failed."), m_ptrRegistryFeatures->takeError());
             return false;
         }
+
+        ILicenseProvider* ptrLicenseProvider = dynamic_cast<ILicenseProvider*>(ptrPrinterPlugin);
+        if(ptrLicenseProvider)
+        {
+            if(!m_ptrRegistryLicenses->registerProvider(ptrLicenseProvider))
+            {
+                ROLLSCRIPT_ERROR_CAUSE(tr("PluginLoadFailed"), QStringLiteral("m_registryLicenses.registerProvider failed."), m_ptrRegistryFeatures->takeError());
+                return false;
+            }
+        }
+
         return true;
     }
 

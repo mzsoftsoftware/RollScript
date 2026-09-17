@@ -6,6 +6,20 @@ project(RollScript
 )
 
 include(GNUInstallDirs)
+include(${CMAKE_SOURCE_DIR}/tools/License.cmake)
+
+# -----------------------------------------------------------------------------
+# Tools
+# -----------------------------------------------------------------------------
+set(TOOLS_FILES
+    ${CMAKE_SOURCE_DIR}/tools/License.cmake
+    ${CMAKE_SOURCE_DIR}/tools/update-license-metadata.sh
+)
+
+add_custom_target(Tools SOURCES ${TOOLS_FILES})
+set_target_properties(Tools PROPERTIES
+    FOLDER "Tools"
+)
 
 set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 

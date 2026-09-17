@@ -16,7 +16,7 @@ bool FeatureBlockRegistry::registerFeatureBlock(IFeatureBlock* ptrFeatureBlock)
 {
     Q_ASSERT(ptrFeatureBlock);
 
-    const QString qstrFeatureBlockId = ptrFeatureBlock->featureBlockInfo()->featureBlockId();
+    const QString qstrFeatureBlockId = ptrFeatureBlock->featureBlockInfo()->pluginId();
     if(m_qstrFeatureBlockIds.contains(qstrFeatureBlockId))
     {
         ROLLSCRIPT_ERROR(tr("FeatureBlockAlreadyRegistered"), QStringLiteral("FeatureBlock ID already registered: %1").arg(qstrFeatureBlockId));

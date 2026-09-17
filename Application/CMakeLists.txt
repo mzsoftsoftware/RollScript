@@ -11,21 +11,15 @@ set(APP_SOURCES
     App/SingleInstanceLock.cpp
 
     App/MainWindow.cpp
-
-    App/DialogAbout.cpp
 )
 set(APP_HEADERS
     App/ApplicationContext.h
     App/SingleInstanceLock.h
 
     App/MainWindow.h
-
-    App/DialogAbout.h
 )
 set(APP_FORMS
     App/MainWindow.ui
-
-    App/DialogAbout.ui
 )
 
 # -----------------------------------------------------------------------------
@@ -37,10 +31,10 @@ set(LOGIC_SOURCES
     Document/RollScriptDocumentBlocks.cpp
 
     Printers/PrinterManager.cpp
-
     Translation/TranslationManager.cpp
 
     Plugins/PluginManager.cpp
+    Plugins/LicenseProviderRegistry.cpp
     Plugins/FeaturePluginRegistry.cpp
     Plugins/PrinterPluginRegistry.cpp
 
@@ -57,10 +51,10 @@ set(LOGIC_HEADERS
     Document/RollScriptDocumentBlocks.h
 
     Printers/PrinterManager.h
-
     Translation/TranslationManager.h
 
     Plugins/PluginManager.h
+    Plugins/LicenseProviderRegistry.h
     Plugins/FeaturePluginRegistry.h
     Plugins/PrinterPluginRegistry.h
 
@@ -76,10 +70,20 @@ set(LOGIC_HEADERS
 # GUI files
 # -----------------------------------------------------------------------------
 set(GUI_SOURCES
+    Gui/About/DialogAbout.cpp
+    Gui/About/DialogAboutOverviewWidget.h
+    Gui/About/DialogAboutLicenseWidget.h
+    Gui/About/DialogAboutComponentsWidget.h
+    Gui/About/DialogAboutFeaturesWidget.h
+    Gui/About/DialogAboutPrintersWidget.h
+    Gui/About/DialogAboutHeaderWidget.h
+    Gui/About/DialogAboutTableItemDelegate.h
+
     Gui/Models/PrintersItemModel.cpp
     Gui/Models/PrinterMediasItemModel.cpp
     Gui/Models/FeatureBlocksItemModel.cpp
 
+    Gui/Widgets/FeatureBlocksListView.h
     Gui/Helper/FeatureBlocksItemDelegate.cpp
 
     Gui/Widgets/SettingsWidget.cpp
@@ -88,10 +92,20 @@ set(GUI_SOURCES
     Gui/Widgets/PreviewWidget.cpp
 )
 set(GUI_HEADERS
+    Gui/About/DialogAbout.h
+    Gui/About/DialogAboutOverviewWidget.cpp
+    Gui/About/DialogAboutLicenseWidget.cpp
+    Gui/About/DialogAboutComponentsWidget.cpp
+    Gui/About/DialogAboutFeaturesWidget.cpp
+    Gui/About/DialogAboutPrintersWidget.cpp
+    Gui/About/DialogAboutHeaderWidget.cpp
+    Gui/About/DialogAboutTableItemDelegate.cpp
+
     Gui/Models/PrintersItemModel.h
     Gui/Models/PrinterMediasItemModel.h
     Gui/Models/FeatureBlocksItemModel.h
 
+    Gui/Widgets/FeatureBlocksListView.cpp
     Gui/Helper/FeatureBlocksItemDelegate.h
 
     Gui/Widgets/SettingsWidget.h
@@ -100,6 +114,14 @@ set(GUI_HEADERS
     Gui/Widgets/PreviewWidget.h
 )
 set(GUI_FORMS
+    Gui/About/DialogAbout.ui
+    Gui/About/DialogAboutOverviewWidget.ui
+    Gui/About/DialogAboutLicenseWidget.ui
+    Gui/About/DialogAboutComponentsWidget.ui
+    Gui/About/DialogAboutFeaturesWidget.ui
+    Gui/About/DialogAboutPrintersWidget.ui
+    Gui/About/DialogAboutHeaderWidget.ui
+
     Gui/Widgets/SettingsWidget.ui
     Gui/Widgets/FeatureBlocksWidget.ui
     Gui/Widgets/FeatureBlockWidgetEmpty.ui
@@ -167,7 +189,17 @@ qt_add_executable(RollScript
     ${COMMON_GUI_FORMS}
 
     ${RESSOURCES}
-    Gui/Widgets/FeatureBlocksListView.h Gui/Widgets/FeatureBlocksListView.cpp
+    App/RollScriptLicenseProvider.h App/RollScriptLicenseProvider.cpp
+)
+
+# -----------------------------------------------------------------------------
+# RollScript license
+# -----------------------------------------------------------------------------
+rollscript_add_license(
+    TARGET RollScript
+    ID "mzsoftsoftware/RollScript"
+    LICENSE_FILE "${CMAKE_SOURCE_DIR}/LICENSE"
+    RESOURCE_NAME "RollScript-license.txt"
 )
 
 # -----------------------------------------------------------------------------
@@ -175,16 +207,10 @@ qt_add_executable(RollScript
 # -----------------------------------------------------------------------------
 qt_add_translations(
     TARGETS RollScript
+    SOURCE_TARGETS RollScript
     TS_FILES ${TRANSLATIONS}
+    LUPDATE_OPTIONS -no-obsolete
 )
-
-# -----------------------------------------------------------------------------
-# Resources
-# -----------------------------------------------------------------------------
-#qt_add_resources(
-#    TARGETS RollScript
-#    ${RESSOURCES}
-#)
 
 # -----------------------------------------------------------------------------
 # Includes and Libraries
@@ -210,5 +236,5 @@ target_link_libraries(RollScript
 target_compile_definitions(RollScript
     PRIVATE
         ROLLSCRIPT_VERSION="${PROJECT_VERSION}"
+        ROLLSCRIPT_APPLICATION_VERSION="${ROLLSCRIPT_APPLICATION_VERSION}"
 )
-

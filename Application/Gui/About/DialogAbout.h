@@ -2,6 +2,8 @@
 
 #include <QDialog>
 
+class ApplicationContext;
+
 namespace Ui {
 class DialogAbout;
 }
@@ -13,8 +15,11 @@ class DialogAbout : public QDialog
 
 public:
     // Constructor / Destructor
-    explicit DialogAbout(QWidget* parent);
+    explicit DialogAbout(ApplicationContext* ptrApplicationContext, QWidget* parent);
     ~DialogAbout() override;
+
+private slots:
+    void on_pushButton_Copy_clicked();
 
 private:
     Ui::DialogAbout* ui;

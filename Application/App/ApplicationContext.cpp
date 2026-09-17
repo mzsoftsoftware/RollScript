@@ -9,6 +9,10 @@
 #include "Translation/TranslationManager.h"
 #include "Plugins/PluginManager.h"
 
+#include "App/RollScriptLicenseProvider.h"
+#include "Core/Licensing/CoreLicenseProvider.h"
+#include "Plugins/LicenseProviderRegistry.h"
+
 #include "Printers/PrinterManager.h"
 #include "Core/USB/USBManager.h"
 
@@ -18,6 +22,7 @@
 
 #include "Core/Errors/RollScriptError.h"
 
+#include <QDebug>
 
 ApplicationContext::ApplicationContext(QObject* parent)
     : QObject{parent}
@@ -67,6 +72,43 @@ bool ApplicationContext::init()
     if(!m_ptrPluginManager->init())
     {
         RollScriptError* ptrError = m_ptrPluginManager->takeError();
+        if(ptrError)
+        {
+            // TASK : Use correct tr !!!
+            QMessageBox::critical(nullptr, tr("Startup.Title"), ptrError->messageUser());
+            qDebug() << ptrError->messageDebug();
+            delete ptrError;
+        }
+        else
+            Q_ASSERT_X(false, "ApplicationContext::init", "No RollScriptError found");
+
+        return false;
+    }
+
+    m_ptrLicenseProviderRegistry = m_ptrPluginManager->registryLicenses();
+    m_ptrRollScriptLicenseProvider = new RollScriptLicenseProvider(this);
+    m_ptrRollScriptLicenseProvider->init();
+    if(!m_ptrLicenseProviderRegistry->registerProvider(m_ptrRollScriptLicenseProvider))
+    {
+        RollScriptError* ptrError = m_ptrLicenseProviderRegistry->takeError();
+        if(ptrError)
+        {
+            // TASK : Use correct tr !!!
+            QMessageBox::critical(nullptr, tr("Startup.Title"), ptrError->messageUser());
+            qDebug() << ptrError->messageDebug();
+            delete ptrError;
+        }
+        else
+            Q_ASSERT_X(false, "ApplicationContext::init", "No RollScriptError found");
+
+        return false;
+    }
+
+    m_ptrCoreLicenseProvider = new CoreLicenseProvider(this);
+    m_ptrCoreLicenseProvider->init();
+    if(!m_ptrLicenseProviderRegistry->registerProvider(m_ptrCoreLicenseProvider))
+    {
+        RollScriptError* ptrError = m_ptrLicenseProviderRegistry->takeError();
         if(ptrError)
         {
             // TASK : Use correct tr !!!

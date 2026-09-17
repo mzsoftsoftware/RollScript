@@ -6,11 +6,15 @@
 PluginInfo::PluginInfo(const char* pszContext,
                        const QString& qstrPluginId,
                        const QString& qstrPluginVersion,
-                       const char* pszPluginDisplayNameKey)
+                       const char* pszPluginNameKey,
+                       const char* pszPluginDescriptionKey,
+                       const QIcon& iconPlugin)
     : m_pszContext(pszContext)
     , m_qstrPluginId(qstrPluginId)
     , m_qstrPluginVersion(qstrPluginVersion)
-    , m_pszPluginDisplayNameKey(pszPluginDisplayNameKey)
+    , m_pszPluginNameKey(pszPluginNameKey)
+    , m_pszPluginDescriptionKey(pszPluginDescriptionKey)
+    , m_iconPlugin(iconPlugin)
 {
 }
 PluginInfo::~PluginInfo()

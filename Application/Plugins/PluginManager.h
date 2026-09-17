@@ -8,6 +8,7 @@ class IPrinterPlugin;
 class IFeaturePlugin;
 class QPluginLoader;
 
+class LicenseProviderRegistry;
 class PrinterPluginRegistry;
 class FeaturePluginRegistry;
 
@@ -25,6 +26,7 @@ public:
     bool init();
 
     // Getter
+    LicenseProviderRegistry* registryLicenses()          { return m_ptrRegistryLicenses; }
     PrinterPluginRegistry* registryPrinters()            { return m_ptrRegistryPrinters; }
     FeaturePluginRegistry* registryFeatures()            { return m_ptrRegistryFeatures; }
 
@@ -42,6 +44,7 @@ private:
 
     QList<QPluginLoader*> m_qlstPluginLoaders;
 
+    LicenseProviderRegistry* m_ptrRegistryLicenses;
     PrinterPluginRegistry* m_ptrRegistryPrinters;
     FeaturePluginRegistry* m_ptrRegistryFeatures;
 

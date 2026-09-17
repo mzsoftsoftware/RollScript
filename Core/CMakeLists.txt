@@ -14,6 +14,8 @@ set(SOURCES
     Errors/RollScriptError.cpp
     Errors/RollScriptErrorOwner.cpp
 
+    Licensing/LicenseInfo.cpp
+    Licensing/CoreLicenseProvider.cpp
 
     Blocks/RollScriptBlockDocumentBase.cpp
     Blocks/RollScriptBlockWidgetBase.cpp
@@ -38,6 +40,10 @@ set(HEADERS
     Errors/RollScriptError.h
     Errors/RollScriptErrorOwner.h
     Errors/RollScriptErrorMacros.h
+
+    Licensing/ILicenseProvider.h
+    Licensing/LicenseInfo.h
+    Licensing/CoreLicenseProvider.h
 
     Blocks/IFeatureBlock.h
     Blocks/IFeatureBlockInfo.h
@@ -67,58 +73,40 @@ set(HEADERS
 )
 
 # -----------------------------------------------------------------------------
-# Translations
-# -----------------------------------------------------------------------------
-#set(TRANSLATIONS
-#    Translations/RollScriptCore_de_DE.ts
-#    Translations/RollScriptCore_en_US.ts
-#)
-
-# -----------------------------------------------------------------------------
-# Ressources
-# -----------------------------------------------------------------------------
-#set(RESSOURCES
-#)
-
-# -----------------------------------------------------------------------------
 # Library
 # -----------------------------------------------------------------------------
-
 add_library(RollScriptCore SHARED
     ${SOURCES}
-    ${HEADERS}    
+    ${HEADERS}
+)
+
+target_compile_definitions(RollScriptCore
+    PUBLIC
+        LIBUSB_VERSION="${LIBUSB_VERSION}"
+        ROLLSCRIPT_CORE_VERSION="${PROJECT_VERSION}"
 )
 
 # -----------------------------------------------------------------------------
-# Translations
+# License
 # -----------------------------------------------------------------------------
-#qt_add_translations(
-#    TARGETS RollScriptCore
-#    TS_FILES ${TRANSLATIONS}
-#)
-
-# -----------------------------------------------------------------------------
-# Resources
-# -----------------------------------------------------------------------------
-#qt_add_resources(
-#    TARGETS RollScriptCore
-#    ${RESSOURCES}
-#)
+rollscript_add_license(
+    TARGET RollScriptCore
+    ID "libusb/libusb-cmake"
+    LICENSE_FILE "${libusb_SOURCE_DIR}/libusb/COPYING"
+    RESOURCE_NAME "libusb-license.txt"
+)
 
 # -----------------------------------------------------------------------------
 # Include directories
 # -----------------------------------------------------------------------------
-
 target_include_directories(RollScriptCore
     PUBLIC
     ${CMAKE_SOURCE_DIR}
 )
 
-
 # -----------------------------------------------------------------------------
 # Libraries
 # -----------------------------------------------------------------------------
-
 target_link_libraries(RollScriptCore
     PUBLIC
     Qt6::Core

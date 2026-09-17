@@ -7,6 +7,10 @@ class SingleInstanceLock;
 class TranslationManager;
 class PluginManager;
 
+class RollScriptLicenseProvider;
+class CoreLicenseProvider;
+class LicenseProviderRegistry;
+
 class FeatureBlockManager;
 
 class PrinterManager;
@@ -25,11 +29,12 @@ public:
     ~ApplicationContext() override;
 
     // Getters
-    TranslationManager* translationManager() const      { return m_ptrTranslationManager; }
-    PluginManager* pluginManager() const                { return m_ptrPluginManager; }
-    FeatureBlockManager* featureBlockManager() const    { return m_ptrFeatureBlockManager; }
-    PrinterManager* printerManager() const              { return m_ptrPrinterManager; }
-    RollScriptRenderer* rollScriptRenderer() const      { return m_ptrRollScriptRenderer; }
+    TranslationManager* translationManager() const                  { return m_ptrTranslationManager; }
+    PluginManager* pluginManager() const                            { return m_ptrPluginManager; }
+    const LicenseProviderRegistry* licenseProviderRegistry() const  { return m_ptrLicenseProviderRegistry; }
+    FeatureBlockManager* featureBlockManager() const                { return m_ptrFeatureBlockManager; }
+    PrinterManager* printerManager() const                          { return m_ptrPrinterManager; }
+    RollScriptRenderer* rollScriptRenderer() const                  { return m_ptrRollScriptRenderer; }
 
     // Operations
     bool init();
@@ -39,6 +44,10 @@ private:
 
     TranslationManager* m_ptrTranslationManager = nullptr;
     PluginManager* m_ptrPluginManager = nullptr;
+
+    RollScriptLicenseProvider* m_ptrRollScriptLicenseProvider = nullptr;
+    CoreLicenseProvider* m_ptrCoreLicenseProvider = nullptr;
+    LicenseProviderRegistry* m_ptrLicenseProviderRegistry = nullptr;
 
     FeatureBlockManager* m_ptrFeatureBlockManager = nullptr;
 

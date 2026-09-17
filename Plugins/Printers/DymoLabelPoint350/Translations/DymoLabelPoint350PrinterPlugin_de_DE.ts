@@ -55,14 +55,14 @@
 <context>
     <name>DymoLabelPoint350PrinterPluginInfo</name>
     <message>
-        <location filename="../DLP350PrinterPluginInfo.h" line="14"/>
-        <source>plugin.dymo.labelpoint350</source>
-        <translation type="unfinished"></translation>
+        <location filename="../DLP350PrinterPluginInfo.h" line="15"/>
+        <source>printer.dymo.labelpoint350.name</source>
+        <translation>DYMO LabelPoint 350</translation>
     </message>
     <message>
-        <location filename="../DLP350PrinterPluginInfo.h" line="15"/>
-        <source>priner.dymo.labelpoint350</source>
-        <translation type="unfinished"></translation>
+        <location filename="../DLP350PrinterPluginInfo.h" line="16"/>
+        <source>printer.dymo.labelpoint350.description</source>
+        <translation>DYMO LabelPoint 350 Drucker</translation>
     </message>
 </context>
 </TS>

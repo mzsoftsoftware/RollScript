@@ -79,8 +79,8 @@ void FeatureBlocksWidget::setupButtons()
         IFeatureBlock* ptrFeatureBlock = m_ptrFeatureBlockManager->featureBlock(qstrFeatureBlockId);
 
         QAction* ptrAction = new QAction(this);
-        ptrAction->setText(ptrFeatureBlock->featureBlockInfo()->featureBlockDisplayName());
-        ptrAction->setIcon(ptrFeatureBlock->featureBlockInfo()->featureBlockIcon());
+        ptrAction->setText(ptrFeatureBlock->featureBlockInfo()->featureBlockName());
+        ptrAction->setIcon(ptrFeatureBlock->featureBlockInfo()->pluginIcon());
         ptrAction->setData(qstrFeatureBlockId);
 
         m_ptrFeatureBlocksAddMenu->addAction(ptrAction);
@@ -210,7 +210,7 @@ void FeatureBlocksWidget::retranslateActions()
         IFeatureBlock* ptrFeatureBlock = m_ptrFeatureBlockManager->featureBlock(qstrFeatureBlockId);
         Q_ASSERT(ptrFeatureBlock);
 
-        ptrAction->setText(ptrFeatureBlock->featureBlockInfo()->featureBlockDisplayName());
+        ptrAction->setText(ptrFeatureBlock->featureBlockInfo()->featureBlockName());
     }
 }
 
@@ -225,7 +225,7 @@ void FeatureBlocksWidget::retranslateFeatureBlockWidgets()
             IFeatureBlock* ptrFeatureBlock = m_ptrFeatureBlockManager->featureBlock(iterator.key());
             if(ptrFeatureBlock)
             {
-                ptrWidget->setTitle(ptrFeatureBlock->featureBlockInfo()->featureBlockDisplayName());
+                ptrWidget->setTitle(ptrFeatureBlock->featureBlockInfo()->featureBlockName());
             }
         }
 
