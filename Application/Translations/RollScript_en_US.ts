@@ -32,7 +32,7 @@
     <message>
         <location filename="../Gui/About/DialogAbout.ui" line="32"/>
         <source>Licenses</source>
-        <translation type="unfinished"></translation>
+        <translation>Licenses</translation>
     </message>
     <message>
         <location filename="../Gui/About/DialogAbout.ui" line="37"/>
@@ -60,57 +60,57 @@
     <message>
         <location filename="../Gui/About/DialogAboutComponentsWidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Version %1</translation>
+        <translation>Version %1</translation>
     </message>
     <message>
         <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="21"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Application</translation>
     </message>
     <message>
         <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="21"/>
         <source>Rollscript application</source>
-        <translation type="unfinished"></translation>
+        <translation>RollScript application</translation>
     </message>
     <message>
         <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="22"/>
         <source>Core</source>
-        <translation type="unfinished"></translation>
+        <translation>Core Library</translation>
     </message>
     <message>
         <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="22"/>
         <source>Rollscript Core library</source>
-        <translation type="unfinished"></translation>
+        <translation>RollScript Core library</translation>
     </message>
     <message>
         <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="23"/>
         <source>USB</source>
-        <translation type="unfinished"></translation>
+        <translation>USB Library</translation>
     </message>
     <message>
         <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="23"/>
         <source>LibUSB Library</source>
-        <translation type="unfinished"></translation>
+        <translation>libusb library</translation>
     </message>
     <message>
         <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="24"/>
         <source>Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt</translation>
     </message>
     <message>
         <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="24"/>
         <source>Qt Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt version</translation>
     </message>
     <message>
         <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="25"/>
         <source>Target system</source>
-        <translation type="unfinished"></translation>
+        <translation>Target system</translation>
     </message>
     <message>
         <location filename="../Gui/About/DialogAboutComponentsWidget.cpp" line="25"/>
         <source>Operating system and windowing system</source>
-        <translation type="unfinished"></translation>
+        <translation>Operating system and windowing system</translation>
     </message>
 </context>
 <context>
@@ -118,7 +118,7 @@
     <message>
         <location filename="../Gui/About/DialogAboutFeaturesWidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Version %1</translation>
+        <translation>Version %1</translation>
     </message>
 </context>
 <context>
@@ -126,17 +126,17 @@
     <message>
         <location filename="../Gui/About/DialogAboutHeaderWidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Version %1</translation>
+        <translation>Version %1</translation>
     </message>
     <message>
         <location filename="../Gui/About/DialogAboutHeaderWidget.ui" line="59"/>
         <source>Title</source>
-        <translation type="unfinished">RollScript</translation>
+        <translation>RollScript</translation>
     </message>
     <message>
         <location filename="../Gui/About/DialogAboutHeaderWidget.cpp" line="11"/>
         <source>Version %1</source>
-        <translation type="unfinished">Version %1</translation>
+        <translation>Version %1</translation>
     </message>
 </context>
 <context>
@@ -144,7 +144,7 @@
     <message>
         <location filename="../Gui/About/DialogAboutLicenseWidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Version %1</translation>
+        <translation>Version %1</translation>
     </message>
 </context>
 <context>
@@ -181,7 +181,7 @@ for printing labels</translation>
     <message>
         <location filename="../Gui/About/DialogAboutPrintersWidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Version %1</translation>
+        <translation>Version %1</translation>
     </message>
 </context>
 <context>

@@ -19,12 +19,12 @@
     <message>
         <location filename="../RollScriptBlockTextFeaturePluginInfo.h" line="16"/>
         <source>plugin.feature.block.text.name</source>
-        <translation type="unfinished"></translation>
+        <translation>Text Block Element</translation>
     </message>
     <message>
         <location filename="../RollScriptBlockTextFeaturePluginInfo.h" line="17"/>
         <source>plugin.feature.block.text.description</source>
-        <translation type="unfinished"></translation>
+        <translation>Text Block with one to four lines of text</translation>
     </message>
     <message>
         <location filename="../RollScriptBlockTextFeaturePluginInfo.h" line="19"/>
@@ -50,7 +50,7 @@
     <message>
         <location filename="../RollScriptBlockTextLineWidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../RollScriptBlockTextLineWidget.cpp" line="35"/>
@@ -76,7 +76,7 @@
     <message>
         <location filename="../RollScriptBlockTextWidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

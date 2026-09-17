@@ -57,12 +57,12 @@
     <message>
         <location filename="../DLP350PrinterPluginInfo.h" line="15"/>
         <source>printer.dymo.labelpoint350.name</source>
-        <translation type="unfinished"></translation>
+        <translation>DYMO LabelPoint 350</translation>
     </message>
     <message>
         <location filename="../DLP350PrinterPluginInfo.h" line="16"/>
         <source>printer.dymo.labelpoint350.description</source>
-        <translation type="unfinished"></translation>
+        <translation>DYMO LabelPoint 350 Printer</translation>
     </message>
 </context>
 </TS>
