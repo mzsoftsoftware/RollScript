@@ -6,7 +6,7 @@
     <message>
         <location filename="../RollScriptBlockImageDocument.cpp" line="35"/>
         <source>DocumentBlockImage.LoadFromFile.Json.Version.Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Unbekanntes Dateiformat, Version zu neu : %1</translation>
     </message>
 </context>
 <context>

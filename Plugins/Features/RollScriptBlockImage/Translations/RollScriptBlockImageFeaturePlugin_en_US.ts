@@ -6,7 +6,7 @@
     <message>
         <location filename="../RollScriptBlockImageDocument.cpp" line="35"/>
         <source>DocumentBlockImage.LoadFromFile.Json.Version.Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Error in document : Version too new %1</translation>
     </message>
 </context>
 <context>
@@ -52,7 +52,7 @@
     <message>
         <location filename="../RollScriptBlockImageWidget.ui" line="39"/>
         <source>...</source>
-        <translation></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../RollScriptBlockImageWidget.ui" line="82"/>
@@ -62,12 +62,12 @@
     <message>
         <location filename="../RollScriptBlockImageWidget.cpp" line="48"/>
         <source>Select Image</source>
-        <translation></translation>
+        <translation>Select Image</translation>
     </message>
     <message>
         <location filename="../RollScriptBlockImageWidget.cpp" line="48"/>
         <source>Images (*.png *.jpg *.jpeg *.gif)</source>
-        <translation></translation>
+        <translation>Images (*.png *.jpg *.jpeg *.gif)</translation>
     </message>
 </context>
 </TS>

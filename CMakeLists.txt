@@ -177,6 +177,7 @@ add_custom_target(AppDir
         RollScriptCore
         DymoLabelPoint350PrinterPlugin
         RollScriptBlockTextFeaturePlugin
+        RollScriptBlockImageFeaturePlugin
 
     COMMENT "Creating RollScript AppDir"
     SOURCES ${PACKAGING_FILES}
