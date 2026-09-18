@@ -57,6 +57,7 @@ add_subdirectory(Plugins/Printers/DymoLabelPoint350)
 
 # --- Features ----------------------------------------------------------------
 add_subdirectory(Plugins/Features/RollScriptBlockText)
+add_subdirectory(Plugins/Features/RollScriptBlockImage)
 
 # -----------------------------------------------------------------------------
 # Installation RPATH
@@ -71,6 +72,9 @@ set_target_properties(DymoLabelPoint350PrinterPlugin PROPERTIES
     INSTALL_RPATH "$ORIGIN/../../lib"
 )
 set_target_properties(RollScriptBlockTextFeaturePlugin PROPERTIES
+    INSTALL_RPATH "$ORIGIN/../../lib"
+)
+set_target_properties(RollScriptBlockImageFeaturePlugin PROPERTIES
     INSTALL_RPATH "$ORIGIN/../../lib"
 )
 
@@ -94,6 +98,9 @@ install(TARGETS DymoLabelPoint350PrinterPlugin
 )
 
 install(TARGETS RollScriptBlockTextFeaturePlugin
+    LIBRARY DESTINATION plugins/features
+)
+install(TARGETS RollScriptBlockImageFeaturePlugin
     LIBRARY DESTINATION plugins/features
 )
 
@@ -170,6 +177,7 @@ add_custom_target(AppDir
         RollScriptCore
         DymoLabelPoint350PrinterPlugin
         RollScriptBlockTextFeaturePlugin
+        RollScriptBlockImageFeaturePlugin
 
     COMMENT "Creating RollScript AppDir"
     SOURCES ${PACKAGING_FILES}
