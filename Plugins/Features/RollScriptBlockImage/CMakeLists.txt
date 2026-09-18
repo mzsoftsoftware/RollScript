@@ -7,14 +7,27 @@ project(RollScriptBlockImageFeaturePlugin
 # -----------------------------------------------------------------------------
 set(SOURCES
     RollScriptBlockImageFeaturePlugin.cpp
+
+    RollScriptBlockImageDocument.cpp
+
+    RollScriptBlockImageWidget.cpp
+
+    RollScriptBlockImageRenderer.cpp
 )
 
 set(HEADERS
     RollScriptBlockImageFeaturePlugin.h
     RollScriptBlockImageFeaturePluginInfo.h
+
+    RollScriptBlockImageDocument.h
+
+    RollScriptBlockImageWidget.h
+
+    RollScriptBlockImageRenderer.h
 )
 
 set(FORMS
+    RollScriptBlockImageWidget.ui
 )
 
 set(CORE_HEADERS
@@ -64,6 +77,11 @@ qt_add_plugin(RollScriptBlockImageFeaturePlugin
     ${COMMON_SOURCES}
     ${COMMON_HEADERS}
     ${RESSOURCES}
+)
+
+target_sources(RollScriptBlockImageFeaturePlugin
+  PRIVATE
+
 )
 target_compile_definitions(RollScriptBlockImageFeaturePlugin
     PRIVATE
