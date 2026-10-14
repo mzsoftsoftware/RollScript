@@ -1,18 +1,18 @@
-#include "RollScriptBlockTextFeaturePlugin.h"
+#include "RollScriptBlockBarcodeFeaturePlugin.h"
 
-#include "RollScriptBlockTextWidget.h"
-#include "RollScriptBlockTextDocument.h"
-#include "RollScriptBlockTextRenderer.h"
+#include "RollScriptBlockBarcodeWidget.h"
+#include "RollScriptBlockBarcodeDocument.h"
+#include "RollScriptBlockBarcodeRenderer.h"
 
 #include <QFile>
 #include <QDir>
 
-RollScriptBlockTextFeaturePlugin::RollScriptBlockTextFeaturePlugin(QObject* parent)
+RollScriptBlockBarcodeFeaturePlugin::RollScriptBlockBarcodeFeaturePlugin(QObject* parent)
     : IFeaturePlugin(parent)
 {
     const QString qstrPath =
         QStringLiteral(
-            ":/RollScriptBlockTextFeaturePlugin/icons/FeatureBlockText.icon");
+            ":/RollScriptBlockBarcodeFeaturePlugin/icons/FeatureBlockBarcode.icon");
 
     qDebug() << "Constructor Plugin icon:"
              << QFile::exists(qstrPath)
@@ -21,17 +21,17 @@ RollScriptBlockTextFeaturePlugin::RollScriptBlockTextFeaturePlugin(QObject* pare
     qDebug() << "Constructor resources:" << QDir(QStringLiteral(":/")).entryList();
 }
 
-RollScriptBlockWidgetBase* RollScriptBlockTextFeaturePlugin::createFeatureBlockWidget(QWidget* parent)
+RollScriptBlockWidgetBase* RollScriptBlockBarcodeFeaturePlugin::createFeatureBlockWidget(QWidget* parent)
 {
-    return new RollScriptBlockTextWidget(m_pluginInfo.pluginId(), m_pluginInfo.featureBlockName(), parent);
+    return new RollScriptBlockBarcodeWidget(m_pluginInfo.pluginId(), m_pluginInfo.featureBlockName(), parent);
 }
 
-RollScriptBlockDocumentBase* RollScriptBlockTextFeaturePlugin::createFeatureBlockDocument(QObject* parent)
+RollScriptBlockDocumentBase* RollScriptBlockBarcodeFeaturePlugin::createFeatureBlockDocument(QObject* parent)
 {
-    return new RollScriptBlockTextDocument(m_pluginInfo.pluginId(), parent);
+    return new RollScriptBlockBarcodeDocument(m_pluginInfo.pluginId(), parent);
 }
 
-RollScriptBlockRendererBase* RollScriptBlockTextFeaturePlugin::createFeatureBlockRenderer(QObject* parent)
+RollScriptBlockRendererBase* RollScriptBlockBarcodeFeaturePlugin::createFeatureBlockRenderer(QObject* parent)
 {
-    return new RollScriptBlockTextRenderer(m_pluginInfo.pluginId(), parent);
+    return new RollScriptBlockBarcodeRenderer(m_pluginInfo.pluginId(), parent);
 }

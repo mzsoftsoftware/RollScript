@@ -7,14 +7,27 @@ project(RollScriptBlockBarcodeFeaturePlugin
 # -----------------------------------------------------------------------------
 set(SOURCES
     RollScriptBlockBarcodeFeaturePlugin.cpp
+
+    RollScriptBlockBarcodeDocument.cpp
+
+    RollScriptBlockBarcodeWidget.cpp
+
+    RollScriptBlockBarcodeRenderer.cpp
 )
 
 set(HEADERS
     RollScriptBlockBarcodeFeaturePlugin.h
     RollScriptBlockBarcodeFeaturePluginInfo.h
+
+    RollScriptBlockBarcodeDocument.h
+
+    RollScriptBlockBarcodeWidget.h
+
+    RollScriptBlockBarcodeRenderer.h
 )
 
 set(FORMS
+    RollScriptBlockBarcodeWidget.ui
 )
 
 set(CORE_HEADERS
@@ -55,7 +68,7 @@ set(RESSOURCES
 # Plugin
 # -----------------------------------------------------------------------------
 qt_add_plugin(RollScriptBlockBarcodeFeaturePlugin
-	CLASS_NAME RollScriptBlockBarcodeFeaturePlugin
+        CLASS_NAME RollScriptBlockBarcodeFeaturePlugin
 
     ${SOURCES}
     ${HEADERS}
@@ -74,7 +87,7 @@ target_compile_definitions(RollScriptBlockBarcodeFeaturePlugin
 # Translations
 # -----------------------------------------------------------------------------
 qt_add_translations(
-	TARGETS RollScriptBlockBarcodeFeaturePlugin
+    TARGETS RollScriptBlockBarcodeFeaturePlugin
     TS_FILES ${TRANSLATIONS}
 )
 
