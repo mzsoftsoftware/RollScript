@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US" sourcelanguage="en_US">
 <context>
+    <name>RollScriptBlockQRCodeDocument</name>
+    <message>
+        <location filename="../RollScriptBlockQRCodeDocument.cpp" line="35"/>
+        <source>DocumentBlockQRCode.LoadFromFile.Json.Version.Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RollScriptBlockQRCodeFeaturePluginInfo</name>
     <message>
         <location filename="../RollScriptBlockQRCodeFeaturePluginInfo.h" line="16"/>
@@ -29,6 +37,21 @@
     <message>
         <location filename="../RollScriptBlockQRCodeWidget.ui" line="14"/>
         <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../RollScriptBlockQRCodeWidget.ui" line="22"/>
+        <source>QR Text:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../RollScriptBlockQRCodeWidget.ui" line="59"/>
+        <source>No Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../RollScriptBlockQRCodeWidget.cpp" line="60"/>
+        <source>Empty QR-Code</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
