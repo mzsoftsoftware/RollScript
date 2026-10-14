@@ -22,8 +22,17 @@ public:
     // Setter
     void setDocumentBlock(RollScriptBlockDocumentBase* ptrBlockDocumentBase) override;
 
+private slots:
+    void on_lineEdit_BarcodeText_textChanged(const QString &qstrText);
+
+private:
+    void updateFromBlockBarcodeDocument();
+    void updatePreview(const QString &qstrQrCodeText);
+
 private:
     Ui::RollScriptBlockBarcodeWidget* ui;
 
     RollScriptBlockBarcodeDocument* m_ptrBlockBarcodeDocument;
+    QMetaObject::Connection         m_connBlockBarcodeDocumentCleared;
+    QMetaObject::Connection         m_connBlockBarcodeDocumentLoaded;
 };
