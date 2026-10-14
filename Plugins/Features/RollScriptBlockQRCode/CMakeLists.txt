@@ -6,15 +6,28 @@ project(RollScriptBlockQRCodeFeaturePlugin
 # Sources
 # -----------------------------------------------------------------------------
 set(SOURCES
-	RollScriptBlockQRCodeFeaturePlugin.cpp
+    RollScriptBlockQRCodeFeaturePlugin.cpp
+
+    RollScriptBlockQRCodeDocument.cpp
+
+    RollScriptBlockQRCodeWidget.cpp
+
+    RollScriptBlockQRCodeRenderer.cpp
 )
 
 set(HEADERS
-	RollScriptBlockQRCodeFeaturePlugin.h
-	RollScriptBlockQRCodeFeaturePluginInfo.h
+    RollScriptBlockQRCodeFeaturePlugin.h
+    RollScriptBlockQRCodeFeaturePluginInfo.h
+
+    RollScriptBlockQRCodeDocument.h
+
+    RollScriptBlockQRCodeWidget.h
+
+    RollScriptBlockQRCodeRenderer.h
 )
 
 set(FORMS
+    RollScriptBlockQRCodeWidget.ui
 )
 
 set(CORE_HEADERS
@@ -40,22 +53,22 @@ set(COMMON_HEADERS
 # Translations
 # -----------------------------------------------------------------------------
 set(TRANSLATIONS
-	Translations/RollScriptBlockQRCodeFeaturePlugin_de_DE.ts
-	Translations/RollScriptBlockQRCodeFeaturePlugin_en_US.ts
+    Translations/RollScriptBlockQRCodeFeaturePlugin_de_DE.ts
+    Translations/RollScriptBlockQRCodeFeaturePlugin_en_US.ts
 )
 
 # -----------------------------------------------------------------------------
 # Ressources
 # -----------------------------------------------------------------------------
 set(RESSOURCES
-	Resources/RollScriptBlockQRCodeFeaturePlugin.qrc
+    Resources/RollScriptBlockQRCodeFeaturePlugin.qrc
 )
 
 # -----------------------------------------------------------------------------
 # Plugin
 # -----------------------------------------------------------------------------
 qt_add_plugin(RollScriptBlockQRCodeFeaturePlugin
-	CLASS_NAME RollScriptBlockQRCodeFeaturePlugin
+        CLASS_NAME RollScriptBlockQRCodeFeaturePlugin
 
     ${SOURCES}
     ${HEADERS}
@@ -74,7 +87,7 @@ target_compile_definitions(RollScriptBlockQRCodeFeaturePlugin
 # Translations
 # -----------------------------------------------------------------------------
 qt_add_translations(
-	TARGETS RollScriptBlockQRCodeFeaturePlugin
+    TARGETS RollScriptBlockQRCodeFeaturePlugin
     TS_FILES ${TRANSLATIONS}
 )
 
