@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/RollScriptBlockQRCodeFeaturePlugin/icons">
+        <file alias="FeatureBlockQRCode.icon.svg">icons/FeatureBlockQRCode.svg</file>
+    </qresource>
+</RCC>
