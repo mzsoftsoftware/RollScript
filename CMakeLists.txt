@@ -57,6 +57,7 @@ add_subdirectory(Plugins/Printers/DymoLabelPoint350)
 
 # --- Features ----------------------------------------------------------------
 add_subdirectory(Plugins/Features/RollScriptBlockText)
+add_subdirectory(Plugins/Features/RollScriptBlockBarcode)
 
 # -----------------------------------------------------------------------------
 # Installation RPATH
